@@ -106,29 +106,20 @@ public class CardRequestType extends AbstractDistributionEntity implements Seria
         return true;
     }
 
-    @Override
+   
+     @Override
     public String toString() {
-        return "com.cms.commons.models.CardRequestType[ id=" + id + " ]";
+        return super.toString();
     }
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<RequestType> getRequestTypeCollection() {
-        return requestTypeCollection;
-    }
-
-    public void setRequestTypeCollection(Collection<RequestType> requestTypeCollection) {
-        this.requestTypeCollection = requestTypeCollection;
+        return super.getTableName(this.getClass());
     }
 
 }
