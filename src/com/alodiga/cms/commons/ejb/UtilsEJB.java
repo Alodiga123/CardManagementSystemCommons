@@ -9,6 +9,7 @@ import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CardRequestType;
 import com.cms.commons.models.RequestType;
+import com.cms.commons.models.Country;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,4 +31,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<CardRequestType> getCardRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRequestType loadCardRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRequestType saveCardRequestType(CardRequestType cardRequestType) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla de Country
+    public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Country saveCountry(Country country) throws NullParameterException, GeneralException;
 }
