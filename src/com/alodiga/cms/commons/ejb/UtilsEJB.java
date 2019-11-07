@@ -8,6 +8,7 @@ import com.alodiga.cms.commons.exception.EmptyListException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CardRequestType;
+import com.cms.commons.models.CardStatus;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.StatusRequest;
@@ -40,4 +41,12 @@ public interface UtilsEJB extends DistributionGenericEJB {
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
+
+    //Tabla de CardStatus
+    public List<CardStatus> getCardStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CardStatus loadCardStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public CardStatus saveCardStatus(CardStatus cardStatus) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+
+
 }
