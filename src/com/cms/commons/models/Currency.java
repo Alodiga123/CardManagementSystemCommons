@@ -5,10 +5,11 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -30,14 +28,12 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "currency")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Currency.findAll", query = "SELECT c FROM Currency c")
-    , @NamedQuery(name = "Currency.findById", query = "SELECT c FROM Currency c WHERE c.id = :id")
-    , @NamedQuery(name = "Currency.findByName", query = "SELECT c FROM Currency c WHERE c.name = :name")
-    , @NamedQuery(name = "Currency.findBySymbol", query = "SELECT c FROM Currency c WHERE c.symbol = :symbol")})
-public class Currency implements Serializable {
+    @NamedQuery(name = "Currency.findAll", query = "SELECT c FROM Currency c"),
+    @NamedQuery(name = "Currency.findById", query = "SELECT c FROM Currency c WHERE c.id = :id"),
+    @NamedQuery(name = "Currency.findByName", query = "SELECT c FROM Currency c WHERE c.name = :name"),
+    @NamedQuery(name = "Currency.findBySymbol", query = "SELECT c FROM Currency c WHERE c.symbol = :symbol")})
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "currencyId")
-    private Collection<Country> countryCollection;
+public class Currency extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,12 +45,6 @@ public class Currency implements Serializable {
     private String name;
     @Column(name = "symbol")
     private String symbol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "currencyId")
-    private Collection<Program> programCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "domesticCurrencyId")
-    private Collection<Product> productCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "internationalCurrencyId")
-    private Collection<Product> productCollection1;
 
     public Currency() {
     }
@@ -87,36 +77,6 @@ public class Currency implements Serializable {
         this.symbol = symbol;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection1() {
-        return productCollection1;
-    }
-
-    public void setProductCollection1(Collection<Product> productCollection1) {
-        this.productCollection1 = productCollection1;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -139,17 +99,17 @@ public class Currency implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Currency[ id=" + id + " ]";
+        return "com.cms.commons.models.Country[ id=" + id + " ]";
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Country> getCountryCollection() {
-        return countryCollection;
+    @Override
+    public Object getPk() {
+        return getId();
     }
 
-    public void setCountryCollection(Collection<Country> countryCollection) {
-        this.countryCollection = countryCollection;
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
