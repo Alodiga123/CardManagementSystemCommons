@@ -9,6 +9,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CardRequestType;
 import com.cms.commons.models.CardStatus;
 import com.cms.commons.models.Country;
+import com.cms.commons.models.Currency;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.StatusRequest;
 import javax.ejb.Local;
@@ -45,4 +46,8 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<CardStatus> getCardStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardStatus loadCardStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardStatus saveCardStatus(CardStatus cardStatus) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //Tabla de Currency
+    public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
+    public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
