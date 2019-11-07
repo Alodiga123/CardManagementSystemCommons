@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CardRequestType;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
+import com.cms.commons.models.StatusRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,4 +36,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     //Tabla de Country
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
+    
+    //Tabla de StatusRequest
+    public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
 }
