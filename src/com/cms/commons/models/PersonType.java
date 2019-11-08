@@ -37,9 +37,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
 public class PersonType extends AbstractDistributionEntity implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personTypeId")
-    private Collection<CollectionsRequest> collectionsRequestCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -117,16 +114,6 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @Override
     public String getTableName() throws TableNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CollectionsRequest> getCollectionsRequestCollection() {
-        return collectionsRequestCollection;
-    }
-
-    public void setCollectionsRequestCollection(Collection<CollectionsRequest> collectionsRequestCollection) {
-        this.collectionsRequestCollection = collectionsRequestCollection;
     }
     
 }

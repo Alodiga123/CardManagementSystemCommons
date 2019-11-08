@@ -42,6 +42,18 @@ public class RequestType extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "cardRequestTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CardRequestType cardRequestTypeId;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private PersonType personTypeId;
+    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProductType productTypeId;
+    @JoinColumn(name = "programId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Program programId;
 
     public RequestType() {
     }
@@ -64,6 +76,38 @@ public class RequestType extends AbstractDistributionEntity implements Serializa
 
     public void setCardRequestTypeId(CardRequestType cardRequestTypeId) {
         this.cardRequestTypeId = cardRequestTypeId;
+    }
+    
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
+    }
+
+    public PersonType getPersonTypeId() {
+        return personTypeId;
+    }
+
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
+    }
+
+    public ProductType getProductTypeId() {
+        return productTypeId;
+    }
+
+    public void setProductTypeId(ProductType productTypeId) {
+        this.productTypeId = productTypeId;
+    }
+
+    public Program getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(Program programId) {
+        this.programId = programId;
     }
 
     @Override
