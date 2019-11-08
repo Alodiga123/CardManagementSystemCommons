@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -22,10 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- *
- * @author jose
- */
 @Entity
 @Table(name = "statusRequest")
 @XmlRootElement
@@ -33,7 +26,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "StatusRequest.findAll", query = "SELECT s FROM StatusRequest s")
     , @NamedQuery(name = "StatusRequest.findById", query = "SELECT s FROM StatusRequest s WHERE s.id = :id")
     , @NamedQuery(name = "StatusRequest.findByDescription", query = "SELECT s FROM StatusRequest s WHERE s.description = :description")})
-public class StatusRequest implements Serializable {
+
+public class StatusRequest extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -104,4 +98,15 @@ public class StatusRequest implements Serializable {
         return "com.cms.commons.models.StatusRequest[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+    
+
 }
