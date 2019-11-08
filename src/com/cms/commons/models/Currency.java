@@ -99,7 +99,7 @@ public class Currency extends AbstractDistributionEntity implements Serializable
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Country[ id=" + id + " ]";
+        return "com.cms.commons.models.Courrency[ id=" + id + " ]";
     }
 
     @Override
