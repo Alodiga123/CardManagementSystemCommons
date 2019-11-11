@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,10 +35,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "collectionsRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CollectionsRequest.findAll", query = "SELECT c FROM CollectionsRequest c")
-    , @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id")
-    , @NamedQuery(name = "CollectionsRequest.findByDescription", query = "SELECT c FROM CollectionsRequest c WHERE c.description = :description")})
-public class CollectionsRequest implements Serializable {
+    @NamedQuery(name = "CollectionsRequest.findAll", query = "SELECT c FROM CollectionsRequest c"), 
+    @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id"), 
+    @NamedQuery(name = "CollectionsRequest.findByDescription", query = "SELECT c FROM CollectionsRequest c WHERE c.description = :description")})
+
+public class CollectionsRequest extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -150,6 +153,16 @@ public class CollectionsRequest implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.CollectionsRequest[ id=" + id + " ]";
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
