@@ -13,6 +13,7 @@ import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.Currency;
 import com.cms.commons.models.StatusRequest;
+import com.cms.commons.models.CollectionsRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,5 +54,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-
+    //StatusRequest
+    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
 }
