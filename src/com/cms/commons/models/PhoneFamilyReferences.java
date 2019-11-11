@@ -40,9 +40,12 @@ public class PhoneFamilyReferences implements Serializable {
     private Long id;
     @Column(name = "phoneNumber")
     private String phoneNumber;
-    @JoinColumn(name = "familyReferences_id", referencedColumnName = "id")
+    @JoinColumn(name = "familyReferencesId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private FamilyReferences familyReferencesid;
+    private FamilyReferences familyReferencesId;
+    @JoinColumn(name = "phoneTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private PhoneType phoneTypeId;
 
     public PhoneFamilyReferences() {
     }
@@ -67,12 +70,20 @@ public class PhoneFamilyReferences implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public FamilyReferences getFamilyReferencesid() {
-        return familyReferencesid;
+    public FamilyReferences getFamilyReferencesId() {
+        return familyReferencesId;
     }
 
-    public void setFamilyReferencesid(FamilyReferences familyReferencesid) {
-        this.familyReferencesid = familyReferencesid;
+    public void setFamilyReferencesId(FamilyReferences familyReferencesId) {
+        this.familyReferencesId = familyReferencesId;
+    }
+    
+    public PhoneType getPhoneTypeId() {
+        return phoneTypeId;
+    }
+
+    public void setPhoneTypeId(PhoneType phoneTypeId) {
+        this.phoneTypeId = phoneTypeId;
     }
 
     @Override
