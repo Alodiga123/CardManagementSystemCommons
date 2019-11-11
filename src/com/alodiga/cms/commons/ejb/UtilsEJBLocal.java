@@ -49,5 +49,6 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Tabla de Currency
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
+    public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }

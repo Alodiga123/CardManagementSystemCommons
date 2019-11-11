@@ -101,6 +101,6 @@ public class CardStatus extends AbstractDistributionEntity implements Serializab
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+      
 }
 
