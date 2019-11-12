@@ -12,6 +12,7 @@ import com.cms.commons.models.CardStatus;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.Currency;
+import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.StatusRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +54,13 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-
+    //Tabla de CardStatus
+    
+    public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonClassification savePersonClassification (PersonClassification personclassification)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+  
+    
+    
+    
 }
