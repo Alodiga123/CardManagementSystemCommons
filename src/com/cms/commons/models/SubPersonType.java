@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -26,13 +27,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "personType")
+@Table(name = "subPersonType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p"),
-    @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id"),
-    @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
-public class PersonType extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "SubPersonType.findAll", query = "SELECT s FROM SubPersonType s"),
+    @NamedQuery(name = "SubPersonType.findById", query = "SELECT s FROM SubPersonType s WHERE s.id = :id"),
+    @NamedQuery(name = "SubPersonType.findByDescription", query = "SELECT s FROM SubPersonType s WHERE s.description = :description")})
+public class SubPersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,16 +41,17 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 80)
     @Column(name = "description")
     private String description;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
-    
-    public PersonType() {
+    private PersonType personTypeId;
+
+    public SubPersonType() {
     }
 
-    public PersonType(Integer id) {
+    public SubPersonType(Integer id) {
         this.id = id;
     }
 
@@ -68,13 +70,13 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public Country getCountryId() {
-        return countryId;
+
+    public PersonType getPersonTypeId() {
+        return personTypeId;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
     }
 
     @Override
@@ -87,10 +89,10 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PersonType)) {
+        if (!(object instanceof SubPersonType)) {
             return false;
         }
-        PersonType other = (PersonType) object;
+        SubPersonType other = (SubPersonType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -99,7 +101,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PersonType[ id=" + id + " ]";
+        return "com.cms.commons.models.SubPersonType[ id=" + id + " ]";
     }
 
     @Override
