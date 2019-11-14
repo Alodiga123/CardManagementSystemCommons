@@ -17,7 +17,6 @@ import com.cms.commons.models.State;
 import javax.ejb.Local;
 import java.util.List;
 
-
 /**
  * @author Jesus Gomez
  * @since 28/10/2019
