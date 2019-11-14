@@ -15,6 +15,7 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.Program;
 import com.cms.commons.models.State;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,5 +72,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public State saveState (State state)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla de Program
+    public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
