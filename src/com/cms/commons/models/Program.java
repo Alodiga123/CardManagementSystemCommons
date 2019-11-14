@@ -54,7 +54,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Program.findByCreateDate", query = "SELECT p FROM Program p WHERE p.createDate = :createDate")
     , @NamedQuery(name = "Program.findByUpdateDate", query = "SELECT p FROM Program p WHERE p.updateDate = :updateDate")
     , @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting")})
-public class Program extends AbstractDistributionEntity implements Serializable {
+public class Program extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -365,12 +365,13 @@ public class Program extends AbstractDistributionEntity implements Serializable 
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
-
+    
+    
 }

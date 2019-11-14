@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -35,7 +37,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "State.findAll", query = "SELECT s FROM State s")
     , @NamedQuery(name = "State.findById", query = "SELECT s FROM State s WHERE s.id = :id")
     , @NamedQuery(name = "State.findByName", query = "SELECT s FROM State s WHERE s.name = :name")})
-public class State implements Serializable {
+public class State extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -115,6 +117,17 @@ public class State implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.State[ id=" + id + " ]";
+    }
+    
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
