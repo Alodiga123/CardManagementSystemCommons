@@ -87,15 +87,15 @@ public class NaturalPerson implements Serializable {
     @JoinColumn(name = "civilStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CivilStatus civilStatusId;
-    @JoinColumn(name = "identificationTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private IdentificationType identificationTypeId;
     @JoinColumn(name = "professionId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Profession professionId;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DocumentsPersonType documentsPersonTypeId;
 
     public NaturalPerson() {
     }
@@ -224,14 +224,6 @@ public class NaturalPerson implements Serializable {
         this.civilStatusId = civilStatusId;
     }
 
-    public IdentificationType getIdentificationTypeId() {
-        return identificationTypeId;
-    }
-
-    public void setIdentificationTypeId(IdentificationType identificationTypeId) {
-        this.identificationTypeId = identificationTypeId;
-    }
-
     public Profession getProfessionId() {
         return professionId;
     }
@@ -246,6 +238,14 @@ public class NaturalPerson implements Serializable {
 
     public void setPersonId(Person personId) {
         this.personId = personId;
+    }
+    
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
+    }
+
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
     @Override

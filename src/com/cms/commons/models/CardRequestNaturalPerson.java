@@ -60,9 +60,9 @@ public class CardRequestNaturalPerson implements Serializable {
     @JoinColumn(name = "legalPerson_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private LegalPerson legalPersonid;
-    @JoinColumn(name = "identificationTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private IdentificationType identificationTypeId;
+    private DocumentsPersonType documentsPersonTypeId;
 
     public CardRequestNaturalPerson() {
     }
@@ -134,14 +134,15 @@ public class CardRequestNaturalPerson implements Serializable {
     public void setLegalPersonid(LegalPerson legalPersonid) {
         this.legalPersonid = legalPersonid;
     }
-
-    public IdentificationType getIdentificationTypeId() {
-        return identificationTypeId;
+    
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
     }
 
-    public void setIdentificationTypeId(IdentificationType identificationTypeId) {
-        this.identificationTypeId = identificationTypeId;
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
     }
+
 
     @Override
     public int hashCode() {
