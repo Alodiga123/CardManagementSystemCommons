@@ -3,6 +3,7 @@
   <persistence-unit name="CardManagmentSystemCommonsPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.cms.commons.models.SubPersonType</class>
+    <class>com.cms.commons.models.DocumentsPersonType</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/CardManagementSystem?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
