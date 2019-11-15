@@ -45,7 +45,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    
+
     public PersonType() {
     }
 
