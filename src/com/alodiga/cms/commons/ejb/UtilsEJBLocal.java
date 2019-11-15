@@ -13,6 +13,8 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.ProductType;
+import com.cms.commons.models.State;
 import javax.ejb.Local;
 import java.util.List;
 
@@ -57,4 +59,15 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
+    
+    //Tabla de State
+    public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public State saveState (State state)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla de ProductType
+    public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProductType saveProductType (ProductType productType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
 }

@@ -15,6 +15,8 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.ProductType;
+import com.cms.commons.models.State;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-    //StatusRequest
+    //CollectionsRequest
     public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
@@ -66,7 +68,15 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PersonClassification savePersonClassification (PersonClassification personclassification)  throws RegisterNotFoundException, NullParameterException, GeneralException;
   
+    //Tabla de State
+    public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public State saveState (State state)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
+    //Tabla de ProductType
+    public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProductType saveProductType (ProductType productType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     
 }
