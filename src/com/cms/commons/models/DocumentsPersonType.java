@@ -5,10 +5,10 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,21 +18,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
  * @author jose
  */
 @Entity
-@Table(name = "personType")
+@Table(name = "documentsPersonType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p"),
-    @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id"),
-    @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
-public class PersonType extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "DocumentsPersonType.findAll", query = "SELECT d FROM DocumentsPersonType d")
+    , @NamedQuery(name = "DocumentsPersonType.findById", query = "SELECT d FROM DocumentsPersonType d WHERE d.id = :id")
+    , @NamedQuery(name = "DocumentsPersonType.findByDescription", query = "SELECT d FROM DocumentsPersonType d WHERE d.description = :description")})
+public class DocumentsPersonType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,16 +44,20 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 80)
     @Column(name = "description")
     private String description;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @Size(max = 10)
+    @Column(name = "codeIdentificationNumber")
+    private String codeIdentificationNumber;
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
+    private PersonType personTypeId;
 
-    public PersonType() {
+    public DocumentsPersonType() {
     }
 
-    public PersonType(Integer id) {
+    public DocumentsPersonType(Integer id) {
         this.id = id;
     }
 
@@ -69,12 +77,20 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
         this.description = description;
     }
     
-    public Country getCountryId() {
-        return countryId;
+    public String getCodeIdentificationNumber() {
+        return codeIdentificationNumber;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setCodeIdentificationNumber(String codeIdentificationNumber) {
+        this.codeIdentificationNumber = codeIdentificationNumber;
+    }
+
+    public PersonType getPersonTypeId() {
+        return personTypeId;
+    }
+
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
     }
 
     @Override
@@ -87,10 +103,10 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PersonType)) {
+        if (!(object instanceof DocumentsPersonType)) {
             return false;
         }
-        PersonType other = (PersonType) object;
+        DocumentsPersonType other = (DocumentsPersonType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -99,17 +115,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PersonType[ id=" + id + " ]";
+        return "com.cms.commons.models.DocumentsPersonType[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
+    
 }
