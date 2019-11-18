@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
     , @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id")
-    , @NamedQuery(name = "Person.findByRif", query = "SELECT p FROM Person p WHERE p.rif = :rif")
     , @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")
     , @NamedQuery(name = "Person.findByCreateDate", query = "SELECT p FROM Person p WHERE p.createDate = :createDate")
     , @NamedQuery(name = "Person.findByUpdateDate", query = "SELECT p FROM Person p WHERE p.updateDate = :updateDate")})
@@ -48,8 +47,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "rif")
-    private String rif;
     @Column(name = "email")
     private String email;
     @Column(name = "createDate")
@@ -105,14 +102,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getRif() {
-        return rif;
-    }
-
-    public void setRif(String rif) {
-        this.rif = rif;
     }
 
     public String getEmail() {

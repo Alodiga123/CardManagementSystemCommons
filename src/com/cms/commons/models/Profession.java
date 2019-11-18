@@ -43,10 +43,6 @@ public class Profession implements Serializable {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professionId")
-    private Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professionId")
-    private Collection<NaturalPerson> naturalPersonCollection;
 
     public Profession() {
     }
@@ -69,26 +65,6 @@ public class Profession implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ApplicantNaturalPerson> getApplicantNaturalPersonCollection() {
-        return applicantNaturalPersonCollection;
-    }
-
-    public void setApplicantNaturalPersonCollection(Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection) {
-        this.applicantNaturalPersonCollection = applicantNaturalPersonCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<NaturalPerson> getNaturalPersonCollection() {
-        return naturalPersonCollection;
-    }
-
-    public void setNaturalPersonCollection(Collection<NaturalPerson> naturalPersonCollection) {
-        this.naturalPersonCollection = naturalPersonCollection;
     }
 
     @Override

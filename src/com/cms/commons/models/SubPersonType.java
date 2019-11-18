@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -26,66 +27,56 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "phoneFamilyReferences")
+@Table(name = "subPersonType")
 @XmlRootElement
 @NamedQueries({
-     @NamedQuery(name = "PhoneFamilyReferences.findAll", query = "SELECT p FROM PhoneFamilyReferences p")
-    , @NamedQuery(name = "PhoneFamilyReferences.findById", query = "SELECT p FROM PhoneFamilyReferences p WHERE p.id = :id")
-    , @NamedQuery(name = "PhoneFamilyReferences.findByPhoneNumber", query = "SELECT p FROM PhoneFamilyReferences p WHERE p.phoneNumber = :phoneNumber")})
-public class PhoneFamilyReferences extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "SubPersonType.findAll", query = "SELECT s FROM SubPersonType s"),
+    @NamedQuery(name = "SubPersonType.findById", query = "SELECT s FROM SubPersonType s WHERE s.id = :id"),
+    @NamedQuery(name = "SubPersonType.findByDescription", query = "SELECT s FROM SubPersonType s WHERE s.description = :description")})
+public class SubPersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
-    @Column(name = "phoneNumber")
-    private String phoneNumber;
-    @JoinColumn(name = "familyReferencesId", referencedColumnName = "id")
+    private Integer id;
+    @Size(max = 80)
+    @Column(name = "description")
+    private String description;
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private FamilyReferences familyReferencesId;
-    @JoinColumn(name = "phoneTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PhoneType phoneTypeId;
+    private PersonType personTypeId;
 
-    public PhoneFamilyReferences() {
+    public SubPersonType() {
     }
 
-    public PhoneFamilyReferences(Long id) {
+    public SubPersonType(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public FamilyReferences getFamilyReferencesId() {
-        return familyReferencesId;
+    public PersonType getPersonTypeId() {
+        return personTypeId;
     }
 
-    public void setFamilyReferencesId(FamilyReferences familyReferencesId) {
-        this.familyReferencesId = familyReferencesId;
-    }
-    
-    public PhoneType getPhoneTypeId() {
-        return phoneTypeId;
-    }
-
-    public void setPhoneTypeId(PhoneType phoneTypeId) {
-        this.phoneTypeId = phoneTypeId;
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
     }
 
     @Override
@@ -98,10 +89,10 @@ public class PhoneFamilyReferences extends AbstractDistributionEntity implements
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PhoneFamilyReferences)) {
+        if (!(object instanceof SubPersonType)) {
             return false;
         }
-        PhoneFamilyReferences other = (PhoneFamilyReferences) object;
+        SubPersonType other = (SubPersonType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -110,7 +101,7 @@ public class PhoneFamilyReferences extends AbstractDistributionEntity implements
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PhoneFamilyReferences[ id=" + id + " ]";
+        return "com.cms.commons.models.SubPersonType[ id=" + id + " ]";
     }
 
     @Override

@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -22,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -31,13 +30,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "state")
+@Table(name = "documentsPersonType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "State.findAll", query = "SELECT s FROM State s")
-    , @NamedQuery(name = "State.findById", query = "SELECT s FROM State s WHERE s.id = :id")
-    , @NamedQuery(name = "State.findByName", query = "SELECT s FROM State s WHERE s.name = :name")})
-public class State extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "DocumentsPersonType.findAll", query = "SELECT d FROM DocumentsPersonType d")
+    , @NamedQuery(name = "DocumentsPersonType.findById", query = "SELECT d FROM DocumentsPersonType d WHERE d.id = :id")
+    , @NamedQuery(name = "DocumentsPersonType.findByDescription", query = "SELECT d FROM DocumentsPersonType d WHERE d.description = :description")})
+public class DocumentsPersonType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,18 +44,20 @@ public class State extends AbstractDistributionEntity implements Serializable{
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
-    private String name;
-    @JoinColumn(name = "country_id", referencedColumnName = "id")
+    @Size(max = 80)
+    @Column(name = "description")
+    private String description;
+    @Size(max = 10)
+    @Column(name = "codeIdentificationNumber")
+    private String codeIdentificationNumber;
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "stateId")
-    private Collection<City> cityCollection;
+    private PersonType personTypeId;
 
-    public State() {
+    public DocumentsPersonType() {
     }
 
-    public State(Integer id) {
+    public DocumentsPersonType(Integer id) {
         this.id = id;
     }
 
@@ -68,30 +69,28 @@ public class State extends AbstractDistributionEntity implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public String getCodeIdentificationNumber() {
+        return codeIdentificationNumber;
     }
 
-    public Country getCountryId() {
-        return countryId;
+    public void setCodeIdentificationNumber(String codeIdentificationNumber) {
+        this.codeIdentificationNumber = codeIdentificationNumber;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public PersonType getPersonTypeId() {
+        return personTypeId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<City> getCityCollection() {
-        return cityCollection;
-    }
-
-    public void setCityCollection(Collection<City> cityCollection) {
-        this.cityCollection = cityCollection;
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
     }
 
     @Override
@@ -104,10 +103,10 @@ public class State extends AbstractDistributionEntity implements Serializable{
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof State)) {
+        if (!(object instanceof DocumentsPersonType)) {
             return false;
         }
-        State other = (State) object;
+        DocumentsPersonType other = (DocumentsPersonType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -116,18 +115,7 @@ public class State extends AbstractDistributionEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.State[ id=" + id + " ]";
-    }
-    
-    
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        return "com.cms.commons.models.DocumentsPersonType[ id=" + id + " ]";
     }
     
 }

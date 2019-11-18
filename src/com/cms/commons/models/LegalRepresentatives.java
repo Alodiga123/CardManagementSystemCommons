@@ -78,11 +78,9 @@ public class LegalRepresentatives implements Serializable {
     @JoinColumn(name = "personsId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personsId;
-    @JoinColumn(name = "identificationTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private IdentificationType identificationTypeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "legalRepresentativesid")
-    private Collection<LegalPersonHasLegalRepresentatives> legalPersonHasLegalRepresentativesCollection;
+    private DocumentsPersonType documentsPersonTypeId;
 
     public LegalRepresentatives() {
     }
@@ -178,23 +176,13 @@ public class LegalRepresentatives implements Serializable {
     public void setPersonsId(Person personsId) {
         this.personsId = personsId;
     }
-
-    public IdentificationType getIdentificationTypeId() {
-        return identificationTypeId;
+    
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
     }
 
-    public void setIdentificationTypeId(IdentificationType identificationTypeId) {
-        this.identificationTypeId = identificationTypeId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LegalPersonHasLegalRepresentatives> getLegalPersonHasLegalRepresentativesCollection() {
-        return legalPersonHasLegalRepresentativesCollection;
-    }
-
-    public void setLegalPersonHasLegalRepresentativesCollection(Collection<LegalPersonHasLegalRepresentatives> legalPersonHasLegalRepresentativesCollection) {
-        this.legalPersonHasLegalRepresentativesCollection = legalPersonHasLegalRepresentativesCollection;
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
     @Override

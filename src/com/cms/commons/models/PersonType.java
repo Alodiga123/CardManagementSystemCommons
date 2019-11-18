@@ -8,21 +8,18 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -32,9 +29,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "personType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p")
-    , @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id")
-    , @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
+    @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p"),
+    @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id"),
+    @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
 public class PersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +42,9 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personTypeId")
-    private Collection<Person> personCollection;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
 
     public PersonType() {
     }
@@ -70,15 +68,13 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Person> getPersonCollection() {
-        return personCollection;
+    
+    public Country getCountryId() {
+        return countryId;
     }
 
-    public void setPersonCollection(Collection<Person> personCollection) {
-        this.personCollection = personCollection;
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
     }
 
     @Override
@@ -108,12 +104,12 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
-    
+
 }

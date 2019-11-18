@@ -53,6 +53,8 @@ public class LegalPerson implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Column(name = "identificationNumber")
+    private String identificationNumber;
     @Column(name = "tradeName")
     private String tradeName;
     @Column(name = "enterpriseName")
@@ -62,26 +64,21 @@ public class LegalPerson implements Serializable {
     private Date dateInscriptionRegister;
     @Column(name = "registerNumber")
     private String registerNumber;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "payedCapital")
     private Float payedCapital;
     @Column(name = "enterprisePhone")
     private String enterprisePhone;
     @Column(name = "webSite")
     private String webSite;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "legalPersonid")
-    private Collection<CardRequestNaturalPerson> cardRequestNaturalPersonCollection;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
     @JoinColumn(name = "economicActivityId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private EconomicActivity economicActivityId;
-    @JoinColumn(name = "identificationTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private IdentificationType identificationTypeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "legalPersonId")
-    private Collection<LegalPersonHasLegalRepresentatives> legalPersonHasLegalRepresentativesCollection;
+    private DocumentsPersonType documentsPersonTypeId;
 
     public LegalPerson() {
     }
@@ -98,6 +95,14 @@ public class LegalPerson implements Serializable {
         this.id = id;
     }
 
+    public String getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public void setIdentificationNumber(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
+    }
+    
     public String getTradeName() {
         return tradeName;
     }
@@ -153,19 +158,13 @@ public class LegalPerson implements Serializable {
     public void setWebSite(String webSite) {
         this.webSite = webSite;
     }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CardRequestNaturalPerson> getCardRequestNaturalPersonCollection() {
-        return cardRequestNaturalPersonCollection;
+    
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
     }
 
-    public void setCardRequestNaturalPersonCollection(Collection<CardRequestNaturalPerson> cardRequestNaturalPersonCollection) {
-        this.cardRequestNaturalPersonCollection = cardRequestNaturalPersonCollection;
-    }
-
-    public Person getPersonId() {
-        return personId;
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
     public void setPersonId(Person personId) {
@@ -178,24 +177,6 @@ public class LegalPerson implements Serializable {
 
     public void setEconomicActivityId(EconomicActivity economicActivityId) {
         this.economicActivityId = economicActivityId;
-    }
-
-    public IdentificationType getIdentificationTypeId() {
-        return identificationTypeId;
-    }
-
-    public void setIdentificationTypeId(IdentificationType identificationTypeId) {
-        this.identificationTypeId = identificationTypeId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LegalPersonHasLegalRepresentatives> getLegalPersonHasLegalRepresentativesCollection() {
-        return legalPersonHasLegalRepresentativesCollection;
-    }
-
-    public void setLegalPersonHasLegalRepresentativesCollection(Collection<LegalPersonHasLegalRepresentatives> legalPersonHasLegalRepresentativesCollection) {
-        this.legalPersonHasLegalRepresentativesCollection = legalPersonHasLegalRepresentativesCollection;
     }
 
     @Override
