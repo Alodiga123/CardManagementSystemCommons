@@ -45,8 +45,6 @@ public class FamilyReferences implements Serializable {
     private Long id;
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "familyReferencesid")
-    private Collection<PhoneFamilyReferences> phoneFamilyReferencesCollection;
     @JoinColumn(name = "naturalPerson_id", referencedColumnName = "id")
     @OneToOne(optional = false)
     private NaturalPerson naturalPersonid;
@@ -72,16 +70,6 @@ public class FamilyReferences implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<PhoneFamilyReferences> getPhoneFamilyReferencesCollection() {
-        return phoneFamilyReferencesCollection;
-    }
-
-    public void setPhoneFamilyReferencesCollection(Collection<PhoneFamilyReferences> phoneFamilyReferencesCollection) {
-        this.phoneFamilyReferencesCollection = phoneFamilyReferencesCollection;
     }
 
     public NaturalPerson getNaturalPersonid() {
