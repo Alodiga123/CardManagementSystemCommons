@@ -15,8 +15,11 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.State;
+import com.cms.commons.models.Program;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +80,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductType saveProductType (ProductType productType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-    //Tabla de Program
-    public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //Tabla de PersonType
+    public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonType savePersonType (PersonType personType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
