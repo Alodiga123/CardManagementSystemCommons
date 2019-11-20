@@ -31,10 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardRequest.findAll", query = "SELECT c FROM CardRequest c")
-    , @NamedQuery(name = "CardRequest.findById", query = "SELECT c FROM CardRequest c WHERE c.id = :id")
-    , @NamedQuery(name = "CardRequest.findByRequestNumber", query = "SELECT c FROM CardRequest c WHERE c.requestNumber = :requestNumber")
-    , @NamedQuery(name = "CardRequest.findByRequestDate", query = "SELECT c FROM CardRequest c WHERE c.requestDate = :requestDate")})
+    @NamedQuery(name = "CardRequest.findAll", query = "SELECT c FROM CardRequest c"),
+    @NamedQuery(name = "CardRequest.findById", query = "SELECT c FROM CardRequest c WHERE c.id = :id")})
 public class CardRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,21 +41,13 @@ public class CardRequest implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "requestNumber")
-    private String requestNumber;
-    @Column(name = "requestDate")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date requestDate;
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Person personId;
-    @JoinColumn(name = "requestType_id", referencedColumnName = "id")
+    @JoinColumn(name = "requestId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private RequestType requestTypeid;
-    @JoinColumn(name = "statusRequest_id", referencedColumnName = "id")
+    private Request requestId;
+    @JoinColumn(name = "cardStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private StatusRequest statusRequestid;
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private CardStatus cardStatusId;
+    @JoinColumn(name = "productId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
 
@@ -76,44 +66,20 @@ public class CardRequest implements Serializable {
         this.id = id;
     }
 
-    public String getRequestNumber() {
-        return requestNumber;
+    public Request getRequestId() {
+        return requestId;
     }
 
-    public void setRequestNumber(String requestNumber) {
-        this.requestNumber = requestNumber;
+    public void setRequestId(Request requestId) {
+        this.requestId = requestId;
     }
 
-    public Date getRequestDate() {
-        return requestDate;
+    public CardStatus getCardStatusId() {
+        return cardStatusId;
     }
 
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public Person getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(Person personId) {
-        this.personId = personId;
-    }
-
-    public RequestType getRequestTypeid() {
-        return requestTypeid;
-    }
-
-    public void setRequestTypeid(RequestType requestTypeid) {
-        this.requestTypeid = requestTypeid;
-    }
-
-    public StatusRequest getStatusRequestid() {
-        return statusRequestid;
-    }
-
-    public void setStatusRequestid(StatusRequest statusRequestid) {
-        this.statusRequestid = statusRequestid;
+    public void setCardStatusId(CardStatus cardStatusId) {
+        this.cardStatusId = cardStatusId;
     }
 
     public Product getProductId() {

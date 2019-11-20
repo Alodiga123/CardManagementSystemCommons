@@ -77,9 +77,5 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductType saveProductType (ProductType productType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-    //Tabla de Program
-    public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
