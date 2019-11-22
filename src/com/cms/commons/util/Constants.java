@@ -33,4 +33,7 @@ public class Constants {
     
     //CONSTANT VIEW
         public static String HOME_ADMIN = "home-admin.zul";
+        
+        //ProgramEJB
+        public static int CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
 }

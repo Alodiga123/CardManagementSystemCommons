@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,8 +35,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ProgramType.findAll", query = "SELECT p FROM ProgramType p")
     , @NamedQuery(name = "ProgramType.findById", query = "SELECT p FROM ProgramType p WHERE p.id = :id")
     , @NamedQuery(name = "ProgramType.findByName", query = "SELECT p FROM ProgramType p WHERE p.name = :name")})
-public class ProgramType implements Serializable {
-
+public class ProgramType extends AbstractDistributionEntity implements Serializable {
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,10 +45,6 @@ public class ProgramType implements Serializable {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programTypeId")
-    private Collection<Program> programCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programTypeId")
-    private Collection<Product> productCollection;
 
     public ProgramType() {
     }
@@ -71,26 +69,6 @@ public class ProgramType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -111,9 +89,19 @@ public class ProgramType implements Serializable {
         return true;
     }
 
-    @Override
+       @Override
     public String toString() {
-        return "com.cms.commons.models.ProgramType[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

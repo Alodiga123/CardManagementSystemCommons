@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "CardType.findAll", query = "SELECT c FROM CardType c")
     , @NamedQuery(name = "CardType.findById", query = "SELECT c FROM CardType c WHERE c.id = :id")
     , @NamedQuery(name = "CardType.findByDescription", query = "SELECT c FROM CardType c WHERE c.description = :description")})
-public class CardType implements Serializable {
+public class CardType extends AbstractDistributionEntity implements Serializable{
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -99,9 +102,19 @@ public class CardType implements Serializable {
         return true;
     }
 
-    @Override
+      @Override
     public String toString() {
-        return "com.cms.commons.models.CardType[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
