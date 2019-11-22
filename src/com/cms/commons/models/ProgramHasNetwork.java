@@ -8,65 +8,74 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
-@Table(name = "productType")
+@Table(name = "programHasNetwork")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProductType.findAll", query = "SELECT p FROM ProductType p")
-    , @NamedQuery(name = "ProductType.findById", query = "SELECT p FROM ProductType p WHERE p.id = :id")
-    , @NamedQuery(name = "ProductType.findByName", query = "SELECT p FROM ProductType p WHERE p.name = :name")})
-public class ProductType extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "ProgramHasNetwork.findAll", query = "SELECT p FROM ProgramHasNetwork p"),
+    @NamedQuery(name = "ProgramHasNetwork.findById", query = "SELECT p FROM ProgramHasNetwork p WHERE p.id = :id")})
+
+public class ProgramHasNetwork extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
-    @Column(name = "name")
-    private String name;
+    private Long id;
+    @JoinColumn(name = "networkId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Network networkId;
+    @JoinColumn(name = "programId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Program programId;
 
-    public ProductType() {
+    public ProgramHasNetwork() {
     }
 
-    public ProductType(Integer id) {
+    public ProgramHasNetwork(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Network getNetworkId() {
+        return networkId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNetworkId(Network networkId) {
+        this.networkId = networkId;
+    }
+
+    public Program getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(Program programId) {
+        this.programId = programId;
     }
 
     @Override
@@ -79,18 +88,22 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProductType)) {
+        if (!(object instanceof ProgramHasNetwork)) {
             return false;
         }
-        ProductType other = (ProductType) object;
-        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+        ProgramHasNetwork other = (ProgramHasNetwork) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
-     @Override
+   
+   @Override
     public String toString() {
         return super.toString();
     }
-    
+
     @Override
     public Object getPk() {
         return getId();
@@ -100,4 +113,5 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+    
 }

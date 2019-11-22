@@ -41,13 +41,13 @@ public class CardRequest implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @JoinColumn(name = "requestId", referencedColumnName = "id")
+    @JoinColumn(name = "request_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Request requestId;
-    @JoinColumn(name = "cardStatusId", referencedColumnName = "id")
+    @JoinColumn(name = "cardStatus_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CardStatus cardStatusId;
-    @JoinColumn(name = "productId", referencedColumnName = "id")
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
 

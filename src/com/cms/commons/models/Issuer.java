@@ -70,8 +70,6 @@ public class Issuer implements Serializable {
     private String webSite;
     @Column(name = "faxNumber")
     private String faxNumber;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "issuerId")
-    private Collection<Program> programCollection;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -84,8 +82,6 @@ public class Issuer implements Serializable {
     @JoinColumn(name = "contactPersonId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person contactPersonId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "issuerId")
-    private Collection<Product> productCollection;
 
     public Issuer() {
     }
@@ -174,16 +170,6 @@ public class Issuer implements Serializable {
         this.faxNumber = faxNumber;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
     public Country getCountryId() {
         return countryId;
     }
@@ -214,16 +200,6 @@ public class Issuer implements Serializable {
 
     public void setContactPersonId(Person contactPersonId) {
         this.contactPersonId = contactPersonId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
     }
 
     @Override
