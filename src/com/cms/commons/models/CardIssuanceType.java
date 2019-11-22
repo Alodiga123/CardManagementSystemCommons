@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "CardIssuanceType.findAll", query = "SELECT c FROM CardIssuanceType c")
     , @NamedQuery(name = "CardIssuanceType.findById", query = "SELECT c FROM CardIssuanceType c WHERE c.id = :id")
     , @NamedQuery(name = "CardIssuanceType.findByDescription", query = "SELECT c FROM CardIssuanceType c WHERE c.description = :description")})
-public class CardIssuanceType implements Serializable {
+public class CardIssuanceType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +45,6 @@ public class CardIssuanceType implements Serializable {
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardIssuanceTypeId")
-    private Collection<Program> programCollection;
 
     public CardIssuanceType() {
     }
@@ -69,16 +69,6 @@ public class CardIssuanceType implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -99,9 +89,19 @@ public class CardIssuanceType implements Serializable {
         return true;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "com.cms.commons.models.CardIssuanceType[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

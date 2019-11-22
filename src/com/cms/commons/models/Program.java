@@ -8,10 +8,8 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,40 +19,39 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
 @Table(name = "program")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Program.findAll", query = "SELECT p FROM Program p")
-    , @NamedQuery(name = "Program.findById", query = "SELECT p FROM Program p WHERE p.id = :id")
-    , @NamedQuery(name = "Program.findByName", query = "SELECT p FROM Program p WHERE p.name = :name")
-    , @NamedQuery(name = "Program.findByDescription", query = "SELECT p FROM Program p WHERE p.description = :description")
-    , @NamedQuery(name = "Program.findByContractDate", query = "SELECT p FROM Program p WHERE p.contractDate = :contractDate")
-    , @NamedQuery(name = "Program.findByExpectedLaunchDate", query = "SELECT p FROM Program p WHERE p.expectedLaunchDate = :expectedLaunchDate")
-    , @NamedQuery(name = "Program.findByReloadable", query = "SELECT p FROM Program p WHERE p.reloadable = :reloadable")
-    , @NamedQuery(name = "Program.findByOtherSourceFunds", query = "SELECT p FROM Program p WHERE p.otherSourceFunds = :otherSourceFunds")
-    , @NamedQuery(name = "Program.findBySharedBrand", query = "SELECT p FROM Program p WHERE p.sharedBrand = :sharedBrand")
-    , @NamedQuery(name = "Program.findByWebSite", query = "SELECT p FROM Program p WHERE p.webSite = :webSite")
-    , @NamedQuery(name = "Program.findByCashAccess", query = "SELECT p FROM Program p WHERE p.cashAccess = :cashAccess")
-    , @NamedQuery(name = "Program.findByBiniinNumber", query = "SELECT p FROM Program p WHERE p.biniinNumber = :biniinNumber")
-    , @NamedQuery(name = "Program.findByUseInternational", query = "SELECT p FROM Program p WHERE p.useInternational = :useInternational")
-    , @NamedQuery(name = "Program.findByCreateDate", query = "SELECT p FROM Program p WHERE p.createDate = :createDate")
-    , @NamedQuery(name = "Program.findByUpdateDate", query = "SELECT p FROM Program p WHERE p.updateDate = :updateDate")
-    , @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting")})
-public class Program extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "Program.findAll", query = "SELECT p FROM Program p"),
+    @NamedQuery(name = "Program.findById", query = "SELECT p FROM Program p WHERE p.id = :id"),
+    @NamedQuery(name = "Program.findByName", query = "SELECT p FROM Program p WHERE p.name = :name"),
+    @NamedQuery(name = "Program.findByDescription", query = "SELECT p FROM Program p WHERE p.description = :description"),
+    @NamedQuery(name = "Program.findByContractDate", query = "SELECT p FROM Program p WHERE p.contractDate = :contractDate"),
+    @NamedQuery(name = "Program.findByExpectedLaunchDate", query = "SELECT p FROM Program p WHERE p.expectedLaunchDate = :expectedLaunchDate"),
+    @NamedQuery(name = "Program.findByReloadable", query = "SELECT p FROM Program p WHERE p.reloadable = :reloadable"),
+    @NamedQuery(name = "Program.findByOtherSourceFunds", query = "SELECT p FROM Program p WHERE p.otherSourceFunds = :otherSourceFunds"),
+    @NamedQuery(name = "Program.findBySharedBrand", query = "SELECT p FROM Program p WHERE p.sharedBrand = :sharedBrand"),
+    @NamedQuery(name = "Program.findByWebSite", query = "SELECT p FROM Program p WHERE p.webSite = :webSite"),
+    @NamedQuery(name = "Program.findByCashAccess", query = "SELECT p FROM Program p WHERE p.cashAccess = :cashAccess"),
+    @NamedQuery(name = "Program.findByBiniinNumber", query = "SELECT p FROM Program p WHERE p.biniinNumber = :biniinNumber"),
+    @NamedQuery(name = "Program.findByUseInternational", query = "SELECT p FROM Program p WHERE p.useInternational = :useInternational"),
+    @NamedQuery(name = "Program.findByCreateDate", query = "SELECT p FROM Program p WHERE p.createDate = :createDate"),
+    @NamedQuery(name = "Program.findByUpdateDate", query = "SELECT p FROM Program p WHERE p.updateDate = :updateDate"),
+    @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting")})
+public class Program extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,8 +60,11 @@ public class Program extends AbstractDistributionEntity implements Serializable{
     @Column(name = "id")
     private Long id;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "name")
     private String name;
+    @Size(max = 2000)
     @Column(name = "description")
     private String description;
     @Column(name = "contractDate")
@@ -75,14 +75,17 @@ public class Program extends AbstractDistributionEntity implements Serializable{
     private Date expectedLaunchDate;
     @Column(name = "reloadable")
     private Short reloadable;
+    @Size(max = 255)
     @Column(name = "otherSourceFunds")
     private String otherSourceFunds;
     @Column(name = "sharedBrand")
     private Short sharedBrand;
+    @Size(max = 50)
     @Column(name = "webSite")
     private String webSite;
     @Column(name = "cashAccess")
     private Short cashAccess;
+    @Size(max = 15)
     @Column(name = "biniinNumber")
     private String biniinNumber;
     @Column(name = "useInternational")
@@ -93,38 +96,39 @@ public class Program extends AbstractDistributionEntity implements Serializable{
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Size(max = 50)
     @Column(name = "otherResponsibleNetworkReporting")
     private String otherResponsibleNetworkReporting;
+    @JoinColumn(name = "sourceFundsId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SourceFunds sourceFundsId;
+    @JoinColumn(name = "responsibleNetworkReportingId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ResponsibleNetworkReporting responsibleNetworkReportingId;
     @JoinColumn(name = "ProgramTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ProgramType programTypeId;
     @JoinColumn(name = "productTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ProductType productTypeId;
-    @JoinColumn(name = "IssuerId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Issuer issuerId;
-    @JoinColumn(name = "programOwnerId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Person programOwnerId;
-    @JoinColumn(name = "BinSponsorId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private BinSponsor binSponsorId;
     @JoinColumn(name = "cardProgramManagerId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person cardProgramManagerId;
-    @JoinColumn(name = "cardIssuanceTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "programOwnerId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Person programOwnerId;
+    @JoinColumn(name = "IssuerId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CardIssuanceType cardIssuanceTypeId;
-    @JoinColumn(name = "sourceFundsId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private SourceFunds sourceFundsId;
+    private Issuer issuerId;
     @JoinColumn(name = "currencyId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Currency currencyId;
-    @JoinColumn(name = "responsibleNetworkReportingId", referencedColumnName = "id")
+    @JoinColumn(name = "cardIssuanceTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private ResponsibleNetworkReporting responsibleNetworkReportingId;
+    private CardIssuanceType cardIssuanceTypeId;
+    @JoinColumn(name = "BinSponsorId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private BinSponsor binSponsorId;
 
     public Program() {
     }
@@ -258,6 +262,22 @@ public class Program extends AbstractDistributionEntity implements Serializable{
         this.otherResponsibleNetworkReporting = otherResponsibleNetworkReporting;
     }
 
+    public SourceFunds getSourceFundsId() {
+        return sourceFundsId;
+    }
+
+    public void setSourceFundsId(SourceFunds sourceFundsId) {
+        this.sourceFundsId = sourceFundsId;
+    }
+
+    public ResponsibleNetworkReporting getResponsibleNetworkReportingId() {
+        return responsibleNetworkReportingId;
+    }
+
+    public void setResponsibleNetworkReportingId(ResponsibleNetworkReporting responsibleNetworkReportingId) {
+        this.responsibleNetworkReportingId = responsibleNetworkReportingId;
+    }
+
     public ProgramType getProgramTypeId() {
         return programTypeId;
     }
@@ -274,12 +294,12 @@ public class Program extends AbstractDistributionEntity implements Serializable{
         this.productTypeId = productTypeId;
     }
 
-    public Issuer getIssuerId() {
-        return issuerId;
+    public Person getCardProgramManagerId() {
+        return cardProgramManagerId;
     }
 
-    public void setIssuerId(Issuer issuerId) {
-        this.issuerId = issuerId;
+    public void setCardProgramManagerId(Person cardProgramManagerId) {
+        this.cardProgramManagerId = cardProgramManagerId;
     }
 
     public Person getProgramOwnerId() {
@@ -290,36 +310,12 @@ public class Program extends AbstractDistributionEntity implements Serializable{
         this.programOwnerId = programOwnerId;
     }
 
-    public BinSponsor getBinSponsorId() {
-        return binSponsorId;
+    public Issuer getIssuerId() {
+        return issuerId;
     }
 
-    public void setBinSponsorId(BinSponsor binSponsorId) {
-        this.binSponsorId = binSponsorId;
-    }
-
-    public Person getCardProgramManagerId() {
-        return cardProgramManagerId;
-    }
-
-    public void setCardProgramManagerId(Person cardProgramManagerId) {
-        this.cardProgramManagerId = cardProgramManagerId;
-    }
-
-    public CardIssuanceType getCardIssuanceTypeId() {
-        return cardIssuanceTypeId;
-    }
-
-    public void setCardIssuanceTypeId(CardIssuanceType cardIssuanceTypeId) {
-        this.cardIssuanceTypeId = cardIssuanceTypeId;
-    }
-
-    public SourceFunds getSourceFundsId() {
-        return sourceFundsId;
-    }
-
-    public void setSourceFundsId(SourceFunds sourceFundsId) {
-        this.sourceFundsId = sourceFundsId;
+    public void setIssuerId(Issuer issuerId) {
+        this.issuerId = issuerId;
     }
 
     public Currency getCurrencyId() {
@@ -330,12 +326,20 @@ public class Program extends AbstractDistributionEntity implements Serializable{
         this.currencyId = currencyId;
     }
 
-    public ResponsibleNetworkReporting getResponsibleNetworkReportingId() {
-        return responsibleNetworkReportingId;
+    public CardIssuanceType getCardIssuanceTypeId() {
+        return cardIssuanceTypeId;
     }
 
-    public void setResponsibleNetworkReportingId(ResponsibleNetworkReporting responsibleNetworkReportingId) {
-        this.responsibleNetworkReportingId = responsibleNetworkReportingId;
+    public void setCardIssuanceTypeId(CardIssuanceType cardIssuanceTypeId) {
+        this.cardIssuanceTypeId = cardIssuanceTypeId;
+    }
+
+    public BinSponsor getBinSponsorId() {
+        return binSponsorId;
+    }
+
+    public void setBinSponsorId(BinSponsor binSponsorId) {
+        this.binSponsorId = binSponsorId;
     }
 
     @Override
@@ -372,6 +376,5 @@ public class Program extends AbstractDistributionEntity implements Serializable{
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
     
 }

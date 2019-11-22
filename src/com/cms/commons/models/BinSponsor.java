@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "BinSponsor.findAll", query = "SELECT b FROM BinSponsor b")
     , @NamedQuery(name = "BinSponsor.findById", query = "SELECT b FROM BinSponsor b WHERE b.id = :id")
     , @NamedQuery(name = "BinSponsor.findByDescription", query = "SELECT b FROM BinSponsor b WHERE b.description = :description")})
-public class BinSponsor implements Serializable {
+public class BinSponsor extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,10 +45,6 @@ public class BinSponsor implements Serializable {
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "binSponsorId")
-    private Collection<Program> programCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "binSponsorId")
-    private Collection<Product> productCollection;
 
     public BinSponsor() {
     }
@@ -71,26 +69,6 @@ public class BinSponsor implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -111,9 +89,19 @@ public class BinSponsor implements Serializable {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "com.cms.commons.models.BinSponsor[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

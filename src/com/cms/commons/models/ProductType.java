@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ProductType.findAll", query = "SELECT p FROM ProductType p")
     , @NamedQuery(name = "ProductType.findById", query = "SELECT p FROM ProductType p WHERE p.id = :id")
     , @NamedQuery(name = "ProductType.findByName", query = "SELECT p FROM ProductType p WHERE p.name = :name")})
-public class ProductType implements Serializable {
+public class ProductType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +45,6 @@ public class ProductType implements Serializable {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productTypeId")
-    private Collection<Program> programCollection;
 
     public ProductType() {
     }
@@ -69,16 +69,6 @@ public class ProductType implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -93,15 +83,22 @@ public class ProductType implements Serializable {
             return false;
         }
         ProductType other = (ProductType) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+     @Override
+    public String toString() {
+        return super.toString();
     }
 
     @Override
-    public String toString() {
-        return "com.cms.commons.models.ProductType[ id=" + id + " ]";
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
