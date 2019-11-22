@@ -15,6 +15,8 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.DocumentsPersonType;
+import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.State;
@@ -85,5 +87,15 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PersonType savePersonType (PersonType personType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla de LegalPerson
+    public List<LegalPerson> getLegalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
+    public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public LegalPerson saveLegalPerson (LegalPerson legalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //Tabla de DocumentsPersonType
+    public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public DocumentsPersonType saveDocumentsPersonType (DocumentsPersonType documentsPersonType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
