@@ -90,7 +90,7 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     public String toString() {
         return super.toString();
     }
-
+    
     @Override
     public Object getPk() {
         return getId();
@@ -100,5 +100,4 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
 }

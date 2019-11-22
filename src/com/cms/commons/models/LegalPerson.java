@@ -171,6 +171,12 @@ public class LegalPerson implements Serializable {
         this.personId = personId;
     }
 
+    public Person getPersonId() {
+        return personId;
+    }
+    
+    
+
     public EconomicActivity getEconomicActivityId() {
         return economicActivityId;
     }
