@@ -85,8 +85,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private NaturalPerson naturalPerson;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
-    private CardRequest cardRequest;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private PersonHasAddress personHasAddress;
 
     public Person() {
@@ -230,14 +228,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setNaturalPerson(NaturalPerson naturalPerson) {
         this.naturalPerson = naturalPerson;
-    }
-
-    public CardRequest getCardRequest() {
-        return cardRequest;
-    }
-
-    public void setCardRequest(CardRequest cardRequest) {
-        this.cardRequest = cardRequest;
     }
 
     public PersonHasAddress getPersonHasAddress() {

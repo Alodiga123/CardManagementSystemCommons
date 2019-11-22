@@ -37,8 +37,6 @@ public class StatusRequest extends AbstractDistributionEntity implements Seriali
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusRequestid")
-    private Collection<CardRequest> cardRequestCollection;
 
     public StatusRequest() {
     }
@@ -61,16 +59,6 @@ public class StatusRequest extends AbstractDistributionEntity implements Seriali
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CardRequest> getCardRequestCollection() {
-        return cardRequestCollection;
-    }
-
-    public void setCardRequestCollection(Collection<CardRequest> cardRequestCollection) {
-        this.cardRequestCollection = cardRequestCollection;
     }
 
     @Override

@@ -13,8 +13,13 @@ import com.cms.commons.models.Currency;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.StatusRequest;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.DocumentsPersonType;
+import com.cms.commons.models.LegalPerson;
+import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.State;
+import com.cms.commons.models.Program;
+import com.cms.commons.models.Request;
 import javax.ejb.Local;
 import java.util.List;
 
@@ -75,19 +80,29 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductType saveProductType (ProductType productType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-
     //Tabla de State
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public State saveState(State state) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla de PersonType
+    public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonType savePersonType (PersonType personType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Tabla de Program
-    public List<Program>getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    //Tabla de DocumentsPersonType
+    public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
+    public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public DocumentsPersonType saveDocumentsPersonType (DocumentsPersonType documentsPersonType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
 
-    public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    //Tabla de LegalPerson
+    public List<LegalPerson> getLegalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
+    public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public LegalPerson saveLegalPerson (LegalPerson legalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
 
-    public Program saveProgram(Program Program) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
+    //Request
+    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Request saveRequest (Request request)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
