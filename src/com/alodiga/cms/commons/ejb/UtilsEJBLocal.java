@@ -19,6 +19,7 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.State;
 import com.cms.commons.models.Program;
+import com.cms.commons.models.Request;
 import javax.ejb.Local;
 import java.util.List;
 
@@ -98,5 +99,10 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<LegalPerson> getLegalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
     public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public LegalPerson saveLegalPerson (LegalPerson legalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
     
+    //Request
+    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Request saveRequest (Request request)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }

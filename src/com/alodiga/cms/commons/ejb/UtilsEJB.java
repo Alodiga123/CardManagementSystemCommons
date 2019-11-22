@@ -21,6 +21,7 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.State;
 import com.cms.commons.models.Program;
+import com.cms.commons.models.Request;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,5 +98,11 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType (DocumentsPersonType documentsPersonType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Request
+    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Request saveRequest (Request request)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
     
 }
