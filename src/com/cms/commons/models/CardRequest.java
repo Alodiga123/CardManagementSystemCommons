@@ -90,14 +90,6 @@ public class CardRequest implements Serializable {
         this.productId = productId;
     }
 
-    public CardStatus getCardStatusId() {
-        return cardStatusId;
-    }
-
-    public void setCardStatusId(CardStatus cardStatusId) {
-        this.cardStatusId = cardStatusId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
