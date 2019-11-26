@@ -17,11 +17,9 @@ public class Constants {
     public static final Integer NOTIFICATION_DNI = 10;
     public static final Integer NOTIFICATION_SECRET_PIN = 11;
     public static final String LANGUAxGE = "2";
-    
-    
+   
     //session
     public static String USER_OBJ_SESSION = "userSesssion";
-
     
     //Mensajes en casos de flujos alternos en los EBJ
     public static String REGISTER_NOT_FOUND_EXCEPTION = "E-01";
@@ -29,11 +27,9 @@ public class Constants {
     public static String INVALID_PASSWORD_EXCEPTION = "E-03";   
     public static String DISABLED_USER_EXCEPTION = "E-04";    
     
-    
-    
     //CONSTANT VIEW
         public static String HOME_ADMIN = "home-admin.zul";
         
-        //ProgramEJB
-        public static int CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
+    //ProgramEJB
+        public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
 }

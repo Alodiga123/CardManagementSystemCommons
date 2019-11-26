@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardRequest.findAll", query = "SELECT c FROM CardRequest c")
-    , @NamedQuery(name = "CardRequest.findById", query = "SELECT c FROM CardRequest c WHERE c.id = :id")})
+    @NamedQuery(name = "CardRequest.findAll", query = "SELECT c FROM CardRequest c"),
+    @NamedQuery(name = "CardRequest.findById", query = "SELECT c FROM CardRequest c WHERE c.id = :id")})
 public class CardRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
