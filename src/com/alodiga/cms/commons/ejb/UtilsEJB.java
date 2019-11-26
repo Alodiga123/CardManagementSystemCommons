@@ -26,6 +26,7 @@ import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.LegalPerson;
+import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProgramHasNetwork;
@@ -173,7 +174,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //City
     public List<City> getCitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    //public List<City> getCitiesByCounty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<City> getCitiesByCounty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public City loadCity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public City saveCity (City city)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -188,5 +189,9 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public ZipZone loadZipZone(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ZipZone saveZipZone (ZipZone zipZone)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    
+
+    //LegalRepresentatives
+    public List<LegalRepresentatives> getLegalRepresentativeses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public LegalRepresentatives loadLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public LegalRepresentatives saveLegalRepresentatives (LegalRepresentatives legalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
 }
