@@ -376,5 +376,22 @@ public class Program extends AbstractDistributionEntity implements Serializable 
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+
+    public void getBiniinNumber(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void getProgramOwnerId(NaturalPerson naturalPerson) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getNetWordId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+  
+   
     
 }
