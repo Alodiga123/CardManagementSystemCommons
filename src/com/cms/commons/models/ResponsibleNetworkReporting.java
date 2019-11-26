@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ResponsibleNetworkReporting.findAll", query = "SELECT r FROM ResponsibleNetworkReporting r")
     , @NamedQuery(name = "ResponsibleNetworkReporting.findById", query = "SELECT r FROM ResponsibleNetworkReporting r WHERE r.id = :id")
     , @NamedQuery(name = "ResponsibleNetworkReporting.findByDescription", query = "SELECT r FROM ResponsibleNetworkReporting r WHERE r.description = :description")})
-public class ResponsibleNetworkReporting implements Serializable {
+public class ResponsibleNetworkReporting extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +45,6 @@ public class ResponsibleNetworkReporting implements Serializable {
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsibleNetworkReportingId")
-    private Collection<Program> programCollection;
 
     public ResponsibleNetworkReporting() {
     }
@@ -69,16 +69,6 @@ public class ResponsibleNetworkReporting implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Program> getProgramCollection() {
-        return programCollection;
-    }
-
-    public void setProgramCollection(Collection<Program> programCollection) {
-        this.programCollection = programCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -101,7 +91,17 @@ public class ResponsibleNetworkReporting implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.ResponsibleNetworkReporting[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
