@@ -101,10 +101,9 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Tabla de State
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public State saveState(State state) throws RegisterNotFoundException, NullParameterException, GeneralException;
+        public List<State> getStatesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
     //Tabla de PersonType
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -146,12 +145,12 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public SourceFunds saveSourceFunds(SourceFunds sourceFunds) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
    //CardIssuanceType
-    public List< CardIssuanceType> getCardIssuanceType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< CardIssuanceType> getCardIssuanceTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardIssuanceType loadCardIssuanceType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardIssuanceType saveCardIssuanceType(CardIssuanceType cardIssuanceType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Network
-    public List< Network> getNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< Network> getNetworks(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network loadNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Network saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
