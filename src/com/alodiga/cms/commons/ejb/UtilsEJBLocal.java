@@ -50,14 +50,11 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Tabla de RequestType
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public RequestType saveRequestType(RequestType requestType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de Country
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
 
     //Tabla de StatusRequest
@@ -66,28 +63,21 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Tabla de CardStatus
     public List<CardStatus> getCardStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public CardStatus loadCardStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public CardStatus saveCardStatus(CardStatus cardStatus) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de Currency
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
-
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
     //CollectionRequest
     public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
 
     //Tabla de ProductType
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductType saveProductType(ProductType productType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
@@ -95,7 +85,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public State saveState(State state) throws RegisterNotFoundException, NullParameterException, GeneralException;
-        public List<State> getStatesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<State> getStatesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
     //Tabla de PersonType
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -111,19 +101,15 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<DocumentsPersonType> getDocumentsPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType(DocumentsPersonType documentsPersonType) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
    
     //Tabla de binSponsor
     public List< BinSponsor> getBinSponsor(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public BinSponsor loadBinSponsore(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public BinSponsor saveBinSponsor(BinSponsor binsponsor) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de LegalPerson
     public List<LegalPerson> getLegalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public LegalPerson saveLegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de CardType
@@ -148,42 +134,33 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
+    //Product
     public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Request
     public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-//Tabla de Issuer
+    //Tabla de Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public Issuer saveIssuer(Issuer issuer) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //table ResponsibleNetworkReporting
     public List<ResponsibleNetworkReporting> getResponsibleNetworkReportings(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public ResponsibleNetworkReporting loadResponsibleNetworkReporting(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public ResponsibleNetworkReporting saveResponsibleNetworkReporting(ResponsibleNetworkReporting responsibleNetworkReporting) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     
       //  Table  Person
     public List<Person> getPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     
