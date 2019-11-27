@@ -188,12 +188,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
 
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    public List<EconomicActivity> getEconomicActivitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
-    public EconomicActivity loadEconomicActivity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
-    public EconomicActivity saveEconomicActivity(EconomicActivity economicActivity) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
 //Tabla de Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
