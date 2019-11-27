@@ -25,6 +25,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import com.cms.commons.util.QueryConstants;
 
 /**
  *
@@ -34,9 +35,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "state")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "State.findAll", query = "SELECT s FROM State s")
-    , @NamedQuery(name = "State.findById", query = "SELECT s FROM State s WHERE s.id = :id")
-    , @NamedQuery(name = "State.findByName", query = "SELECT s FROM State s WHERE s.name = :name")})
+    @NamedQuery(name = "State.findAll", query = "SELECT s FROM State s"),
+    @NamedQuery(name = "State.findById", query = "SELECT s FROM State s WHERE s.id = :id"),
+    @NamedQuery(name = "State.findByName", query = "SELECT s FROM State s WHERE s.name = :name"),
+    @NamedQuery(name = QueryConstants.STATES_BY_COUNTRY, query = "SELECT s FROM State s WHERE s.countryId.id=:countryId")})
 public class State extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
