@@ -21,5 +21,5 @@ public List<Program> getProgram(EJBRequest request) throws EmptyListException, G
     public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<NaturalPerson> getProgramOwner(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-  
+    public List<Program> getProgramByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
