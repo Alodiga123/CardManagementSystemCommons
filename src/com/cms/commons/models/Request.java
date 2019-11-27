@@ -8,10 +8,8 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,15 +19,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -57,24 +52,12 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @Column(name = "requestDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date requestDate;
-    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PersonType personTypeId;
     @JoinColumn(name = "statusRequestId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusRequest statusRequestId;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Country countryId;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
-    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private ProductType productTypeId;
-    @JoinColumn(name = "programId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Program programId;
     @JoinColumn(name = "requestTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RequestType requestTypeId;
@@ -110,28 +93,12 @@ public class Request extends AbstractDistributionEntity implements Serializable 
         this.requestDate = requestDate;
     }
 
-    public PersonType getPersonTypeId() {
-        return personTypeId;
-    }
-
-    public void setPersonTypeId(PersonType personTypeId) {
-        this.personTypeId = personTypeId;
-    }
-
     public StatusRequest getStatusRequestId() {
         return statusRequestId;
     }
 
-    public void setStatusRequestId(StatusRequest statusRequestId) {
-        this.statusRequestId = statusRequestId;
-    }
-
-    public Country getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setStatusRequestId(StatusRequest statusRequestid) {
+        this.statusRequestId = statusRequestid;
     }
 
     public Person getPersonId() {
@@ -142,28 +109,12 @@ public class Request extends AbstractDistributionEntity implements Serializable 
         this.personId = personId;
     }
 
-    public ProductType getProductTypeId() {
-        return productTypeId;
-    }
-
-    public void setProductTypeId(ProductType productTypeId) {
-        this.productTypeId = productTypeId;
-    }
-
-    public Program getProgramId() {
-        return programId;
-    }
-
-    public void setProgramId(Program programId) {
-        this.programId = programId;
-    }
-
     public RequestType getRequestTypeId() {
         return requestTypeId;
     }
 
-    public void setRequestTypeId(RequestType requestTypeId) {
-        this.requestTypeId = requestTypeId;
+    public void setRequestTypeId(RequestType requestTypeid) {
+        this.requestTypeId = requestTypeid;
     }
 
     @Override
@@ -193,12 +144,12 @@ public class Request extends AbstractDistributionEntity implements Serializable 
 
     @Override
     public Object getPk() {
-        return getId();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -19,7 +19,6 @@ public class QueryConstants {
     public static final String LIKE = " LIKE ";
     public static final String NOT_LIKE = " NOT LIKE ";
     public static final String IS = " IS ";
-    public static final String PROGRAMS_BY_COUNTRY = "programsByCountries";
     public static final String COUNTIES_BY_STATE = "countiesByState";
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
@@ -127,9 +126,13 @@ public class QueryConstants {
     public static final String PARAM_TRANSACTION_TYPE_ID = "transactionTypeId";
     public static final String PARAM_TRANSACTION_ITEM_ID = "transactionItemId";
     public static final String PARAM_TRANSACTION_STATUS = "transactionStatus";
+    //public static final String PRODUCT_DETAIL_VALUE_TYPE_ID = "ProductDetailValueTypeId";
     public static final String PARAM_ACCOUNT = "account";
     public static final String PARAM_BALANCES_TRANSFERENCES = "balanceTransferences";
+    //public static final String PARAM_CUSTOMER_PRODUCT_DETAIL_ID = "customerProductDetailId";
+    //public static final String PARAM_PRODUCT_DETAIL_VALUE_TYPE_ID = "productDetailValueTypeId";
     public static final String PARAM_DELETED = "deleted";
+    //public static final String PARAM_CUSTOMER_PRODUCT_DETAIL = "customerProductDetail";
     public static final String PARAM_OBJECT = "object";
     public static final String PARAM_SQL = "sql";
     public static final String PARAM_SUCCESS = "success";

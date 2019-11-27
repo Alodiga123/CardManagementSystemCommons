@@ -31,7 +31,6 @@ public class AbstractDistributionEJB {
     protected EntityManager entityManager;
     @Resource
     protected EJBContext context;
-    protected MessageFormatHelper sysMessages, sysError;
     protected EntityManagerWrapper entityManagerWrapper = null;
     
     protected EntityManagerFactory emf = null;
