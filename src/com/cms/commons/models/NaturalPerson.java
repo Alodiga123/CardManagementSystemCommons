@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -46,7 +48,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "NaturalPerson.findByFamilyResponsibilities", query = "SELECT n FROM NaturalPerson n WHERE n.familyResponsibilities = :familyResponsibilities")
     , @NamedQuery(name = "NaturalPerson.findByCreateDate", query = "SELECT n FROM NaturalPerson n WHERE n.createDate = :createDate")
     , @NamedQuery(name = "NaturalPerson.findByUpdateDate", query = "SELECT n FROM NaturalPerson n WHERE n.updateDate = :updateDate")})
-public class NaturalPerson implements Serializable {
+public class NaturalPerson extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -268,9 +270,19 @@ public class NaturalPerson implements Serializable {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "com.cms.commons.models.NaturalPerson[ id=" + id + " ]";
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
