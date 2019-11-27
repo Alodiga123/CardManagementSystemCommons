@@ -105,9 +105,9 @@ public interface UtilsEJB extends DistributionGenericEJB {
 
     //Tabla de State
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public State saveState (State state)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<State> getStatesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
   
     //Tabla de ProductType
     public List< ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -140,7 +140,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public BinSponsor loadBinSponsore(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de CardType
-    public List< CardType> getCardType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< CardType> getCardTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardType loadCardType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardType  saveCardType(CardType cardType) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -151,14 +151,14 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public SourceFunds  saveSourceFunds(SourceFunds sourceFunds) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //CardIssuanceType
-    public List< CardIssuanceType> getCardIssuanceType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< CardIssuanceType> getCardIssuanceTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardIssuanceType loadCardIssuanceType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     public CardIssuanceType saveCardIssuanceType(CardIssuanceType cardIssuanceType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Network
     
-    public List< Network> getNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< Network> getNetworks(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network loadNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Network  saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;
     

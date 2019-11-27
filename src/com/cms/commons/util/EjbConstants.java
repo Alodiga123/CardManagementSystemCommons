@@ -42,10 +42,10 @@ public class EjbConstants {
     public static String DEV_REPORT = "dev-reports@interaxmedia.com";
     
     //JDBC
-    public static final  String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    
-    
+    public static final  String JDBC_DRIVER = "com.mysql.jdbc.Driver";      
     public static final  String DB_URL = "jdbc:mysql://192.168.210.6:3306/distribution";
 
-
+    //Parámetros Queries
+    public static final String PARAM_STATE_ID = "stateId";
+    public static final String PARAM_COUNTRY_ID = "countryId";
 }
