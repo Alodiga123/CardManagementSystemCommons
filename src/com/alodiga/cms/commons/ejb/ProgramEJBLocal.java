@@ -17,7 +17,7 @@ import javax.ejb.Local;
 @Local
 public interface ProgramEJBLocal extends DistributionGenericEJB {
 
-public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<NaturalPerson> getProgramOwner(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

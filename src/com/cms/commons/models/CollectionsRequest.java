@@ -50,8 +50,6 @@ public class CollectionsRequest extends AbstractDistributionEntity implements Se
     @Size(max = 255)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "collectionsRequestid")
-    private Collection<RequestTypeHasCollectionsRequest> requestTypeHasCollectionsRequestCollection;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -86,16 +84,6 @@ public class CollectionsRequest extends AbstractDistributionEntity implements Se
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<RequestTypeHasCollectionsRequest> getRequestTypeHasCollectionsRequestCollection() {
-        return requestTypeHasCollectionsRequestCollection;
-    }
-
-    public void setRequestTypeHasCollectionsRequestCollection(Collection<RequestTypeHasCollectionsRequest> requestTypeHasCollectionsRequestCollection) {
-        this.requestTypeHasCollectionsRequestCollection = requestTypeHasCollectionsRequestCollection;
     }
 
     public Country getCountryId() {
