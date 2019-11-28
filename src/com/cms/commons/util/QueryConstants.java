@@ -23,6 +23,7 @@ public class QueryConstants {
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
+    public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
