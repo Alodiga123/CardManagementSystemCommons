@@ -9,6 +9,7 @@ import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.Account;
+import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.Program;
 import java.util.List;
@@ -24,5 +25,6 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Program saveProgram(Program Program)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<NaturalPerson> getProgramOwner(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalPerson> getCardManagementProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
 }
