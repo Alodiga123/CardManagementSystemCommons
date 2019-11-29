@@ -22,7 +22,9 @@ public class QueryConstants {
     public static final String COUNTIES_BY_STATE = "countiesByState";
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
+    public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
+    public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
@@ -84,6 +86,7 @@ public class QueryConstants {
     public static final String PARAM_ACCOUNT_RESPONDER_ID = "accountResponderId";
     public static final String PARAM_COUNTRY_ID = "countryId";
     public static final String PARAM_STATE_ID = "stateId";
+    public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_IS_ADMIN = "isAdmin";

@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -32,10 +35,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "city")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c")
-    , @NamedQuery(name = "City.findById", query = "SELECT c FROM City c WHERE c.id = :id")
-    , @NamedQuery(name = "City.findByName", query = "SELECT c FROM City c WHERE c.name = :name")})
-public class City implements Serializable {
+    @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
+    @NamedQuery(name = "City.findById", query = "SELECT c FROM City c WHERE c.id = :id"),
+    @NamedQuery(name = "City.findByName", query = "SELECT c FROM City c WHERE c.name = :name"),
+    @NamedQuery(name = QueryConstants.CITIES_BY_STATE, query = "SELECT c FROM City c WHERE c.stateId.id=:stateId")})
+public class City extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -127,6 +131,16 @@ public class City implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.City[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
