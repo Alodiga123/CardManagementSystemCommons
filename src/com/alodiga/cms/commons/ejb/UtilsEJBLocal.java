@@ -225,6 +225,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //ZipZone
     public List<ZipZone> getZipZones(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ZipZone> getZipZoneByCities(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ZipZone loadZipZone(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ZipZone saveZipZone (ZipZone zipZone)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
