@@ -60,8 +60,6 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     private String nameStreet;
     @Column(name = "urbanization")
     private String urbanization;
-    @Column(name = "email")
-    private String email;
     @JoinColumn(name = "edificationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private EdificationType edificationTypeId;
@@ -133,14 +131,6 @@ public class Address extends AbstractDistributionEntity implements Serializable 
 
     public void setUrbanization(String urbanization) {
         this.urbanization = urbanization;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public EdificationType getEdificationTypeId() {

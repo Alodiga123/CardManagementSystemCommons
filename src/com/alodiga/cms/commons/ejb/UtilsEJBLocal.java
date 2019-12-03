@@ -30,7 +30,9 @@ import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.Person;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.PersonType;
+import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.ProductType;
+import com.cms.commons.models.Profession;
 
 import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
@@ -55,13 +57,15 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RequestType saveRequestType(RequestType requestType) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
     //Tabla de Country
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Country loadCountry(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
 
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusRequest loadStatusRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
 
     //Tabla de CardStatus
@@ -94,7 +98,8 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PersonType savePersonType (PersonType personType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    public List<PersonType> getPersonTypesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Tabla de ProgramType
     public List< ProgramType> getProgramType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramType loadProgramType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -204,14 +209,25 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public LegalRepresentatives loadLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalRepresentatives saveLegalRepresentatives (LegalRepresentatives legalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
 
-    //CivilStatus
-    public List<CivilStatus> getCivilStatuses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
-
     //CardRequestNaturalPerson
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRequestNaturalPerson loadCardRequestNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRequestNaturalPerson saveCardRequestNaturalPerson (CardRequestNaturalPerson cardRequestNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
+
+    
+    //CivilStatus
+    public List<CivilStatus> getCivilStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //Profession
+    public List<Profession> getProfession(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Profession loadProfession(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Profession saveProfession (Profession profession)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //PhoneType
+    public List<PhoneType> getPhoneType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PhoneType loadPhoneType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PhoneType savePhoneType (PhoneType phoneType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
 
 }

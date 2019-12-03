@@ -7,6 +7,8 @@ public class EjbConstants {
     public static final String ACCESS_CONTROL_EJB = "ejb/cms/AccessControlEJB";
     public static final String PROGRAM_EJB = "ejb/cms/ProgramEJB";
     public static final String UTILS_EJB = "ejb/cms/UtilsEJB";
+    public static final String REQUEST_EJB = "ejb/cms/RequestEJB";
+    public static final String PERSON_EJB = "ejb/cms/PersonEJB";
     //CAMBIAR
     public static final String PROPERTIES_PACKAGE = "com.distribution.commons.util.";
     public static final String ERROR_FILE_NAME = PROPERTIES_PACKAGE + "system_error";
@@ -49,4 +51,5 @@ public class EjbConstants {
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTRY_ID = "countryId";
+    public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
 }
