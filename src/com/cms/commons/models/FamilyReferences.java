@@ -34,9 +34,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "familyReferences")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FamilyReferences.findAll", query = "SELECT f FROM FamilyReferences f")
-    , @NamedQuery(name = "FamilyReferences.findById", query = "SELECT f FROM FamilyReferences f WHERE f.id = :id")
-    , @NamedQuery(name = "FamilyReferences.findByName", query = "SELECT f FROM FamilyReferences f WHERE f.name = :name")})
+    @NamedQuery(name = "FamilyReferences.findAll", query = "SELECT f FROM FamilyReferences f"),
+    @NamedQuery(name = "FamilyReferences.findById", query = "SELECT f FROM FamilyReferences f WHERE f.id = :id")})
 public class FamilyReferences implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -38,8 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Address.findByTower", query = "SELECT a FROM Address a WHERE a.tower = :tower")
     , @NamedQuery(name = "Address.findByFloor", query = "SELECT a FROM Address a WHERE a.floor = :floor")
     , @NamedQuery(name = "Address.findByNameStreet", query = "SELECT a FROM Address a WHERE a.nameStreet = :nameStreet")
-    , @NamedQuery(name = "Address.findByUrbanization", query = "SELECT a FROM Address a WHERE a.urbanization = :urbanization")
-    , @NamedQuery(name = "Address.findByEmail", query = "SELECT a FROM Address a WHERE a.email = :email")})
+    , @NamedQuery(name = "Address.findByUrbanization", query = "SELECT a FROM Address a WHERE a.urbanization = :urbanization")})
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
