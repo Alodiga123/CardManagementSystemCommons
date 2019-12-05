@@ -34,6 +34,15 @@ public class Constants {
     //ProgramEJB
     public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
     public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
+    
+    //LegalPersonRequest
+    //TODO: modificar cuando se realice la pantalla de Request
+    public static final String REQUEST_KEY = "id";
+    public static final String PERSON_CLASSIFICATION_KEY = "personClassificationId";
+    public static final Long PERSON_ID_KEY = 1L;
+    public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
+    public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static final Long PERSON_ID_LEGAL_REPRESENTATIVE = 1L;
         
     //RequestEJB
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
