@@ -24,6 +24,7 @@ public class QueryConstants {
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
     public static final String PERSON_TYPES_BY_COUNTRY = "personTypesByCountry";
+    public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
