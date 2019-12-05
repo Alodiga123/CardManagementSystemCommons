@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id")
     , @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")
     , @NamedQuery(name = "Person.findByCreateDate", query = "SELECT p FROM Person p WHERE p.createDate = :createDate")
-    , @NamedQuery(name = "Person.findByUpdateDate", query = "SELECT p FROM Person p WHERE p.updateDate = :updateDate")})
+    , @NamedQuery(name = "Person.findByUpdateDate", query = "SELECT p FROM Person p WHERE p.updateDate = :updateDate")
+    , @NamedQuery(name = "Person.lastPerson", query = "SELECT p FROM Person p ORDER BY p.id DESC")})
 public class Person extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -86,6 +87,8 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private NaturalPerson naturalPerson;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private PersonHasAddress personHasAddress;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private Request request;
 
     public Person() {
     }
@@ -237,6 +240,14 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     public void setPersonHasAddress(PersonHasAddress personHasAddress) {
         this.personHasAddress = personHasAddress;
     }
+    
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
 
     @Override
     public int hashCode() {
@@ -265,12 +276,12 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
     
 }
