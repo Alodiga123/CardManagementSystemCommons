@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -47,7 +49,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "LegalRepresentatives.findByGender", query = "SELECT l FROM LegalRepresentatives l WHERE l.gender = :gender")
     , @NamedQuery(name = "LegalRepresentatives.findByPlaceBirth", query = "SELECT l FROM LegalRepresentatives l WHERE l.placeBirth = :placeBirth")
     , @NamedQuery(name = "LegalRepresentatives.findByDateBirth", query = "SELECT l FROM LegalRepresentatives l WHERE l.dateBirth = :dateBirth")})
-public class LegalRepresentatives implements Serializable {
+public class LegalRepresentatives extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -208,6 +210,16 @@ public class LegalRepresentatives implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.LegalRepresentatives[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

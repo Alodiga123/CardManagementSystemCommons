@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -30,12 +33,14 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "zipZone")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ZipZone.findAll", query = "SELECT z FROM ZipZone z")
-    , @NamedQuery(name = "ZipZone.findById", query = "SELECT z FROM ZipZone z WHERE z.id = :id")
-    , @NamedQuery(name = "ZipZone.findByName", query = "SELECT z FROM ZipZone z WHERE z.name = :name")
-    , @NamedQuery(name = "ZipZone.findByCode", query = "SELECT z FROM ZipZone z WHERE z.code = :code")
-    , @NamedQuery(name = "ZipZone.findByZipZonecol", query = "SELECT z FROM ZipZone z WHERE z.zipZonecol = :zipZonecol")})
-public class ZipZone implements Serializable {
+    @NamedQuery(name = "ZipZone.findAll", query = "SELECT z FROM ZipZone z"),
+    @NamedQuery(name = "ZipZone.findById", query = "SELECT z FROM ZipZone z WHERE z.id = :id"),
+    @NamedQuery(name = "ZipZone.findByName", query = "SELECT z FROM ZipZone z WHERE z.name = :name"),
+    @NamedQuery(name = "ZipZone.findByCode", query = "SELECT z FROM ZipZone z WHERE z.code = :code"),
+    @NamedQuery(name = "ZipZone.findByZipZonecol", query = "SELECT z FROM ZipZone z WHERE z.zipZonecol = :zipZonecol"),
+    @NamedQuery(name = QueryConstants.ZIPZONE_BY_CITY, query = "SELECT z FROM ZipZone z WHERE z.cityId.id=:cityId")})
+    //@NamedQuery(name = QueryConstants.ZIPZONE_BY_CITY, query = "SELECT z FROM ZipZone z")})
+public class ZipZone extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -134,6 +139,16 @@ public class ZipZone implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ZipZone[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
