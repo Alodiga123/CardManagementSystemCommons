@@ -49,4 +49,5 @@ public class EjbConstants {
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTRY_ID = "countryId";
+    public static final String PARAM_PERSON_ID = "id";
 }
