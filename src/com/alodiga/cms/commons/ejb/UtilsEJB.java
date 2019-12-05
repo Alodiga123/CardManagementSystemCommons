@@ -44,6 +44,7 @@ import com.cms.commons.models.Request;
 import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
+import com.cms.commons.models.Sequences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -233,5 +234,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<PhoneType> getPhoneType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PhoneType loadPhoneType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhoneType savePhoneType (PhoneType phoneType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-
+    
+    //Sequences
+    public List<Sequences> getSequences(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Sequences loadSequences(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Sequences saveSequences (Sequences sequences)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public List<Sequences> getSequencesByDocumentType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
