@@ -45,8 +45,6 @@ public class DocumentType implements Serializable {
     @Size(max = 40)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "documentTypeid")
-    private Collection<Sequences> sequencesCollection;
 
     public DocumentType() {
     }
@@ -69,16 +67,6 @@ public class DocumentType implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Sequences> getSequencesCollection() {
-        return sequencesCollection;
-    }
-
-    public void setSequencesCollection(Collection<Sequences> sequencesCollection) {
-        this.sequencesCollection = sequencesCollection;
     }
 
     @Override
