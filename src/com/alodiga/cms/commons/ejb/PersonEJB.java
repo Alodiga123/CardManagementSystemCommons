@@ -19,6 +19,7 @@ import com.cms.commons.models.PhonePerson;
 import com.cms.commons.models.Profession;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.FamilyReferences;
+import com.cms.commons.models.PhoneType;
 import java.util.Date;
 import java.util.List;
 
@@ -28,11 +29,20 @@ import java.util.List;
  */
 @Remote
 public interface PersonEJB extends DistributionGenericEJB {
-    
+    //Phone Person
     public List<PhonePerson> getPhonePerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PhonePerson loadPhonePerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhonePerson savePhonePerson(PhonePerson phonePerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PersonHasAddress
     public PersonHasAddress savePersonHasAddress(PersonHasAddress personHasAddress) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //FamilyReferences
     public FamilyReferences saveFamilyReferences(FamilyReferences familyReferences) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PhoneType
+    public List<PhoneType> getPhoneType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PhoneType loadPhoneType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PhoneType savePhoneType (PhoneType phoneType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
 }

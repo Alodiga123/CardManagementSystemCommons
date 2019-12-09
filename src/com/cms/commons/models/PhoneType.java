@@ -45,8 +45,6 @@ public class PhoneType extends AbstractDistributionEntity implements Serializabl
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "phoneTypeId")
-    private Collection<PhonePerson> phonePersonCollection;
 
     public PhoneType() {
     }
@@ -69,16 +67,6 @@ public class PhoneType extends AbstractDistributionEntity implements Serializabl
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<PhonePerson> getPhonePersonCollection() {
-        return phonePersonCollection;
-    }
-
-    public void setPhonePersonCollection(Collection<PhonePerson> phonePersonCollection) {
-        this.phonePersonCollection = phonePersonCollection;
     }
 
     @Override
@@ -106,7 +94,7 @@ public class PhoneType extends AbstractDistributionEntity implements Serializabl
         return "com.cms.commons.models.PhoneType[ id=" + id + " ]";
     }
 
-     @Override
+    @Override
     public Object getPk() {
         return getId();
     }
@@ -115,4 +103,5 @@ public class PhoneType extends AbstractDistributionEntity implements Serializabl
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+    
 }
