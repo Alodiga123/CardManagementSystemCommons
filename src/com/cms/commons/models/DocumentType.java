@@ -5,10 +5,10 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +16,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -34,7 +31,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "DocumentType.findAll", query = "SELECT d FROM DocumentType d")
     , @NamedQuery(name = "DocumentType.findById", query = "SELECT d FROM DocumentType d WHERE d.id = :id")
     , @NamedQuery(name = "DocumentType.findByName", query = "SELECT d FROM DocumentType d WHERE d.name = :name")})
-public class DocumentType implements Serializable {
+public class DocumentType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,8 +42,6 @@ public class DocumentType implements Serializable {
     @Size(max = 40)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "documentTypeid")
-    private Collection<Sequences> sequencesCollection;
 
     public DocumentType() {
     }
@@ -69,16 +64,6 @@ public class DocumentType implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Sequences> getSequencesCollection() {
-        return sequencesCollection;
-    }
-
-    public void setSequencesCollection(Collection<Sequences> sequencesCollection) {
-        this.sequencesCollection = sequencesCollection;
     }
 
     @Override
@@ -104,6 +89,16 @@ public class DocumentType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.DocumentType[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
