@@ -49,7 +49,7 @@ public class State extends AbstractDistributionEntity implements Serializable{
     private Integer id;
     @Column(name = "name")
     private String name;
-    @JoinColumn(name = "country_id", referencedColumnName = "id")
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stateId")

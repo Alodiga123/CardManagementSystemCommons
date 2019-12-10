@@ -66,6 +66,7 @@ public class Constants {
         public static final int STATUS_REQUEST_APPROVED = 5;
         public static final int STATUS_REQUEST_REJECTED = 6;
         public static final int PERSON_CLASSIFICATION_APPLICANT = 4;
+        public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
         public static final int PHONE_TYPE_MOBILE = 1;
         public static final int PHONE_TYPE_ROOM = 2;
         public static final int SEQUENCES_REQUEST = 1;
