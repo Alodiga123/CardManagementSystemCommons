@@ -84,8 +84,6 @@ public class NaturalPerson extends AbstractDistributionEntity implements Seriali
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "naturalPersonid")
-    private FamilyReferences familyReferences;
     @JoinColumn(name = "civilStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CivilStatus civilStatusId;
@@ -208,14 +206,6 @@ public class NaturalPerson extends AbstractDistributionEntity implements Seriali
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-
-    public FamilyReferences getFamilyReferences() {
-        return familyReferences;
-    }
-
-    public void setFamilyReferences(FamilyReferences familyReferences) {
-        this.familyReferences = familyReferences;
     }
 
     public CivilStatus getCivilStatusId() {

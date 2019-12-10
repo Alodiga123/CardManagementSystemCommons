@@ -7,6 +7,8 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
+import com.cms.commons.util.Constants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -36,7 +38,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p"),
     @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id"),
-    @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description")})
+    @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description"),
+    @NamedQuery(name = QueryConstants.PERSON_TYPES_BY_COUNTRY, query = "SELECT p FROM PersonType p WHERE p.countryId.id=:countryId AND p.originApplicationId.id=:originApplicationId")})
 public class PersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +53,9 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
+    @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private OriginApplication originApplicationId;
 
     public PersonType() {
     }
@@ -80,6 +86,14 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
+    }
+    
+    public OriginApplication getOriginApplicationId() {
+        return originApplicationId;
+    }
+
+    public void setOriginApplicationId(OriginApplication originApplicationId) {
+        this.originApplicationId = originApplicationId;
     }
 
     @Override
