@@ -28,7 +28,6 @@ import com.cms.commons.models.Issuer;
 import com.cms.commons.models.KinShipApplicant;
 import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
-import com.cms.commons.models.Person;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PersonType;
@@ -169,13 +168,6 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<ResponsibleNetworkReporting> getResponsibleNetworkReportings(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ResponsibleNetworkReporting loadResponsibleNetworkReporting(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ResponsibleNetworkReporting saveResponsibleNetworkReporting(ResponsibleNetworkReporting responsibleNetworkReporting) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
-    
-      //  Table  Person
-    public List<Person> getPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Person loadLastPerson(EJBRequest request) throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     
     //EconomicActivity
     public List<EconomicActivity> getEconomicActivitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
