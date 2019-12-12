@@ -36,10 +36,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ZipZone.findAll", query = "SELECT z FROM ZipZone z"),
     @NamedQuery(name = "ZipZone.findById", query = "SELECT z FROM ZipZone z WHERE z.id = :id"),
     @NamedQuery(name = "ZipZone.findByName", query = "SELECT z FROM ZipZone z WHERE z.name = :name"),
-    @NamedQuery(name = "ZipZone.findByCode", query = "SELECT z FROM ZipZone z WHERE z.code = :code"),
-    @NamedQuery(name = "ZipZone.findByZipZonecol", query = "SELECT z FROM ZipZone z WHERE z.zipZonecol = :zipZonecol"),
+    @NamedQuery(name = "ZipZone.findByCode", query = "SELECT z FROM ZipZone z WHERE z.code = :code"),    
     @NamedQuery(name = QueryConstants.ZIPZONE_BY_CITY, query = "SELECT z FROM ZipZone z WHERE z.cityId.id=:cityId")})
-    //@NamedQuery(name = QueryConstants.ZIPZONE_BY_CITY, query = "SELECT z FROM ZipZone z")})
 public class ZipZone extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,8 +49,6 @@ public class ZipZone extends AbstractDistributionEntity implements Serializable 
     private String name;
     @Column(name = "code")
     private String code;
-    @Column(name = "zipZonecol")
-    private Integer zipZonecol;
     @JoinColumn(name = "cityId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private City cityId;
@@ -88,14 +84,6 @@ public class ZipZone extends AbstractDistributionEntity implements Serializable 
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public Integer getZipZonecol() {
-        return zipZonecol;
-    }
-
-    public void setZipZonecol(Integer zipZonecol) {
-        this.zipZonecol = zipZonecol;
     }
 
     public City getCityId() {

@@ -79,7 +79,7 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private PersonClassification personClassificationId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private CardRequestNaturalPerson cardRequestNaturalPerson;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personsId")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private LegalRepresentatives legalRepresentatives;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private LegalPerson legalPerson;

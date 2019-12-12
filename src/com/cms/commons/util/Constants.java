@@ -49,7 +49,7 @@ public class Constants {
         public static final String PERSON_KEY = "personId";
         public static final String COUNTRY_KEY = "countryId";
         public static final String PERSON_TYPE_KEY = "personTypeId";
-        public static final String ORIGIN_APPLICATION_KEY = "personTypeId";
+        public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
         public static final String PROGRAM_KEY = "programId";
         public static final String REQUEST_TYPE_KEY = "requestTypeId";
         public static final String PRODUCT_TYPE_KEY = "productTypeId";
