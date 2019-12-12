@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.Account;
 import com.cms.commons.models.FamilyReferences;
 import com.cms.commons.models.NaturalPerson;
+import com.cms.commons.models.Person;
 import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PhonePerson;
 import com.cms.commons.models.PhoneType;
@@ -78,4 +79,15 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRequestNaturalPerson loadCardRequestNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRequestNaturalPerson saveCardRequestNaturalPerson (CardRequestNaturalPerson cardRequestNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //Person
+    public List<Person> getPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Person loadLastPerson(EJBRequest request) throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //NaturalPerson
+    public List<NaturalPerson> getNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public NaturalPerson loadNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public NaturalPerson saveNaturalPerson(NaturalPerson naturalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
