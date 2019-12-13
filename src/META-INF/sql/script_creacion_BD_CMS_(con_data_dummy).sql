@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `CardManagementSystem` /*!40100 DEFAULT CHARACTER
 USE `CardManagementSystem`;
 -- MySQL dump 10.13  Distrib 5.5.62, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: CardManagementSystem
+-- Host: 192.168.3.34    Database: CardManagementSystem
 -- ------------------------------------------------------
--- Server version	5.5.62-0ubuntu0.14.04.1
+-- Server version 5.5.62-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -98,40 +98,38 @@ DROP TABLE IF EXISTS `applicantNaturalPerson`;
 CREATE TABLE `applicantNaturalPerson` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `personId` bigint(20) NOT NULL,
-  `identificationNumber` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
+  `identificationNumber` varchar(40) COLLATE utf8_danish_ci NOT NULL,
   `dueDateDocumentIdentification` date DEFAULT NULL,
   `identificationNumberOld` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
-  `firstNames` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
-  `lastNames` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
+  `firstNames` varchar(40) COLLATE utf8_danish_ci NOT NULL,
+  `lastNames` varchar(40) COLLATE utf8_danish_ci NOT NULL,
   `marriedLastName` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
-  `gender` varchar(1) COLLATE utf8_danish_ci DEFAULT NULL,
-  `placeBirth` varchar(45) COLLATE utf8_danish_ci DEFAULT NULL,
-  `dateBirth` date DEFAULT NULL,
+  `gender` varchar(1) COLLATE utf8_danish_ci NOT NULL,
+  `placeBirth` varchar(45) COLLATE utf8_danish_ci NOT NULL,
+  `dateBirth` date NOT NULL,
   `familyResponsibilities` int(11) DEFAULT NULL,
   `civilStatusId` int(11) NOT NULL,
   `professionId` int(11) NOT NULL,
   `createDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updateDate` timestamp NULL DEFAULT NULL,
   `applicantParentId` bigint(20) DEFAULT NULL,
-  `kinShipApplicantId` int(11) NOT NULL,
+  `kinShipApplicantId` int(11) DEFAULT NULL,
   `documentsPersonTypeId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `personId` (`personId`),
-  UNIQUE KEY `applicantParentId` (`applicantParentId`),
   KEY `fk_naturalPerson_civilStatus1_idx` (`civilStatusId`),
   KEY `fk_naturalPerson_professions1_idx` (`professionId`),
   KEY `fk_naturalPerson_person1_idx` (`personId`),
   KEY `fk_applicant_applicant1_idx` (`applicantParentId`),
   KEY `fk_applicant_kinShipApplicant1_idx` (`kinShipApplicantId`),
+  KEY `personId` (`personId`),
   KEY `fk_applicantNaturalPerson_documentsPersonType1` (`documentsPersonTypeId`),
-  CONSTRAINT `fk_applicantNaturalPerson_documentsPersonType1` FOREIGN KEY (`documentsPersonTypeId`) REFERENCES `documentsPersonType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applicant_applicant1` FOREIGN KEY (`applicantParentId`) REFERENCES `applicantNaturalPerson` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applicant_kinShipApplicant1` FOREIGN KEY (`kinShipApplicantId`) REFERENCES `kinShipApplicant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_naturalPerson_civilStatus10` FOREIGN KEY (`civilStatusId`) REFERENCES `civilStatus` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_naturalPerson_person10` FOREIGN KEY (`personId`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_naturalPerson_professions10` FOREIGN KEY (`professionId`) REFERENCES `profession` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,6 +138,7 @@ CREATE TABLE `applicantNaturalPerson` (
 
 LOCK TABLES `applicantNaturalPerson` WRITE;
 /*!40000 ALTER TABLE `applicantNaturalPerson` DISABLE KEYS */;
+INSERT INTO `applicantNaturalPerson` VALUES (1,1,'9489777','2019-10-20','','Pedro','Gómez','','M','Caracas','2019-11-11',4,1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00',NULL,0,1),(8,2,'10125896','2019-10-20','','Juan','Gómez','','M','Caracas','2019-09-02',0,1,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,3,1);
 /*!40000 ALTER TABLE `applicantNaturalPerson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,10 +291,10 @@ CREATE TABLE `cardRequestNaturalPerson` (
   `proposedLimit` float DEFAULT NULL,
   `documentsPersonTypeId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `person_id` (`person_id`),
   KEY `fk_cardRequestNaturalPerson_person1_idx` (`person_id`),
   KEY `fk_cardRequestNaturalPerson_legalPerson1_idx` (`legalPerson_id`),
   KEY `fk_cardRequestNaturalPerson_documentsPersonType1` (`documentsPersonTypeId`),
+  KEY `person_id` (`person_id`),
   CONSTRAINT `fk_cardRequestNaturalPerson_documentsPersonType1` FOREIGN KEY (`documentsPersonTypeId`) REFERENCES `documentsPersonType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_cardRequestNaturalPerson_legalPerson1` FOREIGN KEY (`legalPerson_id`) REFERENCES `legalPerson` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_cardRequestNaturalPerson_person1` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -395,7 +394,7 @@ CREATE TABLE `city` (
   PRIMARY KEY (`id`),
   KEY `fk_cities_states1_idx` (`stateId`),
   CONSTRAINT `fk_cities_states1` FOREIGN KEY (`stateId`) REFERENCES `state` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,6 +403,7 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
+INSERT INTO `city` VALUES (1,'ACANAÑA',1),(2,'MACURUCU',1),(3,'ATAPIRIRE',2),(4,'CANTAURA',2),(5,'ALABASTER',3),(6,'ALBERTVILLE',3);
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +418,7 @@ CREATE TABLE `civilStatus` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(45) COLLATE utf8_danish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,6 +427,7 @@ CREATE TABLE `civilStatus` (
 
 LOCK TABLES `civilStatus` WRITE;
 /*!40000 ALTER TABLE `civilStatus` DISABLE KEYS */;
+INSERT INTO `civilStatus` VALUES (1,'Soltero'),(2,'Casado'),(3,'Divorciado'),(4,'Viudo');
 /*!40000 ALTER TABLE `civilStatus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -514,7 +515,7 @@ CREATE TABLE `country` (
   PRIMARY KEY (`id`),
   KEY `fk_country_currency1_idx` (`currency_id`),
   CONSTRAINT `fk_country_currency1` FOREIGN KEY (`currency_id`) REFERENCES `currency` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -523,7 +524,7 @@ CREATE TABLE `country` (
 
 LOCK TABLES `country` WRITE;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` VALUES (1,'58','VE','VEN','VENEZUELA',1),(2,'1','US','USA','ESTADOS UNIDOS',2),(3,'54','AR','ARG','ARGENTINA',2),(4,'57','CO','COL','COLOMBIA',2),(5,'51','EC','ECU','ECUADOR',2);
+INSERT INTO `country` VALUES (1,'58','VE','VEN','VENEZUELA',1),(2,'1','US','USA','ESTADOS UNIDOS',2),(3,'93','AF','AFG','AFGANISTÁN',2),(4,'355','AL','ALB','ALBANIA',2),(5,'49','DE','DEU','ALEMANIA',2),(6,'376','AD','AND','ANDORRA',2),(7,'244','AO','AGO','ANGOLA',2),(8,'126','AI','AIA','ANGUILA',2),(9,'126','AG','ATG','ANTIGUA',2),(10,'599','AN','ANT','ANTILLAS HOLANDESAS',2),(11,'672','','','ANTÁRTICA',2),(12,'966','SA','SAU','ARABIA SAUDITA',2),(13,'21','DZ','DZA','ARGELIA',2),(14,'374','AM','ARM','ARMENIA',2),(15,'297','AW','ABW','ARUBA',2),(16,'61','AU','AUS','AUSTRALIA',2),(17,'43','AT','AUT','AUSTRIA',2),(18,'994','AZ','AZE','AZERBAIJAN',2),(19,'124','BS','BHS','BAHAMAS',2),(20,'973','BH','BHR','BAHRAIN',2),(21,'880','BD','BGD','BANGLADESH',2),(22,'124','BB','BRB','BARBADOS',2),(23,'501','BZ','BLZ','BELICE',2),(24,'809','BM','BMU','BERMUDA',2),(25,'591','BO','BOL','BOLIVIA',2),(26,'55','BR','BRA','BRASIL',2),(27,'359','BG','BGR','BULGARIA',2),(28,'226','BF','BFA','BURKINA FASO',2),(29,'32','BE','BEL','BÉLGICA',2),(30,'855','KH','KHM','CAMBOYA',2),(31,'1','CA','CAF','CANADÁ',2),(32,'56','CL','CHL','CHILE',2),(33,'86','CN','CHN','CHINA',2),(34,'357','CY','CYP','CHIPRE',2),(35,'82','KO','KOR','COREA',2),(36,'506','CR','CRC','COSTA RICA',2),(37,'385','HR','HRV','CROACIA',2),(38,'53','CU','CUB','CUBA',2),(39,'45','DK','DNK','DINAMARCA',2),(40,'767','DM','DOM','DOMINICA',2),(41,'20','EG','EGY','EGIPTO',2),(42,'503','SV','SLV','EL SALVADOR',2),(43,'971','AE','ARE','EMIRATOS ÁRABES UNIDOS',2),(44,'34','ES','ESP','ESPAÑA',2),(45,'372','EE','EST','ESTONIA',2),(46,'358','FI','FIN','FINLANDIA',2),(47,'33','FR','FRA','FRANCIA',2),(48,'241','GA','GAB','GABÓN',2),(49,'30','GR','GRC','GRECIA',2),(50,'590','GP','GLP','GUADALUPE',2),(51,'502','GT','GTM','GUATEMALA',2),(52,'592','GY','GUY','GUYANA',2),(53,'594','GU','GUF','GUYANA FRANCESA',2),(54,'509','HT','HTI','HAITÍ',2),(55,'31','NL','NLD','HOLANDA',2),(56,'504','HN','HND','HONDURAS',2),(57,'852','HK','HKG','HONG KONG',2),(58,'36','HU','HUN','HUNGRÍA',2),(59,'91','IN','IND','INDIA',2),(60,'246','','','INDIAS BRITÁNICAS',2),(61,'62','ID','IDN','INDONESIA',2),(62,'44','','','INGLATERRA',2),(63,'964','IQ','IRQ','IRAK',2),(64,'353','IE','IRL','IRLANDA',2),(65,'354','IS','ISL','ISLANDIA',2),(66,'1','KY','KYM','ISLAS CAIMÁN',2),(67,'1','','','ISLAS PERIFÉRICAS DE LOS E.U.A',2),(68,'1','VI','VIR','ISLAS VÍRGENES',2),(69,'1','VG','VGB','ISLAS VÍRGENES BRITÁNICAS',2),(70,'972','IL','ISR','ISRAEL',2),(71,'39','IT','ITA','ITALIA',2),(72,'1','JM','JAM','JAMAICA',2),(73,'81','JP','JPN','JAPÓN',2),(74,'962','JO','JOR','JORDANIA',2),(75,'254','KE','KEN','KENYA',2),(76,'371','LV','LVA','LETONIA',2),(77,'352','LU','LUX','LUXEMBURGO',2),(78,'961','LB','LBN','LÍBANO',2),(79,'60','MY','MYS','MALASIA',2),(80,'212','MA','MAR','MARRUECOS',2),(81,'691','FM','FSM','MICRONESIA',2),(82,'52','MX','MEX','MÉXICO',2),(83,'377','MC','MCO','MÓNACO',2),(84,'505','NI','NIC','NICARAGUA',2),(85,'234','NG','NGA','NIGERIA',2),(86,'47','NO','NOR','NORUEGA',2),(87,'64','NZ','NZL','NUEVA ZELANDA',2),(88,'968','OM','OMN','OMÁN',2),(89,'92','PK','PAK','PAKISTÁN',2),(90,'507','PA','PAN','PANAMÁ',2),(91,'675','PG','PNG','PAPÚA/NUEVA GUINEA',2),(92,'595','PY','PRY','PARAGUAY',2),(93,'51','PE','PER','PERÚ',2),(94,'48','PL','POL','POLONIA',2),(95,'351','PT','PRT','PORTUGAL',2),(96,'178','PR','PRI','PUERTO RICO',2),(97,'44','GB','GBR','REINO UNIDO',2),(98,'420','CZ','CZE','REPÚBLICA CHECA',2),(99,'1','DO','DOM','REPÚBLICA DOMINICANA',2),(100,'40','RO','ROU','RUMANIA',2),(101,'7','RU','RUS','RUSIA',2),(102,'685','WS','WSM','SAMOA',2),(103,'684','AS','ASM','SAMOA AMERICANA',2),(104,'784','VC','VCT','SAN VICENTE Y LAS GRANADINAS',2),(105,'65','SG','SGP','SINGAPUR',2),(106,'27','ZA','ZAF','SUDÁFRICA',2),(107,'46','SE','SWE','SUECIA',2),(108,'41','CH','CHE','SUIZA',2),(109,'597','SR','SUR','SURINAM',2),(110,'66','TH','THA','TAILANDIA',2),(111,'886','TW','TWN','TAIWÁN',2),(112,'868','TT','TTO','TRINIDAD Y TOBAGO',2),(113,'90','TR','TUR','TURQUÍA',2),(114,'380','UA','UKR','UCRANIA',2),(115,'256','UG','UGA','UGANDA',2),(116,'598','UY','URY','URUGUAY',2),(117,'678','VU','VUT','VANUATU',2),(118,'396','VA','VAT','VATICANO',2),(119,'84','VN','VNM','VIETNAM',2),(120,'263','ZW','ZWE','ZIMBABWE',2),(121,'242','CO','COD','CONGO',2),(122,'63','PH','PHL','FILIPINAS',2),(123,'233','GH','GHA','GHANA',2),(124,'224','GN','GIN','GUINEA',2),(125,'245','GN','GNB','GUINEA BISSAU',2),(126,'240','GQ','GNQ','GUINEA ECUATORIAL',2),(127,'856','LO','LAO','LAOS',2),(128,'231','LR','LBR','LIBERIA',2),(129,'261','MG','MDG','MADAGASCAR',2),(130,'223','ML','MLI','MALI',2),(131,'258','MZ','MOZ','MOZAMBIQUE',2),(132,'227','NE','NER','NIGER',2),(133,'930','PS','PSE','PALESTINA',2),(134,'236','CF','CAF','REPUBLICA CENTROAFRICANA',2),(135,'243','CD','COD','REPUBLICA DEMOCRATICA DEL CONGO',2),(136,'221','SN','SEN','SENEGAL',2),(137,'963','SY','SYR','SIRIA',2),(138,'249','SD','SDN','SUDAN',2),(139,'216','TN','TUN','TUNEZ',2),(140,'967','YE','YEM','YEMEN',2),(141,'257','BI','BDI','BURUNDI',2),(142,'237','CM','CMR','CAMEROON',2),(143,'679','FJ','FJI','FIJI',2),(144,'1','GD','GRD','GRENADA',2),(145,'225','CI','CIV','COSTA DE MARFIL',2),(146,'7','KA','KAZ','KAZAKHSTAN',2),(147,'664','MS','MSR','MONTSERRAT',2),(148,'977','NP','NPL','NEPAL',2),(149,'250','RW','RWA','RWANDA',2),(150,'252','SO','SOM','SOMALIA',2),(151,'94','LK','LKA','SRI LANKA',2),(152,'1','KN','KNA','SAINT KITTS AND NEVIS',2),(153,'1','LC','LCA','SAINT LUCIA',2),(154,'255','TZ','TZA','TANZANIA',2),(155,'164','TC','TCA','TURKS AND CAICOS',2),(156,'260','ZM','ZMB','ZAMBIA',2),(157,'229','BE','BEN','BENIN',2),(158,'220','GM','GMB','GAMBIA',2),(159,'228','TG','TGO','TOGO',2),(160,'268','SZ','SWZ','SWAZILAND',2),(161,'599','CB','CUW','CURACAO',2),(162,'965','KW','KWT','KUWAIT',2),(163,'373','MD','MDA','MOLDOVA',2),(164,'674','NR','NRU','NAURU',2),(165,'232','SL','SLE','SIERRA LEONE',2),(166,'676','TO','TON','TONGA',2);
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -642,7 +643,7 @@ CREATE TABLE `edificationType` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -651,6 +652,7 @@ CREATE TABLE `edificationType` (
 
 LOCK TABLES `edificationType` WRITE;
 /*!40000 ALTER TABLE `edificationType` DISABLE KEYS */;
+INSERT INTO `edificationType` VALUES (1,'Casa'),(2,'Quinta'),(3,'Edificio'),(4,'Residencia'),(5,'Villa'),(6,'Chalet'),(7,'Duplex');
 /*!40000 ALTER TABLE `edificationType` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -765,7 +767,7 @@ CREATE TABLE `kinShipApplicant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(20) COLLATE utf8_danish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -774,6 +776,7 @@ CREATE TABLE `kinShipApplicant` (
 
 LOCK TABLES `kinShipApplicant` WRITE;
 /*!40000 ALTER TABLE `kinShipApplicant` DISABLE KEYS */;
+INSERT INTO `kinShipApplicant` VALUES (1,'Hijo'),(2,'Padre'),(3,'Madre'),(4,'Abuelo'),(5,'Abuela');
 /*!40000 ALTER TABLE `kinShipApplicant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -878,7 +881,7 @@ DROP TABLE IF EXISTS `legalRepresentatives`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `legalRepresentatives` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `personsId` bigint(20) NOT NULL,
+  `personId` bigint(20) NOT NULL,
   `firstNames` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
   `lastNames` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
   `identificationNumber` varchar(40) COLLATE utf8_danish_ci DEFAULT NULL,
@@ -891,11 +894,11 @@ CREATE TABLE `legalRepresentatives` (
   `codeIdentificationNumber` varchar(10) COLLATE utf8_danish_ci DEFAULT NULL,
   `documentsPersonTypeId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `personsId` (`personsId`),
-  KEY `fk_legalRepresentatives_persons1_idx` (`personsId`),
+  KEY `fk_legalRepresentatives_persons1_idx` (`personId`),
   KEY `fk_legalRepresentatives_documentsPersonType1` (`documentsPersonTypeId`),
-  CONSTRAINT `fk_legalRepresentatives_documentsPersonType1` FOREIGN KEY (`documentsPersonTypeId`) REFERENCES `documentsPersonType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_legalRepresentatives_persons1` FOREIGN KEY (`personsId`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `personsId` (`personId`),
+  CONSTRAINT `fk_legalRepresentatives_persons1` FOREIGN KEY (`personId`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_legalRepresentatives_documentsPersonType1` FOREIGN KEY (`documentsPersonTypeId`) REFERENCES `documentsPersonType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1134,8 +1137,8 @@ CREATE TABLE `personType` (
   PRIMARY KEY (`id`),
   KEY `fk_personType_country1` (`countryId`),
   KEY `fk_personType_originApplication1` (`originApplicationId`),
-  CONSTRAINT `fk_personType_originApplication1` FOREIGN KEY (`originApplicationId`) REFERENCES `originApplication` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_personType_country1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_personType_country1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_personType_originApplication1` FOREIGN KEY (`originApplicationId`) REFERENCES `originApplication` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1162,9 +1165,9 @@ CREATE TABLE `phonePerson` (
   `personId` bigint(20) NOT NULL,
   `phoneTypeId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `personId` (`personId`),
   KEY `fk_phonePerson_person1_idx` (`personId`),
   KEY `fk_phonePerson_phoneType1_idx` (`phoneTypeId`),
+  KEY `personId` (`personId`),
   CONSTRAINT `fk_phonePerson_person1` FOREIGN KEY (`personId`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_phonePerson_phoneType1` FOREIGN KEY (`phoneTypeId`) REFERENCES `phoneType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
@@ -1364,7 +1367,7 @@ CREATE TABLE `profession` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_danish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1373,6 +1376,7 @@ CREATE TABLE `profession` (
 
 LOCK TABLES `profession` WRITE;
 /*!40000 ALTER TABLE `profession` DISABLE KEYS */;
+INSERT INTO `profession` VALUES (1,'Ingeniero de Sistemas'),(2,'Abogado'),(3,'Licenciado en Comunicación Social'),(4,'Mecánico'),(5,'Músico');
 /*!40000 ALTER TABLE `profession` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1459,8 +1463,8 @@ CREATE TABLE `programHasNetwork` (
   PRIMARY KEY (`id`),
   KEY `fk_programHasNetwork_program1_idx` (`programId`),
   KEY `fk_programHasNetwork_network1_idx` (`networkId`),
-  CONSTRAINT `fk_programHasNetwork_program1` FOREIGN KEY (`programId`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_programHasNetwork_network1` FOREIGN KEY (`networkId`) REFERENCES `network` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_programHasNetwork_network1` FOREIGN KEY (`networkId`) REFERENCES `network` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programHasNetwork_program1` FOREIGN KEY (`programId`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1554,10 +1558,10 @@ CREATE TABLE `request` (
   KEY `fk_request_productType1` (`productTypeId`),
   KEY `fk_request_country1` (`countryId`),
   KEY `fk_request_personType1` (`personTypeId`),
-  CONSTRAINT `fk_request_personType1` FOREIGN KEY (`personTypeId`) REFERENCES `personType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_cardRequest_statusRequest1` FOREIGN KEY (`statusRequestId`) REFERENCES `statusRequest` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_request_country1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_request_person1` FOREIGN KEY (`personId`) REFERENCES `person` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_request_personType1` FOREIGN KEY (`personTypeId`) REFERENCES `personType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_request_productType1` FOREIGN KEY (`productTypeId`) REFERENCES `productType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_request_program1` FOREIGN KEY (`programId`) REFERENCES `program` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_request_requestType1` FOREIGN KEY (`requestTypeId`) REFERENCES `requestType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1692,7 +1696,7 @@ CREATE TABLE `sequences` (
   PRIMARY KEY (`id`),
   KEY `fk_sequences_documentType1_idx` (`documentType_id`),
   CONSTRAINT `fk_sequences_documentType1` FOREIGN KEY (`documentType_id`) REFERENCES `documentType` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1739,11 +1743,11 @@ DROP TABLE IF EXISTS `state`;
 CREATE TABLE `state` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
-  `country_id` int(11) NOT NULL,
+  `countryId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_state_country1_idx` (`country_id`),
-  CONSTRAINT `fk_state_country1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_state_country1_idx` (`countryId`),
+  CONSTRAINT `fk_state_country1` FOREIGN KEY (`countryId`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1752,6 +1756,7 @@ CREATE TABLE `state` (
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
+INSERT INTO `state` VALUES (1,'AMAZONAS',1),(2,'ANZOATEGUI',1),(3,'ALABAMA',2),(4,'ALASKA',2);
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1813,7 +1818,7 @@ CREATE TABLE `streetType` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1822,6 +1827,7 @@ CREATE TABLE `streetType` (
 
 LOCK TABLES `streetType` WRITE;
 /*!40000 ALTER TABLE `streetType` DISABLE KEYS */;
+INSERT INTO `streetType` VALUES (1,'Calle'),(2,'Avenida'),(3,'Vereda'),(4,'Redoma'),(5,'Autopista'),(6,'Bulevar'),(7,'Callejón'),(8,'Carretera');
 /*!40000 ALTER TABLE `streetType` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1867,15 +1873,14 @@ DROP TABLE IF EXISTS `zipZone`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zipZone` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `code` varchar(45) DEFAULT NULL,
-  `zipZonecol` int(11) DEFAULT NULL,
   `cityId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_zipZone_cities1_idx` (`cityId`),
   CONSTRAINT `fk_zipZone_cities1` FOREIGN KEY (`cityId`) REFERENCES `city` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1884,6 +1889,7 @@ CREATE TABLE `zipZone` (
 
 LOCK TABLES `zipZone` WRITE;
 /*!40000 ALTER TABLE `zipZone` DISABLE KEYS */;
+INSERT INTO `zipZone` VALUES (1,'Parroquia Huachamacare, Acanaña - Amazonas','7101',1),(2,'Macuruco, Amazonas','7101',2),(3,'Atapirire, Anzoátegui','6052',3),(4,'Cantaura, Anzoátegui','6007',4),(5,'Ciudad de Alabaster','35007',5),(6,'Albertville, ZIP 7209','359717209',6);
 /*!40000 ALTER TABLE `zipZone` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1896,4 +1902,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-06  8:53:12
+-- Dump completed on 2019-12-13  9:42:07
