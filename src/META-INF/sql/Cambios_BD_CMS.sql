@@ -183,3 +183,282 @@ DROP INDEX `programOwnerId` ,
 ADD INDEX `programOwnerId` (`programOwnerId` ASC),
 DROP INDEX `cardProgramManagerId` ,
 ADD INDEX `cardProgramManagerId` (`cardProgramManagerId` ASC);
+
+
+-- Agregar tablas network y programHasNetwork
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`network` ( 
+  `id` INT NOT NULL AUTO_INCREMENT, 
+  `name` VARCHAR(50) NULL, 
+  `countryId` INT NOT NULL, 
+  PRIMARY KEY (`id`), 
+  INDEX `fk_network_country1_idx` (`countryId` ASC), 
+  CONSTRAINT `fk_network_country1` 
+    FOREIGN KEY (`countryId`) 
+    REFERENCES `CardManagementSystem`.`country` (`id`) 
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`programHasNetwork` ( 
+  `id` BIGINT NOT NULL AUTO_INCREMENT, 
+  `programId` BIGINT NOT NULL, 
+  `networkId` INT NOT NULL, 
+  PRIMARY KEY (`id`), 
+  INDEX `fk_programHasNetwork_program1_idx` (`programId` ASC), 
+  INDEX `fk_programHasNetwork_network1_idx` (`networkId` ASC), 
+  CONSTRAINT `fk_programHasNetwork_program1` 
+    FOREIGN KEY (`programId`) 
+    REFERENCES `CardManagementSystem`.`program` (`id`) 
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION, 
+  CONSTRAINT `fk_programHasNetwork_network1` 
+    FOREIGN KEY (`networkId`) 
+    REFERENCES `CardManagementSystem`.`network` (`id`) 
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+-- Agregar FKs en tabla request
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `programId` BIGINT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_program1` 
+FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;  
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `productTypeId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_productType1` 
+FOREIGN KEY (`productTypeId`)
+    REFERENCES `CardManagementSystem`.`productType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;  
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `countryId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_country1` 
+FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION; 
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `personTypeId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_personType1` 
+FOREIGN KEY (`personTypeId`)
+    REFERENCES `CardManagementSystem`.`personType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;  
+
+-- Eliminar tabla cardRequestType
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+DROP TABLE `CardManagementSystem`.`cardRequestType`;
+
+-- Eliminar FKs tabla requestType
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+ALTER TABLE `CardManagementSystem`.`requestType`
+DROP FOREIGN KEY `fk_requestType_CardRequestType1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP INDEX  `fk_requestType_CardRequestType1_idx`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP COLUMN `cardRequestTypeId`;
+
+ALTER TABLE `CardManagementSystem`.`requestType`
+DROP FOREIGN KEY `fk_requestType_country1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP INDEX  `fk_requestType_country1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP COLUMN `countryId`;
+
+ALTER TABLE `CardManagementSystem`.`requestType`
+DROP FOREIGN KEY `fk_requestType_personType1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP INDEX  `fk_requestType_personType1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP COLUMN `personTypeId`;
+
+ALTER TABLE `CardManagementSystem`.`requestType`
+DROP FOREIGN KEY `fk_requestType_productType1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP INDEX  `fk_requestType_productType1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP COLUMN `productTypeId`;
+
+ALTER TABLE `CardManagementSystem`.`requestType`
+DROP FOREIGN KEY `fk_requestType_program1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP INDEX  `fk_requestType_program1`;
+ALTER TABLE `CardManagementSystem`.`requestType` 
+DROP COLUMN `programId`;
+
+-- Agregar campos: code y description en tabla requestType
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+ALTER TABLE `CardManagementSystem`.`requestType` 
+ADD COLUMN `code` VARCHAR(10) NULL,
+ADD COLUMN `description` VARCHAR(50) NULL;
+
+-- Eliminar tabla requestTypeHasCollectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+DROP TABLE `CardManagementSystem`.`requestTypeHasCollectionsRequest`;
+
+-- Agregar tabla requestHasCollectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 25/11/2019
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`requestHasCollectionsRequest` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `collectionsRequest_id` INT NOT NULL,
+  `request_id` BIGINT NOT NULL,
+  `indApproved` TINYINT NULL,
+  `observations` VARCHAR(1500) NULL,
+  `urlImageFile` VARCHAR(250) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_requestHasCollectionsRequest_collectionsRequest1_idx` (`collectionsRequest_id` ASC),
+  INDEX `fk_requestHasCollectionsRequest_request1_idx` (`request_id` ASC),
+  CONSTRAINT `fk_requestHasCollectionsRequest_collectionsRequest1`
+    FOREIGN KEY (`collectionsRequest_id`)
+    REFERENCES `CardManagementSystem`.`collectionsRequest` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_requestHasCollectionsRequest_request1`
+    FOREIGN KEY (`request_id`)
+    REFERENCES `CardManagementSystem`.`request` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Modificar los tipos de índices de la tabla Program
+-- author: Jesús Gómez
+-- Fecha: 26/11/2019
+ALTER TABLE `CardManagementSystem`.`program` 
+DROP INDEX `programOwnerId` ,
+ADD INDEX `programOwnerId` (`programOwnerId` ASC),
+DROP INDEX `cardProgramManagerId` ,
+ADD INDEX `cardProgramManagerId` (`cardProgramManagerId` ASC);
+
+-- Cambios en BD 02/12/2019
+
+-- Agregar la tabla originApplication
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`originApplication` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar FKs en tabla personType
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+ALTER TABLE `CardManagementSystem`.`personType` 
+ADD COLUMN `originApplicationId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`personType` 
+ADD CONSTRAINT `fk_personType_originApplication1` 
+FOREIGN KEY (`originApplicationId`)
+    REFERENCES `CardManagementSystem`.`originApplication` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION; 
+
+-- Eliminar FKs tabla familyReferences
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+ALTER TABLE `CardManagementSystem`.`familyReferences`
+DROP FOREIGN KEY `fk_familyReferences_naturalPerson1`;
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+DROP INDEX  `fk_familyReferences_naturalPerson1_idx`;
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+DROP COLUMN `naturalPerson_id`; 
+
+-- Agregar FKs en tabla familyReferences
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+ADD COLUMN `applicantNaturalPersonId` BIGINT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+ADD CONSTRAINT `fk_familyReferences_applicantNaturalPerson1` 
+FOREIGN KEY (`applicantNaturalPersonId`)
+    REFERENCES `CardManagementSystem`.`applicantNaturalPerson` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION; 
+
+-- Agregar campos en tabla familyReferences
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+ADD COLUMN `city` VARCHAR(50) NULL,
+ADD COLUMN `localPhone` VARCHAR(30) NULL,
+ADD COLUMN `cellPhone` VARCHAR(30) NULL,
+ADD COLUMN `lastNames` VARCHAR(40) NULL; 
+
+-- Cambiar nombre de campo en tabla familyReferences
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019 
+ALTER TABLE `CardManagementSystem`.`familyReferences` CHANGE COLUMN `name` `firstNames` varchar(40);
+
+-- Eliminar tabla phoneFamilyReferences
+-- author: Jesús Gómez
+-- Fecha: 02/12/2019
+DROP TABLE `CardManagementSystem`.`phoneFamilyReferences`;
+
+-- Eliminar campo email en tabla address
+-- author: Jesús Gómez
+-- Fecha: 03/12/2019
+
+ALTER TABLE `CardManagementSystem`.`address` 
+  DROP COLUMN `email`;
+
+-- Agregar la tabla documentType
+-- author: Jesús Gómez
+-- Fecha: 04/12/2019
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`documentType` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+
+-- Agregar la tabla sequences
+-- author: Jesús Gómez
+-- Fecha: 04/12/2019
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`sequences` (
+  `id` INT NOT NULL,
+  `initialValue` INT NULL,
+  `currentValue` INT NULL,
+  `documentType_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_sequences_documentType1_idx` (`documentType_id` ASC),
+  CONSTRAINT `fk_sequences_documentType1`
+    FOREIGN KEY (`documentType_id`)
+    REFERENCES `CardManagementSystem`.`documentType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- Modificar FK personId en tabla request (para que acepte null)
+-- author: Jesús Gómez
+-- Fecha: 04/12/2019
+ALTER TABLE `CardManagementSystem`.`request` 
+DROP FOREIGN KEY `fk_request_person1`;
+ALTER TABLE `CardManagementSystem`.`request` 
+CHANGE COLUMN `personId` `personId` BIGINT(20) NULL ;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_person1`
+  FOREIGN KEY (`personId`)
+  REFERENCES `CardManagementSystem`.`person` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+
+
+
