@@ -57,6 +57,7 @@ public class Constants {
         public static final String STATUS_REQUEST_KEY = "statusRequestId";
         public static final String CIVIL_STATUS_KEY = "civilStatusId";
         public static final String PROFESSION_KEY = "professionId";
+        public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
         public static final int PROGRAM_WALLET_APP_ID = 1;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
@@ -70,7 +71,7 @@ public class Constants {
         public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
         public static final int PHONE_TYPE_MOBILE = 1;
         public static final int PHONE_TYPE_ROOM = 2;
-        public static final int SEQUENCES_REQUEST = 1;
+        public static final int DOCUMENT_TYPE_REQUEST = 1;
         
         //Queries PersonType
         public static final int ORIGIN_APPLICATION_ID = 2;
