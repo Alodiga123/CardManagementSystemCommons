@@ -58,7 +58,7 @@ public class Constants {
         public static final String CIVIL_STATUS_KEY = "civilStatusId";
         public static final String PROFESSION_KEY = "professionId";
         public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
-        public static final int PROGRAM_WALLET_APP_ID = 1;
+        public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
         public static final int STATUS_REQUEST_IN_PROCESS = 1;
