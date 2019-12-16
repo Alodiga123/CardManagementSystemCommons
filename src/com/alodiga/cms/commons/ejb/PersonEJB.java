@@ -91,4 +91,16 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<NaturalPerson> getNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public NaturalPerson loadNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public NaturalPerson saveNaturalPerson(NaturalPerson naturalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PersonType
+    public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonType savePersonType (PersonType personType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
+    //DocumentsPersonType
+    public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public DocumentsPersonType saveDocumentsPersonType (DocumentsPersonType documentspersonType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    
 }

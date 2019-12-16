@@ -29,8 +29,8 @@ import com.cms.commons.genericEJB.DistributionEntityListerner;
 @EntityListeners(DistributionEntityListerner.class)
 @Table(name="account_balance")
 public class AccountBalance extends AbstractDistributionEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+//probando repositorio Yoan	    
+        private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
