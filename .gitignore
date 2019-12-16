@@ -1,25 +1,23 @@
+# netbeans specific # 
+nbproject/private/ 
+build/ 
+nbbuild/ 
+dist/ 
+nbdist/ 
+nbproject/
+nbactions.xml 
+nb-configuration.xml 
+nbproject/genfiles\.properties
+nbproject/private/private\.properties
+nbproject/project\.properties
 
-build/built-jar\.properties
+# Class Files # 
+*.class 
 
-build/classes/com/cms/commons/models/CardRequestType\.class
-
-build/classes/com/cms/commons/models/RequestType\.class
-
-dist/CardManagmentSystemCommons\.jar
-
-build/classes/com/alodiga/cms/commons/ejb/UtilsEJB\.class
-
-build/classes/com/alodiga/cms/commons/ejb/UtilsEJBLocal\.class
-
-build/classes/com/cms/commons/models/CardStatus\.class
-
-build/classes/com/cms/commons/models/Currency\.class
-
-build/classes/com/cms/commons/util/SMSSender\.class
-
-dist/lib/
-
-dist/
+# Package Files # 
+*.jar 
+*.war 
+*.ear
 
 build/
 
@@ -28,3 +26,9 @@ nbproject/private/private\.properties
 nbproject/private/private\.xml
 
 nbproject/project\.properties
+
+nbproject/build-impl\.xml
+
+nbproject/genfiles\.properties
+
+nbproject/project\.xml

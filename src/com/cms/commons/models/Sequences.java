@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Sequences.findById", query = "SELECT s FROM Sequences s WHERE s.id = :id")
     , @NamedQuery(name = "Sequences.findByInitialValue", query = "SELECT s FROM Sequences s WHERE s.initialValue = :initialValue")
     , @NamedQuery(name = "Sequences.findByCurrentValue", query = "SELECT s FROM Sequences s WHERE s.currentValue = :currentValue")
-    , @NamedQuery(name = "Sequences.findByDocumentType", query = "SELECT s FROM Sequences s WHERE s.documentTypeId.id = :documentType")})
+    , @NamedQuery(name = "Sequences.findByDocumentType", query = "SELECT s FROM Sequences s WHERE s.documentTypeId.id = :documentTypeId")})
 public class Sequences implements Serializable {
 
     private static final long serialVersionUID = 1L;

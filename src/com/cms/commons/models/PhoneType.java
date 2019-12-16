@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "PhoneType.findAll", query = "SELECT p FROM PhoneType p")
     , @NamedQuery(name = "PhoneType.findById", query = "SELECT p FROM PhoneType p WHERE p.id = :id")
     , @NamedQuery(name = "PhoneType.findByDescription", query = "SELECT p FROM PhoneType p WHERE p.description = :description")})
-public class PhoneType implements Serializable {
+public class PhoneType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +45,6 @@ public class PhoneType implements Serializable {
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "phoneTypeId")
-    private Collection<PhonePerson> phonePersonCollection;
 
     public PhoneType() {
     }
@@ -67,16 +67,6 @@ public class PhoneType implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<PhonePerson> getPhonePersonCollection() {
-        return phonePersonCollection;
-    }
-
-    public void setPhonePersonCollection(Collection<PhonePerson> phonePersonCollection) {
-        this.phonePersonCollection = phonePersonCollection;
     }
 
     @Override
@@ -102,6 +92,16 @@ public class PhoneType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.PhoneType[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
