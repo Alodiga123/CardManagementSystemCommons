@@ -77,9 +77,9 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
     @Column(name = "dateBirth")
     @Temporal(TemporalType.DATE)
     private Date dateBirth;
-    @JoinColumn(name = "personsId", referencedColumnName = "id")
+    @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
-    private Person personsId;
+    private Person personId;
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
@@ -171,12 +171,12 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
         this.dateBirth = dateBirth;
     }
 
-    public Person getPersonsId() {
-        return personsId;
+    public Person getPersonId() {
+        return personId;
     }
 
-    public void setPersonsId(Person personsId) {
-        this.personsId = personsId;
+    public void setPersonId(Person personId) {
+        this.personId = personId;
     }
     
     public DocumentsPersonType getDocumentsPersonTypeId() {

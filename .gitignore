@@ -17,18 +17,3 @@ nbproject/project\.properties
 # Package Files # 
 *.jar 
 *.war 
-*.ear
-
-build/
-
-nbproject/private/private\.properties
-
-nbproject/private/private\.xml
-
-nbproject/project\.properties
-
-nbproject/build-impl\.xml
-
-nbproject/genfiles\.properties
-
-nbproject/project\.xml
