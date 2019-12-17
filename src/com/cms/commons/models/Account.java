@@ -23,7 +23,7 @@ import javax.persistence.NamedQuery;
    
 })
 public class Account extends AbstractDistributionEntity implements Serializable {
-
+//Yoan
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

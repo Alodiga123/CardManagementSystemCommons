@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -32,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Sequences.findByInitialValue", query = "SELECT s FROM Sequences s WHERE s.initialValue = :initialValue")
     , @NamedQuery(name = "Sequences.findByCurrentValue", query = "SELECT s FROM Sequences s WHERE s.currentValue = :currentValue")
     , @NamedQuery(name = "Sequences.findByDocumentType", query = "SELECT s FROM Sequences s WHERE s.documentTypeId.id = :documentTypeId")})
-public class Sequences implements Serializable {
+public class Sequences extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,6 +49,9 @@ public class Sequences implements Serializable {
     @JoinColumn(name = "documentType_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentType documentTypeId;
+    @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private OriginApplication originApplicationId;
 
     public Sequences() {
     }
@@ -86,6 +91,14 @@ public class Sequences implements Serializable {
     public void setDocumentTypeId(DocumentType documentTypeId) {
         this.documentTypeId = documentTypeId;
     }
+    
+    public OriginApplication getOriginApplicationId() {
+        return originApplicationId;
+    }
+
+    public void setOriginApplicationId(OriginApplication originApplicationId) {
+        this.originApplicationId = originApplicationId;
+    }
 
     @Override
     public int hashCode() {
@@ -110,6 +123,16 @@ public class Sequences implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.Sequences[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

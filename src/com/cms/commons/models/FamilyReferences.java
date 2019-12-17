@@ -151,7 +151,7 @@ public class FamilyReferences extends AbstractDistributionEntity implements Seri
     public String toString() {
         return "com.cms.commons.models.FamilyReferences[ id=" + id + " ]";
     }
-
+    
     @Override
     public Object getPk() {
         return getId();
@@ -161,5 +161,4 @@ public class FamilyReferences extends AbstractDistributionEntity implements Seri
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
 }

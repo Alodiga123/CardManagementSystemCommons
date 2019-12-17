@@ -55,16 +55,18 @@ public class Constants {
         public static final String PERSON_KEY = "personId";
         public static final String COUNTRY_KEY = "countryId";
         public static final String PERSON_TYPE_KEY = "personTypeId";
-        public static final String ORIGIN_APPLICATION_KEY = "personTypeId";
+        public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
         public static final String PROGRAM_KEY = "programId";
         public static final String REQUEST_TYPE_KEY = "requestTypeId";
         public static final String PRODUCT_TYPE_KEY = "productTypeId";
         public static final String STATUS_REQUEST_KEY = "statusRequestId";
         public static final String CIVIL_STATUS_KEY = "civilStatusId";
         public static final String PROFESSION_KEY = "professionId";
-        public static final int PROGRAM_WALLET_APP_ID = 1;
+        public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
+        public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
+        public static final Long PERSON_NOT_REGISTER = 1L;
         public static final int STATUS_REQUEST_IN_PROCESS = 1;
         public static final int PENDING_APPROVAL = 2;
         public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
@@ -75,8 +77,9 @@ public class Constants {
         public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
         public static final int PHONE_TYPE_MOBILE = 1;
         public static final int PHONE_TYPE_ROOM = 2;
-        public static final int SEQUENCES_REQUEST = 1;
+        public static final int DOCUMENT_TYPE_REQUEST = 1;
         
         //Queries PersonType
-        public static final int ORIGIN_APPLICATION_ID = 2;
+        public static final int ORIGIN_APPLICATION_WALLET_ID = 2;
+        public static final int ORIGIN_APPLICATION_CMS_ID = 1;
 }
