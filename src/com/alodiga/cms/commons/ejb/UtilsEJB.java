@@ -157,8 +157,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public LegalPerson saveLegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de DocumentsPersonType
-    public List<DocumentsPersonType> getDocumentsPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List<DocumentsPersonType> getDocumentsPersonByCity(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType(DocumentsPersonType documentsPersonType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
@@ -182,12 +181,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<ResponsibleNetworkReporting> getResponsibleNetworkReportings(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ResponsibleNetworkReporting loadResponsibleNetworkReporting(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ResponsibleNetworkReporting saveResponsibleNetworkReporting(ResponsibleNetworkReporting responsibleNetworkReporting) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
-    //Person
-    public List<Person> getPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Person loadLastPerson(EJBRequest request) throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     
     //Address
     public List<Address> getAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -219,22 +212,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     //LegalRepresentatives
     public List<LegalRepresentatives> getLegalRepresentativeses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LegalRepresentatives loadLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public LegalRepresentatives saveLegalRepresentatives (LegalRepresentatives legalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
-
-    //CardRequestNaturalPerson
-    public List<CardRequestNaturalPerson> getCardRequestNaturalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CardRequestNaturalPerson loadCardRequestNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CardRequestNaturalPerson saveCardRequestNaturalPerson (CardRequestNaturalPerson cardRequestNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;                     
-    
-    //PersonHasAddress
-    public List<PersonHasAddress> getPersonHasAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public PersonHasAddress loadPersonHasAddress(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public PersonHasAddress savePersonHasAddress (PersonHasAddress personHasAddress)  throws RegisterNotFoundException, NullParameterException, GeneralException;            
-
-    //PhonePerson
-    public List<PhonePerson> getPhonePersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public PhonePerson loadPhonePerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public PhonePerson savePhonePerson (PhonePerson phonePerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public LegalRepresentatives saveLegalRepresentatives (LegalRepresentatives legalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;                    
     
     //Sequences
     public List<Sequences> getSequences(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -247,5 +225,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<OriginApplication> getOriginApplication(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public OriginApplication loadOriginApplication(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public OriginApplication saveOriginApplication (OriginApplication originApplication) throws RegisterNotFoundException, NullParameterException, GeneralException;
-     
+    
+    
 }
