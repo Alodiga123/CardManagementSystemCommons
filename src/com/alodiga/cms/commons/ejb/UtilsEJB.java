@@ -10,11 +10,9 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.Address;
 import com.cms.commons.models.BinSponsor;
 import com.cms.commons.models.CardIssuanceType;
-import com.cms.commons.models.CardRequestNaturalPerson;
 import com.cms.commons.models.CardStatus;
 import com.cms.commons.models.CardType;
 import com.cms.commons.models.City;
-import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.Currency;
@@ -28,29 +26,19 @@ import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.Issuer;
 import com.cms.commons.models.LegalPerson;
-import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
-import com.cms.commons.models.Person;
 import com.cms.commons.models.LegalRepresentatives;
-import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PersonType;
-import com.cms.commons.models.PhonePerson;
-import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.ProductType;
-import com.cms.commons.models.Profession;
 import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
 import com.cms.commons.models.SourceFunds;
 import com.cms.commons.models.State;
-import com.cms.commons.models.Program;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
-import com.cms.commons.models.KinShipApplicant;
 import com.cms.commons.models.OriginApplication;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -219,7 +207,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Sequences loadSequences(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Sequences saveSequences (Sequences sequences)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public List<Sequences> getSequencesByDocumentType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public String generateNumberSequence(List<Sequences> sequence) throws GeneralException, RegisterNotFoundException, NullParameterException;
+    public String generateNumberSequence(List<Sequences> sequence, int originApplication) throws GeneralException, RegisterNotFoundException, NullParameterException;
 
     //OriginApplication
     public List<OriginApplication> getOriginApplication(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
