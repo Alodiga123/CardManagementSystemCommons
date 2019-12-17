@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "KinShipApplicant.findAll", query = "SELECT k FROM KinShipApplicant k")
     , @NamedQuery(name = "KinShipApplicant.findById", query = "SELECT k FROM KinShipApplicant k WHERE k.id = :id")
     , @NamedQuery(name = "KinShipApplicant.findByDescription", query = "SELECT k FROM KinShipApplicant k WHERE k.description = :description")})
-public class KinShipApplicant implements Serializable {
+public class KinShipApplicant extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -103,5 +105,15 @@ public class KinShipApplicant implements Serializable {
     public String toString() {
         return "com.cms.commons.models.KinShipApplicant[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }

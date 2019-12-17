@@ -86,7 +86,7 @@ public class FamilyReferences extends AbstractDistributionEntity implements Seri
     public void setFirstNames(String firstNames) {
         this.firstNames = firstNames;
     }
-    
+
     public String getLastNames() {
         return lastNames;
     }
@@ -94,7 +94,7 @@ public class FamilyReferences extends AbstractDistributionEntity implements Seri
     public void setLastNames(String lastNames) {
         this.lastNames = lastNames;
     }
-    
+
     public String getCity() {
         return city;
     }
