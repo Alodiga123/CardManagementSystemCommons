@@ -66,6 +66,7 @@ public class Constants {
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
+        public static final Long PERSON_NOT_REGISTER = 1L;
         public static final int STATUS_REQUEST_IN_PROCESS = 1;
         public static final int PENDING_APPROVAL = 2;
         public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
@@ -79,5 +80,6 @@ public class Constants {
         public static final int DOCUMENT_TYPE_REQUEST = 1;
         
         //Queries PersonType
-        public static final int ORIGIN_APPLICATION_ID = 2;
+        public static final int ORIGIN_APPLICATION_WALLET_ID = 2;
+        public static final int ORIGIN_APPLICATION_CMS_ID = 1;
 }
