@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -45,7 +47,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ApplicantNaturalPerson.findByFamilyResponsibilities", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.familyResponsibilities = :familyResponsibilities")
     , @NamedQuery(name = "ApplicantNaturalPerson.findByCreateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.createDate = :createDate")
     , @NamedQuery(name = "ApplicantNaturalPerson.findByUpdateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.updateDate = :updateDate")})
-public class ApplicantNaturalPerson implements Serializable {
+public class ApplicantNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -260,7 +262,7 @@ public class ApplicantNaturalPerson implements Serializable {
     public void setKinShipApplicantId(KinShipApplicant kinShipApplicantId) {
         this.kinShipApplicantId = kinShipApplicantId;
     }
-    
+
     public DocumentsPersonType getDocumentsPersonTypeId() {
         return documentsPersonTypeId;
     }
@@ -294,4 +296,13 @@ public class ApplicantNaturalPerson implements Serializable {
         return "com.cms.commons.models.ApplicantNaturalPerson[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
