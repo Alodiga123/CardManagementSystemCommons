@@ -1,6 +1,5 @@
 package com.alodiga.cms.commons.ejb;
 
-import com.alodiga.cms.commons.exception.DisabledAccountException;
 import com.alodiga.cms.commons.exception.EmptyListException;
 import javax.ejb.Remote;
 import com.alodiga.cms.commons.exception.GeneralException;
@@ -11,20 +10,17 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CardRequestNaturalPerson;
 import com.cms.commons.models.CivilStatus;
-import com.cms.commons.models.Country;
 import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.Person;
 import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PhonePerson;
 import com.cms.commons.models.Profession;
-import com.cms.commons.models.Request;
 import com.cms.commons.models.FamilyReferences;
 import com.cms.commons.models.KinShipApplicant;
 import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
-import java.util.Date;
 import java.util.List;
 
 /**
