@@ -1,30 +1,19 @@
-
-build/built-jar\.properties
-
-build/classes/com/cms/commons/models/CardRequestType\.class
-
-build/classes/com/cms/commons/models/RequestType\.class
-
-dist/CardManagmentSystemCommons\.jar
-
-build/classes/com/alodiga/cms/commons/ejb/UtilsEJB\.class
-
-build/classes/com/alodiga/cms/commons/ejb/UtilsEJBLocal\.class
-
-build/classes/com/cms/commons/models/CardStatus\.class
-
-build/classes/com/cms/commons/models/Currency\.class
-
-build/classes/com/cms/commons/util/SMSSender\.class
-
-dist/lib/
-
-dist/
-
-build/
-
+# netbeans specific # 
+nbproject/private/ 
+build/ 
+nbbuild/ 
+dist/ 
+nbdist/ 
+nbproject/
+nbactions.xml 
+nb-configuration.xml 
+nbproject/genfiles\.properties
 nbproject/private/private\.properties
-
-nbproject/private/private\.xml
-
 nbproject/project\.properties
+
+# Class Files # 
+*.class 
+
+# Package Files # 
+*.jar 
+*.war 
