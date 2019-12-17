@@ -40,10 +40,15 @@ public class Constants {
     public static final String REQUEST_KEY = "id";
     public static final String PERSON_CLASSIFICATION_KEY = "personClassificationId";
     public static final Long PERSON_ID_KEY = 1L;
+    public static final Long PERSON_NATURAL_ID_KEY = 2L;
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
+    public static final Long APPLICANT_NATURAL_PERSON = 3L;
     public static final Long PERSON_ID_LEGAL_REPRESENTATIVE = 1L;
+    public static Integer CLASSIFICATION_PHONE_PERSON_TYPE1 = 1;
+    public static Integer CLASSIFICATION_PHONE_PERSON_TYPE2 = 2;
         
     //RequestEJB
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
