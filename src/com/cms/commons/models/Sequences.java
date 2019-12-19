@@ -49,6 +49,9 @@ public class Sequences extends AbstractDistributionEntity implements Serializabl
     @JoinColumn(name = "documentType_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentType documentTypeId;
+    @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private OriginApplication originApplicationId;
 
     public Sequences() {
     }
@@ -87,6 +90,14 @@ public class Sequences extends AbstractDistributionEntity implements Serializabl
 
     public void setDocumentTypeId(DocumentType documentTypeId) {
         this.documentTypeId = documentTypeId;
+    }
+    
+    public OriginApplication getOriginApplicationId() {
+        return originApplicationId;
+    }
+
+    public void setOriginApplicationId(OriginApplication originApplicationId) {
+        this.originApplicationId = originApplicationId;
     }
 
     @Override

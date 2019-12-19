@@ -262,7 +262,7 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     public void setKinShipApplicantId(KinShipApplicant kinShipApplicantId) {
         this.kinShipApplicantId = kinShipApplicantId;
     }
-    
+
     public DocumentsPersonType getDocumentsPersonTypeId() {
         return documentsPersonTypeId;
     }

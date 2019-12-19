@@ -88,6 +88,7 @@ public class QueryConstants {
     public static final String PARAM_USER_RESPONDER_ID = "userResponderId";
     public static final String PARAM_ACCOUNT_RESPONDER_ID = "accountResponderId";
     public static final String PARAM_COUNTRY_ID = "countryId";
+    public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
