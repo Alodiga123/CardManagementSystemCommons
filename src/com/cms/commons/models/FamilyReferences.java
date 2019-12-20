@@ -7,9 +7,9 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
+import com.cms.commons.util.QueryConstants;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
