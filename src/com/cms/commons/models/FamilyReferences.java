@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -37,7 +38,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FamilyReferences.findAll", query = "SELECT f FROM FamilyReferences f"),
-    @NamedQuery(name = "FamilyReferences.findById", query = "SELECT f FROM FamilyReferences f WHERE f.id = :id")})
+    @NamedQuery(name = "FamilyReferences.findById", query = "SELECT f FROM FamilyReferences f WHERE f.id = :id"),
+    @NamedQuery(name = QueryConstants.FAMILY_REFERENCES_BY_APPLICANT, query = "SELECT f FROM FamilyReferences f WHERE f.applicantNaturalPersonId.id=:applicantNaturalPersonId")})
 public class FamilyReferences extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
