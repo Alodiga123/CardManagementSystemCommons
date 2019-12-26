@@ -127,6 +127,113 @@ VALUES
 (1,1,1,2,2);
 
 
+-- Insertar datos tabla cardType
+INSERT INTO `CardManagementSystem`.`cardType`
+(`description`)
+VALUES 
+("Debito"),
+("Prepagada"),
+("Regalo");
+
+-- Insertar datos tabla segmentMarketing
+INSERT INTO `CardManagementSystem`.`segmentMarketing`
+(`name`,`description`)
+VALUES 
+("Estudiantes","LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM"),
+("Tercera Edad","LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM"),
+("Empleados Pùblicos","LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
+
+-- Insertar datos tabla segmentCommerce
+INSERT INTO `CardManagementSystem`.`segmentCommerce`
+(`name`)
+VALUES 
+("AGENCIAS Y AEROLINEAS",),
+("AGROPECUARIO"),
+("ALMACEN POR DEPARTAMENTOS"),
+("AUTO Y SERV DE TRANSPORTE"),
+("BARES Y RESTAURANTES"),
+("GENERAL");
+
+-- Insertar datos tabla commerceCategory
+INSERT INTO `CardManagementSystem`.`commerceCategory`
+(`mccCode`,`economicActivity`,`descriptionEconomicActivity`,`segmentCommerceId`)
+VALUES 
+("3001","AMERICAN AIRLINES","AMERICAN AIRLINES",1),
+("3007","AIR FRANCE","AIR FRANCE",1),
+("7342","Exterminating and Disinfecting Services","Exterminating and Disinfecting ServiceS",2),
+("5311","Department Stores","Department Stores",3),
+("5499","Misc. Food Stores – Convenience Stores and Specialty Markets","Misc. Food Stores – Convenience Stores and Specialty MarketS",3),
+("4111","Local/Suburban Commuter Passenger Transportation – Railroads, Feries, Local Water Transportation.","Local/Suburban Commuter Passenger Transportation – Railroads, Feries, Local Water Transportation.",4),
+("3357","HERTZ RENT-A-CAR","HERTZ RENT-A-CAR",4),
+("5812","Eating places and Restaurants","Eating places and Restaurants",5),
+("4119","Ambulance Services","Ambulance Services",6),
+("4789","Transportation Services, Not elsewhere classified)","Transportation Services, Not elsewhere classified)",6);
+
+--
+-- Insertar datos tabla kindCard
+INSERT INTO `CardManagementSystem`.`kindCard`
+(`description`)
+VALUES 
+("Fisica"),
+("Virtual");
+
+-- Insertar datos tabla productUse
+INSERT INTO `CardManagementSystem`.`productUse`
+(`description`)
+VALUES 
+("Domestico"),
+("Internacional"),
+("Ambos");
+
+-- Insertar datos tabla channel
+INSERT INTO `CardManagementSystem`.`channel`
+(`name`,`description`)
+VALUES 
+("RED POS","Puntos de Ventas"),
+("ATM","Cajero Automatico"),
+("WEB","Banca Movil Banca en linea"),
+("BANCOS","Banco Emisor Transacciones Realizadas Agencia Bancaria"),
+("CMS","Card Management System"),
+("IVR","Servicio Automatizado de Voz");
+
+-- Insertar datos tabla storageMedio
+INSERT INTO `CardManagementSystem`.`storageMedio`
+(`description`)
+VALUES 
+("Chip"),
+("Banda Magnetica");
+
+
+-- Insertar datos tabla levelProduct
+INSERT INTO `CardManagementSystem`.`levelProduct`
+(`description`)
+VALUES 
+("SILVER"),
+("GOLD"),
+("PLATINUM"),
+("BLACK");
+
+-- Insertar datos tabla product
+INSERT INTO `CardManagementSystem`.`product`
+(`name`,`issuerId`,`countryId`,`cardTypedId`,`kindCardId`,`programTypeId`,`binSponsorId`,`levelProductId`,`productUsedId`,`domesticCurrencyId`,
+ `internationalCurrencyId`,`storageMedio_id`,`segmentId`,`programId`,`binNumber`,`validityYears`,`daysBeforeExpiration`,
+ `daysToInactive`,`daysToUse`,`daysToWithdrawCard`,`beginDateValidity`,`endDateValidity`,`createDate`,`updatedate` )
+VALUES 
+("Tarjeta de Regalo Tercera Edad","1","1","5","1","1","1","2","1",1,3,"1",2,"44",2,1,1,1,1,1,1,1,"2019-12-26","2019-12-26");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

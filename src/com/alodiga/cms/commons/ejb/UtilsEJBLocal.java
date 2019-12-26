@@ -141,10 +141,10 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Product
-    public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    //Request
+    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
