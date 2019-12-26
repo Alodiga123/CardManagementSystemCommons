@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ProgramHasNetwork.findAll", query = "SELECT p FROM ProgramHasNetwork p"),
-    @NamedQuery(name = "ProgramHasNetwork.findById", query = "SELECT p FROM ProgramHasNetwork p WHERE p.id = :id")})
+    @NamedQuery(name = "ProgramHasNetwork.findById", query = "SELECT p FROM ProgramHasNetwork p WHERE p.id = :id"),
+    @NamedQuery(name = QueryConstants.NETWORK_BY_PROGRAM, query = "SELECT p FROM ProgramHasNetwork p WHERE p.programId.id=:programId")})
 
 public class ProgramHasNetwork extends AbstractDistributionEntity implements Serializable {
 

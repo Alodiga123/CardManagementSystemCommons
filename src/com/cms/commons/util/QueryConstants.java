@@ -23,6 +23,8 @@ public class QueryConstants {
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
+    public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
+    public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
     public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String NETWORK_BY_COUNTRY = "networkByCountry";
