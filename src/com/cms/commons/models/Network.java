@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -37,7 +38,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "Network.findAll", query = "SELECT n FROM Network n"),
     @NamedQuery(name = "Network.findById", query = "SELECT n FROM Network n WHERE n.id = :id"),
-    @NamedQuery(name = "Network.findByName", query = "SELECT n FROM Network n WHERE n.name = :name")})
+    @NamedQuery(name = "Network.findByName", query = "SELECT n FROM Network n WHERE n.name = :name"),
+    @NamedQuery(name = QueryConstants.NETWORK_BY_COUNTRY, query = "SELECT n FROM Network n WHERE n.countryId.id=:countryId")})
 public class Network extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
