@@ -6,9 +6,7 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,25 +14,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
-@Table(name = "segment")
+@Table(name = "segmentMarketing")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Segment.findAll", query = "SELECT s FROM Segment s")
-    , @NamedQuery(name = "Segment.findById", query = "SELECT s FROM Segment s WHERE s.id = :id")
-    , @NamedQuery(name = "Segment.findByName", query = "SELECT s FROM Segment s WHERE s.name = :name")
-    , @NamedQuery(name = "Segment.findByDescription", query = "SELECT s FROM Segment s WHERE s.description = :description")})
-public class Segment implements Serializable {
+    @NamedQuery(name = "SegmentMarketing.findAll", query = "SELECT s FROM SegmentMarketing s"),
+    @NamedQuery(name = "SegmentMarketing.findById", query = "SELECT s FROM SegmentMarketing s WHERE s.id = :id"),
+    @NamedQuery(name = "SegmentMarketing.findByName", query = "SELECT s FROM SegmentMarketing s WHERE s.name = :name"),
+    @NamedQuery(name = "SegmentMarketing.findByDescription", query = "SELECT s FROM SegmentMarketing s WHERE s.description = :description")})
+public class SegmentMarketing implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,19 +38,17 @@ public class Segment implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 50)
     @Column(name = "name")
     private String name;
+    @Size(max = 500)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segmentId")
-    private Collection<CommerceCategory> commerceCategoryCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segmentId")
-    private Collection<Product> productCollection;
 
-    public Segment() {
+    public SegmentMarketing() {
     }
 
-    public Segment(Integer id) {
+    public SegmentMarketing(Integer id) {
         this.id = id;
     }
 
@@ -82,26 +76,6 @@ public class Segment implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CommerceCategory> getCommerceCategoryCollection() {
-        return commerceCategoryCollection;
-    }
-
-    public void setCommerceCategoryCollection(Collection<CommerceCategory> commerceCategoryCollection) {
-        this.commerceCategoryCollection = commerceCategoryCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
-    }
-
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -112,10 +86,10 @@ public class Segment implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Segment)) {
+        if (!(object instanceof SegmentMarketing)) {
             return false;
         }
-        Segment other = (Segment) object;
+        SegmentMarketing other = (SegmentMarketing) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -124,7 +98,7 @@ public class Segment implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Segment[ id=" + id + " ]";
+        return "com.cms.commons.models.SegmentMarketing[ id=" + id + " ]";
     }
     
 }

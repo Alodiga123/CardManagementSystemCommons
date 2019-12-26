@@ -112,9 +112,9 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "levelProductId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private LevelProduct levelProductId;
-    @JoinColumn(name = "segment_id", referencedColumnName = "id")
+    @JoinColumn(name = "segmentMarketingId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Segment segmentId;
+    private SegmentMarketing segmentMarketingId;
     @JoinColumn(name = "productUseId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ProductUse productUseId;
@@ -321,12 +321,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.levelProductId = levelProductId;
     }
 
-    public Segment getSegmentId() {
-        return segmentId;
+    public SegmentMarketing getsegmentMarketingId() {
+        return segmentMarketingId;
     }
 
-    public void setSegmentId(Segment segmentId) {
-        this.segmentId = segmentId;
+    public void setsegmentMarketingId(SegmentMarketing segmentMarketingId) {
+        this.segmentMarketingId = segmentMarketingId;
     }
 
     public ProductUse getProductUseId() {
