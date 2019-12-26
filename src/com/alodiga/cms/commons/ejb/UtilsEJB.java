@@ -128,6 +128,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List< Network> getNetworks(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network loadNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Network  saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Network> getNetworkByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -145,17 +146,11 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType(DocumentsPersonType documentsPersonType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Request
-    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     //Tabla de Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Issuer saveIssuer(Issuer issuer) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    
     //EconomicActivity
     public List<EconomicActivity> getEconomicActivitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public EconomicActivity loadEconomicActivity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
