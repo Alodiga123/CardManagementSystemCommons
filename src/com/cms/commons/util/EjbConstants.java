@@ -9,6 +9,7 @@ public class EjbConstants {
     public static final String UTILS_EJB = "ejb/cms/UtilsEJB";
     public static final String REQUEST_EJB = "ejb/cms/RequestEJB";
     public static final String PERSON_EJB = "ejb/cms/PersonEJB";
+    public static final String PRODUCT_EJB = "ejb/cms/ProductEJB";
     //CAMBIAR
     public static final String PROPERTIES_PACKAGE = "com.distribution.commons.util.";
     public static final String ERROR_FILE_NAME = PROPERTIES_PACKAGE + "system_error";
