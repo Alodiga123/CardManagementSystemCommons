@@ -32,7 +32,6 @@ import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
 import com.cms.commons.models.SourceFunds;
 import com.cms.commons.models.State;
-import com.cms.commons.models.Request;
 import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
@@ -134,16 +133,18 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List< Network> getNetworks(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network loadNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Network saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Network> getNetworkByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProgramHasNetwork> getProgramHasNetworkByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Product
-    public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    //Request
+    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

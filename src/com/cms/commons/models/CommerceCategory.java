@@ -20,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -45,17 +46,15 @@ public class CommerceCategory implements Serializable {
     private Integer id;
     @Column(name = "mccCode")
     private String mccCode;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @Size(max = 1000)
+    @Column(name = "economicActivity")
+    private String economicActivity;
+    @Size(max = 1500)
+    @Column(name = "descriptionEconomicActivity")
+    private String descriptionEconomicActivity;
+    @JoinColumn(name = "segmentCommerceId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
-    @JoinColumn(name = "segmentId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Segment segmentId;
-    @JoinColumn(name = "economicActivityId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private EconomicActivity economicActivityId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commerceClassificationId")
-    private Collection<ProductHasCommerceCategory> productHasCommerceCategoryCollection;
+    private SegmentCommerce segmentCommerceId;
 
     public CommerceCategory() {
     }
@@ -79,39 +78,29 @@ public class CommerceCategory implements Serializable {
     public void setMccCode(String mccCode) {
         this.mccCode = mccCode;
     }
-
-    public Country getCountryId() {
-        return countryId;
+    
+    public String getEconomicActivity() {
+        return economicActivity;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setEconomicActivity(String economicActivity) {
+        this.economicActivity = economicActivity;
     }
 
-    public Segment getSegmentId() {
-        return segmentId;
+    public String getDescriptionEconomicActivity() {
+        return descriptionEconomicActivity;
     }
 
-    public void setSegmentId(Segment segmentId) {
-        this.segmentId = segmentId;
+    public void setDescriptionEconomicActivity(String descriptionEconomicActivity) {
+        this.descriptionEconomicActivity = descriptionEconomicActivity;
     }
 
-    public EconomicActivity getEconomicActivityId() {
-        return economicActivityId;
+    public SegmentCommerce getsegmentCommerceId() {
+        return segmentCommerceId;
     }
 
-    public void setEconomicActivityId(EconomicActivity economicActivityId) {
-        this.economicActivityId = economicActivityId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProductHasCommerceCategory> getProductHasCommerceCategoryCollection() {
-        return productHasCommerceCategoryCollection;
-    }
-
-    public void setProductHasCommerceCategoryCollection(Collection<ProductHasCommerceCategory> productHasCommerceCategoryCollection) {
-        this.productHasCommerceCategoryCollection = productHasCommerceCategoryCollection;
+    public void setsegmentCommerceId(SegmentCommerce segmentCommerceId) {
+        this.segmentCommerceId = segmentCommerceId;
     }
 
     @Override
