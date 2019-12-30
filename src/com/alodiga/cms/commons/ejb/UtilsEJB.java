@@ -34,7 +34,6 @@ import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
 import com.cms.commons.models.SourceFunds;
 import com.cms.commons.models.State;
-import com.cms.commons.models.Request;
 import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
@@ -48,7 +47,7 @@ import java.util.List;
  */
 @Remote
 public interface UtilsEJB extends DistributionGenericEJB {
-
+    
     //Tabla de RequestType
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -73,11 +72,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
-    //CollectionsRequest
-    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
 
     //Tabla de CardStatus    
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -133,8 +127,9 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProgramHasNetwork> getProgramHasNetworkByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public ProgramHasNetwork  saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProgramHasNetwork  saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;    
     
     //Tabla de LegalPerson
     public List<LegalPerson> getLegalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

@@ -6,9 +6,7 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -51,8 +46,6 @@ public class EconomicActivity implements Serializable {
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "economicActivityId")
-    private Collection<LegalPerson> legalPersonCollection;
 
     public EconomicActivity() {
     }
@@ -91,16 +84,6 @@ public class EconomicActivity implements Serializable {
 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LegalPerson> getLegalPersonCollection() {
-        return legalPersonCollection;
-    }
-
-    public void setLegalPersonCollection(Collection<LegalPerson> legalPersonCollection) {
-        this.legalPersonCollection = legalPersonCollection;
     }
 
     @Override
