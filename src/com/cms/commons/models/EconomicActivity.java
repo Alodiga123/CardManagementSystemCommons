@@ -48,8 +48,6 @@ public class EconomicActivity implements Serializable {
     private String code;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "economicActivityId")
-    private Collection<CommerceCategory> commerceCategoryCollection;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -85,16 +83,6 @@ public class EconomicActivity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CommerceCategory> getCommerceCategoryCollection() {
-        return commerceCategoryCollection;
-    }
-
-    public void setCommerceCategoryCollection(Collection<CommerceCategory> commerceCategoryCollection) {
-        this.commerceCategoryCollection = commerceCategoryCollection;
     }
 
     public Country getCountryId() {
