@@ -23,6 +23,7 @@ import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.Issuer;
+import com.cms.commons.models.KindCard;
 import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.OriginApplication;
@@ -141,11 +142,6 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Request
-    public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     //Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -205,5 +201,9 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public OriginApplication loadOriginApplication(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public OriginApplication saveOriginApplication (OriginApplication originApplication) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    
+    //KindCard
+    public List<KindCard> getKindCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public KindCard loadKindCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public KindCard saveKindCard (KindCard kindCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 }
