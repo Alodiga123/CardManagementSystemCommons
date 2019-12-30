@@ -5,12 +5,9 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,24 +17,26 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
-@Table(name = "currency")
+@Table(name = "segmentCommerce")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Currency.findAll", query = "SELECT c FROM Currency c"),
-    @NamedQuery(name = "Currency.findById", query = "SELECT c FROM Currency c WHERE c.id = :id"),
-    @NamedQuery(name = "Currency.findByName", query = "SELECT c FROM Currency c WHERE c.name = :name"),
-    @NamedQuery(name = "Currency.findBySymbol", query = "SELECT c FROM Currency c WHERE c.symbol = :symbol")})
+    @NamedQuery(name = "SegmentCommerce.findAll", query = "SELECT s FROM SegmentCommerce s"),
+    @NamedQuery(name = "SegmentCommerce.findById", query = "SELECT s FROM SegmentCommerce s WHERE s.id = :id"),
+    @NamedQuery(name = "SegmentCommerce.findByName", query = "SELECT s FROM SegmentCommerce s WHERE s.name = :name")})
+public class SegmentCommerce implements Serializable {
 
-public class Currency extends AbstractDistributionEntity implements Serializable {
+    @OneToMany(mappedBy = "segmentCommerceId")
+    private Collection<CommerceCategory> commerceCategoryCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,15 +44,14 @@ public class Currency extends AbstractDistributionEntity implements Serializable
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 250)
     @Column(name = "name")
     private String name;
-    @Column(name = "symbol")
-    private String symbol;
 
-    public Currency() {
+    public SegmentCommerce() {
     }
 
-    public Currency(Integer id) {
+    public SegmentCommerce(Integer id) {
         this.id = id;
     }
 
@@ -73,14 +71,6 @@ public class Currency extends AbstractDistributionEntity implements Serializable
         this.name = name;
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -91,10 +81,10 @@ public class Currency extends AbstractDistributionEntity implements Serializable
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Currency)) {
+        if (!(object instanceof SegmentCommerce)) {
             return false;
         }
-        Currency other = (Currency) object;
+        SegmentCommerce other = (SegmentCommerce) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -103,17 +93,17 @@ public class Currency extends AbstractDistributionEntity implements Serializable
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Courrency[ id=" + id + " ]";
+        return "com.cms.commons.models.SegmentCommerce[ id=" + id + " ]";
     }
 
-    @Override
-    public Object getPk() {
-        return getId();
+    @XmlTransient
+    @JsonIgnore
+    public Collection<CommerceCategory> getCommerceCategoryCollection() {
+        return commerceCategoryCollection;
     }
 
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+    public void setCommerceCategoryCollection(Collection<CommerceCategory> commerceCategoryCollection) {
+        this.commerceCategoryCollection = commerceCategoryCollection;
     }
-
+    
 }

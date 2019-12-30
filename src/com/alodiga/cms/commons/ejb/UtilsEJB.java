@@ -46,7 +46,7 @@ import java.util.List;
  */
 @Remote
 public interface UtilsEJB extends DistributionGenericEJB {
-
+    
     //Tabla de RequestType
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -72,11 +72,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-    //CollectionsRequest
-    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
-
     //Tabla de CardStatus    
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -97,11 +92,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List< ProgramType> getProgramType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramType loadProgramType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramType  saveProgramType(ProgramType programType) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
-    //Tabla de Product
-    public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de PersonType
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

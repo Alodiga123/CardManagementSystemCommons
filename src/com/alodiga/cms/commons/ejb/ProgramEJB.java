@@ -15,9 +15,6 @@ import com.cms.commons.models.ProgramHasNetwork;
 import java.util.List;
 
 
-import java.util.List;
-
-
 @Remote
 public interface ProgramEJB extends DistributionGenericEJB {
  

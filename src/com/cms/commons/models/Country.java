@@ -149,5 +149,5 @@ public class Country extends AbstractDistributionEntity implements Serializable 
     public void setCurrencyId(Currency currencyId) {
         this.currencyId = currencyId;
     }
-    
+
 }
