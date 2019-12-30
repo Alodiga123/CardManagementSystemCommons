@@ -46,7 +46,7 @@ import java.util.List;
  */
 @Remote
 public interface UtilsEJB extends DistributionGenericEJB {
-
+    
     //Tabla de RequestType
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -71,11 +71,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
-    //CollectionsRequest
-    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
 
     //Tabla de CardStatus    
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
