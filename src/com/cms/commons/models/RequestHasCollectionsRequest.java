@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -33,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RequestHasCollectionsRequest.findByIndApproved", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.indApproved = :indApproved")
     , @NamedQuery(name = "RequestHasCollectionsRequest.findByObservations", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.observations = :observations")
     , @NamedQuery(name = "RequestHasCollectionsRequest.findByUrlImageFile", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.urlImageFile = :urlImageFile")})
-public class RequestHasCollectionsRequest implements Serializable {
+public class RequestHasCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -134,6 +136,17 @@ public class RequestHasCollectionsRequest implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.RequestHasCollectionsRequest[ id=" + id + " ]";
+    }
+    
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

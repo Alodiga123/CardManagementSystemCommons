@@ -24,12 +24,16 @@ public class QueryConstants {
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
+    public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String REQUEST_BY_COLLECTIONS = "RequestsByCollections";
+    public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
     public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String NETWORK_BY_COUNTRY = "networkByCountry";
     public static final String LAST_PERSON = "Person.lastPerson";
     public static final String PERSON_TYPES_BY_COUNTRY = "personTypesByCountry";
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
+    public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
@@ -95,6 +99,7 @@ public class QueryConstants {
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
+    public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_IS_ADMIN = "isAdmin";
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";

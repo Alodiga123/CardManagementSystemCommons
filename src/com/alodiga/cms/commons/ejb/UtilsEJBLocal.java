@@ -16,9 +16,7 @@ import com.cms.commons.models.Country;
 import com.cms.commons.models.Currency;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.StatusRequest;
-import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.Network;
-import com.cms.commons.models.Product;
 import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.EdificationType;
@@ -33,7 +31,6 @@ import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
 import com.cms.commons.models.SourceFunds;
 import com.cms.commons.models.State;
-import com.cms.commons.models.Request;
 import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
@@ -72,12 +69,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
-    //CollectionRequest
-    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
-
+    
     //Tabla de ProductType
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -139,9 +131,10 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProgramHasNetwork> getProgramHasNetworkByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
     //Issuer
     public List<Issuer> getIssuers(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
