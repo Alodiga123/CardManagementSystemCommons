@@ -34,6 +34,7 @@ public class QueryConstants {
     public static final String PERSON_TYPES_BY_COUNTRY = "personTypesByCountry";
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
+    public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
@@ -100,6 +101,8 @@ public class QueryConstants {
     public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
+    public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_IS_ADMIN = "isAdmin";
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";
