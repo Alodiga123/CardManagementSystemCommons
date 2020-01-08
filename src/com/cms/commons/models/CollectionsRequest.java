@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -36,8 +37,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CollectionsRequest.findAll", query = "SELECT c FROM CollectionsRequest c"), 
-    @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id"), 
-    @NamedQuery(name = "CollectionsRequest.findByDescription", query = "SELECT c FROM CollectionsRequest c WHERE c.description = :description")})
+    @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id"),
+    @NamedQuery(name = QueryConstants.REQUEST_BY_COLLECTIONS, query = "SELECT c FROM Request r, CollectionsRequest c WHERE r.countryId.id=c.countryId.id AND r.productTypeId.id=c.productTypeId.id AND r.personTypeId.id=c.personTypeId.id AND r.programId.id=c.programId.id")})
 
 public class CollectionsRequest extends AbstractDistributionEntity implements Serializable{
 
@@ -47,9 +48,6 @@ public class CollectionsRequest extends AbstractDistributionEntity implements Se
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
-    @Column(name = "description")
-    private String description;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -62,6 +60,9 @@ public class CollectionsRequest extends AbstractDistributionEntity implements Se
     @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private PersonType personTypeId;
+    @JoinColumn(name = "collectionTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private CollectionType collectionTypeId;
 
     public CollectionsRequest() {
     }
@@ -77,13 +78,13 @@ public class CollectionsRequest extends AbstractDistributionEntity implements Se
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getDescription() {
-        return description;
+    
+    public CollectionType getCollectionTypeId() {
+        return collectionTypeId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCollectionTypeId(CollectionType collectionTypeId) {
+        this.collectionTypeId = collectionTypeId;
     }
 
     public Country getCountryId() {
