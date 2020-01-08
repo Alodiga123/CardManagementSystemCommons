@@ -38,7 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "CollectionsRequest.findAll", query = "SELECT c FROM CollectionsRequest c"), 
     @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id"),
-    @NamedQuery(name = QueryConstants.REQUEST_BY_COLLECTIONS, query = "SELECT c FROM Request r, CollectionsRequest c WHERE r.countryId.id=c.countryId.id AND r.productTypeId.id=c.productTypeId.id AND r.personTypeId.id=c.personTypeId.id AND r.programId.id=c.programId.id")})
+    @NamedQuery(name = QueryConstants.COLLECTIONS_BY_REQUEST, query = "SELECT c FROM CollectionsRequest c WHERE c.countryId.id=:countryId AND c.productTypeId.id=:productTypeId AND c.personTypeId.id=:personTypeId AND c.programId.id=:programId")})
 
 public class CollectionsRequest extends AbstractDistributionEntity implements Serializable{
 
