@@ -5,6 +5,7 @@
  */
 package com.cms.commons.models;
 
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,9 +34,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "commerceCategory")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CommerceCategory.findAll", query = "SELECT c FROM CommerceCategory c")
-    , @NamedQuery(name = "CommerceCategory.findById", query = "SELECT c FROM CommerceCategory c WHERE c.id = :id")
-    , @NamedQuery(name = "CommerceCategory.findByMccCode", query = "SELECT c FROM CommerceCategory c WHERE c.mccCode = :mccCode")})
+    @NamedQuery(name = "CommerceCategory.findAll", query = "SELECT c FROM CommerceCategory c"),
+    @NamedQuery(name = "CommerceCategory.findById", query = "SELECT c FROM CommerceCategory c WHERE c.id = :id"),
+    @NamedQuery(name = "CommerceCategory.findByMccCode", query = "SELECT c FROM CommerceCategory c WHERE c.mccCode = :mccCode"),
+    @NamedQuery(name = QueryConstants.COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE, query = "SELECT c FROM CommerceCategory c WHERE c.segmentCommerceId.id = :segmentCommerceId")})
 public class CommerceCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;

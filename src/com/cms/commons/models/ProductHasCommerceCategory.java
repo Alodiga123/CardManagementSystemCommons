@@ -38,9 +38,9 @@ public class ProductHasCommerceCategory implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "commerceClassificationId", referencedColumnName = "id")
+    @JoinColumn(name = "commerceCategoryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CommerceCategory commerceClassificationId;
+    private CommerceCategory commerceCategoryId;
     @JoinColumn(name = "productId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
@@ -60,12 +60,12 @@ public class ProductHasCommerceCategory implements Serializable {
         this.id = id;
     }
 
-    public CommerceCategory getCommerceClassificationId() {
-        return commerceClassificationId;
+    public CommerceCategory getCommerceCategoryId() {
+        return commerceCategoryId;
     }
 
-    public void setCommerceClassificationId(CommerceCategory commerceClassificationId) {
-        this.commerceClassificationId = commerceClassificationId;
+    public void setCommerceCategoryId(CommerceCategory commerceCategoryId) {
+        this.commerceCategoryId = commerceCategoryId;
     }
 
     public Product getProductId() {
