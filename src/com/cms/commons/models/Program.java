@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -50,7 +51,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Program.findByUseInternational", query = "SELECT p FROM Program p WHERE p.useInternational = :useInternational"),
     @NamedQuery(name = "Program.findByCreateDate", query = "SELECT p FROM Program p WHERE p.createDate = :createDate"),
     @NamedQuery(name = "Program.findByUpdateDate", query = "SELECT p FROM Program p WHERE p.updateDate = :updateDate"),
-    @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting")})
+    @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting"),
+    @NamedQuery(name = QueryConstants.PROGRAM_BY_PROGRAM_TYPE, query = "SELECT p FROM Program p WHERE p.programTypeId.id = :programTypeId")})
+
 public class Program extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
