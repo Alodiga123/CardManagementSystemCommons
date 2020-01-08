@@ -25,6 +25,7 @@ import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.Issuer;
+import com.cms.commons.models.KindCard;
 import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.PersonType;
@@ -46,7 +47,7 @@ import java.util.List;
  */
 @Remote
 public interface UtilsEJB extends DistributionGenericEJB {
-
+    
     //Tabla de RequestType
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -71,11 +72,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
-    //CollectionsRequest
-    public List<CollectionsRequest> getCollectionsRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
 
     //Tabla de CardStatus    
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -204,6 +200,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<OriginApplication> getOriginApplication(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public OriginApplication loadOriginApplication(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public OriginApplication saveOriginApplication (OriginApplication originApplication) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+
+    //KindCard
+    public List<KindCard> getKindCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public KindCard loadKindCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public KindCard saveKindCard (KindCard kindCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
