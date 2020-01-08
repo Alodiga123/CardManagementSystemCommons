@@ -43,8 +43,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Request.findAll", query = "SELECT r FROM Request r"),
     @NamedQuery(name = "Request.findById", query = "SELECT r FROM Request r WHERE r.id = :id"),
     @NamedQuery(name = "Request.findByRequestNumber", query = "SELECT r FROM Request r WHERE r.requestNumber = :requestNumber"),
-    @NamedQuery(name = "Request.findByRequestDate", query = "SELECT r FROM Request r WHERE r.requestDate = :requestDate"),
-    @NamedQuery(name = QueryConstants.REQUEST_BY_COLLECTIONS, query = "SELECT r FROM Request r, CollectionsRequest c WHERE r.countryId.id=c.countryId.id AND r.productTypeId.id=c.productTypeId.id AND r.personTypeId.id=c.personTypeId.id AND r.programId.id=c.programId.id")})
+    @NamedQuery(name = "Request.findByRequestDate", query = "SELECT r FROM Request r WHERE r.requestDate = :requestDate")})
 public class Request extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
