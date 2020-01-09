@@ -215,11 +215,22 @@ VALUES
 
 -- Insertar datos tabla product
 INSERT INTO `CardManagementSystem`.`product`
-(`name`,`issuerId`,`countryId`,`cardTypedId`,`kindCardId`,`programTypeId`,`binSponsorId`,`levelProductId`,`productUsedId`,`domesticCurrencyId`,
- `internationalCurrencyId`,`storageMedio_id`,`segmentId`,`programId`,`binNumber`,`validityYears`,`daysBeforeExpiration`,
- `daysToInactive`,`daysToUse`,`daysToWithdrawCard`,`beginDateValidity`,`endDateValidity`,`createDate`,`updatedate` )
+(`name`,`issuerId`,`countryId`,`cardTypeId`,`kindCardId`,`programTypeId`,`binSponsorId`,`levelProductId`,`productUseId`,`domesticCurrencyId`,
+ `internationalCurrencyId`,`storageMedio_id`,`segmentMarketingId`,`program_id`,`binNumber`,`validityYears`,`daysBeforeExpiration`,
+ `daysToActivate`,`daysToInactivate`,`daysToUse`,`daysToWithdrawCard`,`beginDateValidity`,`endDateValidity`)
 VALUES 
-("Tarjeta de Regalo Tercera Edad","1","1","5","1","1","1","2","1",1,3,"1",2,"44",2,1,1,1,1,1,1,1,"2019-12-26","2019-12-26");
+("Tarjeta de Regalo Tercera Edad","1","1","5","1","1","1","2","1",1,3,"1",2,"44",2,1,1,1,1,1,1,"2019-12-26","2019-12-26");
+
+-- Insertar datos tabla collectionType
+INSERT INTO `CardManagementSystem`.`collectionType`
+(`description`,`countryId`)
+VALUES 
+("Cédula de Identidad",4),
+("Referencias Personales",4),
+("Referencias Bancarias",4),
+("Pasaporte",4),
+("Constancia de Trabajo",4);
+
 
 
 
