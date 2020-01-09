@@ -233,6 +233,16 @@ VALUES
 
 
 
+-- Insertar datos tabla collectionType
+INSERT INTO `CardManagementSystem`.`collectionType`
+(`description`,`countryId`)
+VALUES 
+("Cédula de Identidad",4),
+("Referencias Personales",4),
+("Referencias Bancarias",4),
+("Pasaporte",4),
+("Constancia de Trabajo",4);
+
 
 
 
