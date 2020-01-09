@@ -653,9 +653,9 @@ ADD CONSTRAINT `fk_product_segment1`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION; 
 
-
-
-
+-- Agregar FK en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 02/01/2020
 ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
 DROP FOREIGN KEY `fk_naturalPerson_civilStatus10`,
 DROP FOREIGN KEY `fk_naturalPerson_professions10`;
@@ -685,15 +685,48 @@ FOREIGN KEY (`documentsPersonTypeId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
-ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
-DROP FOREIGN KEY `fk_applicantNaturalPerson_documentsPersonType1`;
-ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
-CHANGE COLUMN `documentsPersonTypeId` `documentsPersonTypeId` INT(11) NULL ;
-ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
-ADD CONSTRAINT `fk_applicantNaturalPerson_documentsPersonType1`
-  FOREIGN KEY (`documentsPersonTypeId`)
-  REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
+-- Agregar tabla collectionType
+-- author: Jesús Gómez
+-- Fecha: 06/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`collectionType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(80) NOT NULL,
+  `countryId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_collectionType_country1_idx` (`countryId` ASC),
+  CONSTRAINT `fk_collectionType_country1`
+    FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Eliminando campo description en tabla collectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 06/01/2020
+ALTER TABLE `CardManagementSystem`.`collectionsRequest` 
+DROP COLUMN `description`;
+
+-- Agregar FK en tabla collectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 06/01/2020
+ALTER TABLE `CardManagementSystem`.`collectionsRequest` 
+ADD COLUMN `collectionTypeId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`collectionsRequest` 
+ADD CONSTRAINT `fk_collectionsRequest_collectionType1` 
+FOREIGN KEY (`collectionTypeId`)
+    REFERENCES `CardManagementSystem`.`collectionType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+ALTER TABLE `CardManagementSystem`.`productHasCommerceCategory` 
+DROP FOREIGN KEY `fk_productCommerceClassification_commerceClassification1`;
+ALTER TABLE `CardManagementSystem`.`productHasCommerceCategory` 
+CHANGE COLUMN `commerceClassificationId` `commerceCategoryId` INT(11) NOT NULL ;
+ALTER TABLE `CardManagementSystem`.`productHasCommerceCategory` 
+ADD CONSTRAINT `fk_productCommerceClassification_commerceClassification1`
+  FOREIGN KEY (`commerceCategoryId`)
+  REFERENCES `CardManagementSystem`.`commerceCategory` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
-
 
