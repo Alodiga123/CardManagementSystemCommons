@@ -5,21 +5,19 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,88 +34,73 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
     , @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
-    , @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName")
-    , @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
-    , @NamedQuery(name = "User.findByCreationDate", query = "SELECT u FROM User u WHERE u.creationDate = :creationDate")
-    , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
-    , @NamedQuery(name = "User.findByPhoneNumber", query = "SELECT u FROM User u WHERE u.phoneNumber = :phoneNumber")
-    , @NamedQuery(name = "User.findByReceiveTopUpNotification", query = "SELECT u FROM User u WHERE u.receiveTopUpNotification = :receiveTopUpNotification")
+    , @NamedQuery(name = "User.findByCode", query = "SELECT u FROM User u WHERE u.code = :code")
+    , @NamedQuery(name = "User.findByFirstNames", query = "SELECT u FROM User u WHERE u.firstNames = :firstNames")
+    , @NamedQuery(name = "User.findByLastNames", query = "SELECT u FROM User u WHERE u.lastNames = :lastNames")
     , @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled")})
-public class User extends AbstractDistributionEntity implements Serializable{
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 20)
     @Column(name = "login")
     private String login;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 20)
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "firstName")
-    private String firstName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "lastName")
-    private String lastName;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "creationDate")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "email")
-    private String email;
-    @Size(max = 45)
-    @Column(name = "phoneNumber")
-    private String phoneNumber;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "receiveTopUpNotification")
-    private boolean receiveTopUpNotification;
-    @Basic(optional = false)
-    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "code")
+    private String code;
+    @Size(max = 40)
+    @Column(name = "firstNames")
+    private String firstNames;
+    @Size(max = 40)
+    @Column(name = "lastNames")
+    private String lastNames;
     @Column(name = "enabled")
     private boolean enabled;
+    @JoinColumn(name = "personId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Person personId;
+    @JoinColumn(name = "AuthorizedEmployeeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Employee authorizedEmployeeId;
+    @JoinColumn(name = "EmployeeId", referencedColumnName = "id")
+    @ManyToOne
+    private Employee employeeId;
+    @JoinColumn(name = "comercialAgencyId", referencedColumnName = "id")
+    @ManyToOne
+    private ComercialAgency comercialAgencyId;
 
     public User() {
     }
 
-    public User(Long id) {
+    public User(Integer id) {
         this.id = id;
     }
 
-    public User(Long id, String login, String password, String firstName, String lastName, Date creationDate, String email, boolean receiveTopUpNotification, boolean enabled) {
+    public User(Integer id, String login, String password, String code) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.creationDate = creationDate;
-        this.email = email;
-        this.receiveTopUpNotification = receiveTopUpNotification;
-        this.enabled = enabled;
+        this.code = code;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -137,52 +120,28 @@ public class User extends AbstractDistributionEntity implements Serializable{
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getCode() {
+        return code;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFirstNames() {
+        return firstNames;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstNames(String firstNames) {
+        this.firstNames = firstNames;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public String getLastNames() {
+        return lastNames;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public boolean getReceiveTopUpNotification() {
-        return receiveTopUpNotification;
-    }
-
-    public void setReceiveTopUpNotification(boolean receiveTopUpNotification) {
-        this.receiveTopUpNotification = receiveTopUpNotification;
+    public void setLastNames(String lastNames) {
+        this.lastNames = lastNames;
     }
 
     public boolean getEnabled() {
@@ -191,6 +150,38 @@ public class User extends AbstractDistributionEntity implements Serializable{
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+    
+    public Person getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Person personId) {
+        this.personId = personId;
+    }
+
+    public Employee getAuthorizedEmployeeId() {
+        return authorizedEmployeeId;
+    }
+
+    public void setAuthorizedEmployeeId(Employee authorizedEmployeeId) {
+        this.authorizedEmployeeId = authorizedEmployeeId;
+    }
+
+    public Employee getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Employee employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public ComercialAgency getComercialAgencyId() {
+        return comercialAgencyId;
+    }
+
+    public void setComercialAgencyId(ComercialAgency comercialAgencyId) {
+        this.comercialAgencyId = comercialAgencyId;
     }
 
     @Override
@@ -213,19 +204,9 @@ public class User extends AbstractDistributionEntity implements Serializable{
         return true;
     }
 
-     @Override
+    @Override
     public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        return "com.cms.commons.models.User[ id=" + id + " ]";
     }
     
 }
