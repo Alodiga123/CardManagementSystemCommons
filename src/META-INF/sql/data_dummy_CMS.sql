@@ -231,17 +231,14 @@ VALUES
 ("Pasaporte",4),
 ("Constancia de Trabajo",4);
 
-
-
--- Insertar datos tabla collectionType
-INSERT INTO `CardManagementSystem`.`collectionType`
-(`description`,`countryId`)
+-- Insertar datos tabla reasonRejectionRequest
+INSERT INTO `CardManagementSystem`.`reasonRejectionRequest`
+(`code`,`description`)
 VALUES 
-("Cédula de Identidad",4),
-("Referencias Personales",4),
-("Referencias Bancarias",4),
-("Pasaporte",4),
-("Constancia de Trabajo",4);
+("RECAUDOS","La solicitud no contempla los recaudos requeridos"),
+("LISTAS NEGRAS","Algún relacionados a la solicitud está en Listas Negras"),
+("CREDITICIA","La evaluación crediticia no fue satisfactoria"),
+("RIESGOS","La evaluación de riesgos no fue satisfactoria");
 
 
 
