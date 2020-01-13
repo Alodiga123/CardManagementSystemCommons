@@ -65,6 +65,7 @@ public class Constants {
         public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
         public static final String APPLICANT_NATURAL_PERSON_KEY = "applicantNaturalPersonId";
         public static final String NETWORK_BY_PROGRAM = "programId";
+        public static final String PRODUCT_KEY = "productId";
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
