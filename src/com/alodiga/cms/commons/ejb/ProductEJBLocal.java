@@ -11,6 +11,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CommerceCategory;
 import com.cms.commons.models.LevelProduct;
 import com.cms.commons.models.Product;
+import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
 import com.cms.commons.models.SegmentCommerce;
@@ -65,5 +66,10 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public CommerceCategory loadCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CommerceCategory saveCommerceCategory(CommerceCategory commerceCategory) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<CommerceCategory> getCommerceCategoryBySegmentCommerce(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //ProductHasCommerceCategory
+    public List<ProductHasCommerceCategory> getProductHasCommerceCategory(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProductHasCommerceCategory loadProductHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProductHasCommerceCategory saveProductHasCommerceCategory(ProductHasCommerceCategory productHasCommerceCategory) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
