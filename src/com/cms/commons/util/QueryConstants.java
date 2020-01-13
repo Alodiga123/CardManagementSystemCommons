@@ -35,6 +35,7 @@ public class QueryConstants {
     public static final String PERSON_TYPES_BY_COUNTRY = "personTypesByCountry";
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
+    public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
