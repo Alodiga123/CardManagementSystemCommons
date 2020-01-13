@@ -6,7 +6,9 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +18,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -67,8 +72,6 @@ public class User implements Serializable {
     @Size(max = 40)
     @Column(name = "lastNames")
     private String lastNames;
-    @Column(name = "enabled")
-    private boolean enabled;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
@@ -81,6 +84,8 @@ public class User implements Serializable {
     @JoinColumn(name = "comercialAgencyId", referencedColumnName = "id")
     @ManyToOne
     private ComercialAgency comercialAgencyId;
+    @Column(name = "enabled")
+    private Boolean enabled;
 
     public User() {
     }
@@ -144,14 +149,6 @@ public class User implements Serializable {
         this.lastNames = lastNames;
     }
 
-    public boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-    
     public Person getPersonId() {
         return personId;
     }
@@ -183,6 +180,14 @@ public class User implements Serializable {
     public void setComercialAgencyId(ComercialAgency comercialAgencyId) {
         this.comercialAgencyId = comercialAgencyId;
     }
+    
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @Override
     public int hashCode() {
@@ -208,5 +213,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.cms.commons.models.User[ id=" + id + " ]";
     }
-    
+
 }

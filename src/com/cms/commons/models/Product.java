@@ -129,6 +129,15 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private StorageMedio storageMedioid;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private CardRequest cardRequest;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "minimumBalance")
+    private Float minimumBalance;
+    @Column(name = "maximumBalance")
+    private Float maximumBalance;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ProductHasChannel productHasChannel;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ReviewCollectionsRequest reviewCollectionsRequest;
 
     public Product() {
     }
@@ -403,6 +412,38 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Float getMinimumBalance() {
+        return minimumBalance;
+    }
+
+    public void setMinimumBalance(Float minimumBalance) {
+        this.minimumBalance = minimumBalance;
+    }
+
+    public Float getMaximumBalance() {
+        return maximumBalance;
+    }
+
+    public void setMaximumBalance(Float maximumBalance) {
+        this.maximumBalance = maximumBalance;
+    }
+
+    public ReviewCollectionsRequest getReviewCollectionsRequest() {
+        return reviewCollectionsRequest;
+    }
+
+    public void setReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) {
+        this.reviewCollectionsRequest = reviewCollectionsRequest;
+    }
+
+    public ProductHasChannel getProductHasChannel() {
+        return productHasChannel;
+    }
+
+    public void setProductHasChannel(ProductHasChannel productHasChannel) {
+        this.productHasChannel = productHasChannel;
     }
     
 }
