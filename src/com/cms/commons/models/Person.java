@@ -89,6 +89,10 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private PersonHasAddress personHasAddress;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private Request request;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private Employee employee;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private User user;
 
     public Person() {
     }
@@ -282,6 +286,22 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     
 }
