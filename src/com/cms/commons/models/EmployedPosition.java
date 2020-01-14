@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -27,14 +29,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "channel")
+@Table(name = "employedPosition")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Channel.findAll", query = "SELECT c FROM Channel c")
-    , @NamedQuery(name = "Channel.findById", query = "SELECT c FROM Channel c WHERE c.id = :id")
-    , @NamedQuery(name = "Channel.findByName", query = "SELECT c FROM Channel c WHERE c.name = :name")
-    , @NamedQuery(name = "Channel.findByDescription", query = "SELECT c FROM Channel c WHERE c.description = :description")})
-public class Channel implements Serializable {
+    @NamedQuery(name = "EmployedPosition.findAll", query = "SELECT e FROM EmployedPosition e")
+    , @NamedQuery(name = "EmployedPosition.findById", query = "SELECT e FROM EmployedPosition e WHERE e.id = :id")
+    , @NamedQuery(name = "EmployedPosition.findByName", query = "SELECT e FROM EmployedPosition e WHERE e.name = :name")})
+public class EmployedPosition implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,16 +43,24 @@ public class Channel implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "name")
     private String name;
-    @Column(name = "description")
-    private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employedPositionId")
+    private Collection<Employee> employeeCollection;
 
-    public Channel() {
+    public EmployedPosition() {
     }
 
-    public Channel(Integer id) {
+    public EmployedPosition(Integer id) {
         this.id = id;
+    }
+
+    public EmployedPosition(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -70,12 +79,14 @@ public class Channel implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Employee> getEmployeeCollection() {
+        return employeeCollection;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEmployeeCollection(Collection<Employee> employeeCollection) {
+        this.employeeCollection = employeeCollection;
     }
 
     @Override
@@ -88,10 +99,10 @@ public class Channel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Channel)) {
+        if (!(object instanceof EmployedPosition)) {
             return false;
         }
-        Channel other = (Channel) object;
+        EmployedPosition other = (EmployedPosition) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +111,7 @@ public class Channel implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Channel[ id=" + id + " ]";
+        return "com.cms.commons.models.EmployedPosition[ id=" + id + " ]";
     }
     
 }

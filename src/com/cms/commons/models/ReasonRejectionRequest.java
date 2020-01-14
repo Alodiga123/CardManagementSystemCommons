@@ -8,7 +8,6 @@ package com.cms.commons.models;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +17,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -27,14 +28,17 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "channel")
+@Table(name = "reasonRejectionRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Channel.findAll", query = "SELECT c FROM Channel c")
-    , @NamedQuery(name = "Channel.findById", query = "SELECT c FROM Channel c WHERE c.id = :id")
-    , @NamedQuery(name = "Channel.findByName", query = "SELECT c FROM Channel c WHERE c.name = :name")
-    , @NamedQuery(name = "Channel.findByDescription", query = "SELECT c FROM Channel c WHERE c.description = :description")})
-public class Channel implements Serializable {
+    @NamedQuery(name = "ReasonRejectionRequest.findAll", query = "SELECT r FROM ReasonRejectionRequest r")
+    , @NamedQuery(name = "ReasonRejectionRequest.findById", query = "SELECT r FROM ReasonRejectionRequest r WHERE r.id = :id")
+    , @NamedQuery(name = "ReasonRejectionRequest.findByCode", query = "SELECT r FROM ReasonRejectionRequest r WHERE r.code = :code")
+    , @NamedQuery(name = "ReasonRejectionRequest.findByDescription", query = "SELECT r FROM ReasonRejectionRequest r WHERE r.description = :description")})
+public class ReasonRejectionRequest implements Serializable {
+
+    @OneToMany(mappedBy = "reasonRejectionRequestId")
+    private Collection<Request> requestCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,16 +46,28 @@ public class Channel implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
-    private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "code")
+    private String code;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
     @Column(name = "description")
     private String description;
 
-    public Channel() {
+    public ReasonRejectionRequest() {
     }
 
-    public Channel(Integer id) {
+    public ReasonRejectionRequest(Integer id) {
         this.id = id;
+    }
+
+    public ReasonRejectionRequest(Integer id, String code, String description) {
+        this.id = id;
+        this.code = code;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -62,12 +78,12 @@ public class Channel implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDescription() {
@@ -88,10 +104,10 @@ public class Channel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Channel)) {
+        if (!(object instanceof ReasonRejectionRequest)) {
             return false;
         }
-        Channel other = (Channel) object;
+        ReasonRejectionRequest other = (ReasonRejectionRequest) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +116,17 @@ public class Channel implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Channel[ id=" + id + " ]";
+        return "com.cms.commons.models.ReasonRejectionRequest[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Request> getRequestCollection() {
+        return requestCollection;
+    }
+
+    public void setRequestCollection(Collection<Request> requestCollection) {
+        this.requestCollection = requestCollection;
     }
     
 }

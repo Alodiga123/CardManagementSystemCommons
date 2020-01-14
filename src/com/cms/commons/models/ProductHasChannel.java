@@ -6,7 +6,9 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,21 +18,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
  * @author jose
  */
 @Entity
-@Table(name = "allowedChannels")
+@Table(name = "productHasChannel")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AllowedChannels.findAll", query = "SELECT a FROM AllowedChannels a")
-    , @NamedQuery(name = "AllowedChannels.findById", query = "SELECT a FROM AllowedChannels a WHERE a.id = :id")})
-public class AllowedChannels implements Serializable {
+    @NamedQuery(name = "ProductHasChannel.findAll", query = "SELECT p FROM ProductHasChannel p")
+    , @NamedQuery(name = "ProductHasChannel.findById", query = "SELECT p FROM ProductHasChannel p WHERE p.id = :id")})
+public class ProductHasChannel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,17 +43,22 @@ public class AllowedChannels implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @JoinColumn(name = "transactionId", referencedColumnName = "id")
+    @ManyToOne
+    private Transaction transactionId;
     @JoinColumn(name = "channel_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Channel channelId;
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productHasChannelId")
+    private Collection<ParameterProductHasChannel> parameterProductHasChannelCollection;
 
-    public AllowedChannels() {
+    public ProductHasChannel() {
     }
 
-    public AllowedChannels(Long id) {
+    public ProductHasChannel(Long id) {
         this.id = id;
     }
 
@@ -58,6 +68,14 @@ public class AllowedChannels implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Transaction getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Transaction transactionId) {
+        this.transactionId = transactionId;
     }
 
     public Channel getChannelId() {
@@ -76,6 +94,16 @@ public class AllowedChannels implements Serializable {
         this.productId = productId;
     }
 
+    @XmlTransient
+    @JsonIgnore
+    public Collection<ParameterProductHasChannel> getParameterProductHasChannelCollection() {
+        return parameterProductHasChannelCollection;
+    }
+
+    public void setParameterProductHasChannelCollection(Collection<ParameterProductHasChannel> parameterProductHasChannelCollection) {
+        this.parameterProductHasChannelCollection = parameterProductHasChannelCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -86,10 +114,10 @@ public class AllowedChannels implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AllowedChannels)) {
+        if (!(object instanceof ProductHasChannel)) {
             return false;
         }
-        AllowedChannels other = (AllowedChannels) object;
+        ProductHasChannel other = (ProductHasChannel) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -98,7 +126,7 @@ public class AllowedChannels implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.AllowedChannels[ id=" + id + " ]";
+        return "com.cms.commons.models.ProductHasChannel[ id=" + id + " ]";
     }
     
 }

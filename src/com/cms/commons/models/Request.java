@@ -79,6 +79,9 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "requestTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RequestType requestTypeId;
+    @JoinColumn(name = "reasonRejectionRequestId", referencedColumnName = "id")
+    @ManyToOne
+    private ReasonRejectionRequest reasonRejectionRequestId;
 
     public Request() {
     }
@@ -201,5 +204,13 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
+    public ReasonRejectionRequest getReasonRejectionRequestId() {
+        return reasonRejectionRequestId;
+    }
+
+    public void setReasonRejectionRequestId(ReasonRejectionRequest reasonRejectionRequestId) {
+        this.reasonRejectionRequestId = reasonRejectionRequestId;
+    }
+
 }

@@ -8,16 +8,19 @@ package com.cms.commons.models;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -27,14 +30,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "channel")
+@Table(name = "comercialAgency")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Channel.findAll", query = "SELECT c FROM Channel c")
-    , @NamedQuery(name = "Channel.findById", query = "SELECT c FROM Channel c WHERE c.id = :id")
-    , @NamedQuery(name = "Channel.findByName", query = "SELECT c FROM Channel c WHERE c.name = :name")
-    , @NamedQuery(name = "Channel.findByDescription", query = "SELECT c FROM Channel c WHERE c.description = :description")})
-public class Channel implements Serializable {
+    @NamedQuery(name = "ComercialAgency.findAll", query = "SELECT c FROM ComercialAgency c")
+    , @NamedQuery(name = "ComercialAgency.findById", query = "SELECT c FROM ComercialAgency c WHERE c.id = :id")
+    , @NamedQuery(name = "ComercialAgency.findByName", query = "SELECT c FROM ComercialAgency c WHERE c.name = :name")})
+public class ComercialAgency implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,16 +44,27 @@ public class Channel implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 80)
     @Column(name = "name")
     private String name;
-    @Column(name = "description")
-    private String description;
+    @JoinColumn(name = "cityId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private City cityId;
+    @OneToMany(mappedBy = "comercialAgencyId")
+    private Collection<User> userCollection;
 
-    public Channel() {
+    public ComercialAgency() {
     }
 
-    public Channel(Integer id) {
+    public ComercialAgency(Integer id) {
         this.id = id;
+    }
+
+    public ComercialAgency(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -70,12 +83,22 @@ public class Channel implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public City getCityId() {
+        return cityId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCityId(City cityId) {
+        this.cityId = cityId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<User> getUserCollection() {
+        return userCollection;
+    }
+
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
     @Override
@@ -88,10 +111,10 @@ public class Channel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Channel)) {
+        if (!(object instanceof ComercialAgency)) {
             return false;
         }
-        Channel other = (Channel) object;
+        ComercialAgency other = (ComercialAgency) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +123,7 @@ public class Channel implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Channel[ id=" + id + " ]";
+        return "com.cms.commons.models.ComercialAgency[ id=" + id + " ]";
     }
     
 }
