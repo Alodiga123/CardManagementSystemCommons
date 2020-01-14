@@ -894,6 +894,15 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`system` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+-- Agregar tabla menuList
+-- author: Jesús Gómez
+-- Fecha: 10/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`menuList` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nameOption` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 -- Agregar tabla systemOptionType
 -- author: Jesús Gómez
 -- Fecha: 10/01/2020
@@ -908,11 +917,17 @@ ENGINE = InnoDB;
 -- Fecha: 10/01/2020
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`option` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
+  `menuListId` INT NOT NULL,
   `level` INT NULL,
   `systemOptionTypeId` INT NOT NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_option_menuList1_idx` (`menuListId` ASC),
   INDEX `fk_option_systemOptionType1_idx` (`systemOptionTypeId` ASC),
+  CONSTRAINT `fk_option_menuList1`
+    FOREIGN KEY (`menuListId`)
+    REFERENCES `CardManagementSystem`.`menuList` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION),
   CONSTRAINT `fk_option_systemOptionType1`
     FOREIGN KEY (`systemOptionTypeId`)
     REFERENCES `CardManagementSystem`.`systemOptionType` (`id`)

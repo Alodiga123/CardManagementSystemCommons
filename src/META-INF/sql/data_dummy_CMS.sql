@@ -241,20 +241,102 @@ VALUES
 ("RIESGOS","La evaluación de riesgos no fue satisfactoria");
 
 
+-- Insertar datos tabla system
+INSERT INTO `CardManagementSystem`.`system`
+(`code`,`name`,`description`)
+VALUES 
+("CMS","Card Management System","LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM");
 
+-- Insertar datos tabla systemOptionType
+INSERT INTO `CardManagementSystem`.`systemOptionType`
+(`description`)
+VALUES 
+("CONSULTA"),
+("ACTUALIZACION"),
+("GLOBAL");
 
+-- Insertar datos tabla menuList
+INSERT INTO `CardManagementSystem`.`menuList`
+(`nameOption`)
+VALUES 
+("Administrar Programas Datos Generales"),
+("Administrar Programas Redes"),
+("Administrar Productos Datos Generales"),
+("Administrar Productos Categorías Comercio"),
+("Administrar Productos Límites y Restricciones"),
+("Solicitud de Tarjeta PN Datos Generales"),
+("Solicitud de Tarjeta PN Datos Solicitante"),
+("Solicitud de Tarjeta PN Dirección Solicitante"),
+("Solicitud de Tarjeta PN Referencias Familiares"),
+("Solicitud de Tarjeta PN Tarjetas Complementarias"),
+("Solicitud de Tarjeta PN Recaudos"),
+("Solicitud de Tarjeta PN Revisión"),
+("Solicitud de Tarjeta PJ Datos Generales"),
+("Solicitud de Tarjeta PJ Datos Solicitante"),
+("Solicitud de Tarjeta PJ Dirección Solicitante"),
+("Solicitud de Tarjeta PJ Representantes Legales"),
+("Solicitud de Tarjeta PJ Tarjetas Adicionales"),
+("Solicitud de Tarjeta PJ Recaudos"),
+("Solicitud de Tarjeta PJ Revisión");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Insertar datos tabla option
+INSERT INTO `CardManagementSystem`.`option`
+(`menuListId`,`level`,`systemOptionTypeId`)
+VALUES 
+(1,1,1),
+(1,1,2),
+(1,1,3),
+(2,1,1),
+(2,1,2),
+(2,1,3),
+(3,1,1),
+(3,1,2),
+(3,1,3),
+(4,1,1),
+(4,1,2),
+(4,1,3),
+(5,1,1),
+(5,1,2),
+(5,1,3),
+(6,1,1),
+(6,1,2),
+(6,1,3),
+(7,1,1),
+(7,1,2),
+(7,1,3),
+(8,1,1),
+(8,1,2),
+(8,1,3),
+(9,1,1),
+(9,1,2),
+(9,1,3),
+(10,1,1),
+(10,1,2),
+(10,1,3),
+(11,1,1),
+(11,1,2),
+(11,1,3),
+(12,1,1),
+(12,1,2),
+(12,1,3),
+(13,1,1),
+(13,1,2),
+(13,1,3),
+(14,1,1),
+(14,1,2),
+(14,1,3),
+(15,1,1),
+(15,1,2),
+(15,1,3),
+(16,1,1),
+(16,1,2),
+(16,1,3),
+(17,1,1),
+(17,1,2),
+(17,1,3),
+(18,1,1),
+(18,1,2),
+(18,1,3),
+(19,1,1),
+(19,1,2),
+(19,1,3);
