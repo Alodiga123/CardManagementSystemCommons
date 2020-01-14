@@ -13,6 +13,7 @@ import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
+import com.cms.commons.models.ReviewCollectionsRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -61,4 +62,10 @@ public interface RequestEJB extends DistributionGenericEJB {
     public List<CollectionType> getCollectionTypeByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CollectionType loadCollectionType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionType saveCollectionType(CollectionType collectionType) throws NullParameterException, GeneralException;
+    
+    //ReviewCollectionsRequest
+    public List<ReviewCollectionsRequest> getReviewCollectionsRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ReviewCollectionsRequest loadReviewCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ReviewCollectionsRequest saveReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) throws NullParameterException, GeneralException;
+
 }

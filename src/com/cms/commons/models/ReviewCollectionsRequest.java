@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,11 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "reviewCollectionsRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ReviewCollectionsRequest.findAll", query = "SELECT r FROM ReviewCollectionsRequest r")
-    , @NamedQuery(name = "ReviewCollectionsRequest.findById", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.id = :id")
-    , @NamedQuery(name = "ReviewCollectionsRequest.findByReviewDate", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.reviewDate = :reviewDate")
-    , @NamedQuery(name = "ReviewCollectionsRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount")})
-public class ReviewCollectionsRequest implements Serializable {
+    @NamedQuery(name = "ReviewCollectionsRequest.findAll", query = "SELECT r FROM ReviewCollectionsRequest r"),
+    @NamedQuery(name = "ReviewCollectionsRequest.findById", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.id = :id"),
+    @NamedQuery(name = "ReviewCollectionsRequest.findByReviewDate", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.reviewDate = :reviewDate"),
+    @NamedQuery(name = "ReviewCollectionsRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount")})
+public class ReviewCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -151,5 +153,15 @@ public class ReviewCollectionsRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.ReviewCollectionsRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }
