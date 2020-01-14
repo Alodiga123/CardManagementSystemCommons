@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -60,6 +61,10 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     @JoinColumn(name = "productId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
+    @Size(max = 1500)
+    @Column(name = "observations")
+    private String observations;
+
 
     public ReviewCollectionsRequest() {
     }
@@ -114,6 +119,14 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
 
     public void setProductId(Product productId) {
         this.productId = productId;
+    }
+    
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 
     @Override
