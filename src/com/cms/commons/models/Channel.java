@@ -46,8 +46,6 @@ public class Channel implements Serializable {
     private String name;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "channelId")
-    private Collection<AllowedChannels> allowedChannelsCollection;
 
     public Channel() {
     }
@@ -78,16 +76,6 @@ public class Channel implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AllowedChannels> getAllowedChannelsCollection() {
-        return allowedChannelsCollection;
-    }
-
-    public void setAllowedChannelsCollection(Collection<AllowedChannels> allowedChannelsCollection) {
-        this.allowedChannelsCollection = allowedChannelsCollection;
     }
 
     @Override
