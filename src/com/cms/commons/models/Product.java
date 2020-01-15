@@ -86,8 +86,6 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private Date endDateValidity;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProductHasCommerceCategory productHasCommerceCategory;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private AllowedChannels allowedChannels;
     @JoinColumn(name = "issuerId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Issuer issuerId;
@@ -256,14 +254,6 @@ public class Product extends AbstractDistributionEntity implements Serializable 
 
     public void setProductHasCommerceCategory(ProductHasCommerceCategory productHasCommerceCategory) {
         this.productHasCommerceCategory = productHasCommerceCategory;
-    }
-
-    public AllowedChannels getAllowedChannels() {
-        return allowedChannels;
-    }
-
-    public void setAllowedChannels(AllowedChannels allowedChannels) {
-        this.allowedChannels = allowedChannels;
     }
 
     public Issuer getIssuerId() {
