@@ -63,6 +63,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
 
     //ReviewCollectionsRequest
     public List<ReviewCollectionsRequest> getReviewCollectionsRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ReviewCollectionsRequest> getReviewCollectionsRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewCollectionsRequest loadReviewCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewCollectionsRequest saveReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) throws NullParameterException, GeneralException;
 }
