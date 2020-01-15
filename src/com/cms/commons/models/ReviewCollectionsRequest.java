@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ReviewCollectionsRequest.findAll", query = "SELECT r FROM ReviewCollectionsRequest r"),
     @NamedQuery(name = "ReviewCollectionsRequest.findById", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.id = :id"),
     @NamedQuery(name = "ReviewCollectionsRequest.findByReviewDate", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.reviewDate = :reviewDate"),
-    @NamedQuery(name = "ReviewCollectionsRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount")})
+    @NamedQuery(name = "ReviewCollectionsRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount"),
+    @NamedQuery(name = QueryConstants.REVIEW_COLLECTIONS_REQUEST_BY_REQUEST, query = "SELECT r FROM ReviewCollectionsRequest r where r.requestId.id = :requestId")})
 public class ReviewCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,7 +66,6 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     @Size(max = 1500)
     @Column(name = "observations")
     private String observations;
-
 
     public ReviewCollectionsRequest() {
     }
@@ -120,7 +121,7 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     public void setProductId(Product productId) {
         this.productId = productId;
     }
-    
+
     public String getObservations() {
         return observations;
     }
