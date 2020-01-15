@@ -72,6 +72,8 @@ public class User implements Serializable {
     @Size(max = 40)
     @Column(name = "lastNames")
     private String lastNames;
+    @Column(name = "identificationNumber")
+    private String identificationNumber;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
@@ -147,6 +149,14 @@ public class User implements Serializable {
 
     public void setLastNames(String lastNames) {
         this.lastNames = lastNames;
+    }
+    
+    public String getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public void setIdentificationNumber(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
     }
 
     public Person getPersonId() {
