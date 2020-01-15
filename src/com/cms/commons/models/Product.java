@@ -50,6 +50,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Product.findByEndDateValidity", query = "SELECT p FROM Product p WHERE p.endDateValidity = :endDateValidity")})
 public class Product extends AbstractDistributionEntity implements Serializable {
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ProductHasChannelHasTransaction productHasChannelHasTransaction;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -134,8 +137,6 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private Float minimumBalance;
     @Column(name = "maximumBalance")
     private Float maximumBalance;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private ProductHasChannel productHasChannel;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ReviewCollectionsRequest reviewCollectionsRequest;
 
@@ -438,12 +439,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.reviewCollectionsRequest = reviewCollectionsRequest;
     }
 
-    public ProductHasChannel getProductHasChannel() {
-        return productHasChannel;
+    public ProductHasChannelHasTransaction getProductHasChannelHasTransaction() {
+        return productHasChannelHasTransaction;
     }
 
-    public void setProductHasChannel(ProductHasChannel productHasChannel) {
-        this.productHasChannel = productHasChannel;
+    public void setProductHasChannelHasTransaction(ProductHasChannelHasTransaction productHasChannelHasTransaction) {
+        this.productHasChannelHasTransaction = productHasChannelHasTransaction;
     }
     
 }
