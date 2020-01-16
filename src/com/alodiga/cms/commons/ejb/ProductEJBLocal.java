@@ -9,6 +9,7 @@ import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.CommerceCategory;
+import com.cms.commons.models.GeneralRate;
 import com.cms.commons.models.LevelProduct;
 import com.cms.commons.models.Product;
 import com.cms.commons.models.ProductHasCommerceCategory;
@@ -78,5 +79,9 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Transaction loadTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Transaction saveTransaction(Transaction transaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+
+    //GeneralRate
+    public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
