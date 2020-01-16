@@ -54,8 +54,6 @@ public class Transaction implements Serializable {
     private String description;
     @Column(name = "indMonetaryType")
     private Short indMonetaryType;
-    @OneToMany(mappedBy = "transactionId")
-    private Collection<ProductHasChannel> productHasChannelCollection;
 
     public Transaction() {
     }
@@ -99,16 +97,6 @@ public class Transaction implements Serializable {
 
     public void setIndMonetaryType(Short indMonetaryType) {
         this.indMonetaryType = indMonetaryType;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProductHasChannel> getProductHasChannelCollection() {
-        return productHasChannelCollection;
-    }
-
-    public void setProductHasChannelCollection(Collection<ProductHasChannel> productHasChannelCollection) {
-        this.productHasChannelCollection = productHasChannelCollection;
     }
 
     @Override
