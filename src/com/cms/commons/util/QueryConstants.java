@@ -83,6 +83,7 @@ public class QueryConstants {
     public static final String LOAD_CURRENT_BALANCE_HISTORY_BY_ACCOUNT = "loadCurrentBalanceHistoryByAccount";
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
+    public static final String REVIEW_COLLECTIONS_REQUEST_BY_REQUEST = "reviewCollectionsRequestByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";
@@ -101,6 +102,7 @@ public class QueryConstants {
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
+    public static final String PARAM_REQUEST_ID = "requestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PROGRAM_ID = "programId";
