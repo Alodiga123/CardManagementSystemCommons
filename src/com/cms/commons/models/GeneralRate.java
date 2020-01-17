@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -34,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "GeneralRate.findByTotalInitialTransactionsExempt", query = "SELECT g FROM GeneralRate g WHERE g.totalInitialTransactionsExempt = :totalInitialTransactionsExempt")
     , @NamedQuery(name = "GeneralRate.findByTotalTransactionsExemptPerMonth", query = "SELECT g FROM GeneralRate g WHERE g.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth")
     , @NamedQuery(name = "GeneralRate.findByIndCardHolderModification", query = "SELECT g FROM GeneralRate g WHERE g.indCardHolderModification = :indCardHolderModification")})
-public class GeneralRate implements Serializable {
+public class GeneralRate extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -187,6 +189,16 @@ public class GeneralRate implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.GeneralRate[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
