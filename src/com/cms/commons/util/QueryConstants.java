@@ -26,6 +26,7 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
     public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
+    public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
@@ -36,6 +37,7 @@ public class QueryConstants {
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
+    public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
@@ -103,6 +105,7 @@ public class QueryConstants {
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PROGRAM_ID = "programId";
