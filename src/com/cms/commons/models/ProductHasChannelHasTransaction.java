@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,22 +28,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "parameterProductHasChannel")
+@Table(name = "productHasChannelHasTransaction")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ParameterProductHasChannel.findAll", query = "SELECT p FROM ParameterProductHasChannel p")
-    , @NamedQuery(name = "ParameterProductHasChannel.findById", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.id = :id")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByMaximumNumberTransactionsDaily", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.maximumNumberTransactionsDaily = :maximumNumberTransactionsDaily")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByMaximumNumberTransactionsMonthly", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.maximumNumberTransactionsMonthly = :maximumNumberTransactionsMonthly")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByAmountMinimumTransactionDomestic", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.amountMinimumTransactionDomestic = :amountMinimumTransactionDomestic")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByAmountMaximumTransactionDomestic", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.amountMaximumTransactionDomestic = :amountMaximumTransactionDomestic")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByAmountMinimumTransactionInternational", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.amountMinimumTransactionInternational = :amountMinimumTransactionInternational")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByAmountMaximumTransactionInternational", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.amountMaximumTransactionInternational = :amountMaximumTransactionInternational")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByDailyAmountLimitDomestic", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.dailyAmountLimitDomestic = :dailyAmountLimitDomestic")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByMonthlyAmountLimitDomestic", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.monthlyAmountLimitDomestic = :monthlyAmountLimitDomestic")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByDailyAmountLimitInternational", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.dailyAmountLimitInternational = :dailyAmountLimitInternational")
-    , @NamedQuery(name = "ParameterProductHasChannel.findByMonthlyAmountLimitInternational", query = "SELECT p FROM ParameterProductHasChannel p WHERE p.monthlyAmountLimitInternational = :monthlyAmountLimitInternational")})
-public class ParameterProductHasChannel implements Serializable {
+    @NamedQuery(name = "ProductHasChannelHasTransaction.findAll", query = "SELECT p FROM ProductHasChannelHasTransaction p")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findById", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.id = :id")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMaximumNumberTransactionsDaily", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.maximumNumberTransactionsDaily = :maximumNumberTransactionsDaily")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMaximumNumberTransactionsMonthly", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.maximumNumberTransactionsMonthly = :maximumNumberTransactionsMonthly")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByAmountMinimumTransactionDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.amountMinimumTransactionDomestic = :amountMinimumTransactionDomestic")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByAmountMaximumTransactionDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.amountMaximumTransactionDomestic = :amountMaximumTransactionDomestic")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByAmountMinimumTransactionInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.amountMinimumTransactionInternational = :amountMinimumTransactionInternational")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByAmountMaximumTransactionInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.amountMaximumTransactionInternational = :amountMaximumTransactionInternational")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByDailyAmountLimitDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.dailyAmountLimitDomestic = :dailyAmountLimitDomestic")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMonthlyAmountLimitDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.monthlyAmountLimitDomestic = :monthlyAmountLimitDomestic")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByDailyAmountLimitInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.dailyAmountLimitInternational = :dailyAmountLimitInternational")
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMonthlyAmountLimitInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.monthlyAmountLimitInternational = :monthlyAmountLimitInternational")
+    , @NamedQuery(name = QueryConstants.PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT, query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.productId.id=:productId")})
+public class ProductHasChannelHasTransaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -68,14 +73,23 @@ public class ParameterProductHasChannel implements Serializable {
     private Float dailyAmountLimitInternational;
     @Column(name = "monthlyAmountLimitInternational")
     private Float monthlyAmountLimitInternational;
-    @JoinColumn(name = "productHasChannelId", referencedColumnName = "id")
+    @JoinColumn(name = "productUseId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private ProductHasChannel productHasChannelId;
+    private ProductUse productUseId;
+    @JoinColumn(name = "transactionId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Transaction transactionId;
+    @JoinColumn(name = "channelId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Channel channelId;
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Product productId;
 
-    public ParameterProductHasChannel() {
+    public ProductHasChannelHasTransaction() {
     }
 
-    public ParameterProductHasChannel(Long id) {
+    public ProductHasChannelHasTransaction(Long id) {
         this.id = id;
     }
 
@@ -167,12 +181,36 @@ public class ParameterProductHasChannel implements Serializable {
         this.monthlyAmountLimitInternational = monthlyAmountLimitInternational;
     }
 
-    public ProductHasChannel getProductHasChannelId() {
-        return productHasChannelId;
+    public ProductUse getProductUseId() {
+        return productUseId;
     }
 
-    public void setProductHasChannelId(ProductHasChannel productHasChannelId) {
-        this.productHasChannelId = productHasChannelId;
+    public void setProductUseId(ProductUse productUseId) {
+        this.productUseId = productUseId;
+    }
+
+    public Transaction getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Transaction transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public Channel getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Channel channelId) {
+        this.channelId = channelId;
+    }
+
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
 
     @Override
@@ -185,10 +223,10 @@ public class ParameterProductHasChannel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ParameterProductHasChannel)) {
+        if (!(object instanceof ProductHasChannelHasTransaction)) {
             return false;
         }
-        ParameterProductHasChannel other = (ParameterProductHasChannel) object;
+        ProductHasChannelHasTransaction other = (ProductHasChannelHasTransaction) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -197,7 +235,16 @@ public class ParameterProductHasChannel implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.ParameterProductHasChannel[ id=" + id + " ]";
+        return "com.cms.commons.models.ProductHasChannelHasTransaction[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

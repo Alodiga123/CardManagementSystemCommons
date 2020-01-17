@@ -62,5 +62,7 @@ public class EjbConstants {
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
+    public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
 
 }
