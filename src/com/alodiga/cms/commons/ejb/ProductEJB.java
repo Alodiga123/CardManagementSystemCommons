@@ -1,6 +1,5 @@
 package com.alodiga.cms.commons.ejb;
 
-import com.alodiga.cms.commons.exception.DisabledAccountException;
 import com.alodiga.cms.commons.exception.EmptyListException;
 import javax.ejb.Remote;
 import com.alodiga.cms.commons.exception.GeneralException;
@@ -8,15 +7,18 @@ import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
+import com.cms.commons.models.Channel;
 import com.cms.commons.models.CommerceCategory;
 import com.cms.commons.models.LevelProduct;
 import com.cms.commons.models.Product;
+import com.cms.commons.models.ProductHasChannelHasTransaction;
 import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
 import com.cms.commons.models.SegmentCommerce;
 import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
+import com.cms.commons.models.Transaction;
 import java.util.List;
 
 /**
@@ -72,4 +74,21 @@ public interface ProductEJB extends DistributionGenericEJB {
     public ProductHasCommerceCategory loadProductHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductHasCommerceCategory saveProductHasCommerceCategory(ProductHasCommerceCategory productHasCommerceCategory) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ProductHasCommerceCategory> getCommerceCategoryByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
+    //ProductHasChannelHasTransaction
+    public List<ProductHasChannelHasTransaction> getProductHasChannelHasTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProductHasChannelHasTransaction loadProductHasChannelHasTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProductHasChannelHasTransaction saveProductHasChannelHasTransaction(ProductHasChannelHasTransaction productHasChannelHasTransaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //Transaction
+    public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Transaction loadTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Transaction saveTransaction(Transaction transaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Channel
+    public List<Channel> getChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
 }
