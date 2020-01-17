@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -36,7 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Transaction.findByCode", query = "SELECT t FROM Transaction t WHERE t.code = :code")
     , @NamedQuery(name = "Transaction.findByDescription", query = "SELECT t FROM Transaction t WHERE t.description = :description")
     , @NamedQuery(name = "Transaction.findByIndMonetaryType", query = "SELECT t FROM Transaction t WHERE t.indMonetaryType = :indMonetaryType")})
-public class Transaction implements Serializable {
+public class Transaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,7 +57,7 @@ public class Transaction implements Serializable {
     @Column(name = "indMonetaryType")
     private Short indMonetaryType;
     @OneToMany(mappedBy = "transactionId")
-    private Collection<ProductHasChannel> productHasChannelCollection;
+    private Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection;
 
     public Transaction() {
     }
@@ -103,12 +105,12 @@ public class Transaction implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<ProductHasChannel> getProductHasChannelCollection() {
-        return productHasChannelCollection;
+    public Collection<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionCollectionCollection() {
+        return productHasChannelHasTransactionCollection;
     }
 
-    public void setProductHasChannelCollection(Collection<ProductHasChannel> productHasChannelCollection) {
-        this.productHasChannelCollection = productHasChannelCollection;
+    public void setProductHasChannelHasTransactionCollectionCollection(Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection) {
+        this.productHasChannelHasTransactionCollection = productHasChannelHasTransactionCollection;
     }
 
     @Override
@@ -135,5 +137,16 @@ public class Transaction implements Serializable {
     public String toString() {
         return "com.cms.commons.models.Transaction[ id=" + id + " ]";
     }
+
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }
