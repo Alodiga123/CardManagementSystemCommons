@@ -1,17 +1,20 @@
---Cambios Sprint 4
--- Agregar tabla reasonRejectionRequest
--- author: Jesús Gómez
--- Fecha: 10/01/2020
+RENAME TABLE `CardManagementSystem`.`allowedChannels` TO `CardManagementSystem`.`productHasChannel`;
 
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`reasonRejectionRequest` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(50) NOT NULL,
+  `code` VARCHAR(50) NOT NULL,
+  `description` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
--- Agregar FK en tabla request
--- author: Jesús Gómez
--- Fecha: 10/01/2020
+INSERT INTO `CardManagementSystem`.`reasonRejectionRequest`
+(`code`,`description`)
+VALUES 
+("RECAUDOS","La solicitud no contempla los recaudos requeridos"),
+("LISTAS NEGRAS","Algún relacionados a la solicitud está en Listas Negras"),
+("CREDITICIA","La evaluación crediticia no fue satisfactoria"),
+("RIESGOS","La evaluación de riesgos no fue satisfactoria");
+
 ALTER TABLE `CardManagementSystem`.`request` 
 ADD COLUMN `reasonRejectionRequestId` INT NULL;
 ALTER TABLE `CardManagementSystem`.`request` 
@@ -21,9 +24,6 @@ FOREIGN KEY (`reasonRejectionRequestId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
--- Agregar tabla comercialAgency
--- author: Jesús Gómez
--- Fecha: 10/01/2020
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`comercialAgency` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(80) NOT NULL,
@@ -46,9 +46,6 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`employedPosition` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
--- Agregar tabla employee
--- author: Jesús Gómez
--- Fecha: 10/01/2020
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`employee` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstNames` VARCHAR(40) NULL,
@@ -148,190 +145,6 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`reviewCollectionsRequest` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- Agregar tabla system
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`system` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `code` VARCHAR(20) NOT NULL,
-  `name` VARCHAR(50) NOT NULL,
-  `description` VARCHAR(500) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
--- Agregar tabla systemOptionType
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemOptionType` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
--- Agregar tabla Option
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`option` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
-  `level` INT NULL,
-  `systemOptionTypeId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_option_systemOptionType1_idx` (`systemOptionTypeId` ASC),
-  CONSTRAINT `fk_option_systemOptionType1`
-    FOREIGN KEY (`systemOptionTypeId`)
-    REFERENCES `CardManagementSystem`.`systemOptionType` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla systemOption
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemOption` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `systemId` INT NOT NULL,
-  `systemOptionId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_systemHasSystemOption_system1_idx` (`systemId` ASC),
-  INDEX `fk_systemHasSystemOption_systemOption1_idx` (`systemOptionId` ASC),
-  CONSTRAINT `fk_systemHasSystemOption_system1`
-    FOREIGN KEY (`systemId`)
-    REFERENCES `CardManagementSystem`.`system` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_systemHasSystemOption_systemOption1`
-    FOREIGN KEY (`systemOptionId`)
-    REFERENCES `CardManagementSystem`.`option` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla profile
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`profile` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `code` VARCHAR(20) NOT NULL,
-  `name` VARCHAR(40) NOT NULL,
-  `description` VARCHAR(250) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
--- Agregar tabla profileHasSystemOption
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`profileHasSystemOption` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `profileId` INT NOT NULL,
-  `systemOptionId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_profileHasSystemOption_profile1_idx` (`profileId` ASC),
-  INDEX `fk_profileHasSystemOption_systemOption1_idx` (`systemOptionId` ASC),
-  CONSTRAINT `fk_profileHasSystemOption_profile1`
-    FOREIGN KEY (`profileId`)
-    REFERENCES `CardManagementSystem`.`profile` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_profileHasSystemOption_systemOption1`
-    FOREIGN KEY (`systemOptionId`)
-    REFERENCES `CardManagementSystem`.`systemOption` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla accessSystemParticular
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accessSystemParticular` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(40) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
--- Agregar tabla accessSystemType
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accessSystemType` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR(40) NOT NULL,
-  `accessSystemParticularId` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_accessSystemType_accessSystemParticular1_idx` (`accessSystemParticularId` ASC),
-  CONSTRAINT `fk_accessSystemType_accessSystemParticular1`
-    FOREIGN KEY (`accessSystemParticularId`)
-    REFERENCES `CardManagementSystem`.`accessSystemParticular` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla rol
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rol` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `code` VARCHAR(20) NULL,
-  `name` VARCHAR(40) NULL,
-  `description` VARCHAR(250) NULL,
-  `accessSystemTypeId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_rol_accessSystemType1_idx` (`accessSystemTypeId` ASC),
-  CONSTRAINT `fk_rol_accessSystemType1`
-    FOREIGN KEY (`accessSystemTypeId`)
-    REFERENCES `CardManagementSystem`.`accessSystemType` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla rolHasProfileHasSystemOption
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rolHasProfileHasSystemOption` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `rolId` INT NOT NULL,
-  `profileHasSystemOptionId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_rolHasProfileHasSystemOption_rol1_idx` (`rolId` ASC),
-  INDEX `fk_rolHasProfileHasSystemOption_profileHasSystemOption1_idx` (`profileHasSystemOptionId` ASC),
-  CONSTRAINT `fk_rolHasProfileHasSystemOption_rol1`
-    FOREIGN KEY (`rolId`)
-    REFERENCES `CardManagementSystem`.`rol` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rolHasProfileHasSystemOption_profileHasSystemOption1`
-    FOREIGN KEY (`profileHasSystemOptionId`)
-    REFERENCES `CardManagementSystem`.`profileHasSystemOption` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Agregar tabla userHasRol
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`userHasRol` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `rolId` INT NOT NULL,
-  `userId` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_userHasRol_rol1_idx` (`rolId` ASC),
-  INDEX `fk_userHasRol_user1_idx` (`userId` ASC),
-  CONSTRAINT `fk_userHasRol_rol1`
-    FOREIGN KEY (`rolId`)
-    REFERENCES `CardManagementSystem`.`rol` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_userHasRol_user1`
-    FOREIGN KEY (`userId`)
-    REFERENCES `CardManagementSystem`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- Cambiar nombre de tabla allowedChannels
--- author: Jesús Gómez
--- Fecha: 10/01/2020
-RENAME TABLE `CardManagementSystem`.`allowedChannels` TO `CardManagementSystem`.`productHasChannel`; 
-
 -- Agregar campos en tabla product
 -- author: Jesús Gómez
 -- Fecha: 10/01/2020
@@ -386,3 +199,164 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`parameterProductHasChannel` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Agregar campos en tabla reviewCollectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 13/01/2020
+ALTER TABLE `CardManagementSystem`.`reviewCollectionsRequest` 
+ADD COLUMN `observations` VARCHAR(1500) NULL;
+
+-- Cambiar tipo de índice productId en la tabla productHasCommerceCategory
+-- author: Jesús Gómez
+-- Fecha: 13/01/2020
+ALTER TABLE `CardManagementSystem`.`productHasCommerceCategory` 
+DROP INDEX `productId` ,
+ADD INDEX `productId` (`productId` ASC);
+
+-- Agregar campos en tabla user
+-- author: Jesús Gómez
+-- Fecha: 14/01/2020
+ALTER TABLE `CardManagementSystem`.`user` 
+ADD COLUMN `identificationNumber` VARCHAR(40) NULL;
+
+-- Eliminar tabla parameterProductHasChannel
+-- author: Jesús Gómez
+-- Fecha: 15/01/2020
+DROP TABLE `CardManagementSystem`.`parameterProductHasChannel`;
+
+-- Eliminar tabla productHasChannel
+-- author: Jesús Gómez
+-- Fecha: 15/01/2020
+DROP TABLE `CardManagementSystem`.`productHasChannel`;
+
+-- Agregar tabla productHasChannelHasTransaction
+-- author: Jesús Gómez
+-- Fecha: 15/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`productHasChannelHasTransaction` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `maximumNumberTransactionsDaily` INT NULL,
+  `maximumNumberTransactionsMonthly` INT NULL,
+  `amountMinimumTransactionDomestic` FLOAT NULL,
+  `amountMaximumTransactionDomestic` FLOAT NULL,
+  `amountMinimumTransactionInternational` FLOAT NULL,
+  `amountMaximumTransactionInternational` FLOAT NULL,
+  `dailyAmountLimitDomestic` FLOAT NULL,
+  `monthlyAmountLimitDomestic` FLOAT NULL,
+  `dailyAmountLimitInternational` FLOAT NULL,
+  `monthlyAmountLimitInternational` FLOAT NULL,
+  `productUseId` INT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `channelId` INT NOT NULL,
+  `productId` BIGINT UNIQUE NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_parameterProductHasChannel_productUse1_idx` (`productUseId` ASC),
+  INDEX `fk_parameterProductHasChannel_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_parameterProductHasChannel_channel1_idx` (`channelId` ASC),
+  INDEX `fk_parameterProductHasChannel_product1_idx` (`productId` ASC),
+  CONSTRAINT `fk_parameterProductHasChannel_productUse1`
+    FOREIGN KEY (`productUseId`)
+    REFERENCES `CardManagementSystem`.`productUse` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_parameterProductHasChannel_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_parameterProductHasChannel_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_parameterProductHasChannel_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `CardManagementSystem`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla rateApplicationType
+-- author: Jesús Gómez
+-- Fecha: 16/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateApplicationType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar tabla generalRate
+-- author: Jesús Gómez
+-- Fecha: 16/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`generalRate` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `countryId` INT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `productTypeId` INT NOT NULL,
+  `channelId` INT NOT NULL,
+  `fixedRate` FLOAT NULL,
+  `percentageRate` FLOAT NULL,
+  `totalInitialTransactionsExempt` INT NULL,
+  `totalTransactionsExemptPerMonth` INT NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `indCardHolderModification` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_generalRate_country1_idx` (`countryId` ASC),
+  INDEX `fk_generalRate_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_generalRate_productType1_idx` (`productTypeId` ASC),
+  INDEX `fk_generalRate_channel1_idx` (`channelId` ASC),
+  INDEX `fk_generalRate_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  CONSTRAINT `fk_generalRate_country1`
+    FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_generalRate_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_generalRate_productType1`
+    FOREIGN KEY (`productTypeId`)
+    REFERENCES `CardManagementSystem`.`productType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_generalRate_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_generalRate_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar índice en tabla generalRate
+-- author: Jesús Gómez
+-- Fecha: 17/01/2020
+ALTER TABLE `CardManagementSystem`.`generalRate` 
+ADD UNIQUE INDEX `fk_generalRate_idx` (`countryId` ASC, `productTypeId` ASC, `channelId` ASC, `transactionId` ASC);
+
+-- Eliminar FKs tabla issuer
+-- author: Jesús Gómez
+-- Fecha: 17/01/2020
+ALTER TABLE `CardManagementSystem`.`issuer`
+DROP FOREIGN KEY `fk_issuer_person2`;
+ALTER TABLE `CardManagementSystem`.`issuer` 
+DROP INDEX  `contactPersonId`;
+ALTER TABLE `CardManagementSystem`.`issuer` 
+DROP INDEX  `fk_issuer_person2_idx`;
+ALTER TABLE `CardManagementSystem`.`issuer` 
+DROP COLUMN `contactPersonId`;
+
+-- Agregar campos en tabla issuer
+-- author: Jesús Gómez
+-- Fecha: 17/01/2020
+ALTER TABLE `CardManagementSystem`.`issuer` 
+ADD COLUMN `personContactName` VARCHAR(60) NULL,
+ADD COLUMN `emailPersonContact` VARCHAR(80) NULL;
+
+
+
+

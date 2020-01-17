@@ -66,8 +66,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private PhonePerson phonePerson;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "issuerPersonId")
     private Issuer issuer;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "contactPersonId")
-    private Issuer issuer1;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -171,14 +169,6 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setIssuer(Issuer issuer) {
         this.issuer = issuer;
-    }
-
-    public Issuer getIssuer1() {
-        return issuer1;
-    }
-
-    public void setIssuer1(Issuer issuer1) {
-        this.issuer1 = issuer1;
     }
 
     public Country getCountryId() {
