@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -39,8 +42,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ProductHasChannelHasTransaction.findByDailyAmountLimitDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.dailyAmountLimitDomestic = :dailyAmountLimitDomestic")
     , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMonthlyAmountLimitDomestic", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.monthlyAmountLimitDomestic = :monthlyAmountLimitDomestic")
     , @NamedQuery(name = "ProductHasChannelHasTransaction.findByDailyAmountLimitInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.dailyAmountLimitInternational = :dailyAmountLimitInternational")
-    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMonthlyAmountLimitInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.monthlyAmountLimitInternational = :monthlyAmountLimitInternational")})
-public class ProductHasChannelHasTransaction implements Serializable {
+    , @NamedQuery(name = "ProductHasChannelHasTransaction.findByMonthlyAmountLimitInternational", query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.monthlyAmountLimitInternational = :monthlyAmountLimitInternational")
+    , @NamedQuery(name = QueryConstants.PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT, query = "SELECT p FROM ProductHasChannelHasTransaction p WHERE p.productId.id=:productId")})
+public class ProductHasChannelHasTransaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -233,5 +237,14 @@ public class ProductHasChannelHasTransaction implements Serializable {
     public String toString() {
         return "com.cms.commons.models.ProductHasChannelHasTransaction[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
