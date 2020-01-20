@@ -8,9 +8,7 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +18,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -72,6 +67,10 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
     private String webSite;
     @Column(name = "faxNumber")
     private String faxNumber;
+    @Column(name = "personContactName")
+    private String personContactName;
+    @Column(name = "emailPersonContact")
+    private String emailPersonContact;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -81,9 +80,6 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
     @JoinColumn(name = "issuerPersonId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person issuerPersonId;
-    @JoinColumn(name = "contactPersonId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Person contactPersonId;
 
     public Issuer() {
     }
@@ -171,6 +167,22 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
     public void setFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
     }
+    
+    public String getPersonContactName() {
+        return personContactName;
+    }
+
+    public void setPersonContactName(String personContactName) {
+        this.personContactName = personContactName;
+    }
+    
+    public String getEmailPersonContact() {
+        return emailPersonContact;
+    }
+
+    public void setEmailPersonContact(String emailPersonContact) {
+        this.emailPersonContact = emailPersonContact;
+    }
 
     public Country getCountryId() {
         return countryId;
@@ -194,14 +206,6 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
 
     public void setIssuerPersonId(Person issuerPersonId) {
         this.issuerPersonId = issuerPersonId;
-    }
-
-    public Person getContactPersonId() {
-        return contactPersonId;
-    }
-
-    public void setContactPersonId(Person contactPersonId) {
-        this.contactPersonId = contactPersonId;
     }
 
     @Override

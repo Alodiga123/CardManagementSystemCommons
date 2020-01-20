@@ -9,12 +9,14 @@ import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.Channel;
 import com.cms.commons.models.CommerceCategory;
+import com.cms.commons.models.GeneralRate;
 import com.cms.commons.models.LevelProduct;
 import com.cms.commons.models.Product;
 import com.cms.commons.models.ProductHasChannelHasTransaction;
 import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
+import com.cms.commons.models.RateApplicationType;
 import com.cms.commons.models.SegmentCommerce;
 import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
@@ -91,4 +93,14 @@ public interface ProductEJB extends DistributionGenericEJB {
     public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
+    
+    //GeneralRate
+    public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //RateApplicationType
+    public List<RateApplicationType> getRateApplicationType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateApplicationType loadRateApplicationType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateApplicationType saveRateApplicationType(RateApplicationType rateApplicationType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
