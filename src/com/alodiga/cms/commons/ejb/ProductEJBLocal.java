@@ -1,6 +1,5 @@
 package com.alodiga.cms.commons.ejb;
 
-import com.alodiga.cms.commons.exception.DisabledAccountException;
 import com.alodiga.cms.commons.exception.EmptyListException;
 import javax.ejb.Local;
 import com.alodiga.cms.commons.exception.GeneralException;
@@ -13,6 +12,7 @@ import com.cms.commons.models.CommerceCategory;
 import com.cms.commons.models.GeneralRate;
 import com.cms.commons.models.LevelProduct;
 import com.cms.commons.models.Product;
+import com.cms.commons.models.ProductHasChannelHasTransaction;
 import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
@@ -77,23 +77,29 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public ProductHasCommerceCategory saveProductHasCommerceCategory(ProductHasCommerceCategory productHasCommerceCategory) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ProductHasCommerceCategory> getCommerceCategoryByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
-    //Transaction
-    public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Transaction loadTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Transaction saveTransaction(Transaction transaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     //GeneralRate
     public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    //Channel
-    public List<Channel> getChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
     //RateApplicationType
     public List<RateApplicationType> getRateApplicationType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RateApplicationType loadRateApplicationType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RateApplicationType saveRateApplicationType(RateApplicationType rateApplicationType) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //ProductHasChannelHasTransaction
+    public List<ProductHasChannelHasTransaction> getProductHasChannelHasTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProductHasChannelHasTransaction loadProductHasChannelHasTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProductHasChannelHasTransaction saveProductHasChannelHasTransaction(ProductHasChannelHasTransaction productHasChannelHasTransaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //Transaction
+    public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Transaction loadTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Transaction saveTransaction(Transaction transaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //Channel
+    public List<Channel> getChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
