@@ -357,6 +357,161 @@ ALTER TABLE `CardManagementSystem`.`issuer`
 ADD COLUMN `personContactName` VARCHAR(60) NULL,
 ADD COLUMN `emailPersonContact` VARCHAR(80) NULL;
 
+-- Agregar tabla daysWeek
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`daysWeek` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `day` VARCHAR(20) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar tabla programLoyaltyType
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`programLoyaltyType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar tabla statusProgramLoyalty
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusProgramLoyalty` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar tabla programLoyalty
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`programLoyalty` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `programId` BIGINT NOT NULL,
+  `productId` BIGINT UNIQUE NOT NULL,
+  `description` VARCHAR(1500) NULL,
+  `startDate` DATE NULL,
+  `endDate` DATE NULL,
+  `programLoyaltyTypeId` INT NOT NULL,
+  `conversionRatePoints` FLOAT NULL,
+  `statusProgramLoyaltyId` INT NOT NULL,
+  `observations` VARCHAR(1500) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_programLoyalty_program1_idx` (`programId` ASC),
+  INDEX `fk_programLoyalty_product1_idx` (`productId` ASC),
+  INDEX `fk_programLoyalty_programLoyaltyType1_idx` (`programLoyaltyTypeId` ASC),
+  INDEX `fk_programLoyalty_statusProgramLoyalty1_idx` (`statusProgramLoyaltyId` ASC),
+  CONSTRAINT `fk_programLoyalty_program1`
+    FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programLoyalty_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `CardManagementSystem`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programLoyalty_programLoyaltyType1`
+    FOREIGN KEY (`programLoyaltyTypeId`)
+    REFERENCES `CardManagementSystem`.`programLoyaltyType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programLoyalty_statusProgramLoyalty1`
+    FOREIGN KEY (`statusProgramLoyaltyId`)
+    REFERENCES `CardManagementSystem`.`statusProgramLoyalty` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla daysWeekHasProgramLoyalty
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`daysWeekHasProgramLoyalty` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `programLoyaltyId` BIGINT NOT NULL,
+  `daysWeekId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_daysWeekHasProgramLoyalty_programLoyalty1_idx` (`programLoyaltyId` ASC),
+  INDEX `fk_daysWeekHasProgramLoyalty_daysWeek1_idx` (`daysWeekId` ASC),
+  CONSTRAINT `fk_daysWeekHasProgramLoyalty_programLoyalty1`
+    FOREIGN KEY (`programLoyaltyId`)
+    REFERENCES `CardManagementSystem`.`programLoyalty` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_daysWeekHasProgramLoyalty_daysWeek1`
+    FOREIGN KEY (`daysWeekId`)
+    REFERENCES `CardManagementSystem`.`daysWeek` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla programLoyaltyTransaction
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`programLoyaltyTransaction` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `channelId` INT NOT NULL,
+  `programLoyaltyId` BIGINT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `totalPointsValue` FLOAT NULL,
+  `totalBonificationPercentageValue` FLOAT NULL,
+  `totalBonificationFixedValue` FLOAT NULL,
+  `totalMaximumTransactionsPoints` FLOAT NULL,
+  `totalMaximumTransactionsBonification` FLOAT NULL,
+  `totalAmountDailyPoints` FLOAT NULL,
+  `totalAmountMonthlyPoints` FLOAT NULL,
+  `totalAmountDailyBonification` FLOAT NULL,
+  `totalAmountMonthlyBonification` FLOAT NULL,
+  `ActivationCardBonification` FLOAT NULL,
+  `ActivationCardPoints` FLOAT NULL,
+  `renovationCardBonification` FLOAT NULL,
+  `renovationCardPoints` VARCHAR(45) NULL,
+  `indBonificationFixed` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_table1_channel1_idx` (`channelId` ASC),
+  INDEX `fk_programLoyaltyHasTransactionHasChannel_programLoyalty1_idx` (`programLoyaltyId` ASC),
+  INDEX `fk_programLoyaltyHasTransactionHasChannel_transaction1_idx` (`transactionId` ASC),
+  CONSTRAINT `fk_table1_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programLoyaltyHasTransactionHasChannel_programLoyalty1`
+    FOREIGN KEY (`programLoyaltyId`)
+    REFERENCES `CardManagementSystem`.`programLoyalty` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programLoyaltyHasTransactionHasChannel_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla loyaltyTransactionHasCommerceCategory
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`loyaltyTransactionHasCommerceCategory` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `commerceCategoryId` INT NOT NULL,
+  `programLoyaltyTransactionId` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_loyaltyTransactionHasCommerceCategory_commerceCategory1_idx` (`commerceCategoryId` ASC),
+  INDEX `fk_loyaltyTransactionHasCommerceCategory_programLoyaltyTran_idx` (`programLoyaltyTransactionId` ASC),
+  CONSTRAINT `fk_loyaltyTransactionHasCommerceCategory_commerceCategory1`
+    FOREIGN KEY (`commerceCategoryId`)
+    REFERENCES `CardManagementSystem`.`commerceCategory` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_loyaltyTransactionHasCommerceCategory_programLoyaltyTransa1`
+    FOREIGN KEY (`programLoyaltyTransactionId`)
+    REFERENCES `CardManagementSystem`.`programLoyaltyTransaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 
 
