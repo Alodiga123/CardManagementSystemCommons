@@ -51,6 +51,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Product extends AbstractDistributionEntity implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ProgramLoyalty programLoyalty;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProductHasChannelHasTransaction productHasChannelHasTransaction;
 
     private static final long serialVersionUID = 1L;
@@ -435,6 +438,14 @@ public class Product extends AbstractDistributionEntity implements Serializable 
 
     public void setProductHasChannelHasTransaction(ProductHasChannelHasTransaction productHasChannelHasTransaction) {
         this.productHasChannelHasTransaction = productHasChannelHasTransaction;
+    }
+
+    public ProgramLoyalty getProgramLoyalty() {
+        return programLoyalty;
+    }
+
+    public void setProgramLoyalty(ProgramLoyalty programLoyalty) {
+        this.programLoyalty = programLoyalty;
     }
     
 }
