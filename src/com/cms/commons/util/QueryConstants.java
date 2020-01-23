@@ -24,6 +24,7 @@ public class QueryConstants {
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
+    public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
@@ -111,6 +112,7 @@ public class QueryConstants {
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
+    public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";

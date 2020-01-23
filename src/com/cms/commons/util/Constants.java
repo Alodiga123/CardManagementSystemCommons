@@ -44,6 +44,7 @@ public class Constants {
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
     public static final Long APPLICANT_NATURAL_PERSON = 3L;
     public static final Long PERSON_ID_LEGAL_REPRESENTATIVE = 1L;
@@ -66,6 +67,7 @@ public class Constants {
         public static final String APPLICANT_NATURAL_PERSON_KEY = "applicantNaturalPersonId";
         public static final String NETWORK_BY_PROGRAM = "programId";
         public static final String PRODUCT_KEY = "productId";
+        public static final String PROGRAM_LOYALTY_KEY = "programLoyaltyId";
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
