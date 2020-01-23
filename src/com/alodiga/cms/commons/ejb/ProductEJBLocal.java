@@ -17,6 +17,7 @@ import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
 import com.cms.commons.models.RateApplicationType;
+import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.SegmentCommerce;
 import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
@@ -79,6 +80,7 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     
     //GeneralRate
     public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<GeneralRate> getGeneralRateByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -102,4 +104,11 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<Channel> getChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //RateByProgram
+    public List<RateByProgram> getRateByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RateByProgram> getRateByProgramByTransactionByChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RateByProgram> getRateByProgramByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateByProgram loadRateByProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateByProgram saveRateByProgram(RateByProgram rateByProgram) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
