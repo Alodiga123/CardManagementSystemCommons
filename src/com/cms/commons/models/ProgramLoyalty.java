@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -44,7 +46,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "ProgramLoyalty.findByEndDate", query = "SELECT p FROM ProgramLoyalty p WHERE p.endDate = :endDate")
     , @NamedQuery(name = "ProgramLoyalty.findByConversionRatePoints", query = "SELECT p FROM ProgramLoyalty p WHERE p.conversionRatePoints = :conversionRatePoints")
     , @NamedQuery(name = "ProgramLoyalty.findByObservations", query = "SELECT p FROM ProgramLoyalty p WHERE p.observations = :observations")})
-public class ProgramLoyalty implements Serializable {
+public class ProgramLoyalty extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -216,4 +218,13 @@ public class ProgramLoyalty implements Serializable {
         return "com.cms.commons.models.ProgramLoyalty[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
