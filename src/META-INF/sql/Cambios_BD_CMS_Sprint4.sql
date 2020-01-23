@@ -512,6 +512,50 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`loyaltyTransactionHasCommerce
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Agregar tabla ratesByProgram
+-- author: Jesús Gómez
+-- Fecha: 20/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateByProgram` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `programId` BIGINT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `channelId` INT NOT NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `fixedRate` FLOAT NULL,
+  `percentageRate` FLOAT NULL,
+  `totalInitialTransactionsExempt` INT NULL,
+  `totalTransactionsExemptPerMonth` INT NULL,
+  `indCardHolderModification` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ratesByProgram_program1_idx` (`programId` ASC),
+  INDEX `fk_ratesByProgram_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_ratesByProgram_channel1_idx` (`channelId` ASC),
+  INDEX `fk_ratesByProgram_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  CONSTRAINT `fk_ratesByProgram_program1`
+    FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ratesByProgram_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ratesByProgram_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ratesByProgram_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+ALTER TABLE `CardManagementSystem`.`rateByProgram` 
+ADD UNIQUE INDEX `fk_rateByProgram_unique` (`transactionId` ASC, `channelId` ASC, `programId` ASC);
+
 
 
 
