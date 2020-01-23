@@ -45,8 +45,6 @@ public class RateApplicationType implements Serializable {
     @Size(max = 40)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rateApplicationTypeId")
-    private Collection<GeneralRate> generalRateCollection;
 
     public RateApplicationType() {
     }
@@ -69,16 +67,6 @@ public class RateApplicationType implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<GeneralRate> getGeneralRateCollection() {
-        return generalRateCollection;
-    }
-
-    public void setGeneralRateCollection(Collection<GeneralRate> generalRateCollection) {
-        this.generalRateCollection = generalRateCollection;
     }
 
     @Override

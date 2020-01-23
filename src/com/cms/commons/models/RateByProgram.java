@@ -67,9 +67,9 @@ public class RateByProgram extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "channelId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Channel channelId;
-    @JoinColumn(name = "rateApplicationTypId", referencedColumnName = "id")
+    @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private RateApplicationType rateApplicationTypId;
+    private RateApplicationType rateApplicationTypeId;
 
     public RateByProgram() {
     }
@@ -150,12 +150,12 @@ public class RateByProgram extends AbstractDistributionEntity implements Seriali
         this.channelId = channelId;
     }
 
-    public RateApplicationType getRateApplicationTypId() {
-        return rateApplicationTypId;
+    public RateApplicationType getRateApplicationTypeId() {
+        return rateApplicationTypeId;
     }
 
-    public void setRateApplicationTypId(RateApplicationType rateApplicationTypId) {
-        this.rateApplicationTypId = rateApplicationTypId;
+    public void setRateApplicationTypeId(RateApplicationType rateApplicationTypeId) {
+        this.rateApplicationTypeId = rateApplicationTypeId;
     }
 
     @Override
