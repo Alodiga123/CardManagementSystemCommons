@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -34,7 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "DaysWeek.findAll", query = "SELECT d FROM DaysWeek d")
     , @NamedQuery(name = "DaysWeek.findById", query = "SELECT d FROM DaysWeek d WHERE d.id = :id")
     , @NamedQuery(name = "DaysWeek.findByDay", query = "SELECT d FROM DaysWeek d WHERE d.day = :day")})
-public class DaysWeek implements Serializable {
+public class DaysWeek extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -105,5 +107,15 @@ public class DaysWeek implements Serializable {
     public String toString() {
         return "com.cms.commons.models.DaysWeek[ id=" + id + " ]";
     }
+
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

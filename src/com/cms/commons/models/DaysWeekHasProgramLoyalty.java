@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,9 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "daysWeekHasProgramLoyalty")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DaysWeekHasProgramLoyalty.findAll", query = "SELECT d FROM DaysWeekHasProgramLoyalty d")
-    , @NamedQuery(name = "DaysWeekHasProgramLoyalty.findById", query = "SELECT d FROM DaysWeekHasProgramLoyalty d WHERE d.id = :id")})
-public class DaysWeekHasProgramLoyalty implements Serializable {
+    @NamedQuery(name = "DaysWeekHasProgramLoyalty.findAll", query = "SELECT d FROM DaysWeekHasProgramLoyalty d"),
+    @NamedQuery(name = "DaysWeekHasProgramLoyalty.findById", query = "SELECT d FROM DaysWeekHasProgramLoyalty d WHERE d.id = :id"),
+    @NamedQuery(name = QueryConstants.DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY, query = "SELECT d FROM DaysWeekHasProgramLoyalty d WHERE d.programLoyaltyId.id=:programLoyaltyId")})
+public class DaysWeekHasProgramLoyalty extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -100,4 +104,13 @@ public class DaysWeekHasProgramLoyalty implements Serializable {
         return "com.cms.commons.models.DaysWeekHasProgramLoyalty[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
