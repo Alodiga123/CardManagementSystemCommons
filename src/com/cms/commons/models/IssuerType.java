@@ -18,21 +18,22 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
 @Table(name = "issuerType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IssuerType.findAll", query = "SELECT i FROM IssuerType i")
-    , @NamedQuery(name = "IssuerType.findById", query = "SELECT i FROM IssuerType i WHERE i.id = :id")
-    , @NamedQuery(name = "IssuerType.findByDescription", query = "SELECT i FROM IssuerType i WHERE i.description = :description")})
+    @NamedQuery(name = "IssuerType.findAll", query = "SELECT i FROM IssuerType i"),
+    @NamedQuery(name = "IssuerType.findById", query = "SELECT i FROM IssuerType i WHERE i.id = :id"),
+    @NamedQuery(name = "IssuerType.findByDescription", query = "SELECT i FROM IssuerType i WHERE i.description = :description")})
 public class IssuerType implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,10 +42,9 @@ public class IssuerType implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Size(max = 40)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "issuerTypeId")
-    private Collection<Issuer> issuerCollection;
 
     public IssuerType() {
     }
@@ -67,16 +67,6 @@ public class IssuerType implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Issuer> getIssuerCollection() {
-        return issuerCollection;
-    }
-
-    public void setIssuerCollection(Collection<Issuer> issuerCollection) {
-        this.issuerCollection = issuerCollection;
     }
 
     @Override
