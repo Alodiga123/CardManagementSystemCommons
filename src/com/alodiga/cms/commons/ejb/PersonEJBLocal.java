@@ -17,6 +17,7 @@ import com.cms.commons.models.CardRequestNaturalPerson;
 import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.Issuer;
+import com.cms.commons.models.IssuerType;
 import com.cms.commons.models.KinShipApplicant;
 import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.PersonType;
@@ -110,5 +111,10 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<Issuer> getIssuer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Issuer saveIssuer (Issuer issuer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-       
+    
+    //IssuerType
+    public List<IssuerType> getIssuerType(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public IssuerType loadIssuerType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public IssuerType saveIssuerType (IssuerType issuerType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
 }

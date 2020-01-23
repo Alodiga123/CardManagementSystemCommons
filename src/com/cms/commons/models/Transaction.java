@@ -56,6 +56,8 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     private String description;
     @Column(name = "indMonetaryType")
     private Short indMonetaryType;
+    @OneToMany(mappedBy = "transactionId")
+    private Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection;
 
     public Transaction() {
     }
@@ -101,6 +103,16 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         this.indMonetaryType = indMonetaryType;
     }
 
+    @XmlTransient
+    @JsonIgnore
+    public Collection<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionCollectionCollection() {
+        return productHasChannelHasTransactionCollection;
+    }
+
+    public void setProductHasChannelHasTransactionCollectionCollection(Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection) {
+        this.productHasChannelHasTransactionCollection = productHasChannelHasTransactionCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -126,6 +138,7 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         return "com.cms.commons.models.Transaction[ id=" + id + " ]";
     }
 
+    
     @Override
     public Object getPk() {
         return getId();

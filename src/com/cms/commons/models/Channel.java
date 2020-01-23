@@ -5,10 +5,10 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -30,11 +27,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "channel")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Channel.findAll", query = "SELECT c FROM Channel c")
-    , @NamedQuery(name = "Channel.findById", query = "SELECT c FROM Channel c WHERE c.id = :id")
-    , @NamedQuery(name = "Channel.findByName", query = "SELECT c FROM Channel c WHERE c.name = :name")
-    , @NamedQuery(name = "Channel.findByDescription", query = "SELECT c FROM Channel c WHERE c.description = :description")})
-public class Channel implements Serializable {
+    @NamedQuery(name = "Channel.findAll", query = "SELECT c FROM Channel c"),
+    @NamedQuery(name = "Channel.findById", query = "SELECT c FROM Channel c WHERE c.id = :id"),
+    @NamedQuery(name = "Channel.findByName", query = "SELECT c FROM Channel c WHERE c.name = :name"),
+    @NamedQuery(name = "Channel.findByDescription", query = "SELECT c FROM Channel c WHERE c.description = :description")})
+public class Channel extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,5 +99,14 @@ public class Channel implements Serializable {
     public String toString() {
         return "com.cms.commons.models.Channel[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

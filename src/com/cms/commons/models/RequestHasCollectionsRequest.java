@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,11 +31,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "requestHasCollectionsRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RequestHasCollectionsRequest.findAll", query = "SELECT r FROM RequestHasCollectionsRequest r")
-    , @NamedQuery(name = "RequestHasCollectionsRequest.findById", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.id = :id")
-    , @NamedQuery(name = "RequestHasCollectionsRequest.findByIndApproved", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.indApproved = :indApproved")
-    , @NamedQuery(name = "RequestHasCollectionsRequest.findByObservations", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.observations = :observations")
-    , @NamedQuery(name = "RequestHasCollectionsRequest.findByUrlImageFile", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.urlImageFile = :urlImageFile")})
+    @NamedQuery(name = "RequestHasCollectionsRequest.findAll", query = "SELECT r FROM RequestHasCollectionsRequest r"),
+    @NamedQuery(name = "RequestHasCollectionsRequest.findById", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.id = :id"),
+    @NamedQuery(name = "RequestHasCollectionsRequest.findByIndApproved", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.indApproved = :indApproved"),
+    @NamedQuery(name = "RequestHasCollectionsRequest.findByObservations", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.observations = :observations"),
+    @NamedQuery(name = "RequestHasCollectionsRequest.findByUrlImageFile", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.urlImageFile = :urlImageFile"),
+    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId AND r.collectionsRequestid.id=:collectionsRequestId")})
+
 public class RequestHasCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

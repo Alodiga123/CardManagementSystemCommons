@@ -6,35 +6,30 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author yalmea
+ * @author jose
  */
 @Entity
-@Table(name = "issuerType")
+@Table(name = "daysWeekHasProgramLoyalty")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "IssuerType.findAll", query = "SELECT i FROM IssuerType i"),
-    @NamedQuery(name = "IssuerType.findById", query = "SELECT i FROM IssuerType i WHERE i.id = :id"),
-    @NamedQuery(name = "IssuerType.findByDescription", query = "SELECT i FROM IssuerType i WHERE i.description = :description")})
-public class IssuerType implements Serializable {
+    @NamedQuery(name = "DaysWeekHasProgramLoyalty.findAll", query = "SELECT d FROM DaysWeekHasProgramLoyalty d")
+    , @NamedQuery(name = "DaysWeekHasProgramLoyalty.findById", query = "SELECT d FROM DaysWeekHasProgramLoyalty d WHERE d.id = :id")})
+public class DaysWeekHasProgramLoyalty implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,14 +37,17 @@ public class IssuerType implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 40)
-    @Column(name = "description")
-    private String description;
+    @JoinColumn(name = "programLoyaltyId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProgramLoyalty programLoyaltyId;
+    @JoinColumn(name = "daysWeekId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DaysWeek daysWeekId;
 
-    public IssuerType() {
+    public DaysWeekHasProgramLoyalty() {
     }
 
-    public IssuerType(Long id) {
+    public DaysWeekHasProgramLoyalty(Long id) {
         this.id = id;
     }
 
@@ -61,12 +59,20 @@ public class IssuerType implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public ProgramLoyalty getProgramLoyaltyId() {
+        return programLoyaltyId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProgramLoyaltyId(ProgramLoyalty programLoyaltyId) {
+        this.programLoyaltyId = programLoyaltyId;
+    }
+
+    public DaysWeek getDaysWeekId() {
+        return daysWeekId;
+    }
+
+    public void setDaysWeekId(DaysWeek daysWeekId) {
+        this.daysWeekId = daysWeekId;
     }
 
     @Override
@@ -79,10 +85,10 @@ public class IssuerType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IssuerType)) {
+        if (!(object instanceof DaysWeekHasProgramLoyalty)) {
             return false;
         }
-        IssuerType other = (IssuerType) object;
+        DaysWeekHasProgramLoyalty other = (DaysWeekHasProgramLoyalty) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +97,7 @@ public class IssuerType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.IssuerType[ id=" + id + " ]";
+        return "com.cms.commons.models.DaysWeekHasProgramLoyalty[ id=" + id + " ]";
     }
     
 }

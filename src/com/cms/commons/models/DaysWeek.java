@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -20,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -29,13 +28,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "productUse")
+@Table(name = "daysWeek")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProductUse.findAll", query = "SELECT p FROM ProductUse p"),
-    @NamedQuery(name = "ProductUse.findById", query = "SELECT p FROM ProductUse p WHERE p.id = :id"),
-    @NamedQuery(name = "ProductUse.findByDescription", query = "SELECT p FROM ProductUse p WHERE p.description = :description")})
-public class ProductUse extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "DaysWeek.findAll", query = "SELECT d FROM DaysWeek d")
+    , @NamedQuery(name = "DaysWeek.findById", query = "SELECT d FROM DaysWeek d WHERE d.id = :id")
+    , @NamedQuery(name = "DaysWeek.findByDay", query = "SELECT d FROM DaysWeek d WHERE d.day = :day")})
+public class DaysWeek implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,15 +42,16 @@ public class ProductUse extends AbstractDistributionEntity implements Serializab
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "description")
-    private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productUseId")
-    private Collection<Product> productCollection;
+    @Size(max = 20)
+    @Column(name = "day")
+    private String day;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "daysWeekId")
+    private Collection<DaysWeekHasProgramLoyalty> daysWeekHasProgramLoyaltyCollection;
 
-    public ProductUse() {
+    public DaysWeek() {
     }
 
-    public ProductUse(Integer id) {
+    public DaysWeek(Integer id) {
         this.id = id;
     }
 
@@ -63,22 +63,22 @@ public class ProductUse extends AbstractDistributionEntity implements Serializab
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDay() {
+        return day;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDay(String day) {
+        this.day = day;
     }
 
     @XmlTransient
     @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
+    public Collection<DaysWeekHasProgramLoyalty> getDaysWeekHasProgramLoyaltyCollection() {
+        return daysWeekHasProgramLoyaltyCollection;
     }
 
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
+    public void setDaysWeekHasProgramLoyaltyCollection(Collection<DaysWeekHasProgramLoyalty> daysWeekHasProgramLoyaltyCollection) {
+        this.daysWeekHasProgramLoyaltyCollection = daysWeekHasProgramLoyaltyCollection;
     }
 
     @Override
@@ -91,10 +91,10 @@ public class ProductUse extends AbstractDistributionEntity implements Serializab
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProductUse)) {
+        if (!(object instanceof DaysWeek)) {
             return false;
         }
-        ProductUse other = (ProductUse) object;
+        DaysWeek other = (DaysWeek) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -103,17 +103,7 @@ public class ProductUse extends AbstractDistributionEntity implements Serializab
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.ProductUse[ id=" + id + " ]";
+        return "com.cms.commons.models.DaysWeek[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
+    
 }

@@ -8,9 +8,7 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,33 +18,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
 @Table(name = "issuer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Issuer.findAll", query = "SELECT i FROM Issuer i")
-    , @NamedQuery(name = "Issuer.findById", query = "SELECT i FROM Issuer i WHERE i.id = :id")
-    , @NamedQuery(name = "Issuer.findByName", query = "SELECT i FROM Issuer i WHERE i.name = :name")
-    , @NamedQuery(name = "Issuer.findByDocumentIdentification", query = "SELECT i FROM Issuer i WHERE i.documentIdentification = :documentIdentification")
-    , @NamedQuery(name = "Issuer.findByBinNumber", query = "SELECT i FROM Issuer i WHERE i.binNumber = :binNumber")
-    , @NamedQuery(name = "Issuer.findBySwiftCode", query = "SELECT i FROM Issuer i WHERE i.swiftCode = :swiftCode")
-    , @NamedQuery(name = "Issuer.findByAbaCode", query = "SELECT i FROM Issuer i WHERE i.abaCode = :abaCode")
-    , @NamedQuery(name = "Issuer.findByContractNumber", query = "SELECT i FROM Issuer i WHERE i.contractNumber = :contractNumber")
-    , @NamedQuery(name = "Issuer.findByStatusActive", query = "SELECT i FROM Issuer i WHERE i.statusActive = :statusActive")
-    , @NamedQuery(name = "Issuer.findByWebSite", query = "SELECT i FROM Issuer i WHERE i.webSite = :webSite")
-    , @NamedQuery(name = "Issuer.findByFaxNumber", query = "SELECT i FROM Issuer i WHERE i.faxNumber = :faxNumber")})
-public class Issuer extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "Issuer.findAll", query = "SELECT i FROM Issuer i"),
+    @NamedQuery(name = "Issuer.findById", query = "SELECT i FROM Issuer i WHERE i.id = :id"),
+    @NamedQuery(name = "Issuer.findByName", query = "SELECT i FROM Issuer i WHERE i.name = :name"),
+    @NamedQuery(name = "Issuer.findByDocumentIdentification", query = "SELECT i FROM Issuer i WHERE i.documentIdentification = :documentIdentification"),
+    @NamedQuery(name = "Issuer.findByBinNumber", query = "SELECT i FROM Issuer i WHERE i.binNumber = :binNumber"),
+    @NamedQuery(name = "Issuer.findBySwiftCode", query = "SELECT i FROM Issuer i WHERE i.swiftCode = :swiftCode"),
+    @NamedQuery(name = "Issuer.findByAbaCode", query = "SELECT i FROM Issuer i WHERE i.abaCode = :abaCode"),
+    @NamedQuery(name = "Issuer.findByContractNumber", query = "SELECT i FROM Issuer i WHERE i.contractNumber = :contractNumber"),
+    @NamedQuery(name = "Issuer.findByStatusActive", query = "SELECT i FROM Issuer i WHERE i.statusActive = :statusActive"),
+    @NamedQuery(name = "Issuer.findByWebSite", query = "SELECT i FROM Issuer i WHERE i.webSite = :webSite"),
+    @NamedQuery(name = "Issuer.findByFaxNumber", query = "SELECT i FROM Issuer i WHERE i.faxNumber = :faxNumber"),
+    @NamedQuery(name = "Issuer.findByPersonContactName", query = "SELECT i FROM Issuer i WHERE i.personContactName = :personContactName"),
+    @NamedQuery(name = "Issuer.findByEmailPersonContact", query = "SELECT i FROM Issuer i WHERE i.emailPersonContact = :emailPersonContact")})
+
+public class Issuer extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,37 +53,46 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 100)
     @Column(name = "name")
     private String name;
+    @Size(max = 40)
     @Column(name = "documentIdentification")
     private String documentIdentification;
     @Column(name = "binNumber")
     private Integer binNumber;
+    @Size(max = 20)
     @Column(name = "swiftCode")
     private String swiftCode;
+    @Size(max = 20)
     @Column(name = "abaCode")
     private String abaCode;
+    @Size(max = 40)
     @Column(name = "contractNumber")
     private String contractNumber;
     @Column(name = "statusActive")
     private Short statusActive;
+    @Size(max = 80)
     @Column(name = "webSite")
     private String webSite;
+    @Size(max = 40)
     @Column(name = "faxNumber")
     private String faxNumber;
+    @Size(max = 60)
     @Column(name = "personContactName")
     private String personContactName;
+    @Size(max = 80)
     @Column(name = "emailPersonContact")
     private String emailPersonContact;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Country countryId;
-    @JoinColumn(name = "issuerTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private IssuerType issuerTypeId;
     @JoinColumn(name = "issuerPersonId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person issuerPersonId;
+    @JoinColumn(name = "issuerTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private IssuerType issuerTypeId;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
 
     public Issuer() {
     }
@@ -172,7 +180,7 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
     public void setFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
     }
-    
+
     public String getPersonContactName() {
         return personContactName;
     }
@@ -189,12 +197,12 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
         this.emailPersonContact = emailPersonContact;
     }
 
-    public Country getCountryId() {
-        return countryId;
+    public Person getIssuerPersonId() {
+        return issuerPersonId;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setIssuerPersonId(Person issuerPersonId) {
+        this.issuerPersonId = issuerPersonId;
     }
 
     public IssuerType getIssuerTypeId() {
@@ -205,12 +213,12 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
         this.issuerTypeId = issuerTypeId;
     }
 
-    public Person getIssuerPersonId() {
-        return issuerPersonId;
+    public Country getCountryId() {
+        return countryId;
     }
 
-    public void setIssuerPersonId(Person issuerPersonId) {
-        this.issuerPersonId = issuerPersonId;
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
     }
 
     @Override
@@ -233,10 +241,9 @@ public class Issuer extends AbstractDistributionEntity implements Serializable{
         return true;
     }
 
-   
-     @Override
+    @Override
     public String toString() {
-        return super.toString();
+        return "com.cms.commons.models.Issuer[ id=" + id + " ]";
     }
 
     @Override
