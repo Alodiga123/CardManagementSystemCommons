@@ -553,8 +553,52 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateByProgram` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Agregar índice en ratesByProgram
+-- author: Jesús Gómez
+-- Fecha: 22/01/2020
 ALTER TABLE `CardManagementSystem`.`rateByProgram` 
 ADD UNIQUE INDEX `fk_rateByProgram_unique` (`transactionId` ASC, `channelId` ASC, `programId` ASC);
+
+-- Agregar tabla rateByProduct
+-- author: Jesús Gómez
+-- Fecha: 24/01/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateByProduct` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `productId` BIGINT UNIQUE NOT NULL,
+  `channelId` INT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `fixedRate` FLOAT NULL,
+  `percentageRate` FLOAT NULL,
+  `totalInitialTransactionsExempt` INT NULL,
+  `totalTransactionsExemptPerMonth` INT NULL,
+  `indCardHolderModification` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_rateByProduct_product1_idx` (`productId` ASC),
+  INDEX `fk_rateByProduct_channel1_idx` (`channelId` ASC),
+  INDEX `fk_rateByProduct_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_rateByProduct_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  CONSTRAINT `fk_rateByProduct_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `CardManagementSystem`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateByProduct_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateByProduct_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateByProduct_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 
