@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -34,8 +37,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RateByProduct.findByPercentageRate", query = "SELECT r FROM RateByProduct r WHERE r.percentageRate = :percentageRate")
     , @NamedQuery(name = "RateByProduct.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateByProduct r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt")
     , @NamedQuery(name = "RateByProduct.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateByProduct r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth")
-    , @NamedQuery(name = "RateByProduct.findByIndCardHolderModification", query = "SELECT r FROM RateByProduct r WHERE r.indCardHolderModification = :indCardHolderModification")})
-public class RateByProduct implements Serializable {
+    , @NamedQuery(name = "RateByProduct.findByIndCardHolderModification", query = "SELECT r FROM RateByProduct r WHERE r.indCardHolderModification = :indCardHolderModification")
+    , @NamedQuery(name = QueryConstants.RATE_BY_PRODUCT_BY_PRODUCT, query = "SELECT r FROM RateByProduct r WHERE r.productId.id = :productId order by r.channelId.id, r.transactionId.id ASC")})
+
+public class RateByProduct extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -177,6 +182,16 @@ public class RateByProduct implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.RateByProduct[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
