@@ -40,6 +40,10 @@ public class QueryConstants {
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
     public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
+    public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
+    public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
+    public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
+    public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
@@ -111,6 +115,9 @@ public class QueryConstants {
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
+    public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_TRANSACTION_ID = "transactionId";
+    public static final String PARAM_CHANNEL_ID = "channelId";
     public static final String PARAM_IS_ADMIN = "isAdmin";
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";
