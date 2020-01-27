@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -33,23 +36,26 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "programLoyaltyTransaction")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProgramLoyaltyTransaction.findAll", query = "SELECT p FROM ProgramLoyaltyTransaction p")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findById", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.id = :id")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalPointsValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalPointsValue = :totalPointsValue")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalBonificationPercentageValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalBonificationPercentageValue = :totalBonificationPercentageValue")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalBonificationFixedValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalBonificationFixedValue = :totalBonificationFixedValue")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalMaximumTransactionsPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalMaximumTransactionsPoints = :totalMaximumTransactionsPoints")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalMaximumTransactionsBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalMaximumTransactionsBonification = :totalMaximumTransactionsBonification")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountDailyPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountDailyPoints = :totalAmountDailyPoints")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthlyPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthlyPoints = :totalAmountMonthlyPoints")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountDailyBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountDailyBonification = :totalAmountDailyBonification")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthlyBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthlyBonification = :totalAmountMonthlyBonification")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByActivationCardBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.activationCardBonification = :activationCardBonification")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByActivationCardPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.activationCardPoints = :activationCardPoints")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByRenovationCardBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.renovationCardBonification = :renovationCardBonification")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByRenovationCardPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.renovationCardPoints = :renovationCardPoints")
-    , @NamedQuery(name = "ProgramLoyaltyTransaction.findByIndBonificationFixed", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.indBonificationFixed = :indBonificationFixed")})
-public class ProgramLoyaltyTransaction implements Serializable {
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findAll", query = "SELECT p FROM ProgramLoyaltyTransaction p"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findById", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.id = :id"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalPointsValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalPointsValue = :totalPointsValue"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalBonificationPercentageValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalBonificationPercentageValue = :totalBonificationPercentageValue"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalBonificationFixedValue", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalBonificationFixedValue = :totalBonificationFixedValue"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalMaximumTransactionsPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalMaximumTransactionsPoints = :totalMaximumTransactionsPoints"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalMaximumTransactionsBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalMaximumTransactionsBonification = :totalMaximumTransactionsBonification"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountDailyPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountDailyPoints = :totalAmountDailyPoints"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthlyPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthlyPoints = :totalAmountMonthlyPoints"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountDailyBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountDailyBonification = :totalAmountDailyBonification"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthlyBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthlyBonification = :totalAmountMonthlyBonification"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByActivationCardBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.activationCardBonification = :activationCardBonification"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByActivationCardPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.activationCardPoints = :activationCardPoints"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByRenovationCardBonification", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.renovationCardBonification = :renovationCardBonification"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByRenovationCardPoints", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.renovationCardPoints = :renovationCardPoints"),
+    @NamedQuery(name = "ProgramLoyaltyTransaction.findByIndBonificationFixed", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.indBonificationFixed = :indBonificationFixed"),
+    @NamedQuery(name = QueryConstants.PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY, query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.programLoyaltyId.id=:programLoyaltyId")
+
+})
+public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -284,5 +290,14 @@ public class ProgramLoyaltyTransaction implements Serializable {
     public String toString() {
         return "com.cms.commons.models.ProgramLoyaltyTransaction[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
