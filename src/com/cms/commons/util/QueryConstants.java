@@ -113,6 +113,7 @@ public class QueryConstants {
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
+    public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
