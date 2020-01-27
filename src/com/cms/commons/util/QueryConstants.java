@@ -24,6 +24,7 @@ public class QueryConstants {
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
+    public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
@@ -39,6 +40,11 @@ public class QueryConstants {
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
     public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
+    public static final String PRODUCT_BY_PROGRAM = "productByProgram";    
+    public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
+    public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
+    public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
+    public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
@@ -111,6 +117,9 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
+    public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_TRANSACTION_ID = "transactionId";
+    public static final String PARAM_CHANNEL_ID = "channelId";
     public static final String PARAM_IS_ADMIN = "isAdmin";
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";

@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -31,10 +33,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusProgramLoyalty")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusProgramLoyalty.findAll", query = "SELECT s FROM StatusProgramLoyalty s")
-    , @NamedQuery(name = "StatusProgramLoyalty.findById", query = "SELECT s FROM StatusProgramLoyalty s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusProgramLoyalty.findByDescription", query = "SELECT s FROM StatusProgramLoyalty s WHERE s.description = :description")})
-public class StatusProgramLoyalty implements Serializable {
+    @NamedQuery(name = "StatusProgramLoyalty.findAll", query = "SELECT s FROM StatusProgramLoyalty s"),
+    @NamedQuery(name = "StatusProgramLoyalty.findById", query = "SELECT s FROM StatusProgramLoyalty s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusProgramLoyalty.findByDescription", query = "SELECT s FROM StatusProgramLoyalty s WHERE s.description = :description")})
+public class StatusProgramLoyalty extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -105,5 +107,14 @@ public class StatusProgramLoyalty implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusProgramLoyalty[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

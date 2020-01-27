@@ -19,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,18 +28,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "generalRate")
+@Table(name = "rateByProduct")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "GeneralRate.findAll", query = "SELECT g FROM GeneralRate g"),
-    @NamedQuery(name = "GeneralRate.findById", query = "SELECT g FROM GeneralRate g WHERE g.id = :id"),
-    @NamedQuery(name = "GeneralRate.findByFixedRate", query = "SELECT g FROM GeneralRate g WHERE g.fixedRate = :fixedRate"),
-    @NamedQuery(name = "GeneralRate.findByPercentageRate", query = "SELECT g FROM GeneralRate g WHERE g.percentageRate = :percentageRate"),
-    @NamedQuery(name = "GeneralRate.findByTotalInitialTransactionsExempt", query = "SELECT g FROM GeneralRate g WHERE g.totalInitialTransactionsExempt = :totalInitialTransactionsExempt"),
-    @NamedQuery(name = "GeneralRate.findByTotalTransactionsExemptPerMonth", query = "SELECT g FROM GeneralRate g WHERE g.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth"),
-    @NamedQuery(name = "GeneralRate.findByIndCardHolderModification", query = "SELECT g FROM GeneralRate g WHERE g.indCardHolderModification = :indCardHolderModification"),
-    @NamedQuery(name = QueryConstants.GENERAL_RATE_BY_PRODUCT_TYPE, query = "SELECT g FROM GeneralRate g WHERE g.productTypeId.id = :productTypeId")})
-public class GeneralRate extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "RateByProduct.findAll", query = "SELECT r FROM RateByProduct r")
+    , @NamedQuery(name = "RateByProduct.findById", query = "SELECT r FROM RateByProduct r WHERE r.id = :id")
+    , @NamedQuery(name = "RateByProduct.findByFixedRate", query = "SELECT r FROM RateByProduct r WHERE r.fixedRate = :fixedRate")
+    , @NamedQuery(name = "RateByProduct.findByPercentageRate", query = "SELECT r FROM RateByProduct r WHERE r.percentageRate = :percentageRate")
+    , @NamedQuery(name = "RateByProduct.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateByProduct r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt")
+    , @NamedQuery(name = "RateByProduct.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateByProduct r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth")
+    , @NamedQuery(name = "RateByProduct.findByIndCardHolderModification", query = "SELECT r FROM RateByProduct r WHERE r.indCardHolderModification = :indCardHolderModification")
+    , @NamedQuery(name = QueryConstants.RATE_BY_PRODUCT_BY_PRODUCT, query = "SELECT r FROM RateByProduct r WHERE r.productId.id = :productId order by r.channelId.id, r.transactionId.id ASC")})
+
+public class RateByProduct extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,26 +59,23 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
     private Integer totalTransactionsExemptPerMonth;
     @Column(name = "indCardHolderModification")
     private Boolean indCardHolderModification;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Country countryId;
-    @JoinColumn(name = "transactionId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Transaction transactionId;
-    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private ProductType productTypeId;
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Product productId;
     @JoinColumn(name = "channelId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Channel channelId;
+    @JoinColumn(name = "transactionId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Transaction transactionId;
     @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
 
-    public GeneralRate() {
+    public RateByProduct() {
     }
 
-    public GeneralRate(Long id) {
+    public RateByProduct(Long id) {
         this.id = id;
     }
 
@@ -128,28 +127,12 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
         this.indCardHolderModification = indCardHolderModification;
     }
 
-    public Country getCountryId() {
-        return countryId;
+    public Product getProductId() {
+        return productId;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
-    }
-
-    public Transaction getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(Transaction transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public ProductType getProductTypeId() {
-        return productTypeId;
-    }
-
-    public void setProductTypeId(ProductType productTypeId) {
-        this.productTypeId = productTypeId;
+    public void setProductId(Product productId) {
+        this.productId = productId;
     }
 
     public Channel getChannelId() {
@@ -158,6 +141,14 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
 
     public void setChannelId(Channel channelId) {
         this.channelId = channelId;
+    }
+
+    public Transaction getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Transaction transactionId) {
+        this.transactionId = transactionId;
     }
 
     public RateApplicationType getRateApplicationTypeId() {
@@ -178,10 +169,10 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GeneralRate)) {
+        if (!(object instanceof RateByProduct)) {
             return false;
         }
-        GeneralRate other = (GeneralRate) object;
+        RateByProduct other = (RateByProduct) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -190,7 +181,7 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.GeneralRate[ id=" + id + " ]";
+        return "com.cms.commons.models.RateByProduct[ id=" + id + " ]";
     }
 
     @Override

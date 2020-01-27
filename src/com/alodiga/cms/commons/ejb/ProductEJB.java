@@ -17,10 +17,12 @@ import com.cms.commons.models.ProductHasCommerceCategory;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProductUse;
 import com.cms.commons.models.RateApplicationType;
+import com.cms.commons.models.RateByProduct;
 import com.cms.commons.models.SegmentCommerce;
 import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
 import com.cms.commons.models.Transaction;
+import com.cms.commons.models.RateByProgram;
 import java.util.List;
 
 /**
@@ -34,7 +36,8 @@ public interface ProductEJB extends DistributionGenericEJB {
     public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;    
-    
+    public List<Product> getProductByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+        
     //ProductType
     public List< ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -93,9 +96,9 @@ public interface ProductEJB extends DistributionGenericEJB {
     public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Channel saveChannel(Channel channel) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    
     //GeneralRate
     public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<GeneralRate> getGeneralRateByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -103,4 +106,17 @@ public interface ProductEJB extends DistributionGenericEJB {
     public List<RateApplicationType> getRateApplicationType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RateApplicationType loadRateApplicationType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RateApplicationType saveRateApplicationType(RateApplicationType rateApplicationType) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //RateByProgram
+    public List<RateByProgram> getRateByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RateByProgram> getRateByProgramByTransactionByChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RateByProgram> getRateByProgramByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateByProgram loadRateByProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateByProgram saveRateByProgram(RateByProgram rateByProgram) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //RateByProduct
+    public List<RateByProduct> getRateByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateByProduct loadRateByProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateByProduct saveRateByProduct(RateByProduct rateByProduct) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<RateByProduct> getRateByProductByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
