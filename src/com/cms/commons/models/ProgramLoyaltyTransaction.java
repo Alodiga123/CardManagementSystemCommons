@@ -60,31 +60,14 @@ public class ProgramLoyaltyTransaction implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "totalPointsValue")
     private Float totalPointsValue;
-    @Column(name = "totalBonificationPercentageValue")
-    private Float totalBonificationPercentageValue;
-    @Column(name = "totalBonificationFixedValue")
-    private Float totalBonificationFixedValue;
-    @Column(name = "totalMaximumTransactionsPoints")
-    private Float totalMaximumTransactionsPoints;
-    @Column(name = "totalMaximumTransactionsBonification")
-    private Float totalMaximumTransactionsBonification;
-    @Column(name = "totalAmountDailyPoints")
-    private Float totalAmountDailyPoints;
-    @Column(name = "totalAmountMonthlyPoints")
-    private Float totalAmountMonthlyPoints;
-    @Column(name = "totalAmountDailyBonification")
-    private Float totalAmountDailyBonification;
-    @Column(name = "totalAmountMonthlyBonification")
-    private Float totalAmountMonthlyBonification;
-    @Column(name = "ActivationCardBonification")
-    private Float activationCardBonification;
-    @Column(name = "ActivationCardPoints")
-    private Float activationCardPoints;
-    @Column(name = "renovationCardBonification")
-    private Float renovationCardBonification;
-    @Size(max = 45)
-    @Column(name = "renovationCardPoints")
-    private String renovationCardPoints;
+    @Column(name = "totalBonificationValue")
+    private Float totalBonificationValue;
+    @Column(name = "totalMaximumTransactions")
+    private Float totalMaximumTransactions;
+    @Column(name = "totalAmountDaily")
+    private Float totalAmountDaily;
+    @Column(name = "totalAmountMonthly")
+    private Float totalAmountMonthly;
     @Column(name = "indBonificationFixed")
     private Boolean indBonificationFixed;
     @JoinColumn(name = "channelId", referencedColumnName = "id")
@@ -96,9 +79,7 @@ public class ProgramLoyaltyTransaction implements Serializable {
     @JoinColumn(name = "transactionId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Transaction transactionId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programLoyaltyTransactionId")
-    private Collection<LoyaltyTransactionHasCommerceCategory> loyaltyTransactionHasCommerceCategoryCollection;
-
+    
     public ProgramLoyaltyTransaction() {
     }
 
@@ -122,100 +103,36 @@ public class ProgramLoyaltyTransaction implements Serializable {
         this.totalPointsValue = totalPointsValue;
     }
 
-    public Float getTotalBonificationPercentageValue() {
-        return totalBonificationPercentageValue;
+    public Float getTotalBonificationValue() {
+        return totalBonificationValue;
     }
 
-    public void setTotalBonificationPercentageValue(Float totalBonificationPercentageValue) {
-        this.totalBonificationPercentageValue = totalBonificationPercentageValue;
+    public void setTotalBonificationValue(Float totalBonificationValue) {
+        this.totalBonificationValue = totalBonificationValue;
     }
 
-    public Float getTotalBonificationFixedValue() {
-        return totalBonificationFixedValue;
+    public Float getTotalMaximumTransactions() {
+        return totalMaximumTransactions;
     }
 
-    public void setTotalBonificationFixedValue(Float totalBonificationFixedValue) {
-        this.totalBonificationFixedValue = totalBonificationFixedValue;
+    public void setTotalMaximumTransactions(Float totalMaximumTransactions) {
+        this.totalMaximumTransactions = totalMaximumTransactions;
     }
 
-    public Float getTotalMaximumTransactionsPoints() {
-        return totalMaximumTransactionsPoints;
+    public Float getTotalAmountDaily() {
+        return totalAmountDaily;
     }
 
-    public void setTotalMaximumTransactionsPoints(Float totalMaximumTransactionsPoints) {
-        this.totalMaximumTransactionsPoints = totalMaximumTransactionsPoints;
+    public void setTotalAmountDaily(Float totalAmountDaily) {
+        this.totalAmountDaily = totalAmountDaily;
     }
 
-    public Float getTotalMaximumTransactionsBonification() {
-        return totalMaximumTransactionsBonification;
+    public Float getTotalAmountMonthly() {
+        return totalAmountMonthly;
     }
 
-    public void setTotalMaximumTransactionsBonification(Float totalMaximumTransactionsBonification) {
-        this.totalMaximumTransactionsBonification = totalMaximumTransactionsBonification;
-    }
-
-    public Float getTotalAmountDailyPoints() {
-        return totalAmountDailyPoints;
-    }
-
-    public void setTotalAmountDailyPoints(Float totalAmountDailyPoints) {
-        this.totalAmountDailyPoints = totalAmountDailyPoints;
-    }
-
-    public Float getTotalAmountMonthlyPoints() {
-        return totalAmountMonthlyPoints;
-    }
-
-    public void setTotalAmountMonthlyPoints(Float totalAmountMonthlyPoints) {
-        this.totalAmountMonthlyPoints = totalAmountMonthlyPoints;
-    }
-
-    public Float getTotalAmountDailyBonification() {
-        return totalAmountDailyBonification;
-    }
-
-    public void setTotalAmountDailyBonification(Float totalAmountDailyBonification) {
-        this.totalAmountDailyBonification = totalAmountDailyBonification;
-    }
-
-    public Float getTotalAmountMonthlyBonification() {
-        return totalAmountMonthlyBonification;
-    }
-
-    public void setTotalAmountMonthlyBonification(Float totalAmountMonthlyBonification) {
-        this.totalAmountMonthlyBonification = totalAmountMonthlyBonification;
-    }
-
-    public Float getActivationCardBonification() {
-        return activationCardBonification;
-    }
-
-    public void setActivationCardBonification(Float activationCardBonification) {
-        this.activationCardBonification = activationCardBonification;
-    }
-
-    public Float getActivationCardPoints() {
-        return activationCardPoints;
-    }
-
-    public void setActivationCardPoints(Float activationCardPoints) {
-        this.activationCardPoints = activationCardPoints;
-    }
-
-    public Float getRenovationCardBonification() {
-        return renovationCardBonification;
-    }
-
-    public void setRenovationCardBonification(Float renovationCardBonification) {
-        this.renovationCardBonification = renovationCardBonification;
-    }
-
-    public String getRenovationCardPoints() {
-        return renovationCardPoints;
-    }
-
-    public void setRenovationCardPoints(String renovationCardPoints) {
-        this.renovationCardPoints = renovationCardPoints;
+    public void setTotalAmountMonthly(Float totalAmountMonthly) {
+        this.totalAmountMonthly = totalAmountMonthly;
     }
 
     public Boolean getIndBonificationFixed() {
@@ -248,16 +165,6 @@ public class ProgramLoyaltyTransaction implements Serializable {
 
     public void setTransactionId(Transaction transactionId) {
         this.transactionId = transactionId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryCollection() {
-        return loyaltyTransactionHasCommerceCategoryCollection;
-    }
-
-    public void setLoyaltyTransactionHasCommerceCategoryCollection(Collection<LoyaltyTransactionHasCommerceCategory> loyaltyTransactionHasCommerceCategoryCollection) {
-        this.loyaltyTransactionHasCommerceCategoryCollection = loyaltyTransactionHasCommerceCategoryCollection;
     }
 
     @Override
