@@ -55,9 +55,11 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     @Column(name = "description")
     private String description;
     @Column(name = "indMonetaryType")
-    private Short indMonetaryType;
-    @OneToMany(mappedBy = "transactionId")
-    private Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection;
+    private Boolean indMonetaryType;
+    @Column(name = "indTransactionPurchase")
+    private Boolean indTransactionPurchase;
+    @Column(name = "indVariationRateChannel")
+    private Boolean indVariationRateChannel;
 
     public Transaction() {
     }
@@ -95,24 +97,30 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         this.description = description;
     }
 
-    public Short getIndMonetaryType() {
+    public Boolean getIndMonetaryType() {
         return indMonetaryType;
     }
 
-    public void setIndMonetaryType(Short indMonetaryType) {
+    public void setIndMonetaryType(Boolean indMonetaryType) {
         this.indMonetaryType = indMonetaryType;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionCollectionCollection() {
-        return productHasChannelHasTransactionCollection;
+    public Boolean getIndTransactionPurchase() {
+        return indTransactionPurchase;
     }
 
-    public void setProductHasChannelHasTransactionCollectionCollection(Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection) {
-        this.productHasChannelHasTransactionCollection = productHasChannelHasTransactionCollection;
+    public void setIndTransactionPurchase(Boolean indTransactionPurchase) {
+        this.indTransactionPurchase = indTransactionPurchase;
     }
 
+    public Boolean getIndVariationRateChannel() {
+        return indVariationRateChannel;
+    }
+
+    public void setIndVariationRateChannel(Boolean indVariationRateChannel) {
+        this.indVariationRateChannel = indVariationRateChannel;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
