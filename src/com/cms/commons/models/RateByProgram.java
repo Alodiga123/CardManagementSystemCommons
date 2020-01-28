@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RateByProgram.findByIndCardHolderModification", query = "SELECT r FROM RateByProgram r WHERE r.indCardHolderModification = :indCardHolderModification"),
     @NamedQuery(name = QueryConstants.RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL, query = "SELECT r FROM RateByProgram r WHERE r.programId.id = :programId AND r.channelId.id = :channelId AND r.transactionId.id = :TransactionId"),
     @NamedQuery(name = QueryConstants.RATE_BY_PROGRAM_BY_PROGRAM, query = "SELECT r FROM RateByProgram r WHERE r.programId.id = :programId order by r.channelId.id, r.transactionId.id ASC")})
+
 public class RateByProgram extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

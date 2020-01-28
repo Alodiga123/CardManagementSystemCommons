@@ -1,13 +1,11 @@
 package com.alodiga.cms.commons.ejb;
 
-import com.alodiga.cms.commons.exception.DisabledAccountException;
 import com.alodiga.cms.commons.exception.EmptyListException;
 import com.alodiga.cms.commons.exception.GeneralException;
 import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
-import com.cms.commons.models.Account;
 import com.cms.commons.models.DaysWeek;
 import com.cms.commons.models.DaysWeekHasProgramLoyalty;
 import com.cms.commons.models.LegalPerson;
@@ -15,6 +13,7 @@ import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.Program;
 import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramLoyalty;
+import com.cms.commons.models.ProgramLoyaltyTransaction;
 import com.cms.commons.models.ProgramLoyaltyType;
 import com.cms.commons.models.StatusProgramLoyalty;
 import java.util.List;
@@ -65,4 +64,11 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     public List<DaysWeek> getDaysWeek(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DaysWeek loadDaysWeek(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DaysWeek saveDaysWeek(DaysWeek daysWeek)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //ProgramLoyaltyTransaction
+    public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransactionByLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProgramLoyaltyTransaction loadProgramLoyaltyTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProgramLoyaltyTransaction saveProgramLoyaltyTransaction(ProgramLoyaltyTransaction programLoyaltyTransaction)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 }
