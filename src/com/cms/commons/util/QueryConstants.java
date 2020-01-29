@@ -39,6 +39,7 @@ public class QueryConstants {
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
     public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
+    public static final String LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION = "loyaltyTransactionCommerceByTransaction";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
@@ -113,6 +114,7 @@ public class QueryConstants {
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
+    public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";

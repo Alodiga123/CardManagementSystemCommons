@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,9 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "loyaltyTransactionHasCommerceCategory")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findAll", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l")
-    , @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findById", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.id = :id")})
-public class LoyaltyTransactionHasCommerceCategory implements Serializable {
+    @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findAll", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l"),
+    @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findById", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.id = :id"),
+    @NamedQuery(name = QueryConstants.LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION, query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.programLoyaltyTransactionId.id=:programLoyaltyTransactionId")})
+public class LoyaltyTransactionHasCommerceCategory extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -99,5 +103,14 @@ public class LoyaltyTransactionHasCommerceCategory implements Serializable {
     public String toString() {
         return "com.cms.commons.models.LoyaltyTransactionHasCommerceCategory[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
