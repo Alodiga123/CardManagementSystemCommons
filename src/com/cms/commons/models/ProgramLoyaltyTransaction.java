@@ -45,17 +45,24 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthly", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthly = :totalAmountMonthly"),
     @NamedQuery(name = "ProgramLoyaltyTransaction.findByIndBonificationFixed", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.indBonificationFixed = :indBonificationFixed"),
     @NamedQuery(name = QueryConstants.PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY, query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.programLoyaltyId.id=:programLoyaltyId")
-
 })
 public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "totalPointsValue")
     private Float totalPointsValue;
     @Column(name = "totalBonificationValue")
@@ -168,7 +175,7 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -179,7 +186,7 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
             return false;
         }
         ProgramLoyaltyTransaction other = (ProgramLoyaltyTransaction) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -187,7 +194,7 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.ProgramLoyaltyTransaction[ id=" + id + " ]";
+        return "com.cms.commons.models.ProgramLoyaltyTransaction[ id=" + getId() + " ]";
     }
 
     @Override
@@ -199,4 +206,6 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+
+  
 }
