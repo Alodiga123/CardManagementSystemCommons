@@ -78,4 +78,5 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryByTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LoyaltyTransactionHasCommerceCategory loadLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LoyaltyTransactionHasCommerceCategory saveLoyaltyTransactionHasCommerceCategory(LoyaltyTransactionHasCommerceCategory loyaltyTransactionHasCommerceCategory)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
 }
