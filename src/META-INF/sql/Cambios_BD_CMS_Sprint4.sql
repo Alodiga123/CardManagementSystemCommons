@@ -601,5 +601,37 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateByProduct` (
 ENGINE = InnoDB;
 
 
+-- Modificar tabla programLoyaltyTransaction
+-- author: Jesús Gómez
+-- Fecha: 27/01/2020
+ALTER TABLE `CardManagementSystem`.`programLoyaltyTransaction` 
+DROP COLUMN `renovationCardPoints`,
+DROP COLUMN `renovationCardBonification`,
+DROP COLUMN `ActivationCardPoints`,
+DROP COLUMN `ActivationCardBonification`,
+DROP COLUMN `totalAmountMonthlyBonification`,
+DROP COLUMN `totalAmountDailyBonification`,
+DROP COLUMN `totalMaximumTransactionsBonification`,
+DROP COLUMN `totalBonificationFixedValue`,
+CHANGE COLUMN `totalBonificationPercentageValue` `totalBonificationValue` FLOAT NULL DEFAULT NULL ,
+CHANGE COLUMN `totalMaximumTransactionsPoints` `totalMaximumTransactionsBonification` FLOAT NULL DEFAULT NULL ,
+CHANGE COLUMN `totalAmountDailyPoints` `totalAmountDaily` FLOAT NULL DEFAULT NULL ,
+CHANGE COLUMN `totalAmountMonthlyPoints` `totalAmountMonthly` FLOAT NULL DEFAULT NULL ;
+
+-- Modificar tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 27/01/2020
+ALTER TABLE `CardManagementSystem`.`transaction` 
+CHANGE COLUMN `indMonetaryType` `indMonetaryType` TINYINT(1) NULL DEFAULT NULL ,
+ADD COLUMN `indTransactionPurchase` TINYINT(1) NULL AFTER `indMonetaryType`,
+ADD COLUMN `indVariationRateChannel` TINYINT(1) NULL AFTER `indTransactionPurchase`;
+
+-- Eliminar índice en tabla rateByProduct
+-- author: Jesús Gómez
+-- Fecha: 27/01/2020
+ALTER TABLE `CardManagementSystem`.`rateByProduct` 
+DROP INDEX `productId` ;
+
+
 
 
