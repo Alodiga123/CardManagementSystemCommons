@@ -59,16 +59,11 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
 //    @Column(name = "indMonetaryType")
 //    private Short indMonetaryType;
     @Column(name = "indMonetaryType")
-    private Short indMonetaryType;
-    @Size(max = 4)
+    private Boolean indMonetaryType;
     @Column(name = "indTransactionPurchase")
-    private Short indTransactionPurchase;
-    @Size(max = 4)
+    private Boolean indTransactionPurchase;
     @Column(name = "indVariationRateChannel")
-    private Short indVariationRateChannel;
-    @Size(max = 4)
-    @OneToMany(mappedBy = "transactionId")
-    private Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection;
+    private Boolean indVariationRateChannel;
 
     public Transaction() {
     }
@@ -106,40 +101,30 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         this.description = description;
     }
 
-    public Short getIndMonetaryType() {
+    public Boolean getIndMonetaryType() {
         return indMonetaryType;
     }
 
-    public void setIndMonetaryType(Short indMonetaryType) {
+    public void setIndMonetaryType(Boolean indMonetaryType) {
         this.indMonetaryType = indMonetaryType;
     }
 
-    public Short getIndTransactionPurchase() {
+    public Boolean getIndTransactionPurchase() {
         return indTransactionPurchase;
     }
 
-    public void setIndTransactionPurchase(Short indTransactionPurchase) {
+    public void setIndTransactionPurchase(Boolean indTransactionPurchase) {
         this.indTransactionPurchase = indTransactionPurchase;
     }
 
-    public Short getIndVariationRateChannel() {
+    public Boolean getIndVariationRateChannel() {
         return indVariationRateChannel;
     }
 
-    public void setIndVariationRateChannel(Short indVariationRateChannel) {
+    public void setIndVariationRateChannel(Boolean indVariationRateChannel) {
         this.indVariationRateChannel = indVariationRateChannel;
     }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionCollectionCollection() {
-        return productHasChannelHasTransactionCollection;
-    }
-
-    public void setProductHasChannelHasTransactionCollectionCollection(Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection) {
-        this.productHasChannelHasTransactionCollection = productHasChannelHasTransactionCollection;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

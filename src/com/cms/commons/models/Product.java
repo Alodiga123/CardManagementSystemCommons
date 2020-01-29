@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,20 +35,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "product")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
-    , @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id")
-    , @NamedQuery(name = "Product.findByCreateDate", query = "SELECT p FROM Product p WHERE p.createDate = :createDate")
-    , @NamedQuery(name = "Product.findByUpdatedate", query = "SELECT p FROM Product p WHERE p.updatedate = :updatedate")
-    , @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name")
-    , @NamedQuery(name = "Product.findByBinNumber", query = "SELECT p FROM Product p WHERE p.binNumber = :binNumber")
-    , @NamedQuery(name = "Product.findByValidityYears", query = "SELECT p FROM Product p WHERE p.validityYears = :validityYears")
-    , @NamedQuery(name = "Product.findByDaysBeforeExpiration", query = "SELECT p FROM Product p WHERE p.daysBeforeExpiration = :daysBeforeExpiration")
-    , @NamedQuery(name = "Product.findByDaysToInactivate", query = "SELECT p FROM Product p WHERE p.daysToInactivate = :daysToInactivate")
-    , @NamedQuery(name = "Product.findByDaysToActivate", query = "SELECT p FROM Product p WHERE p.daysToActivate = :daysToActivate")
-    , @NamedQuery(name = "Product.findByDaysToUse", query = "SELECT p FROM Product p WHERE p.daysToUse = :daysToUse")
-    , @NamedQuery(name = "Product.findByDaysToWithdrawCard", query = "SELECT p FROM Product p WHERE p.daysToWithdrawCard = :daysToWithdrawCard")
-    , @NamedQuery(name = "Product.findByBeginDateValidity", query = "SELECT p FROM Product p WHERE p.beginDateValidity = :beginDateValidity")
-    , @NamedQuery(name = "Product.findByEndDateValidity", query = "SELECT p FROM Product p WHERE p.endDateValidity = :endDateValidity")})
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id"),
+    @NamedQuery(name = "Product.findByCreateDate", query = "SELECT p FROM Product p WHERE p.createDate = :createDate"),
+    @NamedQuery(name = "Product.findByUpdatedate", query = "SELECT p FROM Product p WHERE p.updatedate = :updatedate"),
+    @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
+    @NamedQuery(name = "Product.findByBinNumber", query = "SELECT p FROM Product p WHERE p.binNumber = :binNumber"),
+    @NamedQuery(name = "Product.findByValidityYears", query = "SELECT p FROM Product p WHERE p.validityYears = :validityYears"),
+    @NamedQuery(name = "Product.findByDaysBeforeExpiration", query = "SELECT p FROM Product p WHERE p.daysBeforeExpiration = :daysBeforeExpiration"),
+    @NamedQuery(name = "Product.findByDaysToInactivate", query = "SELECT p FROM Product p WHERE p.daysToInactivate = :daysToInactivate"),
+    @NamedQuery(name = "Product.findByDaysToActivate", query = "SELECT p FROM Product p WHERE p.daysToActivate = :daysToActivate"),
+    @NamedQuery(name = "Product.findByDaysToUse", query = "SELECT p FROM Product p WHERE p.daysToUse = :daysToUse"),
+    @NamedQuery(name = "Product.findByDaysToWithdrawCard", query = "SELECT p FROM Product p WHERE p.daysToWithdrawCard = :daysToWithdrawCard"),
+    @NamedQuery(name = "Product.findByBeginDateValidity", query = "SELECT p FROM Product p WHERE p.beginDateValidity = :beginDateValidity"),
+    @NamedQuery(name = "Product.findByEndDateValidity", query = "SELECT p FROM Product p WHERE p.endDateValidity = :endDateValidity"),
+    @NamedQuery(name = QueryConstants.PRODUCT_BY_PROGRAM, query = "SELECT p FROM Product p WHERE p.programId.id = :programId")})
 public class Product extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -390,8 +392,7 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         return true;
     }
 
-   
-     @Override
+    @Override
     public String toString() {
         return super.toString();
     }
@@ -445,4 +446,13 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public void setProgramLoyalty(ProgramLoyalty programLoyalty) {
         this.programLoyalty = programLoyalty;
     }
+
+    public RateByProduct getRateByProduct() {
+        return rateByProduct;
+    }
+
+    public void setRateByProduct(RateByProduct rateByProduct) {
+        this.rateByProduct = rateByProduct;
+    }
+
 }
