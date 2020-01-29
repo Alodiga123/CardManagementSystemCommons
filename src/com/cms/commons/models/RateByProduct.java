@@ -68,6 +68,9 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Product productId;
 
     public RateByProduct() {
     }
