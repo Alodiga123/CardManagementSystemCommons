@@ -56,8 +56,6 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     @Size(max = 60)
     @Column(name = "description")
     private String description;
-//    @Column(name = "indMonetaryType")
-//    private Short indMonetaryType;
     @Column(name = "indMonetaryType")
     private Boolean indMonetaryType;
     @Column(name = "indTransactionPurchase")
