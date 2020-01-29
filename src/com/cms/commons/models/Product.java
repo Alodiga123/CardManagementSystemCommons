@@ -137,8 +137,6 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ReviewCollectionsRequest reviewCollectionsRequest;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private RateByProduct rateByProduct;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProgramLoyalty programLoyalty;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProductHasChannelHasTransaction productHasChannelHasTransaction;

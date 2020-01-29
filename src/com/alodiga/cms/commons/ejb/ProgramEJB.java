@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.DaysWeek;
 import com.cms.commons.models.DaysWeekHasProgramLoyalty;
 import com.cms.commons.models.LegalPerson;
+import com.cms.commons.models.LoyaltyTransactionHasCommerceCategory;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.Program;
 import com.cms.commons.models.ProgramHasNetwork;

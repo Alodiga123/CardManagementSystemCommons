@@ -9,6 +9,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.DaysWeek;
 import com.cms.commons.models.DaysWeekHasProgramLoyalty;
 import com.cms.commons.models.LegalPerson;
+import com.cms.commons.models.LoyaltyTransactionHasCommerceCategory;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.Program;
 import com.cms.commons.models.ProgramHasNetwork;
@@ -70,5 +71,10 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransactionByLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramLoyaltyTransaction loadProgramLoyaltyTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramLoyaltyTransaction saveProgramLoyaltyTransaction(ProgramLoyaltyTransaction programLoyaltyTransaction)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
+    //LoyaltyTransactionHasCommerceCategory
+    public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryByTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public LoyaltyTransactionHasCommerceCategory loadLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public LoyaltyTransactionHasCommerceCategory saveLoyaltyTransactionHasCommerceCategory(LoyaltyTransactionHasCommerceCategory loyaltyTransactionHasCommerceCategory)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
