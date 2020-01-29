@@ -54,9 +54,6 @@ public class RateByProduct implements Serializable {
     private Integer totalTransactionsExemptPerMonth;
     @Column(name = "indCardHolderModification")
     private Boolean indCardHolderModification;
-    @JoinColumn(name = "productId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Product productId;
     @JoinColumn(name = "channelId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Channel channelId;
@@ -120,14 +117,6 @@ public class RateByProduct implements Serializable {
 
     public void setIndCardHolderModification(Boolean indCardHolderModification) {
         this.indCardHolderModification = indCardHolderModification;
-    }
-
-    public Product getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Product productId) {
-        this.productId = productId;
     }
 
     public Channel getChannelId() {
