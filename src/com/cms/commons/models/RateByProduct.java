@@ -69,7 +69,7 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
     @JoinColumn(name = "productId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Product productId;
 
     public RateByProduct() {
@@ -127,6 +127,14 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
         this.indCardHolderModification = indCardHolderModification;
     }
 
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
+    
     public Channel getChannelId() {
         return channelId;
     }

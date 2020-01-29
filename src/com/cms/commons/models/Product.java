@@ -135,6 +135,8 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @Column(name = "maximumBalance")
     private Float maximumBalance;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private RateByProduct rateByProduct;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ReviewCollectionsRequest reviewCollectionsRequest;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProgramLoyalty programLoyalty;
