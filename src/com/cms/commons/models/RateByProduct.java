@@ -59,9 +59,6 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     private Integer totalTransactionsExemptPerMonth;
     @Column(name = "indCardHolderModification")
     private Boolean indCardHolderModification;
-    @JoinColumn(name = "productId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Product productId;
     @JoinColumn(name = "channelId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Channel channelId;
@@ -71,6 +68,9 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Product productId;
 
     public RateByProduct() {
     }
@@ -134,7 +134,7 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     public void setProductId(Product productId) {
         this.productId = productId;
     }
-
+    
     public Channel getChannelId() {
         return channelId;
     }

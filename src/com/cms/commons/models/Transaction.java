@@ -33,11 +33,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "transaction")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t")
-    , @NamedQuery(name = "Transaction.findById", query = "SELECT t FROM Transaction t WHERE t.id = :id")
-    , @NamedQuery(name = "Transaction.findByCode", query = "SELECT t FROM Transaction t WHERE t.code = :code")
-    , @NamedQuery(name = "Transaction.findByDescription", query = "SELECT t FROM Transaction t WHERE t.description = :description")
-    , @NamedQuery(name = "Transaction.findByIndMonetaryType", query = "SELECT t FROM Transaction t WHERE t.indMonetaryType = :indMonetaryType")})
+    @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t"),
+    @NamedQuery(name = "Transaction.findById", query = "SELECT t FROM Transaction t WHERE t.id = :id"),
+    @NamedQuery(name = "Transaction.findByCode", query = "SELECT t FROM Transaction t WHERE t.code = :code"),
+    @NamedQuery(name = "Transaction.findByDescription", query = "SELECT t FROM Transaction t WHERE t.description = :description"),
+    @NamedQuery(name = "Transaction.findByIndMonetaryType", query = "SELECT t FROM Transaction t WHERE t.indMonetaryType = :indMonetaryType"),
+    @NamedQuery(name = "Transaction.findByIndTransactionPurchase", query = "SELECT t FROM Transaction t WHERE t.indTransactionPurchase = :indTransactionPurchase"),
+    @NamedQuery(name = "Transaction.findByIndVariationRateChannel", query = "SELECT t FROM Transaction t WHERE t.indVariationRateChannel = :indVariationRateChannel"),})
 public class Transaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,9 +57,11 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     @Column(name = "description")
     private String description;
     @Column(name = "indMonetaryType")
-    private Short indMonetaryType;
-    @OneToMany(mappedBy = "transactionId")
-    private Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection;
+    private Boolean indMonetaryType;
+    @Column(name = "indTransactionPurchase")
+    private Boolean indTransactionPurchase;
+    @Column(name = "indVariationRateChannel")
+    private Boolean indVariationRateChannel;
 
     public Transaction() {
     }
@@ -95,24 +99,30 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         this.description = description;
     }
 
-    public Short getIndMonetaryType() {
+    public Boolean getIndMonetaryType() {
         return indMonetaryType;
     }
 
-    public void setIndMonetaryType(Short indMonetaryType) {
+    public void setIndMonetaryType(Boolean indMonetaryType) {
         this.indMonetaryType = indMonetaryType;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProductHasChannelHasTransaction> getProductHasChannelHasTransactionCollectionCollection() {
-        return productHasChannelHasTransactionCollection;
+    public Boolean getIndTransactionPurchase() {
+        return indTransactionPurchase;
     }
 
-    public void setProductHasChannelHasTransactionCollectionCollection(Collection<ProductHasChannelHasTransaction> productHasChannelHasTransactionCollection) {
-        this.productHasChannelHasTransactionCollection = productHasChannelHasTransactionCollection;
+    public void setIndTransactionPurchase(Boolean indTransactionPurchase) {
+        this.indTransactionPurchase = indTransactionPurchase;
     }
 
+    public Boolean getIndVariationRateChannel() {
+        return indVariationRateChannel;
+    }
+
+    public void setIndVariationRateChannel(Boolean indVariationRateChannel) {
+        this.indVariationRateChannel = indVariationRateChannel;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -138,7 +148,6 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
         return "com.cms.commons.models.Transaction[ id=" + id + " ]";
     }
 
-    
     @Override
     public Object getPk() {
         return getId();
@@ -148,5 +157,4 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
 }

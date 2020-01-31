@@ -135,9 +135,9 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @Column(name = "maximumBalance")
     private Float maximumBalance;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private ReviewCollectionsRequest reviewCollectionsRequest;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private RateByProduct rateByProduct;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ReviewCollectionsRequest reviewCollectionsRequest;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProgramLoyalty programLoyalty;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
@@ -373,42 +373,7 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public void setCardRequest(CardRequest cardRequest) {
         this.cardRequest = cardRequest;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Product)) {
-            return false;
-        }
-        Product other = (Product) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
+    
     public Float getMinimumBalance() {
         return minimumBalance;
     }
@@ -448,13 +413,48 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public void setProgramLoyalty(ProgramLoyalty programLoyalty) {
         this.programLoyalty = programLoyalty;
     }
-
-    public RateByProduct getRateByProduct() {
-        return rateByProduct;
+    
+    public RateByProduct getRateByProduct() { 
+        return rateByProduct; 
+    } 
+ 
+    public void setRateByProduct(RateByProduct rateByProduct) { 
+        this.rateByProduct = rateByProduct; 
     }
 
-    public void setRateByProduct(RateByProduct rateByProduct) {
-        this.rateByProduct = rateByProduct;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Product)) {
+            return false;
+        }
+        Product other = (Product) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+    
 }
