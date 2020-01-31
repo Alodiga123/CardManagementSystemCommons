@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -32,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ProductHasCommerceCategory.findAll", query = "SELECT p FROM ProductHasCommerceCategory p"),
     @NamedQuery(name = "ProductHasCommerceCategory.findById", query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.id = :id"),
     @NamedQuery(name = QueryConstants.COMMERCE_CATEGORY_BY_PRODUCT, query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.productId.id=:productId")})
-public class ProductHasCommerceCategory implements Serializable {
+public class ProductHasCommerceCategory extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -101,6 +103,16 @@ public class ProductHasCommerceCategory implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ProductHasCommerceCategory[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
