@@ -448,13 +448,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public void setProgramLoyalty(ProgramLoyalty programLoyalty) {
         this.programLoyalty = programLoyalty;
     }
-
-    public RateByProduct getRateByProduct() {
-        return rateByProduct;
+    
+    public RateByProduct getRateByProduct() { 
+        return rateByProduct; 
+    } 
+ 
+    public void setRateByProduct(RateByProduct rateByProduct) { 
+        this.rateByProduct = rateByProduct; 
     }
-
-    public void setRateByProduct(RateByProduct rateByProduct) {
-        this.rateByProduct = rateByProduct;
-    }
-
 }
