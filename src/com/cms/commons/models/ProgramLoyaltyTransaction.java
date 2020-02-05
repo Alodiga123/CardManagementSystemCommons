@@ -73,7 +73,6 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
     private Float totalAmountDaily;
     @Column(name = "totalAmountMonthly")
     private Float totalAmountMonthly;
-    @Size(max = 45)
     @Column(name = "indBonificationFixed")
     private Boolean indBonificationFixed;
     @JoinColumn(name = "channelId", referencedColumnName = "id")
@@ -85,9 +84,7 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
     @JoinColumn(name = "transactionId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Transaction transactionId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programLoyaltyTransactionId")
-    private Collection<LoyaltyTransactionHasCommerceCategory> loyaltyTransactionHasCommerceCategoryCollection;
-
+    
     public ProgramLoyaltyTransaction() {
     }
 
@@ -111,20 +108,20 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
         this.totalPointsValue = totalPointsValue;
     }
 
-    public Float getTotalMaximumTransactions() {
-        return totalMaximumTransactions;
-    }
-
-    public void setTotalMaximumTransactions(Float totalMaximumTransactions) {
-        this.totalMaximumTransactions = totalMaximumTransactions;
-    }
-    
     public Float getTotalBonificationValue() {
         return totalBonificationValue;
     }
 
     public void setTotalBonificationValue(Float totalBonificationValue) {
         this.totalBonificationValue = totalBonificationValue;
+    }
+
+    public Float getTotalMaximumTransactions() {
+        return totalMaximumTransactions;
+    }
+
+    public void setTotalMaximumTransactions(Float totalMaximumTransactions) {
+        this.totalMaximumTransactions = totalMaximumTransactions;
     }
 
     public Float getTotalAmountDaily() {
@@ -142,7 +139,7 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
     public void setTotalAmountMonthly(Float totalAmountMonthly) {
         this.totalAmountMonthly = totalAmountMonthly;
     }
-    
+
     public Boolean getIndBonificationFixed() {
         return indBonificationFixed;
     }
@@ -173,16 +170,6 @@ public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implem
 
     public void setTransactionId(Transaction transactionId) {
         this.transactionId = transactionId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryCollection() {
-        return loyaltyTransactionHasCommerceCategoryCollection;
-    }
-
-    public void setLoyaltyTransactionHasCommerceCategoryCollection(Collection<LoyaltyTransactionHasCommerceCategory> loyaltyTransactionHasCommerceCategoryCollection) {
-        this.loyaltyTransactionHasCommerceCategoryCollection = loyaltyTransactionHasCommerceCategoryCollection;
     }
 
     @Override

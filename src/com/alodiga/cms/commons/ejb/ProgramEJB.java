@@ -66,7 +66,7 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<DaysWeek> getDaysWeek(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DaysWeek loadDaysWeek(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DaysWeek saveDaysWeek(DaysWeek daysWeek)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
     //ProgramLoyaltyTransaction
     public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransactionByLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
