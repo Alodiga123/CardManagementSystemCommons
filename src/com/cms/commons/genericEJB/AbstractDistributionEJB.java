@@ -310,7 +310,6 @@ public class AbstractDistributionEJB {
             }
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
             try {
                 transaction.rollback();
             } catch (Exception e1) {
@@ -321,4 +320,8 @@ public class AbstractDistributionEJB {
 
         return entity;
     }
+    
+    
+   
+    
 }
