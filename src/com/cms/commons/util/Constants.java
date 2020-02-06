@@ -68,6 +68,7 @@ public class Constants {
         public static final String NETWORK_BY_PROGRAM = "programId";
         public static final String PRODUCT_KEY = "productId";
         public static final String PROGRAM_LOYALTY_KEY = "programLoyaltyId";
+        public static final String COMMERCE_CATEGORY_KEY = "commerceCategoryId";
         public static final String PROGRAM_LOYALTY_TRANSACTION_KEY = "programLoyaltyTransactionId";
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
