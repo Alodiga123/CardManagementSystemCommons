@@ -11,7 +11,6 @@ import com.cms.commons.models.Address;
 import com.cms.commons.models.BinSponsor;
 import com.cms.commons.models.CardIssuanceType;
 import com.cms.commons.models.CardStatus;
-import com.cms.commons.models.CardType;
 import com.cms.commons.models.City;
 import com.cms.commons.models.RequestType;
 import com.cms.commons.models.Country;
@@ -104,11 +103,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List< BinSponsor> getBinSponsor(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public BinSponsor loadBinSponsore(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Tabla de CardType
-    public List< CardType> getCardTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CardType loadCardType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CardType  saveCardType(CardType cardType) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
     //SourceFunds
     public List< SourceFunds> getSourceFunds(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public SourceFunds loadSourceFunds(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
