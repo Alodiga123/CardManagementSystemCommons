@@ -95,9 +95,9 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    @JoinColumn(name = "cardTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CardType cardTypeId;
+    private ProductType productTypeId;
     @JoinColumn(name = "program_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Program programId;
@@ -279,12 +279,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.countryId = countryId;
     }
 
-    public CardType getCardTypeId() {
-        return cardTypeId;
+    public ProductType getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setCardTypeId(CardType cardTypeId) {
-        this.cardTypeId = cardTypeId;
+    public void setProductTypeId(ProductType productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public Program getProgramId() {
