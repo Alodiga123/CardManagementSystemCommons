@@ -32,15 +32,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "reviewCollectionsRequest")
+@Table(name = "reviewRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ReviewCollectionsRequest.findAll", query = "SELECT r FROM ReviewCollectionsRequest r"),
-    @NamedQuery(name = "ReviewCollectionsRequest.findById", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.id = :id"),
-    @NamedQuery(name = "ReviewCollectionsRequest.findByReviewDate", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.reviewDate = :reviewDate"),
-    @NamedQuery(name = "ReviewCollectionsRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewCollectionsRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount"),
-    @NamedQuery(name = QueryConstants.REVIEW_COLLECTIONS_REQUEST_BY_REQUEST, query = "SELECT r FROM ReviewCollectionsRequest r where r.requestId.id = :requestId")})
-public class ReviewCollectionsRequest extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "ReviewRequest.findAll", query = "SELECT r FROM ReviewRequest r"),
+    @NamedQuery(name = "ReviewRequest.findById", query = "SELECT r FROM ReviewRequest r WHERE r.id = :id"),
+    @NamedQuery(name = "ReviewRequest.findByReviewDate", query = "SELECT r FROM ReviewRequest r WHERE r.reviewDate = :reviewDate"),
+    @NamedQuery(name = "ReviewRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount"),
+    @NamedQuery(name = QueryConstants.REVIEW_REQUEST_BY_REQUEST, query = "SELECT r FROM ReviewRequest r where r.requestId.id = :requestId")})
+
+public class ReviewRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,7 +52,6 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     @Column(name = "reviewDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date reviewDate;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "maximumRechargeAmount")
     private Float maximumRechargeAmount;
     @JoinColumn(name = "requestId", referencedColumnName = "id")
@@ -66,11 +66,16 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     @Size(max = 1500)
     @Column(name = "observations")
     private String observations;
+    @Column(name = "indApproved")
+    private Boolean indApproved;
+    @JoinColumn(name = "reviewRequestTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ReviewRequestType reviewRequestTypeId;
 
-    public ReviewCollectionsRequest() {
+    public ReviewRequest() {
     }
 
-    public ReviewCollectionsRequest(Long id) {
+    public ReviewRequest(Long id) {
         this.id = id;
     }
 
@@ -130,6 +135,22 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
         this.observations = observations;
     }
 
+    public Boolean getIndApproved() {
+        return indApproved;
+    }
+
+    public void setIndApproved(Boolean indApproved) {
+        this.indApproved = indApproved;
+    }
+
+    public ReviewRequestType getReviewRequestTypeId() {
+        return reviewRequestTypeId;
+    }
+
+    public void setReviewRequestTypeId(ReviewRequestType reviewRequestTypeId) {
+        this.reviewRequestTypeId = reviewRequestTypeId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -140,10 +161,10 @@ public class ReviewCollectionsRequest extends AbstractDistributionEntity impleme
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ReviewCollectionsRequest)) {
+        if (!(object instanceof ReviewRequest)) {
             return false;
         }
-        ReviewCollectionsRequest other = (ReviewCollectionsRequest) object;
+        ReviewRequest other = (ReviewRequest) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

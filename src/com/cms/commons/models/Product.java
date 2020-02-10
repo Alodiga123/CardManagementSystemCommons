@@ -9,6 +9,7 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -21,11 +22,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -138,7 +142,7 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private RateByProduct rateByProduct;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private ReviewCollectionsRequest reviewCollectionsRequest;
+    private ReviewRequest reviewRequest;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProgramLoyalty programLoyalty;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
@@ -391,12 +395,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.maximumBalance = maximumBalance;
     }
 
-    public ReviewCollectionsRequest getReviewCollectionsRequest() {
-        return reviewCollectionsRequest;
+    public ReviewRequest getReviewRequest() {
+        return reviewRequest;
     }
 
-    public void setReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) {
-        this.reviewCollectionsRequest = reviewCollectionsRequest;
+    public void setReviewRequest(ReviewRequest reviewRequest) {
+        this.reviewRequest = reviewRequest;
     }
 
     public ProductHasChannelHasTransaction getProductHasChannelHasTransaction() {
@@ -457,5 +461,5 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }
