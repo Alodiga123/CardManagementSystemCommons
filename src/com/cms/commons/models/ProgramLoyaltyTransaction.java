@@ -44,7 +44,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountDaily", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountDaily = :totalAmountDaily"),
     @NamedQuery(name = "ProgramLoyaltyTransaction.findByTotalAmountMonthly", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.totalAmountMonthly = :totalAmountMonthly"),
     @NamedQuery(name = "ProgramLoyaltyTransaction.findByIndBonificationFixed", query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.indBonificationFixed = :indBonificationFixed"),
-    @NamedQuery(name = QueryConstants.PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY, query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.programLoyaltyId.id=:programLoyaltyId")
+    @NamedQuery(name = QueryConstants.PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY, query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.programLoyaltyId.id=:programLoyaltyId"),
+    @NamedQuery(name = QueryConstants.PROGRAM_LOYALTY_TRANSACTION_UNIQUE, query = "SELECT p FROM ProgramLoyaltyTransaction p WHERE p.channelId.id=:channelId AND p.programLoyaltyId.id=:programLoyaltyId AND p.transactionId.id=:transactionId")
 })
 public class ProgramLoyaltyTransaction extends AbstractDistributionEntity implements Serializable {
 
