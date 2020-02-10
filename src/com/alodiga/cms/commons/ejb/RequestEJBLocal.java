@@ -13,7 +13,7 @@ import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
-import com.cms.commons.models.ReviewCollectionsRequest;
+import com.cms.commons.models.ReviewRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -62,9 +62,9 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public CollectionType loadCollectionType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionType saveCollectionType(CollectionType collectionType) throws NullParameterException, GeneralException;
 
-    //ReviewCollectionsRequest
-    public List<ReviewCollectionsRequest> getReviewCollectionsRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List<ReviewCollectionsRequest> getReviewCollectionsRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public ReviewCollectionsRequest loadReviewCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public ReviewCollectionsRequest saveReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) throws NullParameterException, GeneralException;
+    //ReviewRequest
+    public List<ReviewRequest> getReviewRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ReviewRequest> getReviewRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ReviewRequest loadReviewRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ReviewRequest saveReviewRequest(ReviewRequest reviewRequest) throws NullParameterException, GeneralException;
 }
