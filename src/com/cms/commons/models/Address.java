@@ -59,6 +59,11 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     private String nameStreet;
     @Column(name = "urbanization")
     private String urbanization;
+    @Column(name = "indAddressDelivery")
+    private Boolean indAddressDelivery;
+    @JoinColumn(name = "addressTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private AddressType addressTypeId;
     @JoinColumn(name = "edificationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private EdificationType edificationTypeId;
@@ -74,8 +79,6 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private Collection<PersonHasAddress> personHasAddressCollection;
 
     public Address() {
     }
@@ -171,15 +174,21 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<PersonHasAddress> getPersonHasAddressCollection() {
-        return personHasAddressCollection;
+    
+    public Boolean getIndAddressDelivery() {
+        return indAddressDelivery;
     }
 
-    public void setPersonHasAddressCollection(Collection<PersonHasAddress> personHasAddressCollection) {
-        this.personHasAddressCollection = personHasAddressCollection;
+    public void setIndAddressDelivery(Boolean indAddressDelivery) {
+        this.indAddressDelivery = indAddressDelivery;
+    }
+    
+    public AddressType getAddressTypeId() {
+        return addressTypeId;
+    }
+
+    public void setAddressTypeId(AddressType addressTypeId) {
+        this.addressTypeId = addressTypeId;
     }
 
     @Override

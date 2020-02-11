@@ -82,6 +82,9 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "reasonRejectionRequestId", referencedColumnName = "id")
     @ManyToOne
     private ReasonRejectionRequest reasonRejectionRequestId;
+    @JoinColumn(name = "personCustomerId", referencedColumnName = "id")
+    @ManyToOne
+    private Person personCustomerId;
 
     public Request() {
     }
@@ -170,6 +173,14 @@ public class Request extends AbstractDistributionEntity implements Serializable 
         this.requestTypeId = requestTypeId;
     }
 
+    public Person getPersonCustomerId() {
+        return personCustomerId;
+    }
+
+    public void setPersonCustomerId(Person personCustomerId) {
+        this.personCustomerId = personCustomerId;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

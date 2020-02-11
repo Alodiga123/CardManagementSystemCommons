@@ -42,6 +42,7 @@ public class QueryConstants {
     public static final String LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION = "loyaltyTransactionCommerceByTransaction";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
+    public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
@@ -93,7 +94,7 @@ public class QueryConstants {
     public static final String LOAD_CURRENT_BALANCE_HISTORY_BY_ACCOUNT = "loadCurrentBalanceHistoryByAccount";
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
-    public static final String REVIEW_COLLECTIONS_REQUEST_BY_REQUEST = "reviewCollectionsRequestByRequest";
+    public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";
