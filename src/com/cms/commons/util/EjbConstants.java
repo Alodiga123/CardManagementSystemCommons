@@ -68,5 +68,6 @@ public class EjbConstants {
     public static final String PARAM_CHANNEL_ID = "channelId";
     public static final String PARAM_PROGRAM_LOYALTY_ID = "programLoyaltyId";
     public static final String PARAM_PROGRAM_LOYALTY_TRANSACTION_ID = "programLoyaltyTransactionId";
+    public static final String PARAM_COMMERCE_CATEGORY_ID = "commerceCategoryId";
 
 }

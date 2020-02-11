@@ -79,7 +79,7 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public ProductHasCommerceCategory loadProductHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductHasCommerceCategory saveProductHasCommerceCategory(ProductHasCommerceCategory productHasCommerceCategory) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ProductHasCommerceCategory> getCommerceCategoryByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public ProductHasCommerceCategory getProductHasCommerceCategoryBD(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<ProductHasCommerceCategory> getProductHasCommerceCategoryBD(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //GeneralRate
     public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
