@@ -285,6 +285,119 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`card` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Agregar tabla reviewOFAC
+-- author: Jesús Gómez
+-- Fecha: 10/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`reviewOFAC` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `resultReview` VARCHAR(250) NULL,
+  `personId` BIGINT UNIQUE NOT NULL,
+  `requestId` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ReviewOFAC_person1_idx` (`personId` ASC),
+  INDEX `fk_ReviewOFAC_request1_idx` (`requestId` ASC),
+  CONSTRAINT `fk_ReviewOFAC_person1`
+    FOREIGN KEY (`personId`)
+    REFERENCES `CardManagementSystem`.`person` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ReviewOFAC_request1`
+    FOREIGN KEY (`requestId`)
+    REFERENCES `CardManagementSystem`.`request` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar FK en tabla cardRequestNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 10/02/2020
+ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
+ADD COLUMN `legalCustomerId` BIGINT NULL;
+ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
+ADD CONSTRAINT `fk_cardRequestNaturalPerson_legalCustomer1` 
+FOREIGN KEY (`legalCustomerId`)
+    REFERENCES `CardManagementSystem`.`legalCustomer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar tabla accountType
+-- author: Jesús Gómez
+-- Fecha: 11/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar tabla subAccountType
+-- author: Jesús Gómez
+-- Fecha: 11/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`subAccountType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(60) NULL,
+  `accountTypeId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_subAccountType_accountType1_idx` (`accountTypeId` ASC),
+  CONSTRAINT `fk_subAccountType_accountType1`
+    FOREIGN KEY (`accountTypeId`)
+    REFERENCES `CardManagementSystem`.`accountType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla accountProperties
+-- author: Jesús Gómez
+-- Fecha: 11/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountProperties` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `countryId` INT NOT NULL,
+  `programId` BIGINT NOT NULL,
+  `accountTypeId` INT NOT NULL,
+  `identifier` VARCHAR(40) NULL,
+  `lenghtAccount` INT NULL,
+  `maximumAmount` FLOAT NULL,
+  `minimunAmount` FLOAT NULL,
+  `indOverDraft` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_accountType_country1_idx` (`countryId` ASC),
+  INDEX `fk_accountType_program1_idx` (`programId` ASC),
+  INDEX `fk_accountProperties_accountType1_idx` (`accountTypeId` ASC),
+  CONSTRAINT `fk_accountType_country1`
+    FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_accountType_program1`
+    FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_accountProperties_accountType1`
+    FOREIGN KEY (`accountTypeId`)
+    REFERENCES `CardManagementSystem`.`accountType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla accountSegment
+-- author: Jesús Gómez
+-- Fecha: 11/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountSegment` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(50) NULL,
+  `lenghtSegment` INT NULL,
+  `accountPropertiesId` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_accountSegment_accountProperties1_idx` (`accountPropertiesId` ASC),
+  CONSTRAINT `fk_accountSegment_accountProperties1`
+    FOREIGN KEY (`accountPropertiesId`)
+    REFERENCES `CardManagementSystem`.`accountProperties` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+
+
+
 
 
 
