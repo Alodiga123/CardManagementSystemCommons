@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -34,7 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "AddressType.findAll", query = "SELECT a FROM AddressType a")
     , @NamedQuery(name = "AddressType.findById", query = "SELECT a FROM AddressType a WHERE a.id = :id")
     , @NamedQuery(name = "AddressType.findByDescription", query = "SELECT a FROM AddressType a WHERE a.description = :description")})
-public class AddressType implements Serializable {
+public class AddressType extends AbstractDistributionEntity implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressTypeId")
     private Collection<Address> addressCollection;
@@ -105,6 +107,16 @@ public class AddressType implements Serializable {
 
     public void setAddressCollection(Collection<Address> addressCollection) {
         this.addressCollection = addressCollection;
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
