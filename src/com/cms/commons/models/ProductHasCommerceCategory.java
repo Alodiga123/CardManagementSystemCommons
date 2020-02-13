@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ProductHasCommerceCategory.findAll", query = "SELECT p FROM ProductHasCommerceCategory p"),
     @NamedQuery(name = "ProductHasCommerceCategory.findById", query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.id = :id"),
-    @NamedQuery(name = QueryConstants.COMMERCE_CATEGORY_BY_PRODUCT, query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.productId.id=:productId")})
+    @NamedQuery(name = QueryConstants.COMMERCE_CATEGORY_BY_PRODUCT, query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.productId.id=:productId"),
+    @NamedQuery(name = QueryConstants.COMMERCE_CATEGORY_FIND_BD, query = "SELECT p FROM ProductHasCommerceCategory p WHERE p.commerceCategoryId.id = :commerceCategoryId AND p.productId.id = :productId")})
 public class ProductHasCommerceCategory extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

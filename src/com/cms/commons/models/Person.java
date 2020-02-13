@@ -8,6 +8,7 @@ package com.cms.commons.models;
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,11 +21,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -42,6 +46,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Person.lastPerson", query = "SELECT p FROM Person p ORDER BY p.id DESC")})
 public class Person extends AbstractDistributionEntity implements Serializable {
 
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,6 +96,8 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private Employee employee;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private User user;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private ReviewOFAC reviewOFAC;
 
     public Person() {
     }
@@ -292,6 +299,14 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public ReviewOFAC getReviewOFAC() {
+        return reviewOFAC;
+    }
+
+    public void setReviewOFAC(ReviewOFAC reviewOFAC) {
+        this.reviewOFAC = reviewOFAC;
     }
     
 }
