@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -20,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -29,14 +28,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "cardType")
+@Table(name = "statusCustomer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardType.findAll", query = "SELECT c FROM CardType c")
-    , @NamedQuery(name = "CardType.findById", query = "SELECT c FROM CardType c WHERE c.id = :id")
-    , @NamedQuery(name = "CardType.findByDescription", query = "SELECT c FROM CardType c WHERE c.description = :description")})
-public class CardType extends AbstractDistributionEntity implements Serializable{
-
+    @NamedQuery(name = "StatusCustomer.findAll", query = "SELECT s FROM StatusCustomer s")
+    , @NamedQuery(name = "StatusCustomer.findById", query = "SELECT s FROM StatusCustomer s WHERE s.id = :id")
+    , @NamedQuery(name = "StatusCustomer.findByDescription", query = "SELECT s FROM StatusCustomer s WHERE s.description = :description")})
+public class StatusCustomer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,15 +42,18 @@ public class CardType extends AbstractDistributionEntity implements Serializable
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 40)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardTypeId")
-    private Collection<Product> productCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusCustomerId")
+    private Collection<NaturalCustomer> naturalCustomerCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusCustomerId")
+    private Collection<LegalCustomer> legalCustomerCollection;
 
-    public CardType() {
+    public StatusCustomer() {
     }
 
-    public CardType(Integer id) {
+    public StatusCustomer(Integer id) {
         this.id = id;
     }
 
@@ -74,12 +75,22 @@ public class CardType extends AbstractDistributionEntity implements Serializable
 
     @XmlTransient
     @JsonIgnore
-    public Collection<Product> getProductCollection() {
-        return productCollection;
+    public Collection<NaturalCustomer> getNaturalCustomerCollection() {
+        return naturalCustomerCollection;
     }
 
-    public void setProductCollection(Collection<Product> productCollection) {
-        this.productCollection = productCollection;
+    public void setNaturalCustomerCollection(Collection<NaturalCustomer> naturalCustomerCollection) {
+        this.naturalCustomerCollection = naturalCustomerCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<LegalCustomer> getLegalCustomerCollection() {
+        return legalCustomerCollection;
+    }
+
+    public void setLegalCustomerCollection(Collection<LegalCustomer> legalCustomerCollection) {
+        this.legalCustomerCollection = legalCustomerCollection;
     }
 
     @Override
@@ -92,29 +103,19 @@ public class CardType extends AbstractDistributionEntity implements Serializable
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CardType)) {
+        if (!(object instanceof StatusCustomer)) {
             return false;
         }
-        CardType other = (CardType) object;
+        StatusCustomer other = (StatusCustomer) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-      @Override
+    @Override
     public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        return "com.cms.commons.models.StatusCustomer[ id=" + id + " ]";
     }
     
 }

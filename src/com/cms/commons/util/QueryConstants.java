@@ -30,6 +30,7 @@ public class QueryConstants {
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
+    public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
     public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String NETWORK_BY_COUNTRY = "networkByCountry";
@@ -94,7 +95,7 @@ public class QueryConstants {
     public static final String LOAD_CURRENT_BALANCE_HISTORY_BY_ACCOUNT = "loadCurrentBalanceHistoryByAccount";
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
-    public static final String REVIEW_COLLECTIONS_REQUEST_BY_REQUEST = "reviewCollectionsRequestByRequest";
+    public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";

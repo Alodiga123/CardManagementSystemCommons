@@ -9,6 +9,7 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -21,11 +22,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -50,6 +54,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findByBeginDateValidity", query = "SELECT p FROM Product p WHERE p.beginDateValidity = :beginDateValidity"),
     @NamedQuery(name = "Product.findByEndDateValidity", query = "SELECT p FROM Product p WHERE p.endDateValidity = :endDateValidity"),
     @NamedQuery(name = QueryConstants.PRODUCT_BY_PROGRAM, query = "SELECT p FROM Product p WHERE p.programId.id = :programId")})
+
 public class Product extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -94,9 +99,9 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    @JoinColumn(name = "cardTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private CardType cardTypeId;
+    private ProductType productTypeId;
     @JoinColumn(name = "program_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Program programId;
@@ -137,7 +142,7 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private RateByProduct rateByProduct;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
-    private ReviewCollectionsRequest reviewCollectionsRequest;
+    private ReviewRequest reviewRequest;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProgramLoyalty programLoyalty;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
@@ -278,12 +283,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.countryId = countryId;
     }
 
-    public CardType getCardTypeId() {
-        return cardTypeId;
+    public ProductType getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setCardTypeId(CardType cardTypeId) {
-        this.cardTypeId = cardTypeId;
+    public void setProductTypeId(ProductType productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public Program getProgramId() {
@@ -390,12 +395,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.maximumBalance = maximumBalance;
     }
 
-    public ReviewCollectionsRequest getReviewCollectionsRequest() {
-        return reviewCollectionsRequest;
+    public ReviewRequest getReviewRequest() {
+        return reviewRequest;
     }
 
-    public void setReviewCollectionsRequest(ReviewCollectionsRequest reviewCollectionsRequest) {
-        this.reviewCollectionsRequest = reviewCollectionsRequest;
+    public void setReviewRequest(ReviewRequest reviewRequest) {
+        this.reviewRequest = reviewRequest;
     }
 
     public ProductHasChannelHasTransaction getProductHasChannelHasTransaction() {
@@ -456,5 +461,5 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }

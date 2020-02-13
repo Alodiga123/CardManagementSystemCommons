@@ -5,9 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,13 +24,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "personHasAddress")
+@Table(name = "legalCustomerHasLegalRepresentatives")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PersonHasAddress.findAll", query = "SELECT p FROM PersonHasAddress p"),
-    @NamedQuery(name = "PersonHasAddress.findById", query = "SELECT p FROM PersonHasAddress p WHERE p.id = :id"),
-    @NamedQuery(name = QueryConstants.PERSON_HAS_ADDRESS_BY_PERSON, query = "SELECT p FROM PersonHasAddress p WHERE p.personId.id=:personId")})
-public class PersonHasAddress extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findAll", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l")
+    , @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findById", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l WHERE l.id = :id")})
+public class LegalCustomerHasLegalRepresentatives implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,17 +37,17 @@ public class PersonHasAddress extends AbstractDistributionEntity implements Seri
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "addressId", referencedColumnName = "id")
+    @JoinColumn(name = "legalRepresentativesId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Address addressId;
-    @JoinColumn(name = "personId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Person personId;
+    private LegalRepresentatives legalRepresentativesId;
+    @JoinColumn(name = "legalCustomerId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private LegalCustomer legalCustomerId;
 
-    public PersonHasAddress() {
+    public LegalCustomerHasLegalRepresentatives() {
     }
 
-    public PersonHasAddress(Integer id) {
+    public LegalCustomerHasLegalRepresentatives(Integer id) {
         this.id = id;
     }
 
@@ -64,20 +59,20 @@ public class PersonHasAddress extends AbstractDistributionEntity implements Seri
         this.id = id;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public LegalRepresentatives getLegalRepresentativesId() {
+        return legalRepresentativesId;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setLegalRepresentativesId(LegalRepresentatives legalRepresentativesId) {
+        this.legalRepresentativesId = legalRepresentativesId;
     }
 
-    public Person getPersonId() {
-        return personId;
+    public LegalCustomer getLegalCustomerId() {
+        return legalCustomerId;
     }
 
-    public void setPersonId(Person personId) {
-        this.personId = personId;
+    public void setLegalCustomerId(LegalCustomer legalCustomerId) {
+        this.legalCustomerId = legalCustomerId;
     }
 
     @Override
@@ -90,10 +85,10 @@ public class PersonHasAddress extends AbstractDistributionEntity implements Seri
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PersonHasAddress)) {
+        if (!(object instanceof LegalCustomerHasLegalRepresentatives)) {
             return false;
         }
-        PersonHasAddress other = (PersonHasAddress) object;
+        LegalCustomerHasLegalRepresentatives other = (LegalCustomerHasLegalRepresentatives) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -102,17 +97,7 @@ public class PersonHasAddress extends AbstractDistributionEntity implements Seri
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PersonHasAddress[ id=" + id + " ]";
+        return "com.cms.commons.models.LegalCustomerHasLegalRepresentatives[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
+    
 }

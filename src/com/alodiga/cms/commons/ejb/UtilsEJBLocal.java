@@ -7,10 +7,10 @@ import com.alodiga.cms.commons.exception.EmptyListException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.Address;
+import com.cms.commons.models.AddressType;
 import com.cms.commons.models.BinSponsor;
 import com.cms.commons.models.CardIssuanceType;
 import com.cms.commons.models.CardStatus;
-import com.cms.commons.models.CardType;
 import com.cms.commons.models.City;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.Currency;
@@ -108,11 +108,6 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalPerson saveLegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    //Tabla de CardType
-    public List< CardType> getCardTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CardType loadCardType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CardType saveCardType(CardType cardType) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
     //SourceFunds
     public List< SourceFunds> getSourceFunds(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public SourceFunds loadSourceFunds(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -176,6 +171,11 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<ZipZone> getZipZoneByCities(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ZipZone loadZipZone(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ZipZone saveZipZone (ZipZone zipZone)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+        
+    //AddressType
+    public List<AddressType> getAddressType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public AddressType loadAddressType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public AddressType saveAddressType (AddressType addressType)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //LegalRepresentatives
     public List<LegalRepresentatives> getLegalRepresentativeses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
