@@ -54,7 +54,7 @@ public class EjbConstants {
     public static final String PARAM_COUNTRY_ID = "countryId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
-    public static final String PARAM_PERSON_ID = "id";
+    public static final String PARAM_PERSON_ID = "personId";
     public static final String PARAM_DOCUMENT_TYPE_ID = "documentTypeId";
     public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
     public static final String PARAM_APPLICANT_NATURAL_PERSON_ID = "applicantNaturalPersonId";
