@@ -85,6 +85,8 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "personCustomerId", referencedColumnName = "id")
     @ManyToOne
     private Person personCustomerId;
+    @Column(name = "indPersonNaturalRequest")
+    private Boolean indPersonNaturalRequest;
 
     public Request() {
     }
@@ -179,6 +181,14 @@ public class Request extends AbstractDistributionEntity implements Serializable 
 
     public void setPersonCustomerId(Person personCustomerId) {
         this.personCustomerId = personCustomerId;
+    }
+
+    public Boolean getIndPersonNaturalRequest() {
+        return indPersonNaturalRequest;
+    }
+
+    public void setIndPersonNaturalRequest(Boolean indPersonNaturalRequest) {
+        this.indPersonNaturalRequest = indPersonNaturalRequest;
     }
     
     @Override
