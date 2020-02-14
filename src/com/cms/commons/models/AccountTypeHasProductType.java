@@ -18,22 +18,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author jose
+ * @author yalmea
  */
 @Entity
-@Table(name = "subAccountType")
+@Table(name = "accountTypeHasProductType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SubAccountType.findAll", query = "SELECT s FROM SubAccountType s"),
-    @NamedQuery(name = "SubAccountType.findById", query = "SELECT s FROM SubAccountType s WHERE s.id = :id"),
-    @NamedQuery(name = "SubAccountType.findByName", query = "SELECT s FROM SubAccountType s WHERE s.name = :name"),
-    @NamedQuery(name = QueryConstants.SUB_ACCOUNT_TYPE_BY_ACCOUNT_TYPE, query = "SELECT s FROM SubAccountType s WHERE s.accountTypeId.id =:accountTypeId")})
-public class SubAccountType implements Serializable {
+    @NamedQuery(name = "AccountTypeHasProductType.findAll", query = "SELECT a FROM AccountTypeHasProductType a"),
+    @NamedQuery(name = "AccountTypeHasProductType.findById", query = "SELECT a FROM AccountTypeHasProductType a WHERE a.id = :id"),
+    @NamedQuery(name = QueryConstants.ACCOUNT_TYPE_HAS_PRODUCT_TYPE_BY_PRODUCT_TYPE, query = "SELECT a FROM AccountTypeHasProductType a WHERE a.productTypeId.id=:productTypeId")})
+public class AccountTypeHasProductType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,17 +39,17 @@ public class SubAccountType implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 60)
-    @Column(name = "name")
-    private String name;
+    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProductType productTypeId;
     @JoinColumn(name = "accountTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AccountType accountTypeId;
 
-    public SubAccountType() {
+    public AccountTypeHasProductType() {
     }
 
-    public SubAccountType(Integer id) {
+    public AccountTypeHasProductType(Integer id) {
         this.id = id;
     }
 
@@ -63,12 +61,12 @@ public class SubAccountType implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public ProductType getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductTypeId(ProductType productTypeId) {
+        this.productTypeId = productTypeId;
     }
 
     public AccountType getAccountTypeId() {
@@ -89,10 +87,10 @@ public class SubAccountType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SubAccountType)) {
+        if (!(object instanceof AccountTypeHasProductType)) {
             return false;
         }
-        SubAccountType other = (SubAccountType) object;
+        AccountTypeHasProductType other = (AccountTypeHasProductType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -101,7 +99,7 @@ public class SubAccountType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.SubAccountType[ id=" + id + " ]";
+        return "com.cms.commons.models.AccountTypeHasProductType[ id=" + id + " ]";
     }
     
 }

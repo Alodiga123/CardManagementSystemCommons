@@ -38,10 +38,13 @@ public class QueryConstants {
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
+    public static final String ACCOUNT_TYPE_HAS_PRODUCT_TYPE_BY_PRODUCT_TYPE = "accountTypeHasProductTypeByProductType";
+    public static final String SUB_ACCOUNT_TYPE_BY_ACCOUNT_TYPE = "subAccountTypeByAccountType";
     public static final String COMMERCE_CATEGORY_FIND_BD = "commerceCategoryFindBD";
     public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
     public static final String LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION = "loyaltyTransactionCommerceByTransaction";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
+    public static final String PROGRAM_BY_COUNTRY = "programByCountry";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";

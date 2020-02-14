@@ -52,7 +52,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Program.findByCreateDate", query = "SELECT p FROM Program p WHERE p.createDate = :createDate"),
     @NamedQuery(name = "Program.findByUpdateDate", query = "SELECT p FROM Program p WHERE p.updateDate = :updateDate"),
     @NamedQuery(name = "Program.findByOtherResponsibleNetworkReporting", query = "SELECT p FROM Program p WHERE p.otherResponsibleNetworkReporting = :otherResponsibleNetworkReporting"),
-    @NamedQuery(name = QueryConstants.PROGRAM_BY_PROGRAM_TYPE, query = "SELECT p FROM Program p WHERE p.programTypeId.id = :programTypeId")})
+    @NamedQuery(name = QueryConstants.PROGRAM_BY_PROGRAM_TYPE, query = "SELECT p FROM Program p WHERE p.programTypeId.id = :programTypeId"),
+    @NamedQuery(name = QueryConstants.PROGRAM_BY_COUNTRY, query = "SELECT p FROM Program p WHERE p.cardProgramManagerId.countryId.id = :countryId")})
 
 public class Program extends AbstractDistributionEntity implements Serializable {
 
