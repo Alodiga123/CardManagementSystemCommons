@@ -71,8 +71,9 @@ public class AccountProperties extends AbstractDistributionEntity implements Ser
     @JoinColumn(name = "accountTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AccountType accountTypeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountPropertiesId")
-    private Collection<AccountSegment> accountSegmentCollection;
+    @JoinColumn(name = "subAccountTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SubAccountType subAccountTypeId;
 
     public AccountProperties() {
     }
@@ -153,14 +154,12 @@ public class AccountProperties extends AbstractDistributionEntity implements Ser
         this.accountTypeId = accountTypeId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AccountSegment> getAccountSegmentCollection() {
-        return accountSegmentCollection;
+    public SubAccountType getSubAccountTypeId() {
+        return subAccountTypeId;
     }
 
-    public void setAccountSegmentCollection(Collection<AccountSegment> accountSegmentCollection) {
-        this.accountSegmentCollection = accountSegmentCollection;
+    public void setSubAccountTypeId(SubAccountType subAccountTypeId) {
+        this.subAccountTypeId = subAccountTypeId;
     }
 
     @Override
@@ -190,12 +189,12 @@ public class AccountProperties extends AbstractDistributionEntity implements Ser
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
     
 }
