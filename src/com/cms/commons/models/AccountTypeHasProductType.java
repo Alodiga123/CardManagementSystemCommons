@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -31,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AccountTypeHasProductType.findAll", query = "SELECT a FROM AccountTypeHasProductType a"),
     @NamedQuery(name = "AccountTypeHasProductType.findById", query = "SELECT a FROM AccountTypeHasProductType a WHERE a.id = :id"),
     @NamedQuery(name = QueryConstants.ACCOUNT_TYPE_HAS_PRODUCT_TYPE_BY_PRODUCT_TYPE, query = "SELECT a FROM AccountTypeHasProductType a WHERE a.productTypeId.id=:productTypeId")})
-public class AccountTypeHasProductType implements Serializable {
+public class AccountTypeHasProductType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -100,6 +102,16 @@ public class AccountTypeHasProductType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AccountTypeHasProductType[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
