@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -33,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SubAccountType.findById", query = "SELECT s FROM SubAccountType s WHERE s.id = :id"),
     @NamedQuery(name = "SubAccountType.findByName", query = "SELECT s FROM SubAccountType s WHERE s.name = :name"),
     @NamedQuery(name = QueryConstants.SUB_ACCOUNT_TYPE_BY_ACCOUNT_TYPE, query = "SELECT s FROM SubAccountType s WHERE s.accountTypeId.id =:accountTypeId")})
-public class SubAccountType implements Serializable {
+public class SubAccountType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,6 +104,16 @@ public class SubAccountType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.SubAccountType[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
