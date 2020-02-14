@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -40,7 +42,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "AccountProperties.findByMaximumAmount", query = "SELECT a FROM AccountProperties a WHERE a.maximumAmount = :maximumAmount")
     , @NamedQuery(name = "AccountProperties.findByMinimunAmount", query = "SELECT a FROM AccountProperties a WHERE a.minimunAmount = :minimunAmount")
     , @NamedQuery(name = "AccountProperties.findByIndOverDraft", query = "SELECT a FROM AccountProperties a WHERE a.indOverDraft = :indOverDraft")})
-public class AccountProperties implements Serializable {
+public class AccountProperties extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -184,6 +186,16 @@ public class AccountProperties implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AccountProperties[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
