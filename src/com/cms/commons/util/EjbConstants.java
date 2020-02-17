@@ -10,6 +10,7 @@ public class EjbConstants {
     public static final String REQUEST_EJB = "ejb/cms/RequestEJB";
     public static final String PERSON_EJB = "ejb/cms/PersonEJB";
     public static final String PRODUCT_EJB = "ejb/cms/ProductEJB";
+    public static final String CARD_EJB = "ejb/cms/CardEJB";
     //CAMBIAR
     public static final String PROPERTIES_PACKAGE = "com.distribution.commons.util.";
     public static final String ERROR_FILE_NAME = PROPERTIES_PACKAGE + "system_error";
@@ -62,6 +63,7 @@ public class EjbConstants {
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
+    public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";

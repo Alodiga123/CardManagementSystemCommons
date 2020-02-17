@@ -36,6 +36,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "AccountType.findByDescription", query = "SELECT a FROM AccountType a WHERE a.description = :description")})
 public class AccountType implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountTypeId")
+    private Collection<AccountTypeHasProductType> accountTypeHasProductTypeCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,6 +119,16 @@ public class AccountType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AccountType[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<AccountTypeHasProductType> getAccountTypeHasProductTypeCollection() {
+        return accountTypeHasProductTypeCollection;
+    }
+
+    public void setAccountTypeHasProductTypeCollection(Collection<AccountTypeHasProductType> accountTypeHasProductTypeCollection) {
+        this.accountTypeHasProductTypeCollection = accountTypeHasProductTypeCollection;
     }
     
 }

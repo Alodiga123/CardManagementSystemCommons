@@ -72,6 +72,7 @@ public class Constants {
         public static final String CHANNEL_KEY = "channelId";
         public static final String TRANSACTION_KEY = "transactionId";
         public static final String PROGRAM_LOYALTY_TRANSACTION_KEY = "programLoyaltyTransactionId";
+        public static final String ACCOUNT_TYPE_KEY = "accountTypeId";
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
