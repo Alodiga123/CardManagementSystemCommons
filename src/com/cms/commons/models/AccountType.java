@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -20,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -29,14 +28,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "cardIssuanceType")
+@Table(name = "accountType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardIssuanceType.findAll", query = "SELECT c FROM CardIssuanceType c"),
-    @NamedQuery(name = "CardIssuanceType.findById", query = "SELECT c FROM CardIssuanceType c WHERE c.id = :id"),
-    @NamedQuery(name = "CardIssuanceType.findByDescription", query = "SELECT c FROM CardIssuanceType c WHERE c.description = :description")})
-
-public class CardIssuanceType extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "AccountType.findAll", query = "SELECT a FROM AccountType a")
+    , @NamedQuery(name = "AccountType.findById", query = "SELECT a FROM AccountType a WHERE a.id = :id")
+    , @NamedQuery(name = "AccountType.findByDescription", query = "SELECT a FROM AccountType a WHERE a.description = :description")})
+public class AccountType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,13 +42,18 @@ public class CardIssuanceType extends AbstractDistributionEntity implements Seri
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 40)
     @Column(name = "description")
     private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountTypeId")
+    private Collection<AccountProperties> accountPropertiesCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountTypeId")
+    private Collection<SubAccountType> subAccountTypeCollection;
 
-    public CardIssuanceType() {
+    public AccountType() {
     }
 
-    public CardIssuanceType(Integer id) {
+    public AccountType(Integer id) {
         this.id = id;
     }
 
@@ -70,6 +73,26 @@ public class CardIssuanceType extends AbstractDistributionEntity implements Seri
         this.description = description;
     }
 
+    @XmlTransient
+    @JsonIgnore
+    public Collection<AccountProperties> getAccountPropertiesCollection() {
+        return accountPropertiesCollection;
+    }
+
+    public void setAccountPropertiesCollection(Collection<AccountProperties> accountPropertiesCollection) {
+        this.accountPropertiesCollection = accountPropertiesCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<SubAccountType> getSubAccountTypeCollection() {
+        return subAccountTypeCollection;
+    }
+
+    public void setSubAccountTypeCollection(Collection<SubAccountType> subAccountTypeCollection) {
+        this.subAccountTypeCollection = subAccountTypeCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -80,29 +103,19 @@ public class CardIssuanceType extends AbstractDistributionEntity implements Seri
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CardIssuanceType)) {
+        if (!(object instanceof AccountType)) {
             return false;
         }
-        CardIssuanceType other = (CardIssuanceType) object;
+        AccountType other = (AccountType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-   @Override
+    @Override
     public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        return "com.cms.commons.models.AccountType[ id=" + id + " ]";
     }
     
 }

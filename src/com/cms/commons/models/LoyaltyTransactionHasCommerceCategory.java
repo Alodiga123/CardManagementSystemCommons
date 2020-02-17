@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findAll", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l"),
     @NamedQuery(name = "LoyaltyTransactionHasCommerceCategory.findById", query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.id = :id"),
-    @NamedQuery(name = QueryConstants.LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION, query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.programLoyaltyTransactionId.id=:programLoyaltyTransactionId")})
+    @NamedQuery(name = QueryConstants.LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION, query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.programLoyaltyTransactionId.id=:programLoyaltyTransactionId"),
+    @NamedQuery(name = QueryConstants.LOYALTY_TRANSACTION_COMMERCE_UNIQUE, query = "SELECT l FROM LoyaltyTransactionHasCommerceCategory l WHERE l.programLoyaltyTransactionId.id=:programLoyaltyTransactionId and l.commerceCategoryId.id=:commerceCategoryId")})
 public class LoyaltyTransactionHasCommerceCategory extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
