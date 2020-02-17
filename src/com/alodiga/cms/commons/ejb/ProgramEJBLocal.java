@@ -69,13 +69,14 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     //ProgramLoyaltyTransaction
     public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransactionByLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public ProgramLoyaltyTransaction loadProgramLoyaltyTransactionUnique(Long channelId, Long programLoyaltyId, Long transactionId) throws GeneralException, RegisterNotFoundException, NullParameterException;
+    public List<ProgramLoyaltyTransaction> getProgramLoyaltyTransactionUnique(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramLoyaltyTransaction loadProgramLoyaltyTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramLoyaltyTransaction saveProgramLoyaltyTransaction(ProgramLoyaltyTransaction programLoyaltyTransaction)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //LoyaltyTransactionHasCommerceCategory
     public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryByTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryUnique(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LoyaltyTransactionHasCommerceCategory loadLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LoyaltyTransactionHasCommerceCategory saveLoyaltyTransactionHasCommerceCategory(LoyaltyTransactionHasCommerceCategory loyaltyTransactionHasCommerceCategory)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     

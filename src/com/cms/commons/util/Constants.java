@@ -69,6 +69,8 @@ public class Constants {
         public static final String PRODUCT_KEY = "productId";
         public static final String PROGRAM_LOYALTY_KEY = "programLoyaltyId";
         public static final String COMMERCE_CATEGORY_KEY = "commerceCategoryId";
+        public static final String CHANNEL_KEY = "channelId";
+        public static final String TRANSACTION_KEY = "transactionId";
         public static final String PROGRAM_LOYALTY_TRANSACTION_KEY = "programLoyaltyTransactionId";
         public static final String ACCOUNT_TYPE_KEY = "accountTypeId";
         public static final Long PROGRAM_WALLET_APP_ID = 1L;
