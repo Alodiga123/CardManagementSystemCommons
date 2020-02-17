@@ -38,6 +38,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class ProductType extends AbstractDistributionEntity implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productTypeId")
+    private Collection<AccountTypeHasProductType> accountTypeHasProductTypeCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,6 +103,16 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<AccountTypeHasProductType> getAccountTypeHasProductTypeCollection() {
+        return accountTypeHasProductTypeCollection;
+    }
+
+    public void setAccountTypeHasProductTypeCollection(Collection<AccountTypeHasProductType> accountTypeHasProductTypeCollection) {
+        this.accountTypeHasProductTypeCollection = accountTypeHasProductTypeCollection;
     }
 
 }

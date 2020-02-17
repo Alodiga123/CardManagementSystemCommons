@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -40,7 +42,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "AccountProperties.findByMaximumAmount", query = "SELECT a FROM AccountProperties a WHERE a.maximumAmount = :maximumAmount")
     , @NamedQuery(name = "AccountProperties.findByMinimunAmount", query = "SELECT a FROM AccountProperties a WHERE a.minimunAmount = :minimunAmount")
     , @NamedQuery(name = "AccountProperties.findByIndOverDraft", query = "SELECT a FROM AccountProperties a WHERE a.indOverDraft = :indOverDraft")})
-public class AccountProperties implements Serializable {
+public class AccountProperties extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,8 +71,9 @@ public class AccountProperties implements Serializable {
     @JoinColumn(name = "accountTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AccountType accountTypeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountPropertiesId")
-    private Collection<AccountSegment> accountSegmentCollection;
+    @JoinColumn(name = "subAccountTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SubAccountType subAccountTypeId;
 
     public AccountProperties() {
     }
@@ -151,14 +154,12 @@ public class AccountProperties implements Serializable {
         this.accountTypeId = accountTypeId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AccountSegment> getAccountSegmentCollection() {
-        return accountSegmentCollection;
+    public SubAccountType getSubAccountTypeId() {
+        return subAccountTypeId;
     }
 
-    public void setAccountSegmentCollection(Collection<AccountSegment> accountSegmentCollection) {
-        this.accountSegmentCollection = accountSegmentCollection;
+    public void setSubAccountTypeId(SubAccountType subAccountTypeId) {
+        this.subAccountTypeId = subAccountTypeId;
     }
 
     @Override
@@ -184,6 +185,16 @@ public class AccountProperties implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AccountProperties[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
