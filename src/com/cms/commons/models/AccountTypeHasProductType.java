@@ -6,35 +6,30 @@
 package com.cms.commons.models;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
  * @author jose
  */
 @Entity
-@Table(name = "accountType")
+@Table(name = "accountTypeHasProductType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AccountType.findAll", query = "SELECT a FROM AccountType a"),
-    @NamedQuery(name = "AccountType.findById", query = "SELECT a FROM AccountType a WHERE a.id = :id"),
-    @NamedQuery(name = "AccountType.findByDescription", query = "SELECT a FROM AccountType a WHERE a.description = :description")})
-public class AccountType implements Serializable {
+    @NamedQuery(name = "AccountTypeHasProductType.findAll", query = "SELECT a FROM AccountTypeHasProductType a")
+    , @NamedQuery(name = "AccountTypeHasProductType.findById", query = "SELECT a FROM AccountTypeHasProductType a WHERE a.id = :id")})
+public class AccountTypeHasProductType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,14 +37,17 @@ public class AccountType implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 40)
-    @Column(name = "description")
-    private String description;
+    @JoinColumn(name = "productTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProductType productTypeId;
+    @JoinColumn(name = "accountTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private AccountType accountTypeId;
 
-    public AccountType() {
+    public AccountTypeHasProductType() {
     }
 
-    public AccountType(Integer id) {
+    public AccountTypeHasProductType(Integer id) {
         this.id = id;
     }
 
@@ -61,12 +59,20 @@ public class AccountType implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public ProductType getProductTypeId() {
+        return productTypeId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductTypeId(ProductType productTypeId) {
+        this.productTypeId = productTypeId;
+    }
+
+    public AccountType getAccountTypeId() {
+        return accountTypeId;
+    }
+
+    public void setAccountTypeId(AccountType accountTypeId) {
+        this.accountTypeId = accountTypeId;
     }
 
     @Override
@@ -79,10 +85,10 @@ public class AccountType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AccountType)) {
+        if (!(object instanceof AccountTypeHasProductType)) {
             return false;
         }
-        AccountType other = (AccountType) object;
+        AccountTypeHasProductType other = (AccountTypeHasProductType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +97,7 @@ public class AccountType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.AccountType[ id=" + id + " ]";
+        return "com.cms.commons.models.AccountTypeHasProductType[ id=" + id + " ]";
     }
     
 }

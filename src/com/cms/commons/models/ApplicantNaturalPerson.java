@@ -105,6 +105,9 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusApplicant statusApplicantId;
 
     public ApplicantNaturalPerson() {
     }
@@ -273,6 +276,14 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
         this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
+    public StatusApplicant getStatusApplicantId() {
+        return statusApplicantId;
+    }
+
+    public void setStatusApplicantId(StatusApplicant statusApplicantId) {
+        this.statusApplicantId = statusApplicantId;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

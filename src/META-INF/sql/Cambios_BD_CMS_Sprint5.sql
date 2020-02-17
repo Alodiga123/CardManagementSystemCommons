@@ -394,15 +394,53 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountSegment` (
     REFERENCES `CardManagementSystem`.`accountProperties` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;
 
+-- Agregar campo en tabla request
+-- author: Jesús Gómez
+-- Fecha: 12/02/2020
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `indPersonNaturalRequest` TINYINT(1) NULL;
 
+-- Agregar tabla accountTypeHasProductType
+-- author: Jesús Gómez
+-- Fecha: 13/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountTypeHasProductType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `productTypeId` INT NOT NULL,
+  `accountTypeId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_accountTypeHasProductType_productType1_idx` (`productTypeId` ASC),
+  INDEX `fk_accountTypeHasProductType_accountType1_idx` (`accountTypeId` ASC),
+  CONSTRAINT `fk_accountTypeHasProductType_productType1`
+    FOREIGN KEY (`productTypeId`)
+    REFERENCES `CardManagementSystem`.`productType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_accountTypeHasProductType_accountType1`
+    FOREIGN KEY (`accountTypeId`)
+    REFERENCES `CardManagementSystem`.`accountType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
+-- Agregar tabla statusApplicant
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusApplicant` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
-
-
-
-
-
-
-
+-- Agregar FK en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `statusApplicantId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD CONSTRAINT `fk_applicantNaturalPerson_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;

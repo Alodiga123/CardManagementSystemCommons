@@ -32,9 +32,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "productType")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProductType.findAll", query = "SELECT p FROM ProductType p")
-    , @NamedQuery(name = "ProductType.findById", query = "SELECT p FROM ProductType p WHERE p.id = :id")
-    , @NamedQuery(name = "ProductType.findByName", query = "SELECT p FROM ProductType p WHERE p.name = :name")})
+    @NamedQuery(name = "ProductType.findAll", query = "SELECT p FROM ProductType p"),
+    @NamedQuery(name = "ProductType.findById", query = "SELECT p FROM ProductType p WHERE p.id = :id"),
+    @NamedQuery(name = "ProductType.findByName", query = "SELECT p FROM ProductType p WHERE p.name = :name")})
+
 public class ProductType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -100,4 +101,5 @@ public class ProductType extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+
 }
