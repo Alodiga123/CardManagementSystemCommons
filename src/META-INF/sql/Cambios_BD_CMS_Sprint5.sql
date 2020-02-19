@@ -444,3 +444,33 @@ FOREIGN KEY (`statusApplicantId`)
     REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla legalPerson
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+ALTER TABLE `CardManagementSystem`.`legalPerson` 
+ADD COLUMN `statusApplicantId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`legalPerson` 
+ADD CONSTRAINT `fk_legalPerson_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla personType
+-- author: Jesús Gómez
+-- Fecha: 17/02/2020
+ALTER TABLE `CardManagementSystem`.`personType` 
+ADD COLUMN `indNaturalPerson` TINYINT(1) NULL;
+
+-- Agregar FK en tabla legalRepresentatives
+-- author: Jesús Gómez
+-- Fecha: 18/02/2020
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD COLUMN `civilStatusId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD CONSTRAINT `fk_legalRepresentatives_civilStatus1` 
+FOREIGN KEY (`civilStatusId`)
+    REFERENCES `CardManagementSystem`.`civilStatus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
