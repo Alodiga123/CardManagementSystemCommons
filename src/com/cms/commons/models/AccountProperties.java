@@ -55,7 +55,6 @@ public class AccountProperties extends AbstractDistributionEntity implements Ser
     private String identifier;
     @Column(name = "lenghtAccount")
     private Integer lenghtAccount;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "maximumAmount")
     private Float maximumAmount;
     @Column(name = "minimunAmount")

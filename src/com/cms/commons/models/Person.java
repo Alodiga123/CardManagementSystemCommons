@@ -2,6 +2,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -33,15 +34,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "person")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
-    , @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id")
-    , @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")
-    , @NamedQuery(name = "Person.findByCreateDate", query = "SELECT p FROM Person p WHERE p.createDate = :createDate")
-    , @NamedQuery(name = "Person.findByUpdateDate", query = "SELECT p FROM Person p WHERE p.updateDate = :updateDate")
-    , @NamedQuery(name = "Person.lastPerson", query = "SELECT p FROM Person p ORDER BY p.id DESC")})
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
+    @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id"),
+    @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email"),
+    @NamedQuery(name = "Person.findByCreateDate", query = "SELECT p FROM Person p WHERE p.createDate = :createDate"),
+    @NamedQuery(name = "Person.findByUpdateDate", query = "SELECT p FROM Person p WHERE p.updateDate = :updateDate"),
+    @NamedQuery(name = "Person.lastPerson", query = "SELECT p FROM Person p ORDER BY p.id DESC"),
+    @NamedQuery(name = QueryConstants.PERSON_BY_CLASIFICATION, query = "SELECT p FROM Person p WHERE p.personClassificationId.id=:personClassificationId")})
 public class Person extends AbstractDistributionEntity implements Serializable {
 
-    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,6 +94,8 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private User user;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private ReviewOFAC reviewOFAC;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private PlasticManufacturer plasticManufacturer;
 
     public Person() {
     }
@@ -236,7 +239,7 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     public void setPersonHasAddress(PersonHasAddress personHasAddress) {
         this.personHasAddress = personHasAddress;
     }
-    
+
     public Request getRequest() {
         return request;
     }
@@ -303,5 +306,13 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     public void setReviewOFAC(ReviewOFAC reviewOFAC) {
         this.reviewOFAC = reviewOFAC;
     }
-    
+
+    public PlasticManufacturer getPlasticManufacturer() {
+        return plasticManufacturer;
+    }
+
+    public void setPlasticManufacturer(PlasticManufacturer plasticManufacturer) {
+        this.plasticManufacturer = plasticManufacturer;
+    }
+
 }

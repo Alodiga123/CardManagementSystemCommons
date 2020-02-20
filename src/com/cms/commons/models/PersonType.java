@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -81,7 +76,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public Country getCountryId() {
         return countryId;
     }
@@ -89,7 +84,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-    
+
     public OriginApplication getOriginApplicationId() {
         return originApplicationId;
     }
