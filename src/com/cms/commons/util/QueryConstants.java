@@ -25,8 +25,12 @@ public class QueryConstants {
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
-    public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
+    public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
+    public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
+    public static final String REQUEST_APPROVED = "RequestApproved";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
