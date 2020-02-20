@@ -26,7 +26,11 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
+    public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
+    public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
+    public static final String REQUEST_APPROVED = "RequestApproved";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
@@ -39,11 +43,14 @@ public class QueryConstants {
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
+    public static final String ACCOUNT_TYPE_HAS_PRODUCT_TYPE_BY_PRODUCT_TYPE = "accountTypeHasProductTypeByProductType";
+    public static final String SUB_ACCOUNT_TYPE_BY_ACCOUNT_TYPE = "subAccountTypeByAccountType";
     public static final String COMMERCE_CATEGORY_FIND_BD = "commerceCategoryFindBD";
     public static final String PRODUCT_HAS_CHANNEL_HAS_TRANSACTION_BY_PRODUCT = "productHasChannelHasTransactionByProduct";
     public static final String LOYALTY_TRANSACTION_COMMERCE_BY_TRANSACTION = "loyaltyTransactionCommerceByTransaction";
     public static final String LOYALTY_TRANSACTION_COMMERCE_UNIQUE = "loyaltyTransactionCommerceUnique";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
+    public static final String PROGRAM_BY_COUNTRY = "programByCountry";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
