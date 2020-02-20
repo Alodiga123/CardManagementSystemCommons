@@ -39,7 +39,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "PersonType.findAll", query = "SELECT p FROM PersonType p"),
     @NamedQuery(name = "PersonType.findById", query = "SELECT p FROM PersonType p WHERE p.id = :id"),
     @NamedQuery(name = "PersonType.findByDescription", query = "SELECT p FROM PersonType p WHERE p.description = :description"),
-    @NamedQuery(name = QueryConstants.PERSON_TYPES_BY_COUNTRY, query = "SELECT p FROM PersonType p WHERE p.countryId.id=:countryId AND p.originApplicationId.id=:originApplicationId")})
+    @NamedQuery(name = QueryConstants.PERSON_TYPES_BY_COUNTRY, query = "SELECT p FROM PersonType p WHERE p.countryId.id=:countryId AND p.originApplicationId.id=:originApplicationId AND p.indNaturalPerson=:indNaturalPerson")})
 public class PersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

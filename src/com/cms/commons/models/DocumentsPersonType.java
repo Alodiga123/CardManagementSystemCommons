@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DocumentsPersonType.findById", query = "SELECT d FROM DocumentsPersonType d WHERE d.id = :id"),
     @NamedQuery(name = "DocumentsPersonType.findByDescription", query = "SELECT d FROM DocumentsPersonType d WHERE d.description = :description"),
     @NamedQuery(name = "DocumentsPersonType.findByCodeIdentificationNumber", query = "SELECT d FROM DocumentsPersonType d WHERE d.codeIdentificationNumber = :codeIdentificationNumber"),
-    @NamedQuery(name = QueryConstants.DOCUMENTS_BY_COUNTRY, query = "SELECT d FROM DocumentsPersonType d, PersonType e, Country f WHERE d.personTypeId.id = e.id AND f.id = e.countryId.id AND e.countryId.id=:countryId ")})
+    @NamedQuery(name = QueryConstants.DOCUMENTS_BY_COUNTRY, query = "SELECT d FROM DocumentsPersonType d, PersonType e, Country f WHERE d.personTypeId.id = e.id AND f.id = e.countryId.id AND e.countryId.id=:countryId AND e.indNaturalPerson=:indNaturalPerson")})
 public class DocumentsPersonType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

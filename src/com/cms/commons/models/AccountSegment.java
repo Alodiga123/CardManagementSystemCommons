@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,8 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AccountSegment.findAll", query = "SELECT a FROM AccountSegment a")
     , @NamedQuery(name = "AccountSegment.findById", query = "SELECT a FROM AccountSegment a WHERE a.id = :id")
     , @NamedQuery(name = "AccountSegment.findByDescription", query = "SELECT a FROM AccountSegment a WHERE a.description = :description")
-    , @NamedQuery(name = "AccountSegment.findByLenghtSegment", query = "SELECT a FROM AccountSegment a WHERE a.lenghtSegment = :lenghtSegment")})
-public class AccountSegment implements Serializable {
+    , @NamedQuery(name = "AccountSegment.findByLenghtSegment", query = "SELECT a FROM AccountSegment a WHERE a.lenghtSegment = :lenghtSegment")
+    , @NamedQuery(name = QueryConstants.ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES, query = "SELECT a FROM AccountSegment a WHERE a.accountPropertiesId.id = :accountPropertiesId")})
+public class AccountSegment extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,6 +115,16 @@ public class AccountSegment implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AccountSegment[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
