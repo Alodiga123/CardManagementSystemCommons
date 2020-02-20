@@ -81,7 +81,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public Country getCountryId() {
         return countryId;
     }
@@ -89,7 +89,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-    
+
     public OriginApplication getOriginApplicationId() {
         return originApplicationId;
     }
@@ -140,5 +140,4 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
 }

@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -36,25 +39,26 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "naturalCustomer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "NaturalCustomer.findAll", query = "SELECT n FROM NaturalCustomer n")
-    , @NamedQuery(name = "NaturalCustomer.findById", query = "SELECT n FROM NaturalCustomer n WHERE n.id = :id")
-    , @NamedQuery(name = "NaturalCustomer.findByIdentificationNumber", query = "SELECT n FROM NaturalCustomer n WHERE n.identificationNumber = :identificationNumber")
-    , @NamedQuery(name = "NaturalCustomer.findByDueDateDocumentIdentification", query = "SELECT n FROM NaturalCustomer n WHERE n.dueDateDocumentIdentification = :dueDateDocumentIdentification")
-    , @NamedQuery(name = "NaturalCustomer.findByIndNaturalized", query = "SELECT n FROM NaturalCustomer n WHERE n.indNaturalized = :indNaturalized")
-    , @NamedQuery(name = "NaturalCustomer.findByIdentificationNumberOld", query = "SELECT n FROM NaturalCustomer n WHERE n.identificationNumberOld = :identificationNumberOld")
-    , @NamedQuery(name = "NaturalCustomer.findByIndForeign", query = "SELECT n FROM NaturalCustomer n WHERE n.indForeign = :indForeign")
-    , @NamedQuery(name = "NaturalCustomer.findByCountryStayTime", query = "SELECT n FROM NaturalCustomer n WHERE n.countryStayTime = :countryStayTime")
-    , @NamedQuery(name = "NaturalCustomer.findByFirstNames", query = "SELECT n FROM NaturalCustomer n WHERE n.firstNames = :firstNames")
-    , @NamedQuery(name = "NaturalCustomer.findByLastNames", query = "SELECT n FROM NaturalCustomer n WHERE n.lastNames = :lastNames")
-    , @NamedQuery(name = "NaturalCustomer.findByMarriedLastName", query = "SELECT n FROM NaturalCustomer n WHERE n.marriedLastName = :marriedLastName")
-    , @NamedQuery(name = "NaturalCustomer.findByRifNumber", query = "SELECT n FROM NaturalCustomer n WHERE n.rifNumber = :rifNumber")
-    , @NamedQuery(name = "NaturalCustomer.findByGender", query = "SELECT n FROM NaturalCustomer n WHERE n.gender = :gender")
-    , @NamedQuery(name = "NaturalCustomer.findByPlaceBirth", query = "SELECT n FROM NaturalCustomer n WHERE n.placeBirth = :placeBirth")
-    , @NamedQuery(name = "NaturalCustomer.findByDateBirth", query = "SELECT n FROM NaturalCustomer n WHERE n.dateBirth = :dateBirth")
-    , @NamedQuery(name = "NaturalCustomer.findByFamilyResponsibilities", query = "SELECT n FROM NaturalCustomer n WHERE n.familyResponsibilities = :familyResponsibilities")
-    , @NamedQuery(name = "NaturalCustomer.findByCreateDate", query = "SELECT n FROM NaturalCustomer n WHERE n.createDate = :createDate")
-    , @NamedQuery(name = "NaturalCustomer.findByUpdatedate", query = "SELECT n FROM NaturalCustomer n WHERE n.updatedate = :updatedate")})
-public class NaturalCustomer implements Serializable {
+    @NamedQuery(name = "NaturalCustomer.findAll", query = "SELECT n FROM NaturalCustomer n"),
+    @NamedQuery(name = "NaturalCustomer.findById", query = "SELECT n FROM NaturalCustomer n WHERE n.id = :id"),
+    @NamedQuery(name = "NaturalCustomer.findByIdentificationNumber", query = "SELECT n FROM NaturalCustomer n WHERE n.identificationNumber = :identificationNumber"),
+    @NamedQuery(name = "NaturalCustomer.findByDueDateDocumentIdentification", query = "SELECT n FROM NaturalCustomer n WHERE n.dueDateDocumentIdentification = :dueDateDocumentIdentification"),
+    @NamedQuery(name = "NaturalCustomer.findByIndNaturalized", query = "SELECT n FROM NaturalCustomer n WHERE n.indNaturalized = :indNaturalized"),
+    @NamedQuery(name = "NaturalCustomer.findByIdentificationNumberOld", query = "SELECT n FROM NaturalCustomer n WHERE n.identificationNumberOld = :identificationNumberOld"),
+    @NamedQuery(name = "NaturalCustomer.findByIndForeign", query = "SELECT n FROM NaturalCustomer n WHERE n.indForeign = :indForeign"),
+    @NamedQuery(name = "NaturalCustomer.findByCountryStayTime", query = "SELECT n FROM NaturalCustomer n WHERE n.countryStayTime = :countryStayTime"),
+    @NamedQuery(name = "NaturalCustomer.findByFirstNames", query = "SELECT n FROM NaturalCustomer n WHERE n.firstNames = :firstNames"),
+    @NamedQuery(name = "NaturalCustomer.findByLastNames", query = "SELECT n FROM NaturalCustomer n WHERE n.lastNames = :lastNames"),
+    @NamedQuery(name = "NaturalCustomer.findByMarriedLastName", query = "SELECT n FROM NaturalCustomer n WHERE n.marriedLastName = :marriedLastName"),
+    @NamedQuery(name = "NaturalCustomer.findByRifNumber", query = "SELECT n FROM NaturalCustomer n WHERE n.rifNumber = :rifNumber"),
+    @NamedQuery(name = "NaturalCustomer.findByGender", query = "SELECT n FROM NaturalCustomer n WHERE n.gender = :gender"),
+    @NamedQuery(name = "NaturalCustomer.findByPlaceBirth", query = "SELECT n FROM NaturalCustomer n WHERE n.placeBirth = :placeBirth"),
+    @NamedQuery(name = "NaturalCustomer.findByDateBirth", query = "SELECT n FROM NaturalCustomer n WHERE n.dateBirth = :dateBirth"),
+    @NamedQuery(name = "NaturalCustomer.findByFamilyResponsibilities", query = "SELECT n FROM NaturalCustomer n WHERE n.familyResponsibilities = :familyResponsibilities"),
+    @NamedQuery(name = "NaturalCustomer.findByCreateDate", query = "SELECT n FROM NaturalCustomer n WHERE n.createDate = :createDate"),
+    @NamedQuery(name = "NaturalCustomer.findByUpdatedate", query = "SELECT n FROM NaturalCustomer n WHERE n.updatedate = :updatedate"),
+    @NamedQuery(name = QueryConstants.NATURAL_PERSON_BY_CUSTOMER, query = "SELECT n FROM NaturalCustomer n WHERE n.personId.id=:personId")})
+public class NaturalCustomer extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -363,5 +367,14 @@ public class NaturalCustomer implements Serializable {
     public String toString() {
         return "com.cms.commons.models.NaturalCustomer[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
