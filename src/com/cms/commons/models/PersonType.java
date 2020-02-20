@@ -56,6 +56,8 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private OriginApplication originApplicationId;
+    @Column(name = "indNaturalPerson")
+    private Boolean indNaturalPerson;
 
     public PersonType() {
     }
@@ -79,7 +81,7 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public Country getCountryId() {
         return countryId;
     }
@@ -87,13 +89,21 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
     }
-    
+
     public OriginApplication getOriginApplicationId() {
         return originApplicationId;
     }
 
     public void setOriginApplicationId(OriginApplication originApplicationId) {
         this.originApplicationId = originApplicationId;
+    }
+
+    public Boolean getIndNaturalPerson() {
+        return indNaturalPerson;
+    }
+
+    public void setIndNaturalPerson(Boolean indNaturalPerson) {
+        this.indNaturalPerson = indNaturalPerson;
     }
 
     @Override
@@ -130,5 +140,4 @@ public class PersonType extends AbstractDistributionEntity implements Serializab
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
 }
