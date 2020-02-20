@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -36,18 +39,19 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "legalCustomer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LegalCustomer.findAll", query = "SELECT l FROM LegalCustomer l")
-    , @NamedQuery(name = "LegalCustomer.findById", query = "SELECT l FROM LegalCustomer l WHERE l.id = :id")
-    , @NamedQuery(name = "LegalCustomer.findByIdentificationNumber", query = "SELECT l FROM LegalCustomer l WHERE l.identificationNumber = :identificationNumber")
-    , @NamedQuery(name = "LegalCustomer.findByTradeName", query = "SELECT l FROM LegalCustomer l WHERE l.tradeName = :tradeName")
-    , @NamedQuery(name = "LegalCustomer.findByEnterpriseName", query = "SELECT l FROM LegalCustomer l WHERE l.enterpriseName = :enterpriseName")
-    , @NamedQuery(name = "LegalCustomer.findByDateInscriptionRegister", query = "SELECT l FROM LegalCustomer l WHERE l.dateInscriptionRegister = :dateInscriptionRegister")
-    , @NamedQuery(name = "LegalCustomer.findByRegisterNumber", query = "SELECT l FROM LegalCustomer l WHERE l.registerNumber = :registerNumber")
-    , @NamedQuery(name = "LegalCustomer.findByPayedCapital", query = "SELECT l FROM LegalCustomer l WHERE l.payedCapital = :payedCapital")
-    , @NamedQuery(name = "LegalCustomer.findByWebSite", query = "SELECT l FROM LegalCustomer l WHERE l.webSite = :webSite")
-    , @NamedQuery(name = "LegalCustomer.findByCreateDate", query = "SELECT l FROM LegalCustomer l WHERE l.createDate = :createDate")
-    , @NamedQuery(name = "LegalCustomer.findByUpdateDate", query = "SELECT l FROM LegalCustomer l WHERE l.updateDate = :updateDate")})
-public class LegalCustomer implements Serializable {
+    @NamedQuery(name = "LegalCustomer.findAll", query = "SELECT l FROM LegalCustomer l"),
+    @NamedQuery(name = "LegalCustomer.findById", query = "SELECT l FROM LegalCustomer l WHERE l.id = :id"),
+    @NamedQuery(name = "LegalCustomer.findByIdentificationNumber", query = "SELECT l FROM LegalCustomer l WHERE l.identificationNumber = :identificationNumber"),
+    @NamedQuery(name = "LegalCustomer.findByTradeName", query = "SELECT l FROM LegalCustomer l WHERE l.tradeName = :tradeName"),
+    @NamedQuery(name = "LegalCustomer.findByEnterpriseName", query = "SELECT l FROM LegalCustomer l WHERE l.enterpriseName = :enterpriseName"),
+    @NamedQuery(name = "LegalCustomer.findByDateInscriptionRegister", query = "SELECT l FROM LegalCustomer l WHERE l.dateInscriptionRegister = :dateInscriptionRegister"),
+    @NamedQuery(name = "LegalCustomer.findByRegisterNumber", query = "SELECT l FROM LegalCustomer l WHERE l.registerNumber = :registerNumber"),
+    @NamedQuery(name = "LegalCustomer.findByPayedCapital", query = "SELECT l FROM LegalCustomer l WHERE l.payedCapital = :payedCapital"),
+    @NamedQuery(name = "LegalCustomer.findByWebSite", query = "SELECT l FROM LegalCustomer l WHERE l.webSite = :webSite"),
+    @NamedQuery(name = "LegalCustomer.findByCreateDate", query = "SELECT l FROM LegalCustomer l WHERE l.createDate = :createDate"),
+    @NamedQuery(name = "LegalCustomer.findByUpdateDate", query = "SELECT l FROM LegalCustomer l WHERE l.updateDate = :updateDate"),
+    @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_CUSTOMER, query = "SELECT l FROM LegalCustomer l WHERE l.personId.id=:personId")})
+public class LegalCustomer extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -250,5 +254,14 @@ public class LegalCustomer implements Serializable {
     public String toString() {
         return "com.cms.commons.models.LegalCustomer[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
