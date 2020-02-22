@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -37,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PlasticManufacturer.findByContactPerson", query = "SELECT p FROM PlasticManufacturer p WHERE p.contactPerson = :contactPerson")
     , @NamedQuery(name = "PlasticManufacturer.findByEmailContactPerson", query = "SELECT p FROM PlasticManufacturer p WHERE p.emailContactPerson = :emailContactPerson")
     , @NamedQuery(name = "PlasticManufacturer.findByIndStatus", query = "SELECT p FROM PlasticManufacturer p WHERE p.indStatus = :indStatus")})
-public class PlasticManufacturer implements Serializable {
+public class PlasticManufacturer extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -171,6 +173,16 @@ public class PlasticManufacturer implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.PlasticManufacturer[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

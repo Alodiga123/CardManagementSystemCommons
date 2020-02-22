@@ -340,3 +340,30 @@ VALUES
 (19,1,1),
 (19,1,2),
 (19,1,3);
+
+-- Insertar datos de Plastic Manufacturer 
+INSERT INTO `CardManagementSystem`.`personClassification`
+(`id`,`description`)
+VALUES 
+(9,"Plastic Manufacturer");
+
+INSERT INTO `CardManagementSystem`.`person`
+(`countryId`,`email`,`personClassificationId`,`personTypeId`)
+VALUES 
+(1,"Credential@gmail.com",9,2);
+
+SET @PersonID = 0;
+SELECT MAX(p.id) INTO @PersonID FROM `CardManagementSystem`.`person` p;
+
+INSERT INTO `CardManagementSystem`.`phonePerson`
+(`numberPhone`,`personId`,`phoneTypeId`)
+VALUES 
+("0416-2589633",@PersonID,1);
+
+INSERT INTO `CardManagementSystem`.`plasticManufacturer`
+(`personId`,`documentsPersonTypeId`,`identificationNumber`,`name`,`contractNumber`,`contactPerson`,`emailContactPerson`,`indStatus`)
+VALUES 
+(@PersonID,3,"J105826932","Credential Argentina","PO-1586328-A","Yoan Leon","yleon@gmail.com",1);
+
+
+
