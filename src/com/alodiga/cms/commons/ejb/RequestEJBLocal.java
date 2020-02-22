@@ -14,6 +14,7 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
 import com.cms.commons.models.ReviewRequest;
+import com.cms.commons.models.StatusApplicant;
 import java.util.Date;
 import java.util.List;
 
@@ -67,4 +68,9 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<ReviewRequest> getReviewRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewRequest loadReviewRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewRequest saveReviewRequest(ReviewRequest reviewRequest) throws NullParameterException, GeneralException;
+    
+    //StatusApplicant
+    public List<StatusApplicant> getStatusApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusApplicant loadStatusApplicant(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusApplicant saveStatusApplicant(StatusApplicant statusApplicant) throws NullParameterException, GeneralException;
 }

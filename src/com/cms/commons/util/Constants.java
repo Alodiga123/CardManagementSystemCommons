@@ -35,23 +35,23 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
     public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
     
-    //LegalPersonRequest
+    //Request
     public static final String REQUEST_KEY = "id";
     public static final String PERSON_CLASSIFICATION_KEY = "personClassificationId";
-    public static final Long PERSON_ID_KEY = 1L;
-    public static final Long PERSON_NATURAL_ID_KEY = 2L;
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
-    public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
+    public static final int STATUS_APPLICANT_ACTIVE = 1;
+    public static final int STATUS_APPLICANT_INACTIVE = 2;
+    public static final int STATUS_APPLICANT_BLACK_LIST = 3;
+    public static final int STATUS_APPLICANT_CUSTOMER = 4;
+    public static final int ADDRESS_TYPE_DELIVERY = 3;
+
+    //PersonClassification
     public static final Long PERSON_CLASSIFICATION_CUSTOMER = 7L;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
-    public static final Long APPLICANT_NATURAL_PERSON = 3L;
-    public static final Long PERSON_ID_LEGAL_REPRESENTATIVE = 1L;
-    public static Integer CLASSIFICATION_PHONE_PERSON_TYPE1 = 1;
-    public static Integer CLASSIFICATION_PHONE_PERSON_TYPE2 = 2;
         
     //RequestEJB
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
