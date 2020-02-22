@@ -36,16 +36,18 @@ public class Constants {
     public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
     
     //LegalPersonRequest
-    //TODO: modificar cuando se realice la pantalla de Request
     public static final String REQUEST_KEY = "id";
     public static final String PERSON_CLASSIFICATION_KEY = "personClassificationId";
     public static final Long PERSON_ID_KEY = 1L;
     public static final Long PERSON_NATURAL_ID_KEY = 2L;
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
+    public static final Long PERSON_CLASSIFICATION_CUSTOMER = 7L;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
+    public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
+    public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
     public static final Long APPLICANT_NATURAL_PERSON = 3L;
     public static final Long PERSON_ID_LEGAL_REPRESENTATIVE = 1L;
     public static Integer CLASSIFICATION_PHONE_PERSON_TYPE1 = 1;
@@ -65,10 +67,13 @@ public class Constants {
         public static final String PROFESSION_KEY = "professionId";
         public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
         public static final String APPLICANT_NATURAL_PERSON_KEY = "applicantNaturalPersonId";
+        public static final String APPLICANT_LEGAL_PERSON_KEY = "legalPersonId";
         public static final String NETWORK_BY_PROGRAM = "programId";
         public static final String PRODUCT_KEY = "productId";
         public static final String PROGRAM_LOYALTY_KEY = "programLoyaltyId";
         public static final String COMMERCE_CATEGORY_KEY = "commerceCategoryId";
+        public static final String CHANNEL_KEY = "channelId";
+        public static final String TRANSACTION_KEY = "transactionId";
         public static final String PROGRAM_LOYALTY_TRANSACTION_KEY = "programLoyaltyTransactionId";
         public static final String ACCOUNT_TYPE_KEY = "accountTypeId";
         public static final String ACCOUNT_PROPERTIES_KEY = "accountPropertiesId";

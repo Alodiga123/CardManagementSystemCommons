@@ -394,15 +394,180 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountSegment` (
     REFERENCES `CardManagementSystem`.`accountProperties` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;
+
+-- Agregar campo en tabla request
+-- author: Jesús Gómez
+-- Fecha: 12/02/2020
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `indPersonNaturalRequest` TINYINT(1) NULL;
+
+-- Agregar tabla accountTypeHasProductType
+-- author: Jesús Gómez
+-- Fecha: 13/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountTypeHasProductType` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `productTypeId` INT NOT NULL,
+  `accountTypeId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_accountTypeHasProductType_productType1_idx` (`productTypeId` ASC),
+  INDEX `fk_accountTypeHasProductType_accountType1_idx` (`accountTypeId` ASC),
+  CONSTRAINT `fk_accountTypeHasProductType_productType1`
+    FOREIGN KEY (`productTypeId`)
+    REFERENCES `CardManagementSystem`.`productType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_accountTypeHasProductType_accountType1`
+    FOREIGN KEY (`accountTypeId`)
+    REFERENCES `CardManagementSystem`.`accountType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar tabla statusApplicant
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusApplicant` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar FK en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `statusApplicantId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD CONSTRAINT `fk_applicantNaturalPerson_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla legalPerson
+-- author: Jesús Gómez
+-- Fecha: 14/02/2020
+ALTER TABLE `CardManagementSystem`.`legalPerson` 
+ADD COLUMN `statusApplicantId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`legalPerson` 
+ADD CONSTRAINT `fk_legalPerson_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla personType
+-- author: Jesús Gómez
+-- Fecha: 17/02/2020
+ALTER TABLE `CardManagementSystem`.`personType` 
+ADD COLUMN `indNaturalPerson` TINYINT(1) NULL;
+
+-- Agregar FK en tabla legalRepresentatives
+-- author: Jesús Gómez
+-- Fecha: 18/02/2020
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD COLUMN `civilStatusId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD CONSTRAINT `fk_legalRepresentatives_civilStatus1` 
+FOREIGN KEY (`civilStatusId`)
+    REFERENCES `CardManagementSystem`.`civilStatus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
+-- Agregar tabla additionalInformationNaturalCustomer
+-- author: Jesús Gómez
+-- Fecha: 20/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`additionalInformationNaturalCustomer` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `naturalCustomerId` BIGINT NOT NULL,
+  `firstNamesHusband` VARCHAR(40) NULL,
+  `lastNamesHusband` VARCHAR(40) NULL,
+  `documentsPersonTypeId` INT NOT NULL,
+  `identificationNumberHusband` VARCHAR(40) NULL,
+  `phoneHusband` VARCHAR(30) NULL,
+  `emailHusband` VARCHAR(60) NULL,
+  `carBrand` VARCHAR(40) NULL,
+  `carModel` VARCHAR(40) NULL,
+  `carYear` INT NULL,
+  `carPlate` VARCHAR(20) NULL,
+  `salary` FLOAT NULL,
+  `freeProfessionalExercise` FLOAT NULL,
+  `bonusesCommissionsFee` FLOAT NULL,
+  `rentsIncome` FLOAT NULL,
+  `otherIncome` FLOAT NULL,
+  `totalIncome` FLOAT NULL,
+  `housingExpenses` FLOAT NULL,
+  `monthlyRentMortgage` FLOAT NULL,
+  `monthlyPaymentCreditCard` FLOAT NULL,
+  `monthlyPaymentOtherCredit` FLOAT NULL,
+  `educationExpenses` FLOAT NULL,
+  `totalExpenses` FLOAT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_additionalInformationNaturalCustomer_naturalCustomer1_idx` (`naturalCustomerId` ASC),
+  INDEX `fk_additionalInformationNaturalCustomer_documentsPersonType_idx` (`documentsPersonTypeId` ASC),
+  CONSTRAINT `fk_additionalInformationNaturalCustomer_naturalCustomer1`
+    FOREIGN KEY (`naturalCustomerId`)
+    REFERENCES `CardManagementSystem`.`naturalCustomer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_additionalInformationNaturalCustomer_documentsPersonType1`
+    FOREIGN KEY (`documentsPersonTypeId`)
+    REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Agregar FK para que acepte NULL en familyReferences
+-- author: Jesús Gómez
+-- Fecha: 20/02/2020
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+ADD COLUMN `naturalCustomerId` BIGINT NULL;
+ALTER TABLE `CardManagementSystem`.`familyReferences` 
+ADD CONSTRAINT `fk_familyReferences_naturalCustomer1` 
+FOREIGN KEY (`naturalCustomerId`)
+    REFERENCES `CardManagementSystem`.`naturalCustomer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
+-- Agregar tabla plasticManufacturer
+-- author: Jesús Gómez
+-- Fecha: 20/02/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`plasticManufacturer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `personId` BIGINT UNIQUE NOT NULL,
+  `documentsPersonTypeId` INT NOT NULL,
+  `identificationNumber` VARCHAR(40) NULL,
+  `name` VARCHAR(120) NULL,
+  `contractNumber` VARCHAR(40) NULL,
+  `contactPerson` VARCHAR(80) NULL,
+  `emailContactPerson` VARCHAR(40) NULL,
+  `indStatus` TINYINT(1) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_plasticManufacturer_person1_idx` (`personId` ASC),
+  INDEX `fk_plasticManufacturer_documentsPersonType1_idx` (`documentsPersonTypeId` ASC),
+  CONSTRAINT `fk_plasticManufacturer_person1`
+    FOREIGN KEY (`personId`)
+    REFERENCES `CardManagementSystem`.`person` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_plasticManufacturer_documentsPersonType1`
+    FOREIGN KEY (`documentsPersonTypeId`)
+    REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-
-
-
-
-
-
+-- Agregar FK en accountProperties
+-- author: Jesús Gómez
+-- Fecha: 20/02/2020
+ALTER TABLE `CardManagementSystem`.`accountProperties` 
+ADD COLUMN `subAccountTypeId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`accountProperties` 
+ADD CONSTRAINT `fk_accountProperties_subAccountType1` 
+FOREIGN KEY (`subAccountTypeId`)
+    REFERENCES `CardManagementSystem`.`subAccountType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;

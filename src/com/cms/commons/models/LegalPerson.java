@@ -81,6 +81,10 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusApplicant statusApplicantId;
+    
 
     public LegalPerson() {
     }
@@ -177,14 +181,20 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
         return personId;
     }
     
-    
-
     public EconomicActivity getEconomicActivityId() {
         return economicActivityId;
     }
 
     public void setEconomicActivityId(EconomicActivity economicActivityId) {
         this.economicActivityId = economicActivityId;
+    }
+
+    public StatusApplicant getStatusApplicantId() {
+        return statusApplicantId;
+    }
+
+    public void setStatusApplicantId(StatusApplicant statusApplicantId) {
+        this.statusApplicantId = statusApplicantId;
     }
 
     @Override

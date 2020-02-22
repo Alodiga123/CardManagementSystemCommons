@@ -59,6 +59,8 @@ public class EjbConstants {
     public static final String PARAM_DOCUMENT_TYPE_ID = "documentTypeId";
     public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
     public static final String PARAM_APPLICANT_NATURAL_PERSON_ID = "applicantNaturalPersonId";
+    public static final String PARAM_APPLICANT_LEGAL_PERSON_ID = "legalPersonId";
+    public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
@@ -66,11 +68,13 @@ public class EjbConstants {
     public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";    
     public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_STATUS_REQUEST_ID = "statusRequestId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
     public static final String PARAM_CHANNEL_ID = "channelId";
     public static final String PARAM_PROGRAM_LOYALTY_ID = "programLoyaltyId";
     public static final String PARAM_PROGRAM_LOYALTY_TRANSACTION_ID = "programLoyaltyTransactionId";
     public static final String PARAM_COMMERCE_CATEGORY_ID = "commerceCategoryId";
+    public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
 
 }
