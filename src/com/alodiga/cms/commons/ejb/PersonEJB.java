@@ -25,6 +25,7 @@ import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.NaturalCustomer;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
+import com.cms.commons.models.PlasticManufacturer;
 import java.util.List;
 
 /**
@@ -130,5 +131,10 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<LegalCustomer> getLegalCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public List<LegalCustomer> getLegalCustomerByPerson(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public LegalCustomer loadLegalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public LegalCustomer saveLegalCustomer (LegalCustomer legalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public LegalCustomer saveLegalCustomer (LegalCustomer legalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PlasticManufacturer
+    public List<PlasticManufacturer> getPlasticManufacturer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public PlasticManufacturer loadPlasticManufacturer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PlasticManufacturer savePlasticManufacturer (PlasticManufacturer plasticManufacturer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
