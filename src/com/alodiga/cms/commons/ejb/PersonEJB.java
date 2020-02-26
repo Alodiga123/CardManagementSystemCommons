@@ -36,6 +36,7 @@ import java.util.List;
 public interface PersonEJB extends DistributionGenericEJB {
     //Phone Person
     public List<PhonePerson> getPhonePerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<PhonePerson> getPhonePersonByperson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PhonePerson loadPhonePerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhonePerson savePhonePerson(PhonePerson phonePerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
       
@@ -125,7 +126,6 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<NaturalCustomer> getNaturalCustomerByPerson(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public NaturalCustomer loadNaturalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public NaturalCustomer saveNaturalCustomer (NaturalCustomer naturalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-
     
     //Legal Customer
     public List<LegalCustomer> getLegalCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
