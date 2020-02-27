@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RequestHasCollectionsRequest.findByIndApproved", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.indApproved = :indApproved"),
     @NamedQuery(name = "RequestHasCollectionsRequest.findByObservations", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.observations = :observations"),
     @NamedQuery(name = "RequestHasCollectionsRequest.findByUrlImageFile", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.urlImageFile = :urlImageFile"),
-    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId AND r.collectionsRequestid.id=:collectionsRequestId")})
+    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId AND r.collectionsRequestid.id=:collectionsRequestId"),
+    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId")})
 
 public class RequestHasCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 

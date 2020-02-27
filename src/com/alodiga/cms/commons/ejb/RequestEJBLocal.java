@@ -57,6 +57,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public RequestHasCollectionsRequest loadRequestHasCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RequestHasCollectionsRequest saveRequestHasCollectionsRequest(RequestHasCollectionsRequest requestHasCollectionsRequest) throws NullParameterException, GeneralException;
     public List<RequestHasCollectionsRequest> getRequestsHasCollectionsRequestByRequestByCollectionRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RequestHasCollectionsRequest> getRequestsHasCollectionsRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //CollectionType
     public List<CollectionType> getCollectionType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

@@ -32,6 +32,7 @@ public class QueryConstants {
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String REQUEST_APPROVED = "RequestApproved";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
+    public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
@@ -199,4 +200,6 @@ public class QueryConstants {
     public static final String PARAM_PIN_FREE = "pinFree";
     public static final String PARAM_PROMOTION_TYPE = "promotionType";
     public static final String PARAM_LANGUAGE_ID = "languageId";
+    public static final String CARD_COMPLEMENTARY_BY_APPLICANT ="cardComplementaryByApplicant";
+    public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
 }

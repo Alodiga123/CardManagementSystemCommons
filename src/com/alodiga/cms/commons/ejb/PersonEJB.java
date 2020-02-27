@@ -26,6 +26,7 @@ import com.cms.commons.models.NaturalCustomer;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.PlasticManufacturer;
+import com.cms.commons.models.StatusCustomer;
 import java.util.List;
 
 /**
@@ -62,6 +63,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public ApplicantNaturalPerson loadApplicantNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApplicantNaturalPerson saveApplicantNaturalPerson (ApplicantNaturalPerson applicantNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ApplicantNaturalPerson> getCardComplementaryByApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Long countCardComplementaryByApplicant(long applicantNaturalPersonId) throws GeneralException, NullParameterException;
     
     //KinShipApplicant
     public List<KinShipApplicant> getKinShipApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -137,4 +139,9 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<PlasticManufacturer> getPlasticManufacturer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public PlasticManufacturer loadPlasticManufacturer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlasticManufacturer savePlasticManufacturer (PlasticManufacturer plasticManufacturer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Status
+    public List<StatusCustomer> getStatusCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public StatusCustomer loadStatusCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusCustomer saveStatusCustomer(StatusCustomer statusCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
