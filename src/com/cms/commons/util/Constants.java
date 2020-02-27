@@ -54,6 +54,7 @@ public class Constants {
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
+    public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;
         
     //RequestEJB
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
