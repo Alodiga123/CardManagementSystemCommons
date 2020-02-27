@@ -94,6 +94,8 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     private User user;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private ReviewOFAC reviewOFAC;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private PlasticManufacturer plasticManufacturer;
 
     public Person() {
     }
@@ -303,6 +305,14 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setReviewOFAC(ReviewOFAC reviewOFAC) {
         this.reviewOFAC = reviewOFAC;
+    }
+
+    public PlasticManufacturer getPlasticManufacturer() {
+        return plasticManufacturer;
+    }
+
+    public void setPlasticManufacturer(PlasticManufacturer plasticManufacturer) {
+        this.plasticManufacturer = plasticManufacturer;
     }
 
 }

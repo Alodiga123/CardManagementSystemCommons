@@ -25,6 +25,7 @@ import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.NaturalCustomer;
 import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
+import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.StatusCustomer;
 import java.util.List;
 
@@ -36,6 +37,7 @@ import java.util.List;
 public interface PersonEJB extends DistributionGenericEJB {
     //Phone Person
     public List<PhonePerson> getPhonePerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<PhonePerson> getPhonePersonByperson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PhonePerson loadPhonePerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhonePerson savePhonePerson(PhonePerson phonePerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
       
@@ -125,13 +127,18 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<NaturalCustomer> getNaturalCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public List<NaturalCustomer> getNaturalCustomerByPerson(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public NaturalCustomer loadNaturalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public NaturalCustomer saveNaturalCustomer (NaturalCustomer naturalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public NaturalCustomer saveNaturalCustomer (NaturalCustomer naturalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
     //Legal Customer
     public List<LegalCustomer> getLegalCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public List<LegalCustomer> getLegalCustomerByPerson(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public LegalCustomer loadLegalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalCustomer saveLegalCustomer (LegalCustomer legalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PlasticManufacturer
+    public List<PlasticManufacturer> getPlasticManufacturer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public PlasticManufacturer loadPlasticManufacturer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PlasticManufacturer savePlasticManufacturer (PlasticManufacturer plasticManufacturer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //Status
     public List<StatusCustomer> getStatusCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
