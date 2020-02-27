@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,9 +31,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "phonePerson")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PhonePerson.findAll", query = "SELECT p FROM PhonePerson p")
-    , @NamedQuery(name = "PhonePerson.findById", query = "SELECT p FROM PhonePerson p WHERE p.id = :id")
-    , @NamedQuery(name = "PhonePerson.findByNumberPhone", query = "SELECT p FROM PhonePerson p WHERE p.numberPhone = :numberPhone")})
+    @NamedQuery(name = "PhonePerson.findAll", query = "SELECT p FROM PhonePerson p"),
+    @NamedQuery(name = "PhonePerson.findById", query = "SELECT p FROM PhonePerson p WHERE p.id = :id"),
+    @NamedQuery(name = "PhonePerson.findByNumberPhone", query = "SELECT p FROM PhonePerson p WHERE p.numberPhone = :numberPhone"),
+    @NamedQuery(name = QueryConstants.PHONES_BY_PERSON, query = "SELECT p FROM PhonePerson p WHERE p.personId.id = :personId")})
 public class PhonePerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
