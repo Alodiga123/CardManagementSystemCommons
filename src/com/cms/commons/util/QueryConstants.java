@@ -61,6 +61,7 @@ public class QueryConstants {
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
+    public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
     public static final String ADDITIONAL_CARD_BY_LEGAL_APPLICANT = "additionalCardByLegalApplicant";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
