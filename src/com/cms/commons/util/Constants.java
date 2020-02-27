@@ -44,6 +44,8 @@ public class Constants {
     public static final int STATUS_APPLICANT_BLACK_LIST = 3;
     public static final int STATUS_APPLICANT_CUSTOMER = 4;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
+    public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
+    public static final int REVIEW_REQUEST_TYPE_OFAC = 2;    
 
     //PersonClassification
     public static final Long PERSON_CLASSIFICATION_CUSTOMER = 7L;
