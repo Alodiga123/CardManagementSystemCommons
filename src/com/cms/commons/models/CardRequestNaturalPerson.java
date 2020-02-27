@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -36,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "CardRequestNaturalPerson.findByLastNames", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.lastNames = :lastNames")
     , @NamedQuery(name = "CardRequestNaturalPerson.findByIdentificationNumber", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.identificationNumber = :identificationNumber")
     , @NamedQuery(name = "CardRequestNaturalPerson.findByPositionEnterprise", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.positionEnterprise = :positionEnterprise")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByProposedLimit", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.proposedLimit = :proposedLimit")})
+    , @NamedQuery(name = "CardRequestNaturalPerson.findByProposedLimit", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.proposedLimit = :proposedLimit")
+    , @NamedQuery(name = QueryConstants.ADDITIONAL_CARD_BY_LEGAL_APPLICANT, query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.legalPersonid.id = :legalPersonId")})
 public class CardRequestNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -23,7 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
+/*
  *
  * @author jose
  */
@@ -36,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RequestHasCollectionsRequest.findByIndApproved", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.indApproved = :indApproved"),
     @NamedQuery(name = "RequestHasCollectionsRequest.findByObservations", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.observations = :observations"),
     @NamedQuery(name = "RequestHasCollectionsRequest.findByUrlImageFile", query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.urlImageFile = :urlImageFile"),
-    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId AND r.collectionsRequestid.id=:collectionsRequestId")})
+    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId AND r.collectionsRequestid.id=:collectionsRequestId"),
+    @NamedQuery(name = QueryConstants.REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST, query = "SELECT r FROM RequestHasCollectionsRequest r WHERE r.requestId.id=:requestId")})
 
 public class RequestHasCollectionsRequest extends AbstractDistributionEntity implements Serializable {
 

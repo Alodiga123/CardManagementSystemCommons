@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -48,7 +43,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ApplicantNaturalPerson.findByFamilyResponsibilities", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.familyResponsibilities = :familyResponsibilities"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByCreateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.createDate = :createDate"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByUpdateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_COMPLEMNTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId")})
+    @NamedQuery(name = QueryConstants.CARD_COMPLEMENTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId")})
+
 public class ApplicantNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -105,6 +101,9 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusApplicant statusApplicantId;
 
     public ApplicantNaturalPerson() {
     }
@@ -273,6 +272,14 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
         this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
+    public StatusApplicant getStatusApplicantId() {
+        return statusApplicantId;
+    }
+
+    public void setStatusApplicantId(StatusApplicant statusApplicantId) {
+        this.statusApplicantId = statusApplicantId;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

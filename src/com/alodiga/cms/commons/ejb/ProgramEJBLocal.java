@@ -28,6 +28,7 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Program saveProgram(Program Program) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Program> getProgramByProgramType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Program> getProgramByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //NaturalPerson
     public List<NaturalPerson> getProgramOwner(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -83,6 +84,9 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "civilStatusId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private CivilStatus civilStatusId;
 
     public LegalRepresentatives() {
     }
@@ -185,6 +189,14 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
 
     public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
         this.documentsPersonTypeId = documentsPersonTypeId;
+    }
+
+    public CivilStatus getCivilStatusId() {
+        return civilStatusId;
+    }
+
+    public void setCivilStatusId(CivilStatus civilStatusId) {
+        this.civilStatusId = civilStatusId;
     }
 
     @Override
