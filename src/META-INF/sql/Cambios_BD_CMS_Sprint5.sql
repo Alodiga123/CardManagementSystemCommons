@@ -571,3 +571,12 @@ FOREIGN KEY (`subAccountTypeId`)
     REFERENCES `CardManagementSystem`.`subAccountType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+
+
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT DEFAULT_TIMESTAMP AFTER `indPersonNaturalRequest`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
