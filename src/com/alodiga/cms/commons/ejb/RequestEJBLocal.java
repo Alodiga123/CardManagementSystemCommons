@@ -14,6 +14,7 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
 import com.cms.commons.models.ReviewRequest;
+import com.cms.commons.models.ReviewRequestType;
 import com.cms.commons.models.StatusApplicant;
 import java.util.Date;
 import java.util.List;
@@ -56,6 +57,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public RequestHasCollectionsRequest loadRequestHasCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RequestHasCollectionsRequest saveRequestHasCollectionsRequest(RequestHasCollectionsRequest requestHasCollectionsRequest) throws NullParameterException, GeneralException;
     public List<RequestHasCollectionsRequest> getRequestsHasCollectionsRequestByRequestByCollectionRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RequestHasCollectionsRequest> getRequestsHasCollectionsRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //CollectionType
     public List<CollectionType> getCollectionType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -73,4 +75,9 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<StatusApplicant> getStatusApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusApplicant loadStatusApplicant(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusApplicant saveStatusApplicant(StatusApplicant statusApplicant) throws NullParameterException, GeneralException;
+    
+    //ReviewRequestType
+    public List<ReviewRequestType> getReviewRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ReviewRequestType loadReviewRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ReviewRequestType saveReviewRequestType(ReviewRequestType reviewRequestType) throws NullParameterException, GeneralException;
 }
