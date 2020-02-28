@@ -48,7 +48,6 @@ public class Constants {
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2;    
 
     //PersonClassification
-    public static final Long PERSON_CLASSIFICATION_CUSTOMER = 7L;
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
@@ -91,6 +90,7 @@ public class Constants {
         public static final int STATUS_REQUEST_IN_PROCESS = 1;
         public static final int STATUS_REQUEST_IN_REJECTED = 3;
         public static final int STATUS_CUSTOMER_ACTIVE = 1;
+        public static final int STATUS_CLASSIFICATION_CUSTOMER_ACTIVE = 1;
         public static final int PENDING_APPROVAL = 2;
         public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
         public static final int STATUS_REQUEST_BLACK_LIST_OK = 4;

@@ -200,6 +200,5 @@ public class QueryConstants {
     public static final String PARAM_PIN_FREE = "pinFree";
     public static final String PARAM_PROMOTION_TYPE = "promotionType";
     public static final String PARAM_LANGUAGE_ID = "languageId";
-    public static final String CARD_COMPLEMENTARY_BY_APPLICANT ="cardComplementaryByApplicant";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
 }
