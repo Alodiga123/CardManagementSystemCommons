@@ -45,9 +45,12 @@ public class Constants {
     public static final int STATUS_APPLICANT_CUSTOMER = 4;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
-    public static final int REVIEW_REQUEST_TYPE_OFAC = 2;    
+    public static final int REVIEW_REQUEST_TYPE_OFAC = 2; 
+    public static final int STATUS_REQUEST_REJECTED = 2;
+    public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
 
     //PersonClassification
+    public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
@@ -91,11 +94,11 @@ public class Constants {
         public static final int STATUS_REQUEST_IN_PROCESS = 1;
         public static final int STATUS_REQUEST_IN_REJECTED = 3;
         public static final int STATUS_CUSTOMER_ACTIVE = 1;
+        public static final int STATUS_CLASSIFICATION_CUSTOMER_ACTIVE = 1;
         public static final int PENDING_APPROVAL = 2;
         public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
         public static final int STATUS_REQUEST_BLACK_LIST_OK = 4;
         public static final int STATUS_REQUEST_APPROVED = 5;
-        public static final int STATUS_REQUEST_REJECTED = 6;
         public static final int PERSON_CLASSIFICATION_APPLICANT = 4;
         public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
         public static final int PHONE_TYPE_MOBILE = 1;

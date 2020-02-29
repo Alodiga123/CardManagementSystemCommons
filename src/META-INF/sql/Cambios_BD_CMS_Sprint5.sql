@@ -571,3 +571,30 @@ FOREIGN KEY (`subAccountTypeId`)
     REFERENCES `CardManagementSystem`.`subAccountType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+
+-- Agregar campos de creación y actualización de registro en request
+-- author: Jesús Gómez
+-- Fecha: 28/02/2020
+ALTER TABLE `CardManagementSystem`.`request` 
+CHANGE COLUMN `requestDate` `requestDate` TIMESTAMP NULL ,
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  AFTER `indPersonNaturalRequest`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+-- Agregar FK en request
+-- author: Jesús Gómez
+-- Fecha: 28/02/2020
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD COLUMN `userId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`request` 
+ADD CONSTRAINT `fk_request_user1` 
+FOREIGN KEY (`userId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Actualizar fecha de creación en naturalCustomer
+-- author: Jesús Gómez
+-- Fecha: 28/02/2020  
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;

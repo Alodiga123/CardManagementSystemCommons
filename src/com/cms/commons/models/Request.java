@@ -74,6 +74,9 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "requestTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RequestType requestTypeId;
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @ManyToOne
+    private User userId;
     @JoinColumn(name = "reasonRejectionRequestId", referencedColumnName = "id")
     @ManyToOne
     private ReasonRejectionRequest reasonRejectionRequestId;
@@ -82,6 +85,12 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     private Person personCustomerId;
     @Column(name = "indPersonNaturalRequest")
     private Boolean indPersonNaturalRequest;
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     public Request() {
     }
@@ -177,6 +186,22 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     public void setPersonCustomerId(Person personCustomerId) {
         this.personCustomerId = personCustomerId;
     }
+    
+    public ReasonRejectionRequest getReasonRejectionRequestId() {
+        return reasonRejectionRequestId;
+    }
+
+    public void setReasonRejectionRequestId(ReasonRejectionRequest reasonRejectionRequestId) {
+        this.reasonRejectionRequestId = reasonRejectionRequestId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 
     public Boolean getIndPersonNaturalRequest() {
         return indPersonNaturalRequest;
@@ -184,6 +209,22 @@ public class Request extends AbstractDistributionEntity implements Serializable 
 
     public void setIndPersonNaturalRequest(Boolean indPersonNaturalRequest) {
         this.indPersonNaturalRequest = indPersonNaturalRequest;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
     
     @Override
@@ -219,14 +260,6 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
-    }
-
-    public ReasonRejectionRequest getReasonRejectionRequestId() {
-        return reasonRejectionRequestId;
-    }
-
-    public void setReasonRejectionRequestId(ReasonRejectionRequest reasonRejectionRequestId) {
-        this.reasonRejectionRequestId = reasonRejectionRequestId;
     }
 
 }
