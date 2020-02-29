@@ -48,9 +48,9 @@ public class Constants {
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2;    
 
     //PersonClassification
-    public static final Long PERSON_CLASSIFICATION_CUSTOMER = 7L;
-    public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
+    public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
+    public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
