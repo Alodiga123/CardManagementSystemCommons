@@ -142,7 +142,6 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<PlasticManufacturer> getPlasticManufacturer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public PlasticManufacturer loadPlasticManufacturer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlasticManufacturer savePlasticManufacturer (PlasticManufacturer plasticManufacturer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-}
 
     //Status
     public List<StatusCustomer> getStatusCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
