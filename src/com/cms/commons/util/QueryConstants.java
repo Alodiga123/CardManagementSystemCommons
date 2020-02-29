@@ -25,7 +25,7 @@ public class QueryConstants {
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
     public static final String FAMILY_REFERENCES_BY_APPLICANT = "familyReferencesByApplicant";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
-    public static final String CARD_COMPLEMNTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
     public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
@@ -40,7 +40,8 @@ public class QueryConstants {
     public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
     public static final String NETWORK_BY_COUNTRY = "networkByCountry";
     public static final String LAST_PERSON = "Person.lastPerson";
-    public static final String PERSON_TYPES_BY_COUNTRY = "personTypesByCountry";
+    public static final String PERSON_TYPE_BY_COUNTRY_BY_IND_NATURAL_PERSON = "personTypeByCountryByIndNaturalPerson";
+    public static final String PERSON_TYPE_BY_COUNTRY = "personTypeByCountry";
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
     public static final String COMMERCE_CATEGORY_BY_PRODUCT = "commerceCategoryByProduct";
@@ -61,6 +62,7 @@ public class QueryConstants {
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
+    public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
     public static final String ADDITIONAL_CARD_BY_LEGAL_APPLICANT = "additionalCardByLegalApplicant";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
@@ -133,6 +135,7 @@ public class QueryConstants {
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
+    public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
@@ -197,6 +200,5 @@ public class QueryConstants {
     public static final String PARAM_PIN_FREE = "pinFree";
     public static final String PARAM_PROMOTION_TYPE = "promotionType";
     public static final String PARAM_LANGUAGE_ID = "languageId";
-    public static final String CARD_COMPLEMENTARY_BY_APPLICANT ="cardComplementaryByApplicant";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
 }
