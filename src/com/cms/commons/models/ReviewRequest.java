@@ -66,6 +66,12 @@ public class ReviewRequest extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "reviewRequestTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ReviewRequestType reviewRequestTypeId;
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     public ReviewRequest() {
     }
@@ -144,6 +150,22 @@ public class ReviewRequest extends AbstractDistributionEntity implements Seriali
 
     public void setReviewRequestTypeId(ReviewRequestType reviewRequestTypeId) {
         this.reviewRequestTypeId = reviewRequestTypeId;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
     @Override
