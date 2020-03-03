@@ -17,6 +17,7 @@ import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramLoyalty;
 import com.cms.commons.models.ProgramLoyaltyTransaction;
 import com.cms.commons.models.ProgramLoyaltyType;
+import com.cms.commons.models.ProjectAnnualVolume;
 import com.cms.commons.models.StatusProgramLoyalty;
 import java.util.List;
 
@@ -81,4 +82,10 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<LoyaltyTransactionHasCommerceCategory> getLoyaltyTransactionHasCommerceCategoryUnique(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LoyaltyTransactionHasCommerceCategory loadLoyaltyTransactionHasCommerceCategory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LoyaltyTransactionHasCommerceCategory saveLoyaltyTransactionHasCommerceCategory(LoyaltyTransactionHasCommerceCategory loyaltyTransactionHasCommerceCategory)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //ProjectAnnualVolume
+    public List<ProjectAnnualVolume> getProjectAnnualVolume(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProjectAnnualVolume> getProjectAnnualVolumeByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProjectAnnualVolume loadProjectAnnualVolume(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProjectAnnualVolume saveProjectAnnualVolume(ProjectAnnualVolume projectAnnualVolume)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
