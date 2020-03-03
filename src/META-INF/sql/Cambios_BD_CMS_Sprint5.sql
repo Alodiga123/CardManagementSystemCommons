@@ -632,3 +632,50 @@ ADD CONSTRAINT `fk_naturalCustomer_kinShipApplicant1`
   REFERENCES `CardManagementSystem`.`kinShipApplicant` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+
+-- Actualizar fecha de creación en legalCustomer
+-- author: Jesús Gómez
+-- Fecha: 28/02/2020  
+ALTER TABLE `CardManagementSystem`.`legalCustomer` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+-- Agregar campos de creación y actualización de registro en requestHasCollectionsRequest
+-- author: Jesús Gómez
+-- Fecha: 29/02/2020
+ALTER TABLE `CardManagementSystem`.`requestHasCollectionsRequest` 
+ADD COLUMN `createdDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `urlImageFile`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createdDate`;
+
+-- Agregar campos de creación y actualización de registro en reviewRequest
+-- author: Jesús Gómez
+-- Fecha: 29/02/2020
+ALTER TABLE `CardManagementSystem`.`reviewRequest` 
+ADD COLUMN `createdDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `indApproved`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createdDate`;
+
+-- cambiar FK kinShipApplicantId para que acepte null en naturalCustomer
+-- author: Jesús Gómez
+-- Fecha: 29/02/2020
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+DROP FOREIGN KEY `fk_naturalCustomer_kinShipApplicant1`;
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+CHANGE COLUMN `kinShipApplicantId` `kinShipApplicantId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+ADD CONSTRAINT `fk_naturalCustomer_kinShipApplicant1`
+  FOREIGN KEY (`kinShipApplicantId`)
+  REFERENCES `CardManagementSystem`.`kinShipApplicant` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- cambiar FK countryId en additionalInformationNaturalCustomer
+-- author: Jesús Gómez
+-- Fecha: 03/03/2020
+ALTER TABLE `CardManagementSystem`.`additionalInformationNaturalCustomer` 
+ADD COLUMN `countryId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`additionalInformationNaturalCustomer` 
+ADD CONSTRAINT `fk_additionalInformationNaturalCustomer_country1` 
+FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
