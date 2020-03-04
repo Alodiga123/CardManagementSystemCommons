@@ -93,6 +93,10 @@ public class Person extends AbstractDistributionEntity implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private User user;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private NaturalCustomer naturalCustomer;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
+    private LegalCustomer legalCustomer;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private ReviewOFAC reviewOFAC;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "personId")
     private PlasticManufacturer plasticManufacturer;
@@ -246,6 +250,22 @@ public class Person extends AbstractDistributionEntity implements Serializable {
 
     public void setRequest(Request request) {
         this.request = request;
+    }
+
+    public NaturalCustomer getNaturalCustomer() {
+        return naturalCustomer;
+    }
+
+    public void setNaturalCustomer(NaturalCustomer naturalCustomer) {
+        this.naturalCustomer = naturalCustomer;
+    }
+
+    public LegalCustomer getLegalCustomer() {
+        return legalCustomer;
+    }
+
+    public void setLegalCustomer(LegalCustomer legalCustomer) {
+        this.legalCustomer = legalCustomer;
     }
 
     @Override
