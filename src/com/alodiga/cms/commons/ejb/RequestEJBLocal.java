@@ -11,6 +11,7 @@ import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.PersonType;
+import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
 import com.cms.commons.models.ReviewRequest;
@@ -80,4 +81,9 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<ReviewRequestType> getReviewRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewRequestType loadReviewRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewRequestType saveReviewRequestType(ReviewRequestType reviewRequestType) throws NullParameterException, GeneralException;
+    
+    //ReasonRejectionRequest
+    public List<ReasonRejectionRequest> getReasonRejectionRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ReasonRejectionRequest loadReasonRejectionRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ReasonRejectionRequest saveReasonRejectionRequest(ReasonRejectionRequest reasonRejectionRequest) throws NullParameterException, GeneralException;
 }
