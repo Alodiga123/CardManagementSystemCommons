@@ -633,7 +633,6 @@ ADD CONSTRAINT `fk_naturalCustomer_kinShipApplicant1`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
-
 -- Actualizar fecha de creación en legalCustomer
 -- author: Jesús Gómez
 -- Fecha: 28/02/2020  
@@ -679,3 +678,5 @@ FOREIGN KEY (`countryId`)
     REFERENCES `CardManagementSystem`.`country` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+
