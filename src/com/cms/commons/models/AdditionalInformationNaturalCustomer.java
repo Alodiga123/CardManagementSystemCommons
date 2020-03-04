@@ -118,6 +118,9 @@ public class AdditionalInformationNaturalCustomer extends AbstractDistributionEn
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
 
     public AdditionalInformationNaturalCustomer() {
     }
@@ -316,6 +319,14 @@ public class AdditionalInformationNaturalCustomer extends AbstractDistributionEn
 
     public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
         this.documentsPersonTypeId = documentsPersonTypeId;
+    }
+
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
     }
 
     @Override
