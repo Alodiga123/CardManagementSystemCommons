@@ -679,3 +679,6 @@ FOREIGN KEY (`countryId`)
     REFERENCES `CardManagementSystem`.`country` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+ALTER TABLE `CardManagementSystem`.`productHasChannelHasTransaction` 
+DROP INDEX `productId`;
