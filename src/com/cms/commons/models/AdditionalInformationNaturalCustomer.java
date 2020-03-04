@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,29 +31,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "additionalInformationNaturalCustomer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findAll", query = "SELECT a FROM AdditionalInformationNaturalCustomer a")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findById", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.id = :id")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByFirstNamesHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.firstNamesHusband = :firstNamesHusband")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByLastNamesHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.lastNamesHusband = :lastNamesHusband")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByIdentificationNumberHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.identificationNumberHusband = :identificationNumberHusband")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByPhoneHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.phoneHusband = :phoneHusband")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByEmailHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.emailHusband = :emailHusband")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarBrand", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carBrand = :carBrand")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarModel", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carModel = :carModel")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarYear", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carYear = :carYear")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarPlate", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carPlate = :carPlate")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findBySalary", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.salary = :salary")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByFreeProfessionalExercise", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.freeProfessionalExercise = :freeProfessionalExercise")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByBonusesCommissionsFee", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.bonusesCommissionsFee = :bonusesCommissionsFee")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByRentsIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.rentsIncome = :rentsIncome")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByOtherIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.otherIncome = :otherIncome")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByTotalIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.totalIncome = :totalIncome")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByHousingExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.housingExpenses = :housingExpenses")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyRentMortgage", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyRentMortgage = :monthlyRentMortgage")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyPaymentCreditCard", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyPaymentCreditCard = :monthlyPaymentCreditCard")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyPaymentOtherCredit", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyPaymentOtherCredit = :monthlyPaymentOtherCredit")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByEducationExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.educationExpenses = :educationExpenses")
-    , @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByTotalExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.totalExpenses = :totalExpenses")})
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findAll", query = "SELECT a FROM AdditionalInformationNaturalCustomer a"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findById", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.id = :id"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByFirstNamesHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.firstNamesHusband = :firstNamesHusband"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByLastNamesHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.lastNamesHusband = :lastNamesHusband"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByIdentificationNumberHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.identificationNumberHusband = :identificationNumberHusband"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByPhoneHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.phoneHusband = :phoneHusband"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByEmailHusband", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.emailHusband = :emailHusband"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarBrand", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carBrand = :carBrand"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarModel", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carModel = :carModel"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarYear", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carYear = :carYear"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByCarPlate", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.carPlate = :carPlate"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findBySalary", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.salary = :salary"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByFreeProfessionalExercise", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.freeProfessionalExercise = :freeProfessionalExercise"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByBonusesCommissionsFee", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.bonusesCommissionsFee = :bonusesCommissionsFee"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByRentsIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.rentsIncome = :rentsIncome"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByOtherIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.otherIncome = :otherIncome"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByTotalIncome", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.totalIncome = :totalIncome"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByHousingExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.housingExpenses = :housingExpenses"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyRentMortgage", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyRentMortgage = :monthlyRentMortgage"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyPaymentCreditCard", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyPaymentCreditCard = :monthlyPaymentCreditCard"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByMonthlyPaymentOtherCredit", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.monthlyPaymentOtherCredit = :monthlyPaymentOtherCredit"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByEducationExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.educationExpenses = :educationExpenses"),
+    @NamedQuery(name = "AdditionalInformationNaturalCustomer.findByTotalExpenses", query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.totalExpenses = :totalExpenses"),
+    @NamedQuery(name = QueryConstants.ADDITIONAL_INFORMATION_BY_CUSTOMER, query = "SELECT a FROM AdditionalInformationNaturalCustomer a WHERE a.naturalCustomerId.id=:naturalCustomerId")})
 
 public class AdditionalInformationNaturalCustomer extends AbstractDistributionEntity implements Serializable {
 
@@ -118,6 +120,9 @@ public class AdditionalInformationNaturalCustomer extends AbstractDistributionEn
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
 
     public AdditionalInformationNaturalCustomer() {
     }
@@ -318,6 +323,14 @@ public class AdditionalInformationNaturalCustomer extends AbstractDistributionEn
         this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -352,5 +365,5 @@ public class AdditionalInformationNaturalCustomer extends AbstractDistributionEn
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }

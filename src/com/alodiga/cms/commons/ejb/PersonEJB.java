@@ -7,6 +7,7 @@ import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
+import com.cms.commons.models.AdditionalInformationNaturalCustomer;
 import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CardRequestNaturalPerson;
 import com.cms.commons.models.CivilStatus;
@@ -21,6 +22,7 @@ import com.cms.commons.models.Issuer;
 import com.cms.commons.models.IssuerType;
 import com.cms.commons.models.KinShipApplicant;
 import com.cms.commons.models.LegalCustomer;
+import com.cms.commons.models.LegalCustomerHasLegalRepresentatives;
 import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.NaturalCustomer;
 import com.cms.commons.models.NaturalPerson;
@@ -140,8 +142,19 @@ public interface PersonEJB extends DistributionGenericEJB {
     public PlasticManufacturer loadPlasticManufacturer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlasticManufacturer savePlasticManufacturer (PlasticManufacturer plasticManufacturer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    //Status
+    //StatusCustomer
     public List<StatusCustomer> getStatusCustomer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public StatusCustomer loadStatusCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusCustomer saveStatusCustomer(StatusCustomer statusCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //LegalCustomerHasLegalRepresentatives
+    public List<LegalCustomerHasLegalRepresentatives> getLegalCustomerHasLegalRepresentatives(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public LegalCustomerHasLegalRepresentatives loadLegalCustomerHasLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public LegalCustomerHasLegalRepresentatives saveLegalCustomerHasLegalRepresentatives(LegalCustomerHasLegalRepresentatives legalCustomerHasLegalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //AdditionalInformationNaturalCustomer
+    public List<AdditionalInformationNaturalCustomer> getAdditionalInformationNaturalCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AdditionalInformationNaturalCustomer> getAdditionalInformationNaturalCustomeByCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public AdditionalInformationNaturalCustomer loadAdditionalInformationNaturalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public AdditionalInformationNaturalCustomer saveAdditionalInformationNaturalCustomer(AdditionalInformationNaturalCustomer additionalInformationNaturalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
