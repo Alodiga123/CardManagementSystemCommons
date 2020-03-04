@@ -64,6 +64,7 @@ public class Constants {
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
         public static final String PERSON_KEY = "personId";
         public static final String REQUESTS_KEY = "requestId";
+        public static final String NATURAL_CUSTOMER_KEY = "naturalCustomerId";
         public static final String COUNTRY_KEY = "countryId";
         public static final String PERSON_TYPE_KEY = "personTypeId";
         public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";

@@ -27,6 +27,7 @@ public class QueryConstants {
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
+    public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
     public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
