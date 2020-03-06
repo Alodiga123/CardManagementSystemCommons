@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -33,8 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ProjectAnnualVolume.findByAccountsNumber", query = "SELECT p FROM ProjectAnnualVolume p WHERE p.accountsNumber = :accountsNumber")
     , @NamedQuery(name = "ProjectAnnualVolume.findByActiveCardNumber", query = "SELECT p FROM ProjectAnnualVolume p WHERE p.activeCardNumber = :activeCardNumber")
     , @NamedQuery(name = "ProjectAnnualVolume.findByAverageLoad", query = "SELECT p FROM ProjectAnnualVolume p WHERE p.averageLoad = :averageLoad")
-    , @NamedQuery(name = "ProjectAnnualVolume.findByAverageCardBalance", query = "SELECT p FROM ProjectAnnualVolume p WHERE p.averageCardBalance = :averageCardBalance")})
-public class ProjectAnnualVolume implements Serializable {
+    , @NamedQuery(name = "ProjectAnnualVolume.findByAverageCardBalance", query = "SELECT p FROM ProjectAnnualVolume p WHERE p.averageCardBalance = :averageCardBalance")
+    , @NamedQuery(name = QueryConstants.PROJECT_ANNUAL_VOLUME_BY_PROGRAM, query = "SELECT p FROM ProjectAnnualVolume p WHERE p.programId.id=:programId")})
+public class ProjectAnnualVolume extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -143,6 +147,16 @@ public class ProjectAnnualVolume implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ProjectAnnualVolume[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

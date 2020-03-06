@@ -57,7 +57,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "NaturalCustomer.findByFamilyResponsibilities", query = "SELECT n FROM NaturalCustomer n WHERE n.familyResponsibilities = :familyResponsibilities"),
     @NamedQuery(name = "NaturalCustomer.findByCreateDate", query = "SELECT n FROM NaturalCustomer n WHERE n.createDate = :createDate"),
     @NamedQuery(name = "NaturalCustomer.findByUpdatedate", query = "SELECT n FROM NaturalCustomer n WHERE n.updatedate = :updatedate"),
-    @NamedQuery(name = QueryConstants.NATURAL_PERSON_BY_CUSTOMER, query = "SELECT n FROM NaturalCustomer n WHERE n.personId.id=:personId")})
+    @NamedQuery(name = QueryConstants.NATURAL_PERSON_BY_CUSTOMER, query = "SELECT n FROM NaturalCustomer n WHERE n.personId.id=:personId"),
+    @NamedQuery(name = QueryConstants.NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES, query = "SELECT n FROM NaturalCustomer n WHERE n.naturalCustomerId.id=:naturalCustomerId")})
 public class NaturalCustomer extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
