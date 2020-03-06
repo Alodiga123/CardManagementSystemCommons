@@ -41,7 +41,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Product.findByUpdatedate", query = "SELECT p FROM Product p WHERE p.updatedate = :updatedate"),
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
     @NamedQuery(name = "Product.findByBinNumber", query = "SELECT p FROM Product p WHERE p.binNumber = :binNumber"),
-    @NamedQuery(name = "Product.findByValidityYears", query = "SELECT p FROM Product p WHERE p.validityYears = :validityYears"),
+    @NamedQuery(name = "Product.findByValidityMonths", query = "SELECT p FROM Product p WHERE p.validityMonths = :validityMonths"),
     @NamedQuery(name = "Product.findByDaysBeforeExpiration", query = "SELECT p FROM Product p WHERE p.daysBeforeExpiration = :daysBeforeExpiration"),
     @NamedQuery(name = "Product.findByDaysToInactivate", query = "SELECT p FROM Product p WHERE p.daysToInactivate = :daysToInactivate"),
     @NamedQuery(name = "Product.findByDaysToActivate", query = "SELECT p FROM Product p WHERE p.daysToActivate = :daysToActivate"),
@@ -69,8 +69,8 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private String name;
     @Column(name = "binNumber")
     private String binNumber;
-    @Column(name = "validityYears")
-    private Integer validityYears;
+    @Column(name = "validityMonths")
+    private Integer validityMonths;
     @Column(name = "daysBeforeExpiration")
     private Integer daysBeforeExpiration;
     @Column(name = "daysToInactivate")
@@ -191,12 +191,12 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.binNumber = binNumber;
     }
 
-    public Integer getValidityYears() {
-        return validityYears;
+    public Integer getValidityMonths() {
+        return validityMonths;
     }
 
-    public void setValidityYears(Integer validityYears) {
-        this.validityYears = validityYears;
+    public void setValidityMonths(Integer validityMonths) {
+        this.validityMonths = validityMonths;
     }
 
     public Integer getDaysBeforeExpiration() {
