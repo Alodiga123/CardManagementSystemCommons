@@ -76,6 +76,7 @@ public class Constants {
         public static final String PROFESSION_KEY = "professionId";
         public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
         public static final String APPLICANT_NATURAL_PERSON_KEY = "applicantNaturalPersonId";
+        public static final String APPLICANT_NATURAL_CUSTOMER_KEY = "naturalCustomerId";
         public static final String APPLICANT_LEGAL_PERSON_KEY = "legalPersonId";
         public static final String NETWORK_BY_PROGRAM = "programId";
         public static final String PRODUCT_KEY = "productId";
