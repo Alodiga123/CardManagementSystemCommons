@@ -46,7 +46,13 @@ public class Constants {
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2; 
+    public static final int STATUS_REQUEST_IN_PROCESS = 1;
     public static final int STATUS_REQUEST_REJECTED = 2;
+    public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
+    public static final int STATUS_REQUEST_PENDING_APPROVAL = 4;
+    public static final int STATUS_REQUEST_BLACK_LIST_OK = 5;
+    public static final int STATUS_REQUEST_APPROVED = 6;
+    public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
 
     //PersonClassification
@@ -90,14 +96,9 @@ public class Constants {
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
         public static final Long PERSON_NOT_REGISTER = 1L;
-        public static final int STATUS_REQUEST_IN_PROCESS = 1;
-        public static final int STATUS_REQUEST_IN_REJECTED = 3;
         public static final int STATUS_CUSTOMER_ACTIVE = 1;
         public static final int STATUS_CLASSIFICATION_CUSTOMER_ACTIVE = 1;
         public static final int PENDING_APPROVAL = 2;
-        public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
-        public static final int STATUS_REQUEST_BLACK_LIST_OK = 4;
-        public static final int STATUS_REQUEST_APPROVED = 5;
         public static final int PERSON_CLASSIFICATION_APPLICANT = 4;
         public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
         public static final int PHONE_TYPE_MOBILE = 1;
