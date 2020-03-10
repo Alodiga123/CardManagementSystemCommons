@@ -686,3 +686,6 @@ ALTER TABLE `CardManagementSystem`.`product`
 CHANGE COLUMN `validityYears` `validityMonths` INT(11) NULL DEFAULT NULL ;
 
 
+
+ALTER TABLE `CardManagementSystem`.`productHasChannelHasTransaction` 
+DROP INDEX `productId`;
