@@ -27,6 +27,7 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_CUSTOMER = "familyReferencesByCustomer";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
     public static final String NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES = "naturalCustomerByCardComplementaries";
     public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
@@ -135,6 +136,7 @@ public class QueryConstants {
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_ENTERPRISE_ID = "enterpriseId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";

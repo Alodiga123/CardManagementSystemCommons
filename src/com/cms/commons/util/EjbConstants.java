@@ -70,6 +70,7 @@ public class EjbConstants {
     public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";    
     public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";    
     public static final String PARAM_STATUS_REQUEST_ID = "statusRequestId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
