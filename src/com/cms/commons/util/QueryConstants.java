@@ -31,6 +31,7 @@ public class QueryConstants {
     public static final String NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES = "naturalCustomerByCardComplementaries";
     public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
     public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
+    public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER ="legalRepresentativesByLegalCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String REQUEST_APPROVED = "RequestApproved";
@@ -69,6 +70,7 @@ public class QueryConstants {
     public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
     public static final String ADDITIONAL_CARD_BY_LEGAL_APPLICANT = "additionalCardByLegalApplicant";
+    public static final String ADDITIONAL_CARD_BY_LEGAL_CUSTOMER = "additionalCardByLegalCustomer";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
     public static final String VALIDATE_CUSTOMER = "validateCustomer";
