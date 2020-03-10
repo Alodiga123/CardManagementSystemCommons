@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -29,8 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "legalCustomerHasLegalRepresentatives")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findAll", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l")
-    , @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findById", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l WHERE l.id = :id")})
+    @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findAll", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l"),
+    @NamedQuery(name = "LegalCustomerHasLegalRepresentatives.findById", query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l WHERE l.id = :id"),
+    @NamedQuery(name = QueryConstants.LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER, query = "SELECT l FROM LegalCustomerHasLegalRepresentatives l WHERE l.legalCustomerId.id = :legalCustomerId")})
 public class LegalCustomerHasLegalRepresentatives extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -111,5 +113,5 @@ public class LegalCustomerHasLegalRepresentatives extends AbstractDistributionEn
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }

@@ -28,6 +28,7 @@ import java.util.List;
 public interface RequestEJBLocal extends DistributionGenericEJB {
 
     public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Request> getRequestsByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Long saveRequestPersonData(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
