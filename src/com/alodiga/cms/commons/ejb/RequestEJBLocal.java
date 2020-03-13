@@ -28,6 +28,7 @@ import java.util.List;
 public interface RequestEJBLocal extends DistributionGenericEJB {
 
     public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Request> getRequestsByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Long saveRequestPersonData(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
@@ -69,6 +70,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     //ReviewRequest
     public List<ReviewRequest> getReviewRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<ReviewRequest> getReviewRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ReviewRequest> getReviewByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewRequest loadReviewRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewRequest saveReviewRequest(ReviewRequest reviewRequest) throws NullParameterException, GeneralException;
     
