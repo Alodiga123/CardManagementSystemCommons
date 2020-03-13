@@ -45,6 +45,7 @@ public class Constants {
     public static final int STATUS_APPLICANT_CUSTOMER = 4;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
+    public static final boolean USE_NUMBER_CARD = false;
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2; 
     public static final int STATUS_REQUEST_IN_PROCESS = 1;
     public static final int STATUS_REQUEST_REJECTED = 2;
@@ -59,6 +60,7 @@ public class Constants {
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
+    public static Integer CARD_STATUS_REQUESTED = 1;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
@@ -69,8 +71,10 @@ public class Constants {
     //RequestEJB
         public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
         public static final String PERSON_KEY = "personId";
+        public static final String USE_KEY = "indUse";
         public static final String REQUESTS_KEY = "requestId";
         public static final String NATURAL_CUSTOMER_KEY = "naturalCustomerId";
+        public static final String COLLECTIONS_REQUEST_KEY = "naturalCustomerId";
         public static final String COUNTRY_KEY = "countryId";
         public static final String PERSON_TYPE_KEY = "personTypeId";
         public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
