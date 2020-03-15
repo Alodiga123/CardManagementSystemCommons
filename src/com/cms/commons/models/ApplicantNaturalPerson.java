@@ -43,8 +43,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ApplicantNaturalPerson.findByFamilyResponsibilities", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.familyResponsibilities = :familyResponsibilities"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByCreateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.createDate = :createDate"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByUpdateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_COMPLEMENTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId"),
-    @NamedQuery(name = QueryConstants.APPLICANT_BY_REQUEST, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.personId.id=:personId")})
+    @NamedQuery(name = QueryConstants.CARD_COMPLEMENTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId")})
 
 public class ApplicantNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
@@ -105,6 +104,17 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusApplicant statusApplicantId;
+    @JoinColumn(name = "titleId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Title title;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "recommendation")
+    private Boolean recommendation;
+    @Column(name = "promotion")
+    private Boolean promotion;
+    @Column(name = "citizen")
+    private Boolean citizen;           
 
     public ApplicantNaturalPerson() {
     }
@@ -279,6 +289,46 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
 
     public void setStatusApplicantId(StatusApplicant statusApplicantId) {
         this.statusApplicantId = statusApplicantId;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(boolean recommendation) {
+        this.recommendation = recommendation;
+    }
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+
+    public boolean isCitizen() {
+        return citizen;
+    }
+
+    public void setCitizen(boolean citizen) {
+        this.citizen = citizen;
     }
     
     @Override

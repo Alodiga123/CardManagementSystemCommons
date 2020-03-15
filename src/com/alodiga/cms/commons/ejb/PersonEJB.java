@@ -29,6 +29,7 @@ import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.StatusCustomer;
+import com.cms.commons.models.Title;
 import java.util.List;
 
 /**
@@ -162,4 +163,9 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<AdditionalInformationNaturalCustomer> getAdditionalInformationNaturalCustomeByCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AdditionalInformationNaturalCustomer loadAdditionalInformationNaturalCustomer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AdditionalInformationNaturalCustomer saveAdditionalInformationNaturalCustomer(AdditionalInformationNaturalCustomer additionalInformationNaturalCustomer)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+      //Title
+    public List<Title> getTitles(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Title loadTitle(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Title saveTitle (Title title)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
 }

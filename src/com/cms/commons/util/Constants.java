@@ -99,7 +99,7 @@ public class Constants {
         public static final String ACCOUNT_TYPE_KEY = "accountTypeId";
         public static final String ACCOUNT_PROPERTIES_KEY = "accountPropertiesId";
         public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
-        public static final Long PROGRAM_WALLET_APP_ID = 1L;
+        public static final Long PROGRAM_WALLET_APP_ID = 4L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
         public static final Long PERSON_NOT_REGISTER = 1L;

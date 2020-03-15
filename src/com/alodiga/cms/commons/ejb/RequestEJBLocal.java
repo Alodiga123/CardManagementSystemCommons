@@ -88,4 +88,11 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<ReasonRejectionRequest> getReasonRejectionRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReasonRejectionRequest loadReasonRejectionRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReasonRejectionRequest saveReasonRejectionRequest(ReasonRejectionRequest reasonRejectionRequest) throws NullParameterException, GeneralException;
+    
+          //ApplicantNaturalPerson Modificado
+    public Long saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
+                                         String cellPhone, int countryAddress, int state, int city, String postalZone, String address,boolean recommendation,
+                                         boolean promotion,boolean citizen, String password, int title) 
+                                         throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+
 }
