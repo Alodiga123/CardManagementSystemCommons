@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.ImagensAplicantNaturalPerson;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
@@ -44,6 +45,10 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
             int professionId, String roomPhone, String cellPhone, int countryAddress, int state, int city, int zipZone, int edificationType, String nameEdification,
             String tower, int floor, int streetType, String nameStreet, String Urbanization, Long applicantId, int kinShipApplicantId)
             throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+
+    public List<ImagensAplicantNaturalPerson> getImagensAplicantNaturalPersonByAplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ImagensAplicantNaturalPerson loadImagensAplicantNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ImagensAplicantNaturalPerson saveImagensAplicantNaturalPerson(ImagensAplicantNaturalPerson imagensAplicantNaturalPerson) throws NullParameterException, GeneralException;
 
     //PersonType
     public PersonType personTypeWallet(int countryId) throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
@@ -90,7 +95,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public ReasonRejectionRequest saveReasonRejectionRequest(ReasonRejectionRequest reasonRejectionRequest) throws NullParameterException, GeneralException;
     
           //ApplicantNaturalPerson Modificado
-    public Long saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
+    public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
                                          String cellPhone, int countryAddress, int state, int city, String postalZone, String address,boolean recommendation,
                                          boolean promotion,boolean citizen, String password, int title) 
                                          throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;

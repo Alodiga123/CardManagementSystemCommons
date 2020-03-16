@@ -67,3 +67,15 @@ ADD CONSTRAINT `fk_address_zipZone1`
   FOREIGN KEY (`zipZoneId`)
   REFERENCES `cardmanagementsystem`.`zipzone` (`id`);
 
+CREATE TABLE `cardmanagementsystem`.`imagensAplicantNaturalPerson` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `applicantNaturalPersonId` bigint(20) NOT NULL,
+  `observations` varchar(1500) CHARACTER SET utf8 COLLATE utf8_danish_ci DEFAULT NULL,
+  `urlImageFile` varchar(250) CHARACTER SET utf8 COLLATE utf8_danish_ci DEFAULT NULL,
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_imagens_applicantNaturalPerson1` (`applicantNaturalPersonId`),
+  CONSTRAINT `fk_imagens_applicantNaturalPerson1` FOREIGN KEY (`applicantNaturalPersonId`) REFERENCES `applicantnaturalperson` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
