@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -29,10 +32,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "reviewOFAC")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ReviewOFAC.findAll", query = "SELECT r FROM ReviewOFAC r")
-    , @NamedQuery(name = "ReviewOFAC.findById", query = "SELECT r FROM ReviewOFAC r WHERE r.id = :id")
-    , @NamedQuery(name = "ReviewOFAC.findByResultReview", query = "SELECT r FROM ReviewOFAC r WHERE r.resultReview = :resultReview")})
-public class ReviewOFAC implements Serializable {
+    @NamedQuery(name = "ReviewOFAC.findAll", query = "SELECT r FROM ReviewOFAC r"),
+    @NamedQuery(name = "ReviewOFAC.findById", query = "SELECT r FROM ReviewOFAC r WHERE r.id = :id"),
+    @NamedQuery(name = "ReviewOFAC.findByResultReview", query = "SELECT r FROM ReviewOFAC r WHERE r.resultReview = :resultReview"),
+    @NamedQuery(name = QueryConstants.REVIEW_OFAC_BY_APPLICANT_BY_REQUEST, query = "SELECT r FROM ReviewOFAC r WHERE r.personId.id = :personId AND r.requestId.id = :requestId")})
+public class ReviewOFAC extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -112,6 +116,16 @@ public class ReviewOFAC implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ReviewOFAC[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

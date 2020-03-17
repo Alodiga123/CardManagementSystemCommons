@@ -38,7 +38,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Request.findAll", query = "SELECT r FROM Request r"),
     @NamedQuery(name = "Request.findById", query = "SELECT r FROM Request r WHERE r.id = :id"),
     @NamedQuery(name = "Request.findByRequestNumber", query = "SELECT r FROM Request r WHERE r.requestNumber = :requestNumber"),
-    @NamedQuery(name = "Request.findByRequestDate", query = "SELECT r FROM Request r WHERE r.requestDate = :requestDate")})
+    @NamedQuery(name = "Request.findByRequestDate", query = "SELECT r FROM Request r WHERE r.requestDate = :requestDate"),
+    @NamedQuery(name = QueryConstants.STATUS_REQUEST, query = "SELECT r FROM Request r WHERE r.statusRequestId.id=:statusRequestId")})
 public class Request extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -186,7 +187,7 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     public void setPersonCustomerId(Person personCustomerId) {
         this.personCustomerId = personCustomerId;
     }
-    
+
     public ReasonRejectionRequest getReasonRejectionRequestId() {
         return reasonRejectionRequestId;
     }
@@ -226,7 +227,7 @@ public class Request extends AbstractDistributionEntity implements Serializable 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;

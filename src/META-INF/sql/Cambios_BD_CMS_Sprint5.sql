@@ -679,5 +679,14 @@ FOREIGN KEY (`countryId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+-- cambiar nombre de campo en product
+-- author: Jesús Gómez
+-- Fecha: 06/03/2020
+ALTER TABLE `CardManagementSystem`.`product` 
+CHANGE COLUMN `validityYears` `validityMonths` INT(11) NULL DEFAULT NULL ;
+
+-- eliminar indice en productHasChannelHasTransaction
+-- author: Jesús Gómez
+-- Fecha: 06/03/2020
 ALTER TABLE `CardManagementSystem`.`productHasChannelHasTransaction` 
 DROP INDEX `productId`;

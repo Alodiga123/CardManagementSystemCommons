@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ReviewRequest.findById", query = "SELECT r FROM ReviewRequest r WHERE r.id = :id"),
     @NamedQuery(name = "ReviewRequest.findByReviewDate", query = "SELECT r FROM ReviewRequest r WHERE r.reviewDate = :reviewDate"),
     @NamedQuery(name = "ReviewRequest.findByMaximumRechargeAmount", query = "SELECT r FROM ReviewRequest r WHERE r.maximumRechargeAmount = :maximumRechargeAmount"),
-    @NamedQuery(name = QueryConstants.REVIEW_REQUEST_BY_REQUEST, query = "SELECT r FROM ReviewRequest r where r.requestId.id = :requestId")})
+    @NamedQuery(name = QueryConstants.REVIEW_REQUEST_BY_REQUEST, query = "SELECT r FROM ReviewRequest r where r.requestId.id = :requestId AND r.reviewRequestTypeId.id = :reviewRequestTypeId"),
+    @NamedQuery(name = QueryConstants.REVIEW_BY_REQUEST, query = "SELECT r FROM ReviewRequest r where r.requestId.id = :requestId")})
 
 public class ReviewRequest extends AbstractDistributionEntity implements Serializable {
 

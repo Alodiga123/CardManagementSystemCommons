@@ -30,6 +30,7 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.Profession;
 import com.cms.commons.models.StatusCustomer;
+import com.cms.commons.models.Title;
 import com.cms.commons.models.User;
 import java.util.List;
 import javax.ejb.Local;
@@ -72,6 +73,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public ApplicantNaturalPerson saveApplicantNaturalPerson (ApplicantNaturalPerson applicantNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ApplicantNaturalPerson> getCardComplementaryByApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Long countCardComplementaryByApplicant(long applicantNaturalPersonId) throws GeneralException, NullParameterException;
+    public List<ApplicantNaturalPerson> getApplicantByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //KinShipApplicant
     public List<KinShipApplicant> getKinShipApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -107,6 +109,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     //CardRequestNaturalPerson
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersonsByLegalApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<CardRequestNaturalPerson> getCardRequestNaturalPersonsByLegalCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRequestNaturalPerson loadCardRequestNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRequestNaturalPerson saveCardRequestNaturalPerson (CardRequestNaturalPerson cardRequestNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
@@ -157,6 +160,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     
     //LegalCustomerHasLegalRepresentatives
     public List<LegalCustomerHasLegalRepresentatives> getLegalCustomerHasLegalRepresentatives(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalCustomerHasLegalRepresentatives> getLegalRepresentativesesByCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LegalCustomerHasLegalRepresentatives loadLegalCustomerHasLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalCustomerHasLegalRepresentatives saveLegalCustomerHasLegalRepresentatives(LegalCustomerHasLegalRepresentatives legalCustomerHasLegalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -181,4 +185,10 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public ComercialAgency loadComercialAgency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ComercialAgency saveComercialAgency(ComercialAgency comercialAgency)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 
+    
+      //Title
+    public List<Title> getTitles(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Title loadTitle(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Title saveTitle (Title title)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+            
 }
