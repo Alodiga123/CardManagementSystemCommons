@@ -11,7 +11,9 @@ import com.cms.commons.models.AdditionalInformationNaturalCustomer;
 import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CardRequestNaturalPerson;
 import com.cms.commons.models.CivilStatus;
+import com.cms.commons.models.ComercialAgency;
 import com.cms.commons.models.DocumentsPersonType;
+import com.cms.commons.models.Employee;
 import com.cms.commons.models.Person;
 import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PersonType;
@@ -29,6 +31,7 @@ import com.cms.commons.models.NaturalPerson;
 import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.StatusCustomer;
+import com.cms.commons.models.User;
 import com.cms.commons.models.Title;
 import java.util.List;
 
@@ -168,4 +171,19 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<Title> getTitles(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Title loadTitle(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Title saveTitle (Title title)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //User
+    public List<User> getUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public User loadUser(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public User saveUser(User user)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Employee
+    public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Employee loadEmployee(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Employee saveEmployee(Employee employee)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //ComercialAgency
+    public List<ComercialAgency> getComercialAgency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ComercialAgency loadComercialAgency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ComercialAgency saveComercialAgency(ComercialAgency comercialAgency)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
