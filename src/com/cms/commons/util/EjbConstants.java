@@ -62,12 +62,14 @@ public class EjbConstants {
     public static final String PARAM_APPLICANT_NATURAL_PERSON_ID = "applicantNaturalPersonId";
     public static final String PARAM_APPLICANT_NATURAL_CUSTOMER_ID = "naturalCustomerId";
     public static final String PARAM_APPLICANT_LEGAL_PERSON_ID = "legalPersonId";
+    public static final String PARAM_LEGAL_CUSTOMER_ID = "legalCustomerId";
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
-    public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";    
+    public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";
+    public static final String PARAM_CARD_NUMBER_IND_USE = "indUse";
     public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
     public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";    
