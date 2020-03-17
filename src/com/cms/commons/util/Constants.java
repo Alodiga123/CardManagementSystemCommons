@@ -41,8 +41,9 @@ public class Constants {
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final int STATUS_APPLICANT_ACTIVE = 1;
     public static final int STATUS_APPLICANT_INACTIVE = 2;
-    public static final int STATUS_APPLICANT_BLACK_LIST = 3;
-    public static final int STATUS_APPLICANT_CUSTOMER = 4;
+    public static final int STATUS_APPLICANT_BLACK_LIST_OK = 3;
+    public static final int STATUS_APPLICANT_BLACK_LIST = 4;
+    public static final int STATUS_APPLICANT_CUSTOMER = 5;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2; 
