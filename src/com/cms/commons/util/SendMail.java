@@ -17,7 +17,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import com.alodiga.cms.commons.exception.NullParameterException;
-import com.cms.commons.models.Account;
 
 
 public class SendMail {
