@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CardNumberCredential.findBySecurityCodeCard", query = "SELECT c FROM CardNumberCredential c WHERE c.securityCodeCard = :securityCodeCard"),
     @NamedQuery(name = "CardNumberCredential.findByCreateDate", query = "SELECT c FROM CardNumberCredential c WHERE c.createDate = :createDate"),
     @NamedQuery(name = "CardNumberCredential.findByUpdateDate", query = "SELECT c FROM CardNumberCredential c WHERE c.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_NUMBER_BY_USE, query = "SELECT c FROM CardNumberCredential c WHERE c.indUse = :indUse"),})
+    @NamedQuery(name = QueryConstants.CARD_NUMBER_BY_USE, query = "SELECT c FROM CardNumberCredential c WHERE c.indUse = :indUse")})
 
 public class CardNumberCredential extends AbstractDistributionEntity implements Serializable {
 
