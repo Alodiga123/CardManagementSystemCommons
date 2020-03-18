@@ -7,7 +7,6 @@ import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
-import com.cms.commons.models.Account;
 import com.cms.commons.models.User;
 
 
