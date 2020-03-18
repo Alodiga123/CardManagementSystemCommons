@@ -45,6 +45,8 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
     private Long id;
     @Column(name = "numberPhone")
     private String numberPhone;
+    @Column(name = "extensionPhoneNumber")
+    private String extensionPhoneNumber;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
@@ -73,6 +75,14 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
 
     public void setNumberPhone(String numberPhone) {
         this.numberPhone = numberPhone;
+    }
+
+    public String getExtensionPhoneNumber() {
+        return extensionPhoneNumber;
+    }
+
+    public void setExtensionPhoneNumber(String extensionPhoneNumber) {
+        this.extensionPhoneNumber = extensionPhoneNumber;
     }
 
     public Person getPersonId() {
