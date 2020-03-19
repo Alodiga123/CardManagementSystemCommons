@@ -13,6 +13,7 @@ import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.Card;
 import com.cms.commons.models.CardNumberCredential;
+import com.cms.commons.models.RateCard;
 import com.cms.commons.models.SubAccountType;
 import java.util.List;
 
@@ -61,5 +62,10 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List< CardNumberCredential> getCardNumberCredentialByUse(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardNumberCredential loadCardNumberCredential(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardNumberCredential saveCardNumberCredential(CardNumberCredential cardNumberCredential) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //RateCard
+    public List<RateCard> getRateCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateCard loadRateCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateCard saveRateCard(RateCard rateCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
 }
     
