@@ -78,5 +78,84 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`accountCard` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Modificar tabla accountCard
+-- author: Jesús Gómez
+-- Fecha: 18/03/2020
+ALTER TABLE `CardManagementSystem`.`accountCard` 
+ADD COLUMN `accountNumber` VARCHAR(40) NOT NULL AFTER `accountPropertiesId`;
 
+-- Actualizar fecha de creación en card
+-- author: Jesús Gómez
+-- Fecha: 18/03/2020  
+ALTER TABLE `CardManagementSystem`.`card` 
+CHANGE COLUMN `createdDate` `createDate` TIMESTAMP NOT NULL CURRENT_TIMESTAMP;
+
+-- agregar campo en phonePerson
+-- author: Jesús Gómez
+-- Fecha: 18/03/2020  
+ALTER TABLE `CardManagementSystem`.`phonePerson` 
+ADD COLUMN `extensionPhoneNumber` VARCHAR(10) NULL AFTER `phoneTypeId`;
+
+-- Cambios realizados por Yamelis para opcion de solicitud de tarjeta pagina web
+-- ninguno de esos cambios nos afectan por ahora pero deben estar en BD porque están en Java
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`title` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(45) CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+INSERT INTO `CardManagementSystem`.`title` (`id`, `description`) VALUES ('1', 'Sr');
+INSERT INTO `CardManagementSystem`.`title` (`id`, `description`) VALUES ('2', 'Sra');
+INSERT INTO `CardManagementSystem`.`title` (`id`, `description`) VALUES ('3', 'Srta');
+
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `titleId` INT(11) NULL DEFAULT NULL AFTER `statusApplicantId`,
+ADD COLUMN `recommendation` TINYINT(1) NULL AFTER `titleId`,
+ADD COLUMN `promotion` TINYINT(1) NULL AFTER `recommendation`,
+ADD COLUMN `citizen` TINYINT(1) NULL AFTER `promotion`;
+
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD INDEX `fk_applicantNaturalPerson_title1` (`titleId` ASC);
+
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD CONSTRAINT `fk_applicantNaturalPerson_title1`
+  FOREIGN KEY (`titleId`)
+  REFERENCES `CardManagementSystem`.`title` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `fullAddress` VARCHAR(150) NULL DEFAULT NULL AFTER `addressTypeId`;
+
+ALTER TABLE  `CardManagementSystem`.`applicantNaturalPerson`
+CHANGE COLUMN `identificationNumber` `identificationNumber` VARCHAR(40) NULL,
+CHANGE COLUMN `gender` `gender` VARCHAR(1) NULL,
+CHANGE COLUMN `placeBirth` `placeBirth` VARCHAR(45) NULL;
+
+ALTER TABLE `CardManagementSystem`.`address`  
+DROP FOREIGN KEY `fk_address_addressType1`,
+DROP FOREIGN KEY `fk_address_edificationType1`,
+DROP FOREIGN KEY `fk_address_streetType1`,
+DROP FOREIGN KEY `fk_address_zipZone1`;
+ALTER TABLE `CardManagementSystem`.`address`  
+CHANGE COLUMN `edificationTypeId` `edificationTypeId` INT(11) NULL ,
+CHANGE COLUMN `streetTypeId` `streetTypeId` INT(11) NULL ,
+CHANGE COLUMN `zipZoneId` `zipZoneId` INT(11) NULL ,
+CHANGE COLUMN `addressTypeId` `addressTypeId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`address`  
+ADD CONSTRAINT `fk_address_addressType1`
+  FOREIGN KEY (`addressTypeId`)
+  REFERENCES `CardManagementSystem`.`addressType` (`id`),
+ADD CONSTRAINT `fk_address_edificationType1`
+  FOREIGN KEY (`edificationTypeId`)
+  REFERENCES `CardManagementSystem`.`edificationType` (`id`),
+ADD CONSTRAINT `fk_address_streetType1`
+  FOREIGN KEY (`streetTypeId`)
+  REFERENCES `CardManagementSystem`.`streetType` (`id`),
+ADD CONSTRAINT `fk_address_zipZone1`
+  FOREIGN KEY (`zipZoneId`)
+  REFERENCES `CardManagementSystem`.`zipZone` (`id`);
+
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `password` VARCHAR(45) NULL DEFAULT NULL AFTER `citizen`;
 
