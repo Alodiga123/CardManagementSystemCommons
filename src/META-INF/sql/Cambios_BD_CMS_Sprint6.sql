@@ -159,3 +159,43 @@ ADD CONSTRAINT `fk_address_zipZone1`
 ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
 ADD COLUMN `password` VARCHAR(45) NULL DEFAULT NULL AFTER `citizen`;
 
+-- Crear tabla rateCard
+-- author: Jesús Gómez
+-- Fecha: 19/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateCard` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `cardId` BIGINT NOT NULL,
+  `channelId` INT NOT NULL,
+  `transactionId` INT NOT NULL,
+  `rateApplicationType_id` INT NOT NULL,
+  `fixedRate` FLOAT NULL,
+  `percentageRate` FLOAT NULL,
+  `totalInitialTransactionsExempt` INT NULL,
+  `totalTransactionsExemptPerMonth` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_rateCardHolder_card1_idx` (`cardId` ASC),
+  INDEX `fk_rateCard_channel1_idx` (`channelId` ASC),
+  INDEX `fk_rateCard_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_rateCard_rateApplicationType1_idx` (`rateApplicationType_id` ASC),
+  CONSTRAINT `fk_rateCardHolder_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateCard_channel1`
+    FOREIGN KEY (`channelId`)
+    REFERENCES `CardManagementSystem`.`channel` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateCard_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rateCard_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationType_id`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
