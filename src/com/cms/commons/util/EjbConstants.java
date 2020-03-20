@@ -81,5 +81,6 @@ public class EjbConstants {
     public static final String PARAM_PROGRAM_LOYALTY_TRANSACTION_ID = "programLoyaltyTransactionId";
     public static final String PARAM_COMMERCE_CATEGORY_ID = "commerceCategoryId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
+    public static final String PARAM_CARDHOLDER = "cardHolder";
 
 }

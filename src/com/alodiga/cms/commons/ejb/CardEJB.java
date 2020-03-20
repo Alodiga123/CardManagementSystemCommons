@@ -54,6 +54,8 @@ public interface CardEJB extends DistributionGenericEJB {
 
     //Card
     public List< Card> getCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< Card> getCardByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< Card> getCardByCardHolder(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Card loadCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Card saveCard(Card card) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     

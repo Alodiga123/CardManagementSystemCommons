@@ -27,6 +27,8 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_CUSTOMER = "familyReferencesByCustomer";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String CARD_BY_PROGRAM = "cardByProgram";
+    public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
@@ -158,6 +160,7 @@ public class QueryConstants {
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";
     public static final String PARAM_TICKET_TYPE_ID = "ticketTypeId";
+    public static final String PARAM_CARDHOLDER = "cardHolder";
     public static final String PARAM_TITLE = "title";
     public static final String PARAM_TICKET_ID = "ticketId";
     public static final String PARAM_STATUS = "status";
