@@ -199,3 +199,16 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`rateCard` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Crear tabla cardNumberCredential
+-- author: Jesús Gómez
+-- Fecha: 20/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardNumberCredential` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `cardNumber` VARCHAR(40) NULL,
+  `securityCodeCard` VARCHAR(10) NULL,
+  `indUse` TINYINT(1) NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
