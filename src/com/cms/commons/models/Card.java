@@ -46,13 +46,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Card.findByPinOffset", query = "SELECT c FROM Card c WHERE c.pinOffset = :pinOffset"),
     @NamedQuery(name = "Card.findByValidationData", query = "SELECT c FROM Card c WHERE c.validationData = :validationData"),
     @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght"),
-    @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM, query = "SELECT c FROM Card c WHERE c.programId = :programId"),
-    @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c.productId.name FROM Card c WHERE c.cardHolder = :cardHolder")})
+    @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM, query = "SELECT c FROM Card c WHERE c.programId.id = :programId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c FROM Card c WHERE c.cardHolder = :cardHolder")})
 
 public class Card extends AbstractDistributionEntity implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cardId")
-    private Collection<RateCard> rateCardCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -294,16 +291,6 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<RateCard> getRateCardCollection() {
-        return rateCardCollection;
-    }
-
-    public void setRateCardCollection(Collection<RateCard> rateCardCollection) {
-        this.rateCardCollection = rateCardCollection;
     }
 
 }
