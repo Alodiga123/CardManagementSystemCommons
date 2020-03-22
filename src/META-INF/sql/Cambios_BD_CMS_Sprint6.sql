@@ -212,3 +212,18 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardNumberCredential` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+-- Cambiar nombre de tabla rateCard
+-- author: Jesús Gómez
+-- Fecha: 21/03/2020
+RENAME TABLE `CardManagementSystem`.`rateCard` TO `CardManagementSystem`.`rateByCard`; 
+
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+DROP FOREIGN KEY `fk_rateCard_rateApplicationType1`;
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+CHANGE COLUMN `rateApplicationType_id` `rateApplicationTypeId` INT(11) NOT NULL ;
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD CONSTRAINT `fk_rateCard_rateApplicationType1`
+  FOREIGN KEY (`rateApplicationTypeId`)
+  REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

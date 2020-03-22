@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,16 +27,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "rateCard")
+@Table(name = "rateByCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RateCard.findAll", query = "SELECT r FROM RateCard r")
-    , @NamedQuery(name = "RateCard.findById", query = "SELECT r FROM RateCard r WHERE r.id = :id")
-    , @NamedQuery(name = "RateCard.findByFixedRate", query = "SELECT r FROM RateCard r WHERE r.fixedRate = :fixedRate")
-    , @NamedQuery(name = "RateCard.findByPercentageRate", query = "SELECT r FROM RateCard r WHERE r.percentageRate = :percentageRate")
-    , @NamedQuery(name = "RateCard.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateCard r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt")
-    , @NamedQuery(name = "RateCard.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateCard r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth")})
-public class RateCard implements Serializable {
+    @NamedQuery(name = "RateByCard.findAll", query = "SELECT r FROM RateByCard r"),
+    @NamedQuery(name = "RateByCard.findById", query = "SELECT r FROM RateByCard r WHERE r.id = :id"),
+    @NamedQuery(name = "RateByCard.findByFixedRate", query = "SELECT r FROM RateByCard r WHERE r.fixedRate = :fixedRate"),
+    @NamedQuery(name = "RateByCard.findByPercentageRate", query = "SELECT r FROM RateByCard r WHERE r.percentageRate = :percentageRate"),
+    @NamedQuery(name = "RateByCard.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateByCard r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt"),
+    @NamedQuery(name = "RateByCard.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateByCard r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth"),
+    @NamedQuery(name = QueryConstants.RATE_BY_CARD_BY_CARD, query = "SELECT r FROM RateByCard r WHERE r.cardId.id = :cardIId order by r.channelId.id, r.transactionId.id ASC")})
+
+public class RateByCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,7 +46,6 @@ public class RateCard implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "fixedRate")
     private Float fixedRate;
     @Column(name = "percentageRate")
@@ -59,14 +63,14 @@ public class RateCard implements Serializable {
     @JoinColumn(name = "transactionId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Transaction transactionId;
-    @JoinColumn(name = "rateApplicationType_id", referencedColumnName = "id")
+    @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private RateApplicationType rateApplicationTypeid;
+    private RateApplicationType rateApplicationTypeId;
 
-    public RateCard() {
+    public RateByCard() {
     }
 
-    public RateCard(Long id) {
+    public RateByCard(Long id) {
         this.id = id;
     }
 
@@ -134,12 +138,12 @@ public class RateCard implements Serializable {
         this.transactionId = transactionId;
     }
 
-    public RateApplicationType getRateApplicationTypeid() {
-        return rateApplicationTypeid;
+    public RateApplicationType getRateApplicationTypeId() {
+        return rateApplicationTypeId;
     }
 
-    public void setRateApplicationTypeid(RateApplicationType rateApplicationTypeid) {
-        this.rateApplicationTypeid = rateApplicationTypeid;
+    public void setRateApplicationTypeId(RateApplicationType rateApplicationTypeId) {
+        this.rateApplicationTypeId = rateApplicationTypeId;
     }
 
     @Override
@@ -152,10 +156,10 @@ public class RateCard implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RateCard)) {
+        if (!(object instanceof RateByCard)) {
             return false;
         }
-        RateCard other = (RateCard) object;
+        RateByCard other = (RateByCard) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -164,7 +168,17 @@ public class RateCard implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.RateCard[ id=" + id + " ]";
+        return "com.cms.commons.models.RateByCard[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

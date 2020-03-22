@@ -13,7 +13,7 @@ import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.Card;
 import com.cms.commons.models.CardNumberCredential;
-import com.cms.commons.models.RateCard;
+import com.cms.commons.models.RateByCard;
 import com.cms.commons.models.SubAccountType;
 import java.util.List;
 
@@ -65,9 +65,10 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public CardNumberCredential loadCardNumberCredential(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardNumberCredential saveCardNumberCredential(CardNumberCredential cardNumberCredential) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
-    //RateCard
-    public List<RateCard> getRateCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public RateCard loadRateCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public RateCard saveRateCard(RateCard rateCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    //RateByCard
+    public List<RateByCard> getRateByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<RateByCard> getRateByCardByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public RateByCard loadRateByCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RateByCard saveRateByCard(RateByCard rateByCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
 }
     
