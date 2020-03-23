@@ -73,6 +73,7 @@ public class QueryConstants {
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
+    public static final String RATE_BY_CARD_BY_CARD = "rateByCardByCard";
     public static final String REVIEW_OFAC_BY_APPLICANT_BY_REQUEST = "reviewOfacByApplicantByRequest";
     public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
@@ -151,6 +152,7 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";

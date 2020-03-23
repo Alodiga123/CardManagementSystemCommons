@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -36,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RateByCard.findByPercentageRate", query = "SELECT r FROM RateByCard r WHERE r.percentageRate = :percentageRate"),
     @NamedQuery(name = "RateByCard.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateByCard r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt"),
     @NamedQuery(name = "RateByCard.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateByCard r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth"),
-    @NamedQuery(name = QueryConstants.RATE_BY_CARD_BY_CARD, query = "SELECT r FROM RateByCard r WHERE r.cardId.id = :cardIId order by r.channelId.id, r.transactionId.id ASC")})
+    @NamedQuery(name = QueryConstants.RATE_BY_CARD_BY_CARD, query = "SELECT r FROM RateByCard r WHERE r.cardId.id = :cardId order by r.channelId.id, r.transactionId.id ASC")})
 
 public class RateByCard extends AbstractDistributionEntity implements Serializable {
 
