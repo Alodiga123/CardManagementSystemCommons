@@ -31,11 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "accountSegment")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AccountSegment.findAll", query = "SELECT a FROM AccountSegment a")
-    , @NamedQuery(name = "AccountSegment.findById", query = "SELECT a FROM AccountSegment a WHERE a.id = :id")
-    , @NamedQuery(name = "AccountSegment.findByDescription", query = "SELECT a FROM AccountSegment a WHERE a.description = :description")
-    , @NamedQuery(name = "AccountSegment.findByLenghtSegment", query = "SELECT a FROM AccountSegment a WHERE a.lenghtSegment = :lenghtSegment")
-    , @NamedQuery(name = QueryConstants.ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES, query = "SELECT a FROM AccountSegment a WHERE a.accountPropertiesId.id = :accountPropertiesId")})
+    @NamedQuery(name = "AccountSegment.findAll", query = "SELECT a FROM AccountSegment a"),
+    @NamedQuery(name = "AccountSegment.findById", query = "SELECT a FROM AccountSegment a WHERE a.id = :id"),
+    @NamedQuery(name = "AccountSegment.findByDescription", query = "SELECT a FROM AccountSegment a WHERE a.description = :description"),
+    @NamedQuery(name = "AccountSegment.findByLenghtSegment", query = "SELECT a FROM AccountSegment a WHERE a.lenghtSegment = :lenghtSegment"),
+    @NamedQuery(name = QueryConstants.ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES, query = "SELECT a FROM AccountSegment a WHERE a.accountPropertiesId.id = :accountPropertiesId")})
+
 public class AccountSegment extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -119,12 +120,12 @@ public class AccountSegment extends AbstractDistributionEntity implements Serial
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
-    
+
 }

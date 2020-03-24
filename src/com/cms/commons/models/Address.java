@@ -61,6 +61,8 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     private String urbanization;
     @Column(name = "indAddressDelivery")
     private Boolean indAddressDelivery;
+    @Column(name = "fullAddress")
+    private String fullAddress;
     @JoinColumn(name = "addressTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AddressType addressTypeId;
@@ -191,6 +193,14 @@ public class Address extends AbstractDistributionEntity implements Serializable 
         this.addressTypeId = addressTypeId;
     }
 
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

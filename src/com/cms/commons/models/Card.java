@@ -1,8 +1,13 @@
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -26,19 +34,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "card")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Card.findAll", query = "SELECT c FROM Card c")
-    , @NamedQuery(name = "Card.findById", query = "SELECT c FROM Card c WHERE c.id = :id")
-    , @NamedQuery(name = "Card.findByCardNumber", query = "SELECT c FROM Card c WHERE c.cardNumber = :cardNumber")
-    , @NamedQuery(name = "Card.findBySequentialNumber", query = "SELECT c FROM Card c WHERE c.sequentialNumber = :sequentialNumber")
-    , @NamedQuery(name = "Card.findByIssueDate", query = "SELECT c FROM Card c WHERE c.issueDate = :issueDate")
-    , @NamedQuery(name = "Card.findByExpirationDate", query = "SELECT c FROM Card c WHERE c.expirationDate = :expirationDate")
-    , @NamedQuery(name = "Card.findBySecurityCodeCard", query = "SELECT c FROM Card c WHERE c.securityCodeCard = :securityCodeCard")
-    , @NamedQuery(name = "Card.findBySecurityCodeMagneticStrip", query = "SELECT c FROM Card c WHERE c.securityCodeMagneticStrip = :securityCodeMagneticStrip")
-    , @NamedQuery(name = "Card.findByICVVMagneticStrip", query = "SELECT c FROM Card c WHERE c.iCVVMagneticStrip = :iCVVMagneticStrip")
-    , @NamedQuery(name = "Card.findByPinOffset", query = "SELECT c FROM Card c WHERE c.pinOffset = :pinOffset")
-    , @NamedQuery(name = "Card.findByValidationData", query = "SELECT c FROM Card c WHERE c.validationData = :validationData")
-    , @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght")})
-public class Card implements Serializable {
+    @NamedQuery(name = "Card.findAll", query = "SELECT c FROM Card c"),
+    @NamedQuery(name = "Card.findById", query = "SELECT c FROM Card c WHERE c.id = :id"),
+    @NamedQuery(name = "Card.findByCardNumber", query = "SELECT c FROM Card c WHERE c.cardNumber = :cardNumber"),
+    @NamedQuery(name = "Card.findBySequentialNumber", query = "SELECT c FROM Card c WHERE c.sequentialNumber = :sequentialNumber"),
+    @NamedQuery(name = "Card.findByIssueDate", query = "SELECT c FROM Card c WHERE c.issueDate = :issueDate"),
+    @NamedQuery(name = "Card.findByExpirationDate", query = "SELECT c FROM Card c WHERE c.expirationDate = :expirationDate"),
+    @NamedQuery(name = "Card.findBySecurityCodeCard", query = "SELECT c FROM Card c WHERE c.securityCodeCard = :securityCodeCard"),
+    @NamedQuery(name = "Card.findBySecurityCodeMagneticStrip", query = "SELECT c FROM Card c WHERE c.securityCodeMagneticStrip = :securityCodeMagneticStrip"),
+    @NamedQuery(name = "Card.findByICVVMagneticStrip", query = "SELECT c FROM Card c WHERE c.ICVVMagneticStrip = :ICVVMagneticStrip"),
+    @NamedQuery(name = "Card.findByPinOffset", query = "SELECT c FROM Card c WHERE c.pinOffset = :pinOffset"),
+    @NamedQuery(name = "Card.findByValidationData", query = "SELECT c FROM Card c WHERE c.validationData = :validationData"),
+    @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght"),
+    @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM, query = "SELECT c FROM Card c WHERE c.programId.id = :programId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c FROM Card c WHERE c.cardHolder = :cardHolder")})
+
+public class Card extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -51,6 +62,9 @@ public class Card implements Serializable {
     private String cardNumber;
     @Column(name = "sequentialNumber")
     private Integer sequentialNumber;
+    @Size(max = 50)
+    @Column(name = "cardHolder")
+    private String cardHolder;
     @Column(name = "issueDate")
     @Temporal(TemporalType.DATE)
     private Date issueDate;
@@ -65,7 +79,7 @@ public class Card implements Serializable {
     private String securityCodeMagneticStrip;
     @Size(max = 1500)
     @Column(name = "ICVVMagneticStrip")
-    private String iCVVMagneticStrip;
+    private String ICVVMagneticStrip;
     @Size(max = 40)
     @Column(name = "pinOffset")
     private String pinOffset;
@@ -86,6 +100,12 @@ public class Card implements Serializable {
     @JoinColumn(name = "personCustomerId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Person personCustomerId;
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     public Card() {
     }
@@ -116,6 +136,14 @@ public class Card implements Serializable {
 
     public void setSequentialNumber(Integer sequentialNumber) {
         this.sequentialNumber = sequentialNumber;
+    }
+
+    public String getCardHolder() {
+        return cardHolder;
+    }
+
+    public void setCardHolder(String cardHolder) {
+        this.cardHolder = cardHolder;
     }
 
     public Date getIssueDate() {
@@ -151,11 +179,11 @@ public class Card implements Serializable {
     }
 
     public String getICVVMagneticStrip() {
-        return iCVVMagneticStrip;
+        return ICVVMagneticStrip;
     }
 
-    public void setICVVMagneticStrip(String iCVVMagneticStrip) {
-        this.iCVVMagneticStrip = iCVVMagneticStrip;
+    public void setICVVMagneticStrip(String ICVVMagneticStrip) {
+        this.ICVVMagneticStrip = ICVVMagneticStrip;
     }
 
     public String getPinOffset() {
@@ -214,6 +242,22 @@ public class Card implements Serializable {
         this.personCustomerId = personCustomerId;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -238,5 +282,15 @@ public class Card implements Serializable {
     public String toString() {
         return "com.cms.commons.models.Card[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }

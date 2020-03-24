@@ -14,9 +14,11 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
+import com.cms.commons.models.ReviewOFAC;
 import com.cms.commons.models.ReviewRequest;
 import com.cms.commons.models.ReviewRequestType;
 import com.cms.commons.models.StatusApplicant;
+import com.cms.commons.models.StatusRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,7 @@ import java.util.List;
 public interface RequestEJBLocal extends DistributionGenericEJB {
 
     public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Request> getRequestsByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Long saveRequestPersonData(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
@@ -69,6 +72,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     //ReviewRequest
     public List<ReviewRequest> getReviewRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<ReviewRequest> getReviewRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ReviewRequest> getReviewByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewRequest loadReviewRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewRequest saveReviewRequest(ReviewRequest reviewRequest) throws NullParameterException, GeneralException;
     
@@ -86,4 +90,22 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<ReasonRejectionRequest> getReasonRejectionRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReasonRejectionRequest loadReasonRejectionRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReasonRejectionRequest saveReasonRejectionRequest(ReasonRejectionRequest reasonRejectionRequest) throws NullParameterException, GeneralException;
+
+    //ReviewOFAC
+    public List<ReviewOFAC> getReviewOFAC(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ReviewOFAC> getReviewOFACByApplicantByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ReviewOFAC loadReviewOFAC(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ReviewOFAC saveReviewOFAC(ReviewOFAC reviewOFAC) throws NullParameterException, GeneralException;
+    
+    //Tabla de StatusRequest
+    public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusRequest loadStatusRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
+    
+          //ApplicantNaturalPerson Modificado
+    public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
+                                         String cellPhone, int countryAddress, int state, int city, String postalZone, String address,boolean recommendation,
+                                         boolean promotion,boolean citizen, String password, int title) 
+                                         throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+
 }

@@ -31,14 +31,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardRequestNaturalPerson")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardRequestNaturalPerson.findAll", query = "SELECT c FROM CardRequestNaturalPerson c")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findById", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.id = :id")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByFirstNames", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.firstNames = :firstNames")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByLastNames", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.lastNames = :lastNames")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByIdentificationNumber", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.identificationNumber = :identificationNumber")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByPositionEnterprise", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.positionEnterprise = :positionEnterprise")
-    , @NamedQuery(name = "CardRequestNaturalPerson.findByProposedLimit", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.proposedLimit = :proposedLimit")
-    , @NamedQuery(name = QueryConstants.ADDITIONAL_CARD_BY_LEGAL_APPLICANT, query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.legalPersonid.id = :legalPersonId")})
+    @NamedQuery(name = "CardRequestNaturalPerson.findAll", query = "SELECT c FROM CardRequestNaturalPerson c"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findById", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.id = :id"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findByFirstNames", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.firstNames = :firstNames"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findByLastNames", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.lastNames = :lastNames"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findByIdentificationNumber", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.identificationNumber = :identificationNumber"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findByPositionEnterprise", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.positionEnterprise = :positionEnterprise"),
+    @NamedQuery(name = "CardRequestNaturalPerson.findByProposedLimit", query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.proposedLimit = :proposedLimit"),
+    @NamedQuery(name = QueryConstants.ADDITIONAL_CARD_BY_LEGAL_APPLICANT, query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.legalPersonid.id = :legalPersonId"),
+    @NamedQuery(name = QueryConstants.ADDITIONAL_CARD_BY_LEGAL_CUSTOMER, query = "SELECT c FROM CardRequestNaturalPerson c WHERE c.legalCustomerId.id = :legalCustomerId")})
 public class CardRequestNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -141,7 +142,7 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
     public void setLegalPersonid(LegalPerson legalPersonid) {
         this.legalPersonid = legalPersonid;
     }
-    
+
     public DocumentsPersonType getDocumentsPersonTypeId() {
         return documentsPersonTypeId;
     }
@@ -192,5 +193,5 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }
