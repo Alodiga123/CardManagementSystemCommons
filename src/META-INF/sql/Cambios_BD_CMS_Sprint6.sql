@@ -227,3 +227,6 @@ ADD CONSTRAINT `fk_rateCard_rateApplicationType1`
   REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+ALTER TABLE `CardManagementSystem`.`user` 
+CHANGE COLUMN `code` `code` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_danish_ci' NULL ;

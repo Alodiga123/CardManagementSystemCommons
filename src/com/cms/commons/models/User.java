@@ -88,6 +88,9 @@ public class User extends AbstractDistributionEntity implements Serializable {
     @JoinColumn(name = "comercialAgencyId", referencedColumnName = "id")
     @ManyToOne
     private ComercialAgency comercialAgencyId;
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
+    @ManyToOne
+    private DocumentsPersonType documentsPersonTypeId;
     @Column(name = "enabled")
     private Boolean enabled;
 
@@ -192,6 +195,14 @@ public class User extends AbstractDistributionEntity implements Serializable {
     public void setComercialAgencyId(ComercialAgency comercialAgencyId) {
         this.comercialAgencyId = comercialAgencyId;
     }
+
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
+    }
+
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
+    }    
     
     public Boolean getEnabled() {
         return enabled;
@@ -228,12 +239,12 @@ public class User extends AbstractDistributionEntity implements Serializable {
 
     @Override
     public Object getPk() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getId();
     }
 
     @Override
     public String getTableName() throws TableNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return super.getTableName(this.getClass());
     }
 
 }
