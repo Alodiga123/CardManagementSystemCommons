@@ -28,6 +28,7 @@ public class QueryConstants {
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
+    public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
     public static final String NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES = "naturalCustomerByCardComplementaries";
     public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
@@ -70,6 +71,7 @@ public class QueryConstants {
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
+    public static final String REVIEW_OFAC_BY_APPLICANT_BY_REQUEST = "reviewOfacByApplicantByRequest";
     public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
     public static final String ADDITIONAL_CARD_BY_LEGAL_APPLICANT = "additionalCardByLegalApplicant";
@@ -121,6 +123,7 @@ public class QueryConstants {
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
+    public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";

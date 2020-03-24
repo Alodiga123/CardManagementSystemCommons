@@ -685,7 +685,8 @@ FOREIGN KEY (`countryId`)
 ALTER TABLE `CardManagementSystem`.`product` 
 CHANGE COLUMN `validityYears` `validityMonths` INT(11) NULL DEFAULT NULL ;
 
-
-
+-- eliminar indice en productHasChannelHasTransaction
+-- author: Jesús Gómez
+-- Fecha: 06/03/2020
 ALTER TABLE `CardManagementSystem`.`productHasChannelHasTransaction` 
 DROP INDEX `productId`;

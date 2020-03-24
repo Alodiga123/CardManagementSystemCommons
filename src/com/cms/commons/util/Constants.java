@@ -41,8 +41,9 @@ public class Constants {
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final int STATUS_APPLICANT_ACTIVE = 1;
     public static final int STATUS_APPLICANT_INACTIVE = 2;
-    public static final int STATUS_APPLICANT_BLACK_LIST = 3;
-    public static final int STATUS_APPLICANT_CUSTOMER = 4;
+    public static final int STATUS_APPLICANT_BLACK_LIST_OK = 3;
+    public static final int STATUS_APPLICANT_BLACK_LIST = 4;
+    public static final int STATUS_APPLICANT_CUSTOMER = 5;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
     public static final boolean USE_NUMBER_CARD = false;
@@ -61,8 +62,12 @@ public class Constants {
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static Integer CARD_STATUS_REQUESTED = 1;
+    public static Integer ACCOUNT_STATUS_REQUESTED = 1;
+    public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
+    public static Integer CHANNEL_CREATION_ACCOUNT = 7;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
+    public static Integer CLASSIFICATION_PERSON_USER = 2;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
@@ -99,7 +104,7 @@ public class Constants {
         public static final String ACCOUNT_TYPE_KEY = "accountTypeId";
         public static final String ACCOUNT_PROPERTIES_KEY = "accountPropertiesId";
         public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
-        public static final Long PROGRAM_WALLET_APP_ID = 1L;
+        public static final Long PROGRAM_WALLET_APP_ID = 4L;
         public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
         public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
         public static final Long PERSON_NOT_REGISTER = 1L;
