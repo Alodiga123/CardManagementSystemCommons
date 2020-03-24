@@ -123,6 +123,7 @@ public class QueryConstants {
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
+    public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";
