@@ -63,8 +63,6 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     private Boolean indAddressDelivery;
     @Column(name = "fullAddress")
     private String fullAddress;
-    @Column(name = "postalZone")
-    private String postalZone;
     @JoinColumn(name = "addressTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AddressType addressTypeId;
@@ -202,16 +200,6 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     public void setFullAddress(String fullAddress) {
         this.fullAddress = fullAddress;
     }
-
-
-    public String getPostalZone() {
-        return postalZone;
-    }
-
-    public void setPostalZone(String postalZone) {
-        this.postalZone = postalZone;
-    }
-    
     
     @Override
     public int hashCode() {
