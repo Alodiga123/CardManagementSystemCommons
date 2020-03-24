@@ -7,6 +7,7 @@ import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
+import com.cms.commons.models.AccountCard;
 import com.cms.commons.models.AccountProperties;
 import com.cms.commons.models.AccountSegment;
 import com.cms.commons.models.AccountType;
@@ -25,6 +26,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     
      //AccountProperties
     public List< AccountProperties> getAccountProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List< AccountProperties> getAccountPropertiesByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountProperties loadAccountProperties(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountProperties saveAccountProperties(AccountProperties accountProperties) throws RegisterNotFoundException, NullParameterException, GeneralException;    
     
@@ -61,5 +63,11 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List< CardNumberCredential> getCardNumberCredentialByUse(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardNumberCredential loadCardNumberCredential(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardNumberCredential saveCardNumberCredential(CardNumberCredential cardNumberCredential) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
+    //AccountCard
+    public List< AccountCard> getAccountCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public AccountCard loadAccountCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public AccountCard saveAccountCard(AccountCard accountCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    
 }
     
