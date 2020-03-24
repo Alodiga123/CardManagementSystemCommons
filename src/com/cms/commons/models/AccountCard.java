@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,11 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "accountCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AccountCard.findAll", query = "SELECT a FROM AccountCard a")
-    , @NamedQuery(name = "AccountCard.findById", query = "SELECT a FROM AccountCard a WHERE a.id = :id")
-    , @NamedQuery(name = "AccountCard.findByCreateDate", query = "SELECT a FROM AccountCard a WHERE a.createDate = :createDate")
-    , @NamedQuery(name = "AccountCard.findByUpdateDate", query = "SELECT a FROM AccountCard a WHERE a.updateDate = :updateDate")})
-public class AccountCard implements Serializable {
+    @NamedQuery(name = "AccountCard.findAll", query = "SELECT a FROM AccountCard a"),
+    @NamedQuery(name = "AccountCard.findById", query = "SELECT a FROM AccountCard a WHERE a.id = :id"),
+    @NamedQuery(name = "AccountCard.findByCreateDate", query = "SELECT a FROM AccountCard a WHERE a.createDate = :createDate"),
+    @NamedQuery(name = "AccountCard.findByUpdateDate", query = "SELECT a FROM AccountCard a WHERE a.updateDate = :updateDate")})
+public class AccountCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,6 +46,9 @@ public class AccountCard implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Size(max = 40)
+    @Column(name = "accountNumber")
+    private String accountNumber;
     @Basic(optional = false)
     @NotNull
     @Column(name = "createDate")
@@ -85,6 +91,14 @@ public class AccountCard implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+   
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public Date getCreateDate() {
@@ -167,5 +181,14 @@ public class AccountCard implements Serializable {
     public String toString() {
         return "com.cms.commons.models.AccountCard[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
