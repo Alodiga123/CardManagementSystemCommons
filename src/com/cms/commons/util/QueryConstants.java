@@ -27,6 +27,8 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_CUSTOMER = "familyReferencesByCustomer";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String CARD_BY_PROGRAM = "cardByProgram";
+    public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
     public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
@@ -71,6 +73,7 @@ public class QueryConstants {
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
     public static final String RATE_BY_PRODUCT_BY_PRODUCT = "rateByProductByProduct";
+    public static final String RATE_BY_CARD_BY_CARD = "rateByCardByCard";
     public static final String REVIEW_OFAC_BY_APPLICANT_BY_REQUEST = "reviewOfacByApplicantByRequest";
     public static final String PHONES_BY_PERSON = "phonesByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_APPLICANT = "legalRepresentativesByLegalApplicant";
@@ -150,6 +153,7 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
@@ -159,6 +163,7 @@ public class QueryConstants {
     public static final String PARAM_PROFILE_ID = "profileId";
     public static final String PARAM_ACCOUNT_ID = "accountId";
     public static final String PARAM_TICKET_TYPE_ID = "ticketTypeId";
+    public static final String PARAM_CARDHOLDER = "cardHolder";
     public static final String PARAM_TITLE = "title";
     public static final String PARAM_TICKET_ID = "ticketId";
     public static final String PARAM_STATUS = "status";
