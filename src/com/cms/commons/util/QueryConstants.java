@@ -126,6 +126,7 @@ public class QueryConstants {
     public static final String TIN_TYPES_BY_ENTERPRISE = "tinTypesByEnterprise";
     public static final String BANNERS_BY_TYPE = "bannersByType";
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
+    public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";
@@ -143,7 +144,6 @@ public class QueryConstants {
     public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
-    public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_REQUEST_ID = "requestId";
     public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";

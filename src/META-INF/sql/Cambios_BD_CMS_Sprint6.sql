@@ -228,6 +228,9 @@ ADD CONSTRAINT `fk_rateCard_rateApplicationType1`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+ALTER TABLE `CardManagementSystem`.`user` 
+CHANGE COLUMN `code` `code` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_danish_ci' NULL ;
+
 -- Agregar 2 nuevos CollectionType para las imagenes de Solicitud de Tarjetas
 -- author: Yamelis Almea
 -- Fecha: 26/03/2020
