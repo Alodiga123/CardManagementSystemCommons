@@ -237,3 +237,4 @@ CHANGE COLUMN `code` `code` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_danis
 
 INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('9', 'DOCUMENTO DE IDENTIFICACION APP', '1');
 INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('10', 'FOTO CON DOCUMENTO DE IDENTIDAD', '1');
+CHANGE COLUMN `code` `code` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_danish_ci' NULL ;
