@@ -72,8 +72,6 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
-    @Column(name = "accountNumber")
-    private String accountNumber;
 
     public AccountCard() {
     }
@@ -117,14 +115,6 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-    
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-    
-    public String getAccountNumber() {
-        return accountNumber;
     }
     
     public AccountProperties getAccountPropertiesId() {

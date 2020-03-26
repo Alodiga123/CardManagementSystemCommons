@@ -144,7 +144,6 @@ public class QueryConstants {
     public static final String PARAM_ORIGIN_APPLICATION_ID = "originApplicationId";
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
-    public static final String PARAM_COUNTY_ID = "countyId";
     public static final String PARAM_REQUEST_ID = "requestId";
     public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
