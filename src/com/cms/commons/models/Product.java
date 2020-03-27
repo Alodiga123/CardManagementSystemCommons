@@ -130,7 +130,6 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private StorageMedio storageMedioid;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private CardRequest cardRequest;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "minimumBalance")
     private Float minimumBalance;
     @Column(name = "maximumBalance")
@@ -143,6 +142,8 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private ProgramLoyalty programLoyalty;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ProductHasChannelHasTransaction productHasChannelHasTransaction;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private ApprovalProductRate approvalProductRate;
 
     public Product() {
     }
@@ -421,6 +422,14 @@ public class Product extends AbstractDistributionEntity implements Serializable 
  
     public void setRateByProduct(RateByProduct rateByProduct) { 
         this.rateByProduct = rateByProduct; 
+    }
+    
+    public ApprovalProductRate getApprovalProductRate() {
+        return approvalProductRate;
+    }
+
+    public void setApprovalProductRate(ApprovalProductRate approvalProductRate) {
+        this.approvalProductRate = approvalProductRate;
     }
 
     @Override
