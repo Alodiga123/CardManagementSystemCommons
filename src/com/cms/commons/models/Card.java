@@ -2,9 +2,12 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -39,7 +45,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Card.findByICVVMagneticStrip", query = "SELECT c FROM Card c WHERE c.ICVVMagneticStrip = :ICVVMagneticStrip"),
     @NamedQuery(name = "Card.findByPinOffset", query = "SELECT c FROM Card c WHERE c.pinOffset = :pinOffset"),
     @NamedQuery(name = "Card.findByValidationData", query = "SELECT c FROM Card c WHERE c.validationData = :validationData"),
-    @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght")})
+    @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght"),
+    @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM, query = "SELECT c FROM Card c WHERE c.programId.id = :programId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c FROM Card c WHERE c.cardHolder = :cardHolder")})
 
 public class Card extends AbstractDistributionEntity implements Serializable {
 

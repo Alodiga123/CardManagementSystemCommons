@@ -116,7 +116,7 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-
+    
     public AccountProperties getAccountPropertiesId() {
         return accountPropertiesId;
     }

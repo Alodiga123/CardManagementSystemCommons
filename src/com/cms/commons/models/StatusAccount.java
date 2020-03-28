@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -14,6 +16,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -32,10 +36,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusAccount")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusAccount.findAll", query = "SELECT s FROM StatusAccount s")
-    , @NamedQuery(name = "StatusAccount.findById", query = "SELECT s FROM StatusAccount s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusAccount.findByDescription", query = "SELECT s FROM StatusAccount s WHERE s.description = :description")})
-public class StatusAccount implements Serializable {
+    @NamedQuery(name = "StatusAccount.findAll", query = "SELECT s FROM StatusAccount s"),
+    @NamedQuery(name = "StatusAccount.findById", query = "SELECT s FROM StatusAccount s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusAccount.findByDescription", query = "SELECT s FROM StatusAccount s WHERE s.description = :description")})
+public class StatusAccount extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -88,7 +92,7 @@ public class StatusAccount implements Serializable {
     public void setAccountCardCollection(Collection<AccountCard> accountCardCollection) {
         this.accountCardCollection = accountCardCollection;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,5 +117,15 @@ public class StatusAccount implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusAccount[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }
