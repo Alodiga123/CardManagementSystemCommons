@@ -7,10 +7,9 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,28 +19,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
  * @author jose
  */
+
+
 @Entity
 @Table(name = "accountProperties")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AccountProperties.findAll", query = "SELECT a FROM AccountProperties a")
-    , @NamedQuery(name = "AccountProperties.findById", query = "SELECT a FROM AccountProperties a WHERE a.id = :id")
-    , @NamedQuery(name = "AccountProperties.findByIdentifier", query = "SELECT a FROM AccountProperties a WHERE a.identifier = :identifier")
-    , @NamedQuery(name = "AccountProperties.findByLenghtAccount", query = "SELECT a FROM AccountProperties a WHERE a.lenghtAccount = :lenghtAccount")
-    , @NamedQuery(name = "AccountProperties.findByMaximumAmount", query = "SELECT a FROM AccountProperties a WHERE a.maximumAmount = :maximumAmount")
-    , @NamedQuery(name = "AccountProperties.findByMinimunAmount", query = "SELECT a FROM AccountProperties a WHERE a.minimunAmount = :minimunAmount")
-    , @NamedQuery(name = "AccountProperties.findByIndOverDraft", query = "SELECT a FROM AccountProperties a WHERE a.indOverDraft = :indOverDraft")})
+    @NamedQuery(name = "AccountProperties.findAll", query = "SELECT a FROM AccountProperties a"),
+    @NamedQuery(name = "AccountProperties.findById", query = "SELECT a FROM AccountProperties a WHERE a.id = :id"),
+    @NamedQuery(name = "AccountProperties.findByIdentifier", query = "SELECT a FROM AccountProperties a WHERE a.identifier = :identifier"),
+    @NamedQuery(name = "AccountProperties.findByLenghtAccount", query = "SELECT a FROM AccountProperties a WHERE a.lenghtAccount = :lenghtAccount"),
+    @NamedQuery(name = "AccountProperties.findByMaximumAmount", query = "SELECT a FROM AccountProperties a WHERE a.maximumAmount = :maximumAmount"),
+    @NamedQuery(name = "AccountProperties.findByMinimunAmount", query = "SELECT a FROM AccountProperties a WHERE a.minimunAmount = :minimunAmount"),
+    @NamedQuery(name = "AccountProperties.findByIndOverDraft", query = "SELECT a FROM AccountProperties a WHERE a.indOverDraft = :indOverDraft"),
+    @NamedQuery(name = QueryConstants.ACCOUNT_PROPERTIES_BY_REQUEST, query = "SELECT a FROM AccountProperties a WHERE a.countryId.id=:countryId AND a.programId.id=:programId")})
 public class AccountProperties extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -195,5 +194,5 @@ public class AccountProperties extends AbstractDistributionEntity implements Ser
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }

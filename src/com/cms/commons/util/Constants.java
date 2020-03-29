@@ -63,6 +63,9 @@ public class Constants {
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static Integer CARD_STATUS_REQUESTED = 1;
+    public static Integer ACCOUNT_STATUS_REQUESTED = 1;
+    public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
+    public static Integer CHANNEL_CREATION_ACCOUNT = 7;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_PERSON_USER = 2;
@@ -114,6 +117,8 @@ public class Constants {
         public static final int PHONE_TYPE_MOBILE = 1;
         public static final int PHONE_TYPE_ROOM = 2;
         public static final int DOCUMENT_TYPE_REQUEST = 1;
+        public static final int APP_IDENTIFICATION_DOCUMENT = 9;
+        public static final int PHOTO_WITH_IDENTITY_DOCUMENT = 10;
         
         //Queries PersonType
         public static final int ORIGIN_APPLICATION_WALLET_ID = 2;

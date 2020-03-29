@@ -217,6 +217,9 @@ ENGINE = InnoDB;
 -- Fecha: 21/03/2020
 RENAME TABLE `CardManagementSystem`.`rateCard` TO `CardManagementSystem`.`rateByCard`; 
 
+-- Cambiar FK de tabla rateCard
+-- author: Jesús Gómez
+-- Fecha: 21/03/2020
 ALTER TABLE `CardManagementSystem`.`rateByCard` 
 DROP FOREIGN KEY `fk_rateCard_rateApplicationType1`;
 ALTER TABLE `CardManagementSystem`.`rateByCard` 
@@ -227,3 +230,149 @@ ADD CONSTRAINT `fk_rateCard_rateApplicationType1`
   REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+-- Cambiar campo en tabla user
+-- author: Jesús Gómez
+-- Fecha: 25/03/2020
+ALTER TABLE `CardManagementSystem`.`user` 
+CHANGE COLUMN `code` `code` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_danish_ci' NULL ;
+
+-- Crear tabla statusPlasticCustomizingRequest
+-- author: Jesús Gómez
+-- Fecha: 26/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusPlasticCustomizingRequest` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Crear tabla tabla plasticCustomizingRequest
+-- author: Jesús Gómez
+-- Fecha: 26/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`plasticCustomizingRequest` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `requestNumber` VARCHAR(40) NULL,
+  `requestDate` DATE NULL,
+  `plasticManufacturerId` INT NOT NULL,
+  `statusPlasticCustomizingRequestId` INT NOT NULL,
+  `programId` BIGINT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_plasticCustomizingRequest_plasticManufacturer1_idx` (`plasticManufacturerId` ASC),
+  INDEX `fk_plasticCustomizingRequest_statusPlasticCustomizingReques_idx` (`statusPlasticCustomizingRequestId` ASC),
+  INDEX `fk_plasticCustomizingRequest_program1_idx` (`programId` ASC),
+  CONSTRAINT `fk_plasticCustomizingRequest_plasticManufacturer1`
+    FOREIGN KEY (`plasticManufacturerId`)
+    REFERENCES `CardManagementSystem`.`plasticManufacturer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_plasticCustomizingRequest_statusPlasticCustomizingRequest1`
+    FOREIGN KEY (`statusPlasticCustomizingRequestId`)
+    REFERENCES `CardManagementSystem`.`statusPlasticCustomizingRequest` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_plasticCustomizingRequest_program1`
+    FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Crear tabla tabla approvalGeneralRate
+-- author: Jesús Gómez
+-- Fecha: 26/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalGeneralRate` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `approvalDate` DATE NOT NULL,
+  `indApproved` TINYINT(1) NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `userId` INT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_approvalRate_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  INDEX `fk_approvalRate_user1_idx` (`userId` ASC),
+  CONSTRAINT `fk_approvalRate_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalRate_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Crear tabla tabla approvalProgramRate
+-- author: Jesús Gómez
+-- Fecha: 26/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalProgramRate` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `approvalDate` DATE NOT NULL,
+  `indApproved` TINYINT(1) NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `userId` INT NOT NULL,
+  `programId` BIGINT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_approvalProgramRate_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  INDEX `fk_approvalProgramRate_user1_idx` (`userId` ASC),
+  INDEX `fk_approvalProgramRate_program1_idx` (`programId` ASC),
+  CONSTRAINT `fk_approvalProgramRate_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalProgramRate_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalProgramRate_program1`
+    FOREIGN KEY (`programId`)
+    REFERENCES `CardManagementSystem`.`program` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Crear tabla tabla approvalProductRate
+-- author: Jesús Gómez
+-- Fecha: 26/03/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalProductRate` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `approvalDate` DATE NOT NULL,
+  `indApproved` TINYINT(1) NULL,
+  `productId` BIGINT UNIQUE NOT NULL,
+  `rateApplicationTypeId` INT NOT NULL,
+  `userId` INT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_approvalProductRate_product1_idx` (`productId` ASC),
+  INDEX `fk_approvalProductRate_rateApplicationType1_idx` (`rateApplicationTypeId` ASC),
+  INDEX `fk_approvalProductRate_user1_idx` (`userId` ASC),
+  CONSTRAINT `fk_approvalProductRate_product1`
+    FOREIGN KEY (`productId`)
+    REFERENCES `CardManagementSystem`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalProductRate_rateApplicationType1`
+    FOREIGN KEY (`rateApplicationTypeId`)
+    REFERENCES `CardManagementSystem`.`rateApplicationType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalProductRate_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+-- Agregar 2 nuevos CollectionType para las imagenes de Solicitud de Tarjetas
+-- author: Yamelis Almea
+-- Fecha: 26/03/2020
+
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('9', 'DOCUMENTO DE IDENTIFICACION APP', '1');
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('10', 'FOTO CON DOCUMENTO DE IDENTIDAD', '1');
