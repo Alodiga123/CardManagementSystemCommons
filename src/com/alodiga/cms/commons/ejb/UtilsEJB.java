@@ -37,6 +37,8 @@ import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
 import com.cms.commons.models.OriginApplication;
+import com.cms.commons.models.PermissionGroup;
+import com.cms.commons.models.PermissionGroupData;
 import java.util.List;
 
 /**
@@ -204,5 +206,15 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<KindCard> getKindCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public KindCard loadKindCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public KindCard saveKindCard (KindCard kindCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PermissionGroup
+    public List<PermissionGroup> getPermissionGroup(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PermissionGroup loadPermissionGroup(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PermissionGroup savePermissionGroup (PermissionGroup permissionGroup) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PermissionGroupData
+    public List<PermissionGroupData> getPermissionGroupData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PermissionGroupData loadPermissionGroupData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PermissionGroupData savePermissionGroupData (PermissionGroupData permissionGroupData) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }

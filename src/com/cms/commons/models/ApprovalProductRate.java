@@ -64,9 +64,6 @@ public class ApprovalProductRate implements Serializable {
     @JoinColumn(name = "productId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
-    @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private RateApplicationType rateApplicationTypeId;
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
@@ -130,14 +127,6 @@ public class ApprovalProductRate implements Serializable {
 
     public void setProductId(Product productId) {
         this.productId = productId;
-    }
-
-    public RateApplicationType getRateApplicationTypeId() {
-        return rateApplicationTypeId;
-    }
-
-    public void setRateApplicationTypeId(RateApplicationType rateApplicationTypeId) {
-        this.rateApplicationTypeId = rateApplicationTypeId;
     }
 
     public User getUserId() {
