@@ -60,9 +60,6 @@ public class ApprovalProgramRate implements Serializable {
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private RateApplicationType rateApplicationTypeId;
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
@@ -121,14 +118,6 @@ public class ApprovalProgramRate implements Serializable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-
-    public RateApplicationType getRateApplicationTypeId() {
-        return rateApplicationTypeId;
-    }
-
-    public void setRateApplicationTypeId(RateApplicationType rateApplicationTypeId) {
-        this.rateApplicationTypeId = rateApplicationTypeId;
     }
 
     public User getUserId() {
