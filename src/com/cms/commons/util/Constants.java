@@ -49,6 +49,7 @@ public class Constants {
     public static final boolean USE_NUMBER_CARD = false;
     public static final int REVIEW_REQUEST_TYPE_OFAC = 2; 
     public static final int STATUS_REQUEST_IN_PROCESS = 1;
+    public static final int STATUS_PLASTIC_REQUEST = 1;
     public static final int STATUS_REQUEST_REJECTED = 2;
     public static final int STATUS_REQUEST_COLLECTIONS_OK = 3;
     public static final int STATUS_REQUEST_PENDING_APPROVAL = 4;
@@ -117,6 +118,8 @@ public class Constants {
         public static final int PHONE_TYPE_MOBILE = 1;
         public static final int PHONE_TYPE_ROOM = 2;
         public static final int DOCUMENT_TYPE_REQUEST = 1;
+        public static final int APP_IDENTIFICATION_DOCUMENT = 9;
+        public static final int PHOTO_WITH_IDENTITY_DOCUMENT = 10;
         
         //Queries PersonType
         public static final int ORIGIN_APPLICATION_WALLET_ID = 2;

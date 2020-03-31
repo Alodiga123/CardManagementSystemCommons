@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -114,7 +115,9 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @Column(name = "promotion")
     private Boolean promotion;
     @Column(name = "citizen")
-    private Boolean citizen;           
+    private Boolean citizen;
+    @Transient
+    private Request request;
 
     public ApplicantNaturalPerson() {
     }
@@ -331,6 +334,15 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
         this.citizen = citizen;
     }
     
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+    
+        
     @Override
     public int hashCode() {
         int hash = 0;
