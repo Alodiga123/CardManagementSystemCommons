@@ -276,7 +276,8 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`plasticCustomizingRequest` (
     FOREIGN KEY (`programId`)
     REFERENCES `CardManagementSystem`.`program` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION;
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- Crear tabla tabla approvalGeneralRate
 -- author: Jesús Gómez
@@ -376,3 +377,30 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalProductRate` (
 
 INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('9', 'DOCUMENTO DE IDENTIFICACION APP', '1');
 INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`) VALUES ('10', 'FOTO CON DOCUMENTO DE IDENTIDAD', '1');
+
+    -- Eliminar FK tabla approvalGeneralRate
+-- author: Jesús Gómez
+-- Fecha: 30/03/2020
+ALTER TABLE `CardManagementSystem`.`approvalGeneralRate` 
+DROP FOREIGN KEY `fk_approvalRate_rateApplicationType1`;
+ALTER TABLE `CardManagementSystem`.`approvalGeneralRate` 
+DROP COLUMN `rateApplicationTypeId`,
+DROP INDEX `fk_approvalGeneralRate_rateApplicationType1_idx`;
+
+-- Eliminar FK tabla approvalProgramRate
+-- author: Jesús Gómez
+-- Fecha: 30/03/2020
+ALTER TABLE `CardManagementSystem`.`approvalProgramRate` 
+DROP FOREIGN KEY `fk_approvalProgramRate_rateApplicationType1`;
+ALTER TABLE `CardManagementSystem`.`approvalProgramRate` 
+DROP COLUMN `rateApplicationTypeId`,
+DROP INDEX `fk_approvalProgramRate_rateApplicationType1_idx`;
+
+-- Eliminar FK tabla approvalProductRate
+-- author: Jesús Gómez
+-- Fecha: 30/03/2020
+ALTER TABLE `CardManagementSystem`.`approvalProductRate` 
+DROP FOREIGN KEY `fk_approvalProductRate_rateApplicationType1`;
+ALTER TABLE `CardManagementSystem`.`approvalProductRate` 
+DROP COLUMN `rateApplicationTypeId`,
+DROP INDEX `fk_approvalProductRate_rateApplicationType1_idx`;
