@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,13 +34,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "plasticCustomizingRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlasticCustomizingRequest.findAll", query = "SELECT p FROM PlasticCustomizingRequest p")
-    , @NamedQuery(name = "PlasticCustomizingRequest.findById", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.id = :id")
-    , @NamedQuery(name = "PlasticCustomizingRequest.findByRequestNumber", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.requestNumber = :requestNumber")
-    , @NamedQuery(name = "PlasticCustomizingRequest.findByRequestDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.requestDate = :requestDate")
-    , @NamedQuery(name = "PlasticCustomizingRequest.findByCreateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.createDate = :createDate")
-    , @NamedQuery(name = "PlasticCustomizingRequest.findByUpdateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.updateDate = :updateDate")})
-public class PlasticCustomizingRequest implements Serializable {
+    @NamedQuery(name = "PlasticCustomizingRequest.findAll", query = "SELECT p FROM PlasticCustomizingRequest p"),
+    @NamedQuery(name = "PlasticCustomizingRequest.findById", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.id = :id"),
+    @NamedQuery(name = "PlasticCustomizingRequest.findByRequestNumber", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.requestNumber = :requestNumber"),
+    @NamedQuery(name = "PlasticCustomizingRequest.findByRequestDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.requestDate = :requestDate"),
+    @NamedQuery(name = "PlasticCustomizingRequest.findByCreateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.createDate = :createDate"),
+    @NamedQuery(name = "PlasticCustomizingRequest.findByUpdateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.updateDate = :updateDate")})
+public class PlasticCustomizingRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -170,5 +172,15 @@ public class PlasticCustomizingRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.PlasticCustomizingRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }

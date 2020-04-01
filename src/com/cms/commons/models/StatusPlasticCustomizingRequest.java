@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -31,10 +33,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusPlasticCustomizingRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusPlasticCustomizingRequest.findAll", query = "SELECT s FROM StatusPlasticCustomizingRequest s")
-    , @NamedQuery(name = "StatusPlasticCustomizingRequest.findById", query = "SELECT s FROM StatusPlasticCustomizingRequest s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusPlasticCustomizingRequest.findByDescription", query = "SELECT s FROM StatusPlasticCustomizingRequest s WHERE s.description = :description")})
-public class StatusPlasticCustomizingRequest implements Serializable {
+    @NamedQuery(name = "StatusPlasticCustomizingRequest.findAll", query = "SELECT s FROM StatusPlasticCustomizingRequest s"),
+    @NamedQuery(name = "StatusPlasticCustomizingRequest.findById", query = "SELECT s FROM StatusPlasticCustomizingRequest s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusPlasticCustomizingRequest.findByDescription", query = "SELECT s FROM StatusPlasticCustomizingRequest s WHERE s.description = :description")})
+public class StatusPlasticCustomizingRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -105,5 +107,15 @@ public class StatusPlasticCustomizingRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusPlasticCustomizingRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }

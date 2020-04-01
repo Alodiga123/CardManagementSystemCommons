@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -37,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ApprovalGeneralRate.findByIndApproved", query = "SELECT a FROM ApprovalGeneralRate a WHERE a.indApproved = :indApproved")
     , @NamedQuery(name = "ApprovalGeneralRate.findByCreateDate", query = "SELECT a FROM ApprovalGeneralRate a WHERE a.createDate = :createDate")
     , @NamedQuery(name = "ApprovalGeneralRate.findByUpdateDate", query = "SELECT a FROM ApprovalGeneralRate a WHERE a.updateDate = :updateDate")})
-public class ApprovalGeneralRate implements Serializable {
+
+public class ApprovalGeneralRate extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,9 +63,6 @@ public class ApprovalGeneralRate implements Serializable {
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private RateApplicationType rateApplicationTypeId;
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
@@ -120,14 +120,6 @@ public class ApprovalGeneralRate implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public RateApplicationType getRateApplicationTypeId() {
-        return rateApplicationTypeId;
-    }
-
-    public void setRateApplicationTypeId(RateApplicationType rateApplicationTypeId) {
-        this.rateApplicationTypeId = rateApplicationTypeId;
-    }
-
     public User getUserId() {
         return userId;
     }
@@ -159,6 +151,16 @@ public class ApprovalGeneralRate implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ApprovalGeneralRate[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

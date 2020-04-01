@@ -23,6 +23,7 @@ import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
 import com.cms.commons.models.Transaction;
 import com.cms.commons.models.RateByProgram;
+import com.cms.commons.models.ApprovalGeneralRate;
 import java.util.List;
 
 /**
@@ -120,4 +121,9 @@ public interface ProductEJB extends DistributionGenericEJB {
     public RateByProduct loadRateByProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RateByProduct saveRateByProduct(RateByProduct rateByProduct) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<RateByProduct> getRateByProductByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //ApprovalGeneralRate
+    public List<ApprovalGeneralRate> getApprovalGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ApprovalGeneralRate loadApprovalGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ApprovalGeneralRate saveApprovalGeneralRate(ApprovalGeneralRate approvalGeneralRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
