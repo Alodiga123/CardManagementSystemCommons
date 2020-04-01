@@ -24,6 +24,7 @@ import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.Issuer;
 import com.cms.commons.models.KindCard;
+import com.cms.commons.models.Language;
 import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.PersonType;
@@ -216,5 +217,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<PermissionGroupData> getPermissionGroupData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PermissionGroupData loadPermissionGroupData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PermissionGroupData savePermissionGroupData (PermissionGroupData permissionGroupData) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Language
+    public List<Language> getLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Language loadLanguage(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Language saveLanguage (Language language) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
