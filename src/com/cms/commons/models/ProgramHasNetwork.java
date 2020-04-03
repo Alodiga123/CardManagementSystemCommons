@@ -27,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ProgramHasNetwork.findAll", query = "SELECT p FROM ProgramHasNetwork p"),
     @NamedQuery(name = "ProgramHasNetwork.findById", query = "SELECT p FROM ProgramHasNetwork p WHERE p.id = :id"),
-    @NamedQuery(name = QueryConstants.NETWORK_BY_PROGRAM, query = "SELECT p FROM ProgramHasNetwork p WHERE p.programId.id=:programId")})
+    @NamedQuery(name = QueryConstants.NETWORK_BY_PROGRAM, query = "SELECT p FROM ProgramHasNetwork p WHERE p.programId.id=:programId"),
+    @NamedQuery(name = QueryConstants.PROGRAM_HAS_NETWORK_BY_NETWORK_BY_PROGRAM, query = "SELECT p FROM ProgramHasNetwork p WHERE p.programId.id=:programId AND p.networkId.id=:networkId")})
 
 public class ProgramHasNetwork extends AbstractDistributionEntity implements Serializable {
 
