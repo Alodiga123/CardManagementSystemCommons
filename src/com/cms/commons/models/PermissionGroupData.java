@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -33,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PermissionGroupData.findById", query = "SELECT p FROM PermissionGroupData p WHERE p.id = :id")
     , @NamedQuery(name = "PermissionGroupData.findByAlias", query = "SELECT p FROM PermissionGroupData p WHERE p.alias = :alias")
     , @NamedQuery(name = "PermissionGroupData.findByDescription", query = "SELECT p FROM PermissionGroupData p WHERE p.description = :description")})
-public class PermissionGroupData implements Serializable {
+public class PermissionGroupData extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -131,6 +133,16 @@ public class PermissionGroupData implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.PermissionGroupData[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+         return super.getTableName(this.getClass());
     }
     
 }
