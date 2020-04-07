@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,6 +43,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PlasticCustomizingRequest.findByCreateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.createDate = :createDate"),
     @NamedQuery(name = "PlasticCustomizingRequest.findByUpdateDate", query = "SELECT p FROM PlasticCustomizingRequest p WHERE p.updateDate = :updateDate")})
 public class PlasticCustomizingRequest extends AbstractDistributionEntity implements Serializable {
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "plasticCustomizingRequestId")
+    private PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -181,6 +186,14 @@ public class PlasticCustomizingRequest extends AbstractDistributionEntity implem
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public PlastiCustomizingRequestHasCard getPlastiCustomizingRequestHasCard() {
+        return plastiCustomizingRequestHasCard;
+    }
+
+    public void setPlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) {
+        this.plastiCustomizingRequestHasCard = plastiCustomizingRequestHasCard;
     }
 
 }

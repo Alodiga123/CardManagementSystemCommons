@@ -30,7 +30,6 @@ import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.Profession;
 import com.cms.commons.models.StatusCustomer;
-import com.cms.commons.models.Title;
 import com.cms.commons.models.User;
 import java.util.List;
 import javax.ejb.Local;
@@ -184,11 +183,5 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<ComercialAgency> getComercialAgency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ComercialAgency loadComercialAgency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ComercialAgency saveComercialAgency(ComercialAgency comercialAgency)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-
-    
-      //Title
-    public List<Title> getTitles(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public Title loadTitle(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Title saveTitle (Title title)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-            
+   
 }
