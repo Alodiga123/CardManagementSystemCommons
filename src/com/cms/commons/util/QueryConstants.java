@@ -44,7 +44,7 @@ public class QueryConstants {
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
-    public static final String PROGRAM_HAS_NETWORK_BY_NETWORK_BY_PROGRAM = "programHasNetworkByNetworkByProgram";
+    public static final String PROGRAM_HAS_NETWORK_BD = "programHasNetworkBD";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
     public static final String DOCUMENTS_BY_COUNTRY = "documentsByCountry";
