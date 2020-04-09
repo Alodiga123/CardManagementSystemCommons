@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PermissionData.findById", query = "SELECT p FROM PermissionData p WHERE p.id = :id")
     , @NamedQuery(name = "PermissionData.findByAlias", query = "SELECT p FROM PermissionData p WHERE p.alias = :alias")
     , @NamedQuery(name = "PermissionData.findByDescription", query = "SELECT p FROM PermissionData p WHERE p.description = :description")})
+
 public class PermissionData extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
