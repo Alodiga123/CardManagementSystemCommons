@@ -38,6 +38,8 @@ import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
 import com.cms.commons.models.OriginApplication;
+import com.cms.commons.models.Permission;
+import com.cms.commons.models.PermissionData;
 import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
 import java.util.List;
@@ -222,5 +224,15 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<Language> getLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Language loadLanguage(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Language saveLanguage (Language language) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Permission
+    public List<Permission> getPermission(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Permission loadPermission(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Permission savePermission (Permission permission) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PermissionData
+    public List<PermissionData> getPermissionData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PermissionData loadPermissionData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PermissionData savePermissionData (PermissionData permissionData) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
