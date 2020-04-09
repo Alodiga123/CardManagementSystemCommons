@@ -39,6 +39,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Language.findByIso", query = "SELECT l FROM Language l WHERE l.iso = :iso")
     , @NamedQuery(name = "Language.findByDescription", query = "SELECT l FROM Language l WHERE l.description = :description")
     , @NamedQuery(name = "Language.findByEnabled", query = "SELECT l FROM Language l WHERE l.enabled = :enabled")})
+
 public class Language extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

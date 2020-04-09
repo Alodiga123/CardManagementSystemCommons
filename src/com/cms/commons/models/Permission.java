@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -40,7 +42,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Permission.findByEntity", query = "SELECT p FROM Permission p WHERE p.entity = :entity")
     , @NamedQuery(name = "Permission.findByName", query = "SELECT p FROM Permission p WHERE p.name = :name")
     , @NamedQuery(name = "Permission.findByEnabled", query = "SELECT p FROM Permission p WHERE p.enabled = :enabled")})
-public class Permission implements Serializable {
+
+public class Permission extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -178,6 +181,16 @@ public class Permission implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.Permission[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+       return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
