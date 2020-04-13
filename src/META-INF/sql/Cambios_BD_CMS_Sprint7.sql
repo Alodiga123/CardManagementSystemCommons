@@ -110,4 +110,19 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`deliveryRequetsHasCard` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Eliminar campos en diferentes tablas
+-- author: Jesús Gómez
+-- Fecha: 09/04/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+DROP COLUMN `fullAddress`;
+
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+DROP COLUMN `password`,
+DROP COLUMN `titleId`;
+
+-- Eliminar tabla title
+-- author: Jesús Gómez
+-- Fecha: 09/04/2020
+DROP TABLE `CardManagementSystem`.`title`;
+
 
