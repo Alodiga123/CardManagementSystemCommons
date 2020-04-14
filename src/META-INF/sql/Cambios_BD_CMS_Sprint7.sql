@@ -175,4 +175,9 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`resultPlasticCustomizingReque
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Y agregar el campo number (numero de casa u edificio)
+-- author: YamelYis Almea
+-- Fecha: 14/04/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `number` VARCHAR(10) NULL AFTER `addressTypeId`;
 
