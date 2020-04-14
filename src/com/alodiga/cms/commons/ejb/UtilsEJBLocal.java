@@ -22,9 +22,12 @@ import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.Issuer;
 import com.cms.commons.models.KindCard;
+import com.cms.commons.models.Language;
 import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalRepresentatives;
 import com.cms.commons.models.OriginApplication;
+import com.cms.commons.models.PermissionGroup;
+import com.cms.commons.models.PermissionGroupData;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProgramHasNetwork;
@@ -199,5 +202,20 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<KindCard> getKindCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public KindCard loadKindCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public KindCard saveKindCard (KindCard kindCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PermissionGroup
+    public List<PermissionGroup> getPermissionGroup(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PermissionGroup loadPermissionGroup(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PermissionGroup savePermissionGroup (PermissionGroup permissionGroup) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PermissionGroupData
+    public List<PermissionGroupData> getPermissionGroupData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PermissionGroupData loadPermissionGroupData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PermissionGroupData savePermissionGroupData (PermissionGroupData permissionGroupData) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Language
+    public List<Language> getLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Language loadLanguage(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Language saveLanguage (Language language) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
 }

@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -37,7 +39,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Language.findByIso", query = "SELECT l FROM Language l WHERE l.iso = :iso")
     , @NamedQuery(name = "Language.findByDescription", query = "SELECT l FROM Language l WHERE l.description = :description")
     , @NamedQuery(name = "Language.findByEnabled", query = "SELECT l FROM Language l WHERE l.enabled = :enabled")})
-public class Language implements Serializable {
+public class Language extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -162,6 +164,16 @@ public class Language implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.Language[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+       return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+       return super.getTableName(this.getClass());
     }
     
 }

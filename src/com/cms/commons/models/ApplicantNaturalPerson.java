@@ -105,11 +105,6 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusApplicant statusApplicantId;
-    @JoinColumn(name = "titleId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Title title;
-    @Column(name = "password")
-    private String password;
     @Column(name = "recommendation")
     private Boolean recommendation;
     @Column(name = "promotion")
@@ -292,22 +287,6 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
 
     public void setStatusApplicantId(StatusApplicant statusApplicantId) {
         this.statusApplicantId = statusApplicantId;
-    }
-
-    public Title getTitle() {
-        return title;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public boolean isRecommendation() {
