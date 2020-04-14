@@ -11,6 +11,7 @@ import com.cms.commons.models.ApplicantNaturalPerson;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.PersonType;
+import com.cms.commons.models.PlastiCustomizingRequestHasCard;
 import com.cms.commons.models.PlasticCustomizingRequest;
 import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
@@ -116,6 +117,11 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public PlasticCustomizingRequest loadPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlasticCustomizingRequest savePlasticCustomizingRequest(PlasticCustomizingRequest plasticCustomizingRequest) throws NullParameterException, GeneralException;
 
+    //Tabla de PlastiCustomizingRequestHasCard
+    public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PlastiCustomizingRequestHasCard loadPlastiCustomizingRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PlastiCustomizingRequestHasCard savePlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) throws NullParameterException, GeneralException;
+        
     //Tabla de StatusPlasticCustomizingRequest
     public List<StatusPlasticCustomizingRequest> getStatusPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusPlasticCustomizingRequest loadStatusPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
