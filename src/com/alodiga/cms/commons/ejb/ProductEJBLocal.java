@@ -8,6 +8,7 @@ import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.ApprovalGeneralRate;
+import com.cms.commons.models.ApprovalProgramRate;
 import com.cms.commons.models.Channel;
 import com.cms.commons.models.CommerceCategory;
 import com.cms.commons.models.GeneralRate;
@@ -126,4 +127,9 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<ApprovalGeneralRate> getApprovalGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApprovalGeneralRate loadApprovalGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApprovalGeneralRate saveApprovalGeneralRate(ApprovalGeneralRate approvalGeneralRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //ApprovalProgramRate
+    public List<ApprovalProgramRate> getApprovalProgramRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ApprovalProgramRate loadApprovalProgramRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ApprovalProgramRate saveApprovalProgramRate(ApprovalProgramRate approvalProgramRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
