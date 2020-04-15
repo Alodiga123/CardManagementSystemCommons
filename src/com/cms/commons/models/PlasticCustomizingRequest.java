@@ -45,6 +45,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PlasticCustomizingRequest extends AbstractDistributionEntity implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "plasticCustomizingRequestId")
+    private ResultPlasticCustomizingRequest resultPlasticCustomizingRequest;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "plasticCustomizingRequestId")
     private PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard;
 
     private static final long serialVersionUID = 1L;
@@ -194,6 +197,14 @@ public class PlasticCustomizingRequest extends AbstractDistributionEntity implem
 
     public void setPlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) {
         this.plastiCustomizingRequestHasCard = plastiCustomizingRequestHasCard;
+    }
+
+    public ResultPlasticCustomizingRequest getResultPlasticCustomizingRequest() {
+        return resultPlasticCustomizingRequest;
+    }
+
+    public void setResultPlasticCustomizingRequest(ResultPlasticCustomizingRequest resultPlasticCustomizingRequest) {
+        this.resultPlasticCustomizingRequest = resultPlasticCustomizingRequest;
     }
 
 }
