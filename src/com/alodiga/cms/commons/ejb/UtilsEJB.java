@@ -76,10 +76,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-    //Tabla de CardStatus    
+    //Tabla de PersonClassification   
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public PersonClassification savePersonClassification(PersonClassification personclassification) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonClassification savePersonClassification(PersonClassification personClassification) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //Tabla de State
     public List<State> getState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

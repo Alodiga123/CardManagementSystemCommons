@@ -30,6 +30,7 @@ import com.cms.commons.models.Permission;
 import com.cms.commons.models.PermissionData;
 import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
+import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.ProgramHasNetwork;
@@ -74,6 +75,11 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //Tabla de PersonClassification   
+    public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonClassification savePersonClassification(PersonClassification personClassification) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //Tabla de ProductType
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
