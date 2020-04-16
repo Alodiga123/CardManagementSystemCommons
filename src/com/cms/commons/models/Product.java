@@ -49,6 +49,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Product.findByDaysToWithdrawCard", query = "SELECT p FROM Product p WHERE p.daysToWithdrawCard = :daysToWithdrawCard"),
     @NamedQuery(name = "Product.findByBeginDateValidity", query = "SELECT p FROM Product p WHERE p.beginDateValidity = :beginDateValidity"),
     @NamedQuery(name = "Product.findByEndDateValidity", query = "SELECT p FROM Product p WHERE p.endDateValidity = :endDateValidity"),
+    @NamedQuery(name = QueryConstants.PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE, query = "SELECT p FROM Product p WHERE p.programId.id = :programId"),
     @NamedQuery(name = QueryConstants.PRODUCT_BY_PROGRAM, query = "SELECT p FROM Product p WHERE p.programId.id = :programId")})
 
 public class Product extends AbstractDistributionEntity implements Serializable {

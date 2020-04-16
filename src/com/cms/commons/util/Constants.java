@@ -55,6 +55,7 @@ public class Constants {
     public static final int STATUS_REQUEST_PENDING_APPROVAL = 4;
     public static final int STATUS_REQUEST_BLACK_LIST_OK = 5;
     public static final int STATUS_REQUEST_APPROVED = 6;
+    public static final int STATUS_CARDS_REQUESTED = 1;
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
     public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
