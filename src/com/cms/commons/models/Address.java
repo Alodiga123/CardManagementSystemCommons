@@ -79,6 +79,8 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
+    @Column(name = "number")
+    private String number;
 
     public Address() {
     }
@@ -189,6 +191,14 @@ public class Address extends AbstractDistributionEntity implements Serializable 
 
     public void setAddressTypeId(AddressType addressTypeId) {
         this.addressTypeId = addressTypeId;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
     
     @Override

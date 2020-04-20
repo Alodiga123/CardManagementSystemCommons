@@ -8,20 +8,26 @@ import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
 import com.cms.commons.models.ApplicantNaturalPerson;
+import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
+import com.cms.commons.models.DocumentsPersonType;
+import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PlastiCustomizingRequestHasCard;
 import com.cms.commons.models.PlasticCustomizingRequest;
 import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
+import com.cms.commons.models.ResultPlasticCustomizingRequest;
 import com.cms.commons.models.ReviewOFAC;
 import com.cms.commons.models.ReviewRequest;
 import com.cms.commons.models.ReviewRequestType;
 import com.cms.commons.models.StatusApplicant;
 import com.cms.commons.models.StatusPlasticCustomizingRequest;
 import com.cms.commons.models.StatusRequest;
+import com.cms.commons.models.StatusResultPlasticCustomizing;
+import com.cms.commons.models.ZipZone;
 import java.util.Date;
 import java.util.List;
 
@@ -107,9 +113,9 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     
           //ApplicantNaturalPerson Modificado
     public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
-                                         String cellPhone, int countryAddress, int state, int city, String postalZone, String address,boolean recommendation,
-                                         boolean promotion,boolean citizen, String password, int title) 
-                                         throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+            String cellPhone, int countryAddress, int state, int city, ZipZone postalZone, boolean recommendation, boolean promotion,boolean citizen,
+            DocumentsPersonType documentsPersonType,String documentNumber,String gender,CivilStatus civilStatus,EdificationType edificationType,String street,String number) 
+            throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     
     
     //Tabla de PlasticCustomizingRequest
@@ -122,6 +128,18 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public PlastiCustomizingRequestHasCard loadPlastiCustomizingRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlastiCustomizingRequestHasCard savePlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) throws NullParameterException, GeneralException;
         
+    //Tabla de ResultPlasticCustomizingRequest
+    public List<ResultPlasticCustomizingRequest> getResultPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ResultPlasticCustomizingRequest loadResultPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ResultPlasticCustomizingRequest saveResultPlasticCustomizingRequest(ResultPlasticCustomizingRequest resultPlasticCustomizingRequest) throws NullParameterException, GeneralException;
+    
+    //Tabla de StatusResultPlasticCustomizing
+    public List<StatusResultPlasticCustomizing> getStatusResultPlasticCustomizing(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<StatusResultPlasticCustomizing> getStatusByDescription(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<StatusResultPlasticCustomizing> getStatusByPlasticManufacturer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusResultPlasticCustomizing loadStatusResultPlasticCustomizing(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusResultPlasticCustomizing saveStatusResultPlasticCustomizing(StatusResultPlasticCustomizing statusResultPlasticCustomizing) throws NullParameterException, GeneralException;
+    
     //Tabla de StatusPlasticCustomizingRequest
     public List<StatusPlasticCustomizingRequest> getStatusPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusPlasticCustomizingRequest loadStatusPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
