@@ -181,3 +181,9 @@ ENGINE = InnoDB;
 ALTER TABLE `CardManagementSystem`.`address` 
 ADD COLUMN `number` VARCHAR(10) NULL AFTER `addressTypeId`;
 
+-- Agregar el campo en tabla resultPlasticCustomizingRequest
+-- author: Jesús Gomez
+-- Fecha: 17/04/2020
+ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
+ADD COLUMN `statusResult` VARCHAR(60) NULL AFTER `expirationCardDate`;
+

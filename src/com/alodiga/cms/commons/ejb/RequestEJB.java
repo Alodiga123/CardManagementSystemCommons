@@ -19,12 +19,14 @@ import com.cms.commons.models.PlasticCustomizingRequest;
 import com.cms.commons.models.ReasonRejectionRequest;
 import com.cms.commons.models.Request;
 import com.cms.commons.models.RequestHasCollectionsRequest;
+import com.cms.commons.models.ResultPlasticCustomizingRequest;
 import com.cms.commons.models.ReviewRequest;
 import com.cms.commons.models.ReviewOFAC;
 import com.cms.commons.models.ReviewRequestType;
 import com.cms.commons.models.StatusApplicant;
 import com.cms.commons.models.StatusPlasticCustomizingRequest;
 import com.cms.commons.models.StatusRequest;
+import com.cms.commons.models.StatusResultPlasticCustomizing;
 import com.cms.commons.models.ZipZone;
 import java.util.Date;
 import java.util.List;
@@ -127,6 +129,18 @@ public interface RequestEJB extends DistributionGenericEJB {
     public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PlastiCustomizingRequestHasCard loadPlastiCustomizingRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlastiCustomizingRequestHasCard savePlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) throws NullParameterException, GeneralException;
+    
+    //Tabla de ResultPlasticCustomizingRequest
+    public List<ResultPlasticCustomizingRequest> getResultPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ResultPlasticCustomizingRequest loadResultPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ResultPlasticCustomizingRequest saveResultPlasticCustomizingRequest(ResultPlasticCustomizingRequest resultPlasticCustomizingRequest) throws NullParameterException, GeneralException;
+    
+    //Tabla de StatusResultPlasticCustomizing
+    public List<StatusResultPlasticCustomizing> getStatusResultPlasticCustomizing(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<StatusResultPlasticCustomizing> getStatusByDescription(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<StatusResultPlasticCustomizing> getStatusByPlasticManufacturer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusResultPlasticCustomizing loadStatusResultPlasticCustomizing(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusResultPlasticCustomizing saveStatusResultPlasticCustomizing(StatusResultPlasticCustomizing statusResultPlasticCustomizing) throws NullParameterException, GeneralException;
     
     //Tabla de StatusPlasticCustomizingRequest
     public List<StatusPlasticCustomizingRequest> getStatusPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

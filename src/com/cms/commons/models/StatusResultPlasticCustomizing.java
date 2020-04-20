@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -34,10 +37,12 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusResultPlasticCustomizing")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusResultPlasticCustomizing.findAll", query = "SELECT s FROM StatusResultPlasticCustomizing s")
-    , @NamedQuery(name = "StatusResultPlasticCustomizing.findById", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description")})
-public class StatusResultPlasticCustomizing implements Serializable {
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findAll", query = "SELECT s FROM StatusResultPlasticCustomizing s"),
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findById", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_DESCRIPTION, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description LIKE :description"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.plasticManufacturerId.id=:plasticManufacturerId")})
+public class StatusResultPlasticCustomizing extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -137,5 +142,14 @@ public class StatusResultPlasticCustomizing implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusResultPlasticCustomizing[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
