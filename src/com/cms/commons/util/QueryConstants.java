@@ -19,6 +19,8 @@ public class QueryConstants {
     public static final String LIKE = " LIKE ";
     public static final String NOT_LIKE = " NOT LIKE ";
     public static final String IS = " IS ";
+    
+    //Nombres de Queries
     public static final String COUNTIES_BY_STATE = "countiesByState";
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
@@ -27,6 +29,7 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_CUSTOMER = "familyReferencesByCustomer";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String APPLICANT_BY_PERSON = "applicantByPerson";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
@@ -39,6 +42,8 @@ public class QueryConstants {
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER ="legalRepresentativesByLegalCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
+    public static final String STATUS_BY_DESCRIPTION = "statusByDescription";
+    public static final String STATUS_BY_PLASTIC_MANUFACTURER = "statusByPlasticManufacturer";
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
@@ -84,7 +89,7 @@ public class QueryConstants {
     public static final String ADDITIONAL_CARD_BY_LEGAL_CUSTOMER = "additionalCardByLegalCustomer";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
-    public static final String VALIDATE_CUSTOMER = "validateCustomer";
+    public static final String VALIDATE_CUSTOMER = "validateCustomer";  
     public static final String TICKETS_BY_USER = "ticketsByUser";
     public static final String TICKETS_BY_ACCOUNT = "ticketsByAccount";
     public static final String TICKETS_BY_USER_RESPONDER = "ticketsByUserResponder";
@@ -130,6 +135,8 @@ public class QueryConstants {
     public static final String BANNERS_BY_TYPE = "bannersByType";
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
     public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
+    
+    //Parámetros
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_EMAIL = "email";
@@ -155,6 +162,8 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
+    public static final String PARAM_STATUS_DESCRIPTION = "description";
     public static final String PARAM_CARDS_STATUS_ID = "cardStatusId";
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
@@ -202,14 +211,10 @@ public class QueryConstants {
     public static final String PARAM_ORDER_ID = "orderId";
     public static final String PARAM_TRANSACTION_TYPE_ID = "transactionTypeId";
     public static final String PARAM_TRANSACTION_ITEM_ID = "transactionItemId";
-    public static final String PARAM_TRANSACTION_STATUS = "transactionStatus";
-    //public static final String PRODUCT_DETAIL_VALUE_TYPE_ID = "ProductDetailValueTypeId";
+    public static final String PARAM_TRANSACTION_STATUS = "transactionStatus";    
     public static final String PARAM_ACCOUNT = "account";
-    public static final String PARAM_BALANCES_TRANSFERENCES = "balanceTransferences";
-    //public static final String PARAM_CUSTOMER_PRODUCT_DETAIL_ID = "customerProductDetailId";
-    //public static final String PARAM_PRODUCT_DETAIL_VALUE_TYPE_ID = "productDetailValueTypeId";
+    public static final String PARAM_BALANCES_TRANSFERENCES = "balanceTransferences";    
     public static final String PARAM_DELETED = "deleted";
-    //public static final String PARAM_CUSTOMER_PRODUCT_DETAIL = "customerProductDetail";
     public static final String PARAM_OBJECT = "object";
     public static final String PARAM_SQL = "sql";
     public static final String PARAM_SUCCESS = "success";
