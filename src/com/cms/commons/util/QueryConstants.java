@@ -28,6 +28,7 @@ public class QueryConstants {
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
+    public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
@@ -68,6 +69,7 @@ public class QueryConstants {
     public static final String PROJECT_ANNUAL_VOLUME_BY_PROGRAM = "projectAnnualVolumeByProgram";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
+    public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
     public static final String ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES = "accountSegmentByAccountProperties";
     public static final String CARD_NUMBER_BY_USE = "cardNumberByUse";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
@@ -153,6 +155,7 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_CARDS_STATUS_ID = "cardStatusId";
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
