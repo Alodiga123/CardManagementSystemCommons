@@ -52,12 +52,14 @@ public interface RequestEJB extends DistributionGenericEJB {
                                          throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     
     //ApplicantNaturalPerson
-    public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
-                                                        String firstNames, String lastNames, String marriedLastName, String gender, String placeBirth, Date dateBirth, int civilStatusId,  
-                                                        int professionId, String roomPhone, String cellPhone, int countryAddress, int state, int city, int zipZone, int edificationType, String nameEdification,
-                                                        String tower, int floor, int streetType, String nameStreet, String Urbanization, Long applicantId, int kinShipApplicantId)
+   public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
+                                                        String firstNames, String lastNames,  String gender, Date dateBirth, int civilStatusId,  
+                                                        String cellPhone, int countryAddress, int state, int city, int zipZone, int edificationType, 
+                                                        String nameStreet, Long applicantId, int kinShipApplicantId)
                                                         throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
-
+    public boolean existsApplicantNaturalPersonByEmail(String email) throws EmptyListException, GeneralException, NullParameterException;
+    public boolean existsApplicantNaturalPersonByPhoneNumber(String numberPhone) throws EmptyListException, GeneralException, NullParameterException;
+    
     //PersonType
     public PersonType personTypeWallet(int countryId) throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     

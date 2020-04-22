@@ -37,6 +37,7 @@ public interface ProgramEJB extends DistributionGenericEJB {
     
     //LegalPerson
     public List<LegalPerson> getCardManagementProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalPerson> getLegalPersonByDelivery(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //ProgramHasNetwork
     public List<ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
