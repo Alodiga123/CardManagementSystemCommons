@@ -187,3 +187,11 @@ ADD COLUMN `number` VARCHAR(10) NULL AFTER `addressTypeId`;
 ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
 ADD COLUMN `statusResult` VARCHAR(60) NULL AFTER `expirationCardDate`;
 
+-- Agregar campos de fecha en tabla address
+-- author: Jesús Gomez
+-- Fecha: 21/04/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `addressTypeId`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+
