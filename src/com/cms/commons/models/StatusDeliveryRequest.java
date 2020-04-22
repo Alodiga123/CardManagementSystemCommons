@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -32,10 +34,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusDeliveryRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusDeliveryRequest.findAll", query = "SELECT s FROM StatusDeliveryRequest s")
-    , @NamedQuery(name = "StatusDeliveryRequest.findById", query = "SELECT s FROM StatusDeliveryRequest s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusDeliveryRequest.findByDescription", query = "SELECT s FROM StatusDeliveryRequest s WHERE s.description = :description")})
-public class StatusDeliveryRequest implements Serializable {
+    @NamedQuery(name = "StatusDeliveryRequest.findAll", query = "SELECT s FROM StatusDeliveryRequest s"),
+    @NamedQuery(name = "StatusDeliveryRequest.findById", query = "SELECT s FROM StatusDeliveryRequest s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusDeliveryRequest.findByDescription", query = "SELECT s FROM StatusDeliveryRequest s WHERE s.description = :description")})
+public class StatusDeliveryRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -113,5 +115,15 @@ public class StatusDeliveryRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusDeliveryRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }
