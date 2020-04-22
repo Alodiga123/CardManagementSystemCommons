@@ -43,7 +43,6 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "fixedRate")
     private Float fixedRate;
     @Column(name = "percentageRate")
@@ -66,6 +65,9 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "productId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Product productId;
+    @JoinColumn(name = "approvalProductRateId", referencedColumnName = "id")
+    @ManyToOne
+    private ApprovalProductRate approvalProductRateId;
 
     public RateByProduct() {
     }
@@ -187,6 +189,14 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public ApprovalProductRate getApprovalProductRateId() {
+        return approvalProductRateId;
+    }
+
+    public void setApprovalProductRateId(ApprovalProductRate approvalProductRateId) {
+        this.approvalProductRateId = approvalProductRateId;
     }
     
 }
