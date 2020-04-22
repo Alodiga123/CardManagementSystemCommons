@@ -32,6 +32,7 @@ public class QueryConstants {
     public static final String APPLICANT_BY_PERSON = "applicantByPerson";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
+    public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
@@ -44,12 +45,14 @@ public class QueryConstants {
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String STATUS_BY_DESCRIPTION = "statusByDescription";
     public static final String STATUS_BY_PLASTIC_MANUFACTURER = "statusByPlasticManufacturer";
+    public static final String STATUS_BY_CARD_STATUS = "statusByCardStatus";
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
+    public static final String ECONOMIC_ACTIVITY_BY_LEGAL_PERSON = "economicActivityByLegalPerson";
     public static final String PROGRAM_HAS_NETWORK_BD = "programHasNetworkBD";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
@@ -226,5 +229,6 @@ public class QueryConstants {
     public static final String PARAM_PIN_FREE = "pinFree";
     public static final String PARAM_PROMOTION_TYPE = "promotionType";
     public static final String PARAM_LANGUAGE_ID = "languageId";
+    public static final String PARAM_ECONOMIC_ACTIVITY_ID ="economicActivityId";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
 }
