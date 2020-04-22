@@ -44,7 +44,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ApplicantNaturalPerson.findByFamilyResponsibilities", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.familyResponsibilities = :familyResponsibilities"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByCreateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.createDate = :createDate"),
     @NamedQuery(name = "ApplicantNaturalPerson.findByUpdateDate", query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_COMPLEMENTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId")})
+    @NamedQuery(name = QueryConstants.CARD_COMPLEMENTARY_BY_APPLICANT, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.applicantParentId.id=:applicantNaturalPersonId"),
+    @NamedQuery(name = QueryConstants.APPLICANT_BY_PERSON, query = "SELECT a FROM ApplicantNaturalPerson a WHERE a.personId.id=:personId")})
 
 public class ApplicantNaturalPerson extends AbstractDistributionEntity implements Serializable {
 
