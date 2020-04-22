@@ -36,6 +36,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "RateApplicationType.findByDescription", query = "SELECT r FROM RateApplicationType r WHERE r.description = :description")})
 public class RateApplicationType implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rateApplicationTypeId")
+    private Collection<RateByProduct> rateByProductCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rateApplicationTypeId")
+    private Collection<GeneralRate> generalRateCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rateApplicationTypeId")
+    private Collection<RateByCard> rateByCardCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rateApplicationTypeId")
+    private Collection<RateByProgram> rateByProgramCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,6 +101,46 @@ public class RateApplicationType implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.RateApplicationType[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<RateByProduct> getRateByProductCollection() {
+        return rateByProductCollection;
+    }
+
+    public void setRateByProductCollection(Collection<RateByProduct> rateByProductCollection) {
+        this.rateByProductCollection = rateByProductCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<GeneralRate> getGeneralRateCollection() {
+        return generalRateCollection;
+    }
+
+    public void setGeneralRateCollection(Collection<GeneralRate> generalRateCollection) {
+        this.generalRateCollection = generalRateCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<RateByCard> getRateByCardCollection() {
+        return rateByCardCollection;
+    }
+
+    public void setRateByCardCollection(Collection<RateByCard> rateByCardCollection) {
+        this.rateByCardCollection = rateByCardCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<RateByProgram> getRateByProgramCollection() {
+        return rateByProgramCollection;
+    }
+
+    public void setRateByProgramCollection(Collection<RateByProgram> rateByProgramCollection) {
+        this.rateByProgramCollection = rateByProgramCollection;
     }
     
 }

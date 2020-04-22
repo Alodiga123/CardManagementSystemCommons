@@ -62,6 +62,9 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
+    @JoinColumn(name = "approvalCardRateId", referencedColumnName = "id")
+    @ManyToOne
+    private ApprovalCardRate approvalCardRateId;
 
     public RateByCard() {
     }
@@ -175,6 +178,14 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public ApprovalCardRate getApprovalCardRateId() {
+        return approvalCardRateId;
+    }
+
+    public void setApprovalCardRateId(ApprovalCardRate approvalCardRateId) {
+        this.approvalCardRateId = approvalCardRateId;
     }
     
 }
