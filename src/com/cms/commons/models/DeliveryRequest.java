@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,15 +36,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "deliveryRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DeliveryRequest.findAll", query = "SELECT d FROM DeliveryRequest d")
-    , @NamedQuery(name = "DeliveryRequest.findById", query = "SELECT d FROM DeliveryRequest d WHERE d.id = :id")
-    , @NamedQuery(name = "DeliveryRequest.findByRequestNumber", query = "SELECT d FROM DeliveryRequest d WHERE d.requestNumber = :requestNumber")
-    , @NamedQuery(name = "DeliveryRequest.findByRequestDate", query = "SELECT d FROM DeliveryRequest d WHERE d.requestDate = :requestDate")
-    , @NamedQuery(name = "DeliveryRequest.findByShippingGuideNumber", query = "SELECT d FROM DeliveryRequest d WHERE d.shippingGuideNumber = :shippingGuideNumber")
-    , @NamedQuery(name = "DeliveryRequest.findByAmountCards", query = "SELECT d FROM DeliveryRequest d WHERE d.amountCards = :amountCards")
-    , @NamedQuery(name = "DeliveryRequest.findByCreateDate", query = "SELECT d FROM DeliveryRequest d WHERE d.createDate = :createDate")
-    , @NamedQuery(name = "DeliveryRequest.findByUpdateDate", query = "SELECT d FROM DeliveryRequest d WHERE d.updateDate = :updateDate")})
-public class DeliveryRequest implements Serializable {
+    @NamedQuery(name = "DeliveryRequest.findAll", query = "SELECT d FROM DeliveryRequest d"),
+    @NamedQuery(name = "DeliveryRequest.findById", query = "SELECT d FROM DeliveryRequest d WHERE d.id = :id"),
+    @NamedQuery(name = "DeliveryRequest.findByRequestNumber", query = "SELECT d FROM DeliveryRequest d WHERE d.requestNumber = :requestNumber"),
+    @NamedQuery(name = "DeliveryRequest.findByRequestDate", query = "SELECT d FROM DeliveryRequest d WHERE d.requestDate = :requestDate"),
+    @NamedQuery(name = "DeliveryRequest.findByShippingGuideNumber", query = "SELECT d FROM DeliveryRequest d WHERE d.shippingGuideNumber = :shippingGuideNumber"),
+    @NamedQuery(name = "DeliveryRequest.findByAmountCards", query = "SELECT d FROM DeliveryRequest d WHERE d.amountCards = :amountCards"),
+    @NamedQuery(name = "DeliveryRequest.findByCreateDate", query = "SELECT d FROM DeliveryRequest d WHERE d.createDate = :createDate"),
+    @NamedQuery(name = "DeliveryRequest.findByUpdateDate", query = "SELECT d FROM DeliveryRequest d WHERE d.updateDate = :updateDate")})
+public class DeliveryRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -211,5 +213,14 @@ public class DeliveryRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.DeliveryRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
