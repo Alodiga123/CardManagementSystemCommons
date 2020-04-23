@@ -14,8 +14,11 @@ import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.Card;
 import com.cms.commons.models.CardNumberCredential;
+import com.cms.commons.models.DeliveryRequest;
+import com.cms.commons.models.DeliveryRequetsHasCard;
 import com.cms.commons.models.RateByCard;
 import com.cms.commons.models.StatusAccount;
+import com.cms.commons.models.StatusDeliveryRequest;
 import com.cms.commons.models.SubAccountType;
 import java.util.List;
 
@@ -56,10 +59,12 @@ public interface CardEJB extends DistributionGenericEJB {
     public AccountSegment saveAccountSegment(AccountSegment accountSegment) throws RegisterNotFoundException, NullParameterException, GeneralException; 
 
     //Card
-    public List< Card> getCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List< Card> getCardByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List< Card> getCardByProgramByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List< Card> getCardByCardHolder(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByProgramByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByCardHolder(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByCardNumber(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Card loadCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Card saveCard(Card card) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
@@ -84,5 +89,20 @@ public interface CardEJB extends DistributionGenericEJB {
     public List<StatusAccount> getStatusAccount(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusAccount loadStatusAccount(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusAccount saveStatusAccount(StatusAccount statusAccount) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //DeliveryRequest
+    public List<DeliveryRequest> getDeliveryRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public DeliveryRequest loadDeliveryRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public DeliveryRequest saveDeliveryRequest(DeliveryRequest deliveryRequest) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
+    //DeliveryRequestHasCard
+    public List<DeliveryRequetsHasCard> getDeliveryRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public DeliveryRequetsHasCard loadDeliveryRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public DeliveryRequetsHasCard saveDeliveryRequestHasCard(DeliveryRequetsHasCard deliveryRequetsHasCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
+    //StatusDeliveryRequest
+    public List<StatusDeliveryRequest> getStatusDeliveryRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusDeliveryRequest loadStatusDeliveryRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusDeliveryRequest saveStatusDeliveryRequest(StatusDeliveryRequest statusDeliveryRequest) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
 }

@@ -43,6 +43,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Card.findByPinLenght", query = "SELECT c FROM Card c WHERE c.pinLenght = :pinLenght"),
     @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM, query = "SELECT c FROM Card c WHERE c.programId.id = :programId"),
     @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM_BY_STATUS, query = "SELECT c FROM Card c WHERE c.programId.id = :programId AND c.productId.id = :productId AND c.cardStatusId.id = :cardStatusId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_STATUS, query = "SELECT c FROM Card c WHERE c.cardStatusId.id = :cardStatusId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_CARDNUMBER, query = "SELECT c FROM Card c WHERE c.cardNumber = :cardNumber AND c.cardStatusId.id = :cardStatusId"),
     @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c FROM Card c WHERE c.cardHolder = :cardHolder")})
 
 public class Card extends AbstractDistributionEntity implements Serializable {
@@ -102,6 +104,8 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Column(name = "indDeliveryRequest")
+    private Boolean indDeliveryRequest;
 
     public Card() {
     }
@@ -237,6 +241,14 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     public void setPersonCustomerId(Person personCustomerId) {
         this.personCustomerId = personCustomerId;
     }
+
+    public Boolean getIndDeliveryRequest() {
+        return indDeliveryRequest;
+    }
+
+    public void setIndDeliveryRequest(Boolean indDeliveryRequest) {
+        this.indDeliveryRequest = indDeliveryRequest;
+    }    
 
     public Date getCreateDate() {
         return createDate;

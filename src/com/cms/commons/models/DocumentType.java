@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -42,6 +37,9 @@ public class DocumentType extends AbstractDistributionEntity implements Serializ
     @Size(max = 40)
     @Column(name = "name")
     private String name;
+    @Size(max = 10)
+    @Column(name = "acronym")
+    private String acronym;
 
     public DocumentType() {
     }
@@ -65,6 +63,14 @@ public class DocumentType extends AbstractDistributionEntity implements Serializ
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
+    }   
 
     @Override
     public int hashCode() {
