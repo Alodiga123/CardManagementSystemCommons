@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StatusResultPlasticCustomizing.findById", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id"),
     @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description"),
     @NamedQuery(name = QueryConstants.STATUS_BY_DESCRIPTION, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description LIKE :description"),
-    @NamedQuery(name = QueryConstants.STATUS_BY_CARD_STATUS, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.cardStatusId=:cardStatusId"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_CARD_STATUS, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id"),
     @NamedQuery(name = QueryConstants.STATUS_BY_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.plasticManufacturerId.id=:plasticManufacturerId")})
 public class StatusResultPlasticCustomizing extends AbstractDistributionEntity implements Serializable {
 
