@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -38,16 +39,17 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "legalPerson")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LegalPerson.findAll", query = "SELECT l FROM LegalPerson l")
-    , @NamedQuery(name = "LegalPerson.findById", query = "SELECT l FROM LegalPerson l WHERE l.id = :id")
-    , @NamedQuery(name = "LegalPerson.findByTradeName", query = "SELECT l FROM LegalPerson l WHERE l.tradeName = :tradeName")
-    , @NamedQuery(name = "LegalPerson.findByEnterpriseName", query = "SELECT l FROM LegalPerson l WHERE l.enterpriseName = :enterpriseName")
-    , @NamedQuery(name = "LegalPerson.findByDateInscriptionRegister", query = "SELECT l FROM LegalPerson l WHERE l.dateInscriptionRegister = :dateInscriptionRegister")
-    , @NamedQuery(name = "LegalPerson.findByRegisterNumber", query = "SELECT l FROM LegalPerson l WHERE l.registerNumber = :registerNumber")
-    , @NamedQuery(name = "LegalPerson.findByPayedCapital", query = "SELECT l FROM LegalPerson l WHERE l.payedCapital = :payedCapital")
-    , @NamedQuery(name = "LegalPerson.findByEnterprisePhone", query = "SELECT l FROM LegalPerson l WHERE l.enterprisePhone = :enterprisePhone")
-    , @NamedQuery(name = "LegalPerson.findByWebSite", query = "SELECT l FROM LegalPerson l WHERE l.webSite = :webSite")})
-public class LegalPerson extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "LegalPerson.findAll", query = "SELECT l FROM LegalPerson l"),
+    @NamedQuery(name = "LegalPerson.findById", query = "SELECT l FROM LegalPerson l WHERE l.id = :id"),
+    @NamedQuery(name = "LegalPerson.findByTradeName", query = "SELECT l FROM LegalPerson l WHERE l.tradeName = :tradeName"),
+    @NamedQuery(name = "LegalPerson.findByEnterpriseName", query = "SELECT l FROM LegalPerson l WHERE l.enterpriseName = :enterpriseName"),
+    @NamedQuery(name = "LegalPerson.findByDateInscriptionRegister", query = "SELECT l FROM LegalPerson l WHERE l.dateInscriptionRegister = :dateInscriptionRegister"),
+    @NamedQuery(name = "LegalPerson.findByRegisterNumber", query = "SELECT l FROM LegalPerson l WHERE l.registerNumber = :registerNumber"),
+    @NamedQuery(name = "LegalPerson.findByPayedCapital", query = "SELECT l FROM LegalPerson l WHERE l.payedCapital = :payedCapital"),
+    @NamedQuery(name = "LegalPerson.findByEnterprisePhone", query = "SELECT l FROM LegalPerson l WHERE l.enterprisePhone = :enterprisePhone"),
+    @NamedQuery(name = "LegalPerson.findByWebSite", query = "SELECT l FROM LegalPerson l WHERE l.webSite = :webSite"),
+    @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId")})
+public class LegalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -84,7 +86,6 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusApplicant statusApplicantId;
-    
 
     public LegalPerson() {
     }
@@ -108,7 +109,7 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
     }
-    
+
     public String getTradeName() {
         return tradeName;
     }
@@ -164,7 +165,7 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     public void setWebSite(String webSite) {
         this.webSite = webSite;
     }
-    
+
     public DocumentsPersonType getDocumentsPersonTypeId() {
         return documentsPersonTypeId;
     }
@@ -180,7 +181,7 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     public Person getPersonId() {
         return personId;
     }
-    
+
     public EconomicActivity getEconomicActivityId() {
         return economicActivityId;
     }
@@ -217,7 +218,7 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
         return true;
     }
 
-     @Override
+    @Override
     public String toString() {
         return super.toString();
     }
@@ -231,5 +232,5 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }

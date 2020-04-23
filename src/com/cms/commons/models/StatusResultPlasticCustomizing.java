@@ -5,10 +5,11 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +19,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -34,10 +32,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusResultPlasticCustomizing")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusResultPlasticCustomizing.findAll", query = "SELECT s FROM StatusResultPlasticCustomizing s")
-    , @NamedQuery(name = "StatusResultPlasticCustomizing.findById", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description")})
-public class StatusResultPlasticCustomizing implements Serializable {
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findAll", query = "SELECT s FROM StatusResultPlasticCustomizing s"),
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findById", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_DESCRIPTION, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description LIKE :description"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_CARD_STATUS, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.cardStatusId=:cardStatusId"),
+    @NamedQuery(name = QueryConstants.STATUS_BY_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.plasticManufacturerId.id=:plasticManufacturerId")})
+public class StatusResultPlasticCustomizing extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,11 +54,9 @@ public class StatusResultPlasticCustomizing implements Serializable {
     @JoinColumn(name = "plasticManufacturerId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private PlasticManufacturer plasticManufacturerId;
-    @JoinColumn(name = "statusPlasticCustomizingRequestd", referencedColumnName = "id")
+    @JoinColumn(name = "cardStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private StatusPlasticCustomizingRequest statusPlasticCustomizingRequestd;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusResultPlasticCustomizingId")
-    private Collection<ResultPlasticCustomizingRequest> resultPlasticCustomizingRequestCollection;
+    private CardStatus cardStatusId;
 
     public StatusResultPlasticCustomizing() {
     }
@@ -95,22 +94,12 @@ public class StatusResultPlasticCustomizing implements Serializable {
         this.plasticManufacturerId = plasticManufacturerId;
     }
 
-    public StatusPlasticCustomizingRequest getStatusPlasticCustomizingRequestd() {
-        return statusPlasticCustomizingRequestd;
+    public CardStatus getCardStatusId() {
+        return cardStatusId;
     }
 
-    public void setStatusPlasticCustomizingRequestd(StatusPlasticCustomizingRequest statusPlasticCustomizingRequestd) {
-        this.statusPlasticCustomizingRequestd = statusPlasticCustomizingRequestd;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ResultPlasticCustomizingRequest> getResultPlasticCustomizingRequestCollection() {
-        return resultPlasticCustomizingRequestCollection;
-    }
-
-    public void setResultPlasticCustomizingRequestCollection(Collection<ResultPlasticCustomizingRequest> resultPlasticCustomizingRequestCollection) {
-        this.resultPlasticCustomizingRequestCollection = resultPlasticCustomizingRequestCollection;
+    public void setCardStatusId(CardStatus cardStatusId) {
+        this.cardStatusId = cardStatusId;
     }
 
     @Override
@@ -137,5 +126,14 @@ public class StatusResultPlasticCustomizing implements Serializable {
     public String toString() {
         return "com.cms.commons.models.StatusResultPlasticCustomizing[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

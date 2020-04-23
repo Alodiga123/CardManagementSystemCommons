@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,11 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "deliveryRequetsHasCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "DeliveryRequetsHasCard.findAll", query = "SELECT d FROM DeliveryRequetsHasCard d")
-    , @NamedQuery(name = "DeliveryRequetsHasCard.findById", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.id = :id")
-    , @NamedQuery(name = "DeliveryRequetsHasCard.findByCreateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.createDate = :createDate")
-    , @NamedQuery(name = "DeliveryRequetsHasCard.findByUpdateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.updateDate = :updateDate")})
-public class DeliveryRequetsHasCard implements Serializable {
+    @NamedQuery(name = "DeliveryRequetsHasCard.findAll", query = "SELECT d FROM DeliveryRequetsHasCard d"),
+    @NamedQuery(name = "DeliveryRequetsHasCard.findById", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.id = :id"),
+    @NamedQuery(name = "DeliveryRequetsHasCard.findByCreateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.createDate = :createDate"),
+    @NamedQuery(name = "DeliveryRequetsHasCard.findByUpdateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.updateDate = :updateDate")})
+public class DeliveryRequetsHasCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -135,5 +137,15 @@ public class DeliveryRequetsHasCard implements Serializable {
     public String toString() {
         return "com.cms.commons.models.DeliveryRequetsHasCard[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
 }

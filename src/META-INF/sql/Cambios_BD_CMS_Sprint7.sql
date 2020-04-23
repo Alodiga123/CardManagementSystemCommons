@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusResultPlasticCustomizin
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(60) NOT NULL,
   `plasticManufacturerId` INT NOT NULL,
-  `statusPlasticCustomizingRequestd` INT NOT NULL,
+  `statusPlasticCustomizingRequestId` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_statusResultPlasticCustomizing_plasticManufacturer1_idx` (`plasticManufacturerId` ASC),
   INDEX `fk_statusResultPlasticCustomizing_statusPlasticCustomizingR_idx` (`statusPlasticCustomizingRequestd` ASC),
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusResultPlasticCustomizin
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_statusResultPlasticCustomizing_statusPlasticCustomizingReq1`
-    FOREIGN KEY (`statusPlasticCustomizingRequestd`)
+    FOREIGN KEY (`statusPlasticCustomizingRequestId`)
     REFERENCES `CardManagementSystem`.`statusPlasticCustomizingRequest` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -180,4 +180,38 @@ ENGINE = InnoDB;
 -- Fecha: 14/04/2020
 ALTER TABLE `CardManagementSystem`.`address` 
 ADD COLUMN `number` VARCHAR(10) NULL AFTER `addressTypeId`;
+
+-- Agregar el campo en tabla resultPlasticCustomizingRequest
+-- author: Jesús Gomez
+-- Fecha: 17/04/2020
+ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
+ADD COLUMN `statusResult` VARCHAR(60) NULL AFTER `expirationCardDate`;
+
+-- Agregar campos de fecha en tabla address
+-- author: Jesús Gomez
+-- Fecha: 21/04/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `addressTypeId`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+-- Eliminar FKs tabla statusResultPlasticCustomizing
+-- author: Jesús Gómez
+-- Fecha: 21/04/2020
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing`
+DROP FOREIGN KEY `fk_statusResultPlasticCustomizing_statusPlasticCustomizingReq1`;
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+DROP COLUMN `statusPlasticCustomizingRequestd`;
+
+-- Agregar FK en tabla statusResultPlasticCustomizing
+-- author: Jesús Gómez
+-- Fecha: 21/04/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+ADD COLUMN `cardStatusId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+ADD CONSTRAINT `fk_statusResultPlasticCustomizing_cardStatus1` 
+FOREIGN KEY (`cardStatusId`)
+    REFERENCES `CardManagementSystem`.`cardStatus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
 

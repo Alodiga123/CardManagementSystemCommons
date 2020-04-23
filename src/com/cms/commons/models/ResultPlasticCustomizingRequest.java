@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -33,14 +35,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "resultPlasticCustomizingRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ResultPlasticCustomizingRequest.findAll", query = "SELECT r FROM ResultPlasticCustomizingRequest r")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findById", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.id = :id")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findByCardNumber", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.cardNumber = :cardNumber")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findByCardHolder", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.cardHolder = :cardHolder")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findByIdentificationNumberCardHolder", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.identificationNumberCardHolder = :identificationNumberCardHolder")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findByProductTypeDescription", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.productTypeDescription = :productTypeDescription")
-    , @NamedQuery(name = "ResultPlasticCustomizingRequest.findByExpirationCardDate", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.expirationCardDate = :expirationCardDate")})
-public class ResultPlasticCustomizingRequest implements Serializable {
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findAll", query = "SELECT r FROM ResultPlasticCustomizingRequest r"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findById", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.id = :id"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findByCardNumber", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.cardNumber = :cardNumber"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findByCardHolder", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.cardHolder = :cardHolder"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findByIdentificationNumberCardHolder", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.identificationNumberCardHolder = :identificationNumberCardHolder"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findByProductTypeDescription", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.productTypeDescription = :productTypeDescription"),
+    @NamedQuery(name = "ResultPlasticCustomizingRequest.findByExpirationCardDate", query = "SELECT r FROM ResultPlasticCustomizingRequest r WHERE r.expirationCardDate = :expirationCardDate")})
+public class ResultPlasticCustomizingRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,6 +73,8 @@ public class ResultPlasticCustomizingRequest implements Serializable {
     @Column(name = "expirationCardDate")
     @Temporal(TemporalType.DATE)
     private Date expirationCardDate;
+    @Column(name = "statusResult")
+    private String statusResult;
     @JoinColumn(name = "statusResultPlasticCustomizingId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusResultPlasticCustomizing statusResultPlasticCustomizingId;
@@ -141,6 +145,14 @@ public class ResultPlasticCustomizingRequest implements Serializable {
         this.expirationCardDate = expirationCardDate;
     }
 
+    public String getStatusResult() {
+        return statusResult;
+    }
+
+    public void setStatusResult(String statusResult) {
+        this.statusResult = statusResult;
+    }
+
     public StatusResultPlasticCustomizing getStatusResultPlasticCustomizingId() {
         return statusResultPlasticCustomizingId;
     }
@@ -181,5 +193,14 @@ public class ResultPlasticCustomizingRequest implements Serializable {
     public String toString() {
         return "com.cms.commons.models.ResultPlasticCustomizingRequest[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
