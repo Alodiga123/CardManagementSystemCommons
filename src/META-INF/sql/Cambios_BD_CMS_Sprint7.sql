@@ -187,6 +187,13 @@ ADD COLUMN `number` VARCHAR(10) NULL AFTER `addressTypeId`;
 ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
 ADD COLUMN `statusResult` VARCHAR(60) NULL AFTER `expirationCardDate`;
 
+-- Eliminar FKs tabla statusResultPlasticCustomizing
+-- author: Jesús Gómez
+-- Fecha: 21/04/2020
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing`
+DROP FOREIGN KEY `fk_statusResultPlasticCustomizing_statusPlasticCustomizingReq1`;
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+DROP COLUMN `statusPlasticCustomizingRequestd`;
 -- Agregar campos de fecha en tabla address
 -- author: Jesús Gomez
 -- Fecha: 21/04/2020
@@ -213,5 +220,87 @@ FOREIGN KEY (`cardStatusId`)
     REFERENCES `CardManagementSystem`.`cardStatus` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
+
+-- Crear tabla approvalCardRate
+-- author: Jesús Gómez
+-- Fecha: 22/04/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalCardRate` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `cardId` BIGINT NOT NULL,
+  `approvalDate` DATE NOT NULL,
+  `indApproved` TINYINT(1) NOT NULL,
+  `userId` INT NOT NULL,
+  `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_approvalCardRate_card1_idx` (`cardId` ASC),
+  INDEX `fk_approvalCardRate_user1_idx` (`userId` ASC),
+  CONSTRAINT `fk_approvalCardRate_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_approvalCardRate_user1`
+    FOREIGN KEY (`userId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+-- Agregar FK en tabla generalRate
+-- author: Jesús Gómez
+-- Fecha: 22/04/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`generalRate` 
+ADD COLUMN `approvalGeneralRateId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`generalRate` 
+ADD CONSTRAINT `fk_generalRate_approvalGeneralRate1` 
+FOREIGN KEY (`approvalGeneralRateId`)
+    REFERENCES `CardManagementSystem`.`approvalGeneralRate` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla rateByProgram
+-- author: Jesús Gómez
+-- Fecha: 22/04/2020
+ALTER TABLE `CardManagementSystem`.`rateByProgram` 
+ADD COLUMN `approvalProgramRateId` BIGINT NULL;
+ALTER TABLE `CardManagementSystem`.`rateByProgram` 
+ADD INDEX `fk_rateByProgram_approvalProgramRate1_idx` (`approvalProgramRateId` ASC);
+ALTER TABLE `CardManagementSystem`.`rateByProgram` 
+ADD CONSTRAINT `fk_rateByProgram_approvalProgramRate1`
+  FOREIGN KEY (`approvalProgramRateId`)
+  REFERENCES `CardManagementSystem`.`approvalProgramRate` (`Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla rateByProduct
+-- author: Jesús Gómez
+-- Fecha: 22/04/2020
+ALTER TABLE `CardManagementSystem`.`rateByProduct` 
+ADD COLUMN `approvalProductRateId` BIGINT NULL;
+ALTER TABLE `CardManagementSystem`.`rateByProduct` 
+ADD INDEX `fk_rateByProduct_approvalProductRate1_idx` (`approvalProductRateId` ASC);
+ALTER TABLE `CardManagementSystem`.`rateByProduct` 
+ADD CONSTRAINT `fk_rateByProduct_approvalProductRate1` 
+FOREIGN KEY (`approvalProductRateId`)
+    REFERENCES `CardManagementSystem`.`approvalProductRate` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en tabla rateByCard
+-- author: Jesús Gómez
+-- Fecha: 22/04/2020
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD COLUMN `approvalCardRateId` BIGINT NULL;
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD INDEX `fk_rateByCard_approvalCardRate1_idx` (`approvalCardRateId` ASC);
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD CONSTRAINT `fk_rateByCard_approvalCardRate1` 
+FOREIGN KEY (`approvalCardRateId`)
+    REFERENCES `CardManagementSystem`.`approvalCardRate` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
 SET FOREIGN_KEY_CHECKS=1;
 

@@ -67,6 +67,9 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "rateApplicationTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private RateApplicationType rateApplicationTypeId;
+    @JoinColumn(name = "approvalGeneralRateId", referencedColumnName = "id")
+    @ManyToOne
+    private ApprovalGeneralRate approvalGeneralRateId;
 
     public GeneralRate() {
     }
@@ -163,6 +166,14 @@ public class GeneralRate extends AbstractDistributionEntity implements Serializa
         this.rateApplicationTypeId = rateApplicationTypeId;
     }
 
+    public ApprovalGeneralRate getApprovalGeneralRateId() {
+        return approvalGeneralRateId;
+    }
+
+    public void setApprovalGeneralRateId(ApprovalGeneralRate approvalGeneralRateId) {
+        this.approvalGeneralRateId = approvalGeneralRateId;
+    }    
+    
     @Override
     public int hashCode() {
         int hash = 0;

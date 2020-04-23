@@ -82,6 +82,7 @@ public class Constants {
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
     public static final String PERSON_KEY = "personId";
     public static final String DESCRiPTION_KEY = "description";
+    public static final String CARDNUMBER_KEY = "cardNumber";
     public static final String USE_KEY = "indUse";
     public static final String REQUESTS_KEY = "requestId";
     public static final String NATURAL_CUSTOMER_KEY = "naturalCustomerId";
@@ -112,6 +113,7 @@ public class Constants {
     public static final String ACCOUNT_PROPERTIES_KEY = "accountPropertiesId";
     public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
     public static final String PLASTIC_MANUFACTURER_KEY = "plasticManufacturerId";
+    public static final String PLASTIC_CARD_STATUS_KEY = "cardStatusId";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
     public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
     public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
