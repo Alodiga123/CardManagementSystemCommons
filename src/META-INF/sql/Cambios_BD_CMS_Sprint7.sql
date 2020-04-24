@@ -194,12 +194,14 @@ ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing`
 DROP FOREIGN KEY `fk_statusResultPlasticCustomizing_statusPlasticCustomizingReq1`;
 ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
 DROP COLUMN `statusPlasticCustomizingRequestd`;
+
 -- Agregar campos de fecha en tabla address
 -- author: Jesús Gomez
 -- Fecha: 21/04/2020
 ALTER TABLE `CardManagementSystem`.`address` 
 ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `addressTypeId`,
 ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
 -- Eliminar FKs tabla statusResultPlasticCustomizing
 -- author: Jesús Gómez
 -- Fecha: 21/04/2020
@@ -221,6 +223,12 @@ FOREIGN KEY (`cardStatusId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar campo en tabla card
+-- author: Jesús Gomez
+-- Fecha: 21/04/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `indDeliveryRequest` TINYINT(1) NULL AFTER `personCustomerId`;
 
 -- Crear tabla approvalCardRate
 -- author: Jesús Gómez
@@ -304,3 +312,40 @@ FOREIGN KEY (`approvalCardRateId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+ALTER TABLE `CardManagementSystem`.`product` 
+DROP FOREIGN KEY `fk_product_currency1`,
+DROP FOREIGN KEY `fk_product_currency2`;
+ALTER TABLE `CardManagementSystem`.`product` 
+CHANGE COLUMN `domesticCurrencyId` `domesticCurrencyId` INT(11) NULL ,
+CHANGE COLUMN `internationalCurrencyId` `internationalCurrencyId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`product` 
+ADD CONSTRAINT `fk_product_currency1`
+  FOREIGN KEY (`domesticCurrencyId`)
+  REFERENCES `CardManagementSystem`.`currency` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_product_currency2`
+  FOREIGN KEY (`internationalCurrencyId`)
+  REFERENCES `CardManagementSystem`.`currency` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Agregar FK en product
+-- author: Jesús Gómez
+-- Fecha: 24/04/2020
+ALTER TABLE `CardManagementSystem`.`product` 
+ADD COLUMN `userActivationId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`product` 
+ADD CONSTRAINT `fk_product_user1` 
+FOREIGN KEY (`userActivationId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar campos en tabla product
+-- author: Jesús Gomez
+-- Fecha: 24/04/2020
+ALTER TABLE `CardManagementSystem`.`product` 
+ADD COLUMN `activationDate` DATE NULL AFTER `statusProductId`,
+ADD COLUMN `indActivation` TINYINT(1) NULL AFTER `activationDate`,
+ADD COLUMN `observations` DATE NULL AFTER `indActivation`;
