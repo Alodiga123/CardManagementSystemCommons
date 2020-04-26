@@ -202,14 +202,6 @@ ALTER TABLE `CardManagementSystem`.`address`
 ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `addressTypeId`,
 ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
 
--- Eliminar FKs tabla statusResultPlasticCustomizing
--- author: Jesús Gómez
--- Fecha: 21/04/2020
-ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing`
-DROP FOREIGN KEY `fk_statusResultPlasticCustomizing_statusPlasticCustomizingReq1`;
-ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
-DROP COLUMN `statusPlasticCustomizingRequestd`;
-
 -- Agregar FK en tabla statusResultPlasticCustomizing
 -- author: Jesús Gómez
 -- Fecha: 21/04/2020
@@ -312,6 +304,9 @@ FOREIGN KEY (`approvalCardRateId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+-- Modificar FK en tabla product
+-- author: Jesús Gómez
+-- Fecha: 24/04/2020
 ALTER TABLE `CardManagementSystem`.`product` 
 DROP FOREIGN KEY `fk_product_currency1`,
 DROP FOREIGN KEY `fk_product_currency2`;
@@ -348,4 +343,4 @@ FOREIGN KEY (`userActivationId`)
 ALTER TABLE `CardManagementSystem`.`product` 
 ADD COLUMN `activationDate` DATE NULL AFTER `statusProductId`,
 ADD COLUMN `indActivation` TINYINT(1) NULL AFTER `activationDate`,
-ADD COLUMN `observations` DATE NULL AFTER `indActivation`;
+ADD COLUMN `observations` VARCHAR(1000)  NULL AFTER `indActivation`;
