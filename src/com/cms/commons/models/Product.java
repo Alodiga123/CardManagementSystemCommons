@@ -145,6 +145,20 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private ProductHasChannelHasTransaction productHasChannelHasTransaction;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ApprovalProductRate approvalProductRate;
+    @Column(name = "activationDate")
+    @Temporal(TemporalType.DATE)
+    private Date activationDate;
+    @Column(name = "indActivation")
+    private Boolean indActivation;
+    @Column(name = "observations")
+    @Temporal(TemporalType.DATE)
+    private Date observations;
+    @JoinColumn(name = "userActivationId", referencedColumnName = "id")
+    @ManyToOne
+    private User userActivationId;
+    @JoinColumn(name = "statusProductId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusProduct statusProductId;
 
     public Product() {
     }
@@ -466,6 +480,46 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getActivationDate() {
+        return activationDate;
+    }
+
+    public void setActivationDate(Date activationDate) {
+        this.activationDate = activationDate;
+    }
+
+    public Boolean getIndActivation() {
+        return indActivation;
+    }
+
+    public void setIndActivation(Boolean indActivation) {
+        this.indActivation = indActivation;
+    }
+
+    public Date getObservations() {
+        return observations;
+    }
+
+    public void setObservations(Date observations) {
+        this.observations = observations;
+    }
+
+    public User getUserActivationId() {
+        return userActivationId;
+    }
+
+    public void setUserActivationId(User userActivationId) {
+        this.userActivationId = userActivationId;
+    }
+
+    public StatusProduct getStatusProductId() {
+        return statusProductId;
+    }
+
+    public void setStatusProductId(StatusProduct statusProductId) {
+        this.statusProductId = statusProductId;
     }
 
 }
