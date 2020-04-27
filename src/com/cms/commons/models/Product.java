@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -150,9 +151,9 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private Date activationDate;
     @Column(name = "indActivation")
     private Boolean indActivation;
+    @Size(max = 1000)
     @Column(name = "observations")
-    @Temporal(TemporalType.DATE)
-    private Date observations;
+    private String observations;
     @JoinColumn(name = "userActivationId", referencedColumnName = "id")
     @ManyToOne
     private User userActivationId;
@@ -498,11 +499,11 @@ public class Product extends AbstractDistributionEntity implements Serializable 
         this.indActivation = indActivation;
     }
 
-    public Date getObservations() {
+    public String getObservations() {
         return observations;
     }
 
-    public void setObservations(Date observations) {
+    public void setObservations(String observations) {
         this.observations = observations;
     }
 
