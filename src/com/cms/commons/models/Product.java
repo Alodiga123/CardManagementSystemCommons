@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -145,6 +146,20 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private ProductHasChannelHasTransaction productHasChannelHasTransaction;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
     private ApprovalProductRate approvalProductRate;
+    @Column(name = "activationDate")
+    @Temporal(TemporalType.DATE)
+    private Date activationDate;
+    @Column(name = "indActivation")
+    private Boolean indActivation;
+    @Size(max = 1000)
+    @Column(name = "observations")
+    private String observations;
+    @JoinColumn(name = "userActivationId", referencedColumnName = "id")
+    @ManyToOne
+    private User userActivationId;
+    @JoinColumn(name = "statusProductId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusProduct statusProductId;
 
     public Product() {
     }
@@ -466,6 +481,46 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getActivationDate() {
+        return activationDate;
+    }
+
+    public void setActivationDate(Date activationDate) {
+        this.activationDate = activationDate;
+    }
+
+    public Boolean getIndActivation() {
+        return indActivation;
+    }
+
+    public void setIndActivation(Boolean indActivation) {
+        this.indActivation = indActivation;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
+    }
+
+    public User getUserActivationId() {
+        return userActivationId;
+    }
+
+    public void setUserActivationId(User userActivationId) {
+        this.userActivationId = userActivationId;
+    }
+
+    public StatusProduct getStatusProductId() {
+        return statusProductId;
+    }
+
+    public void setStatusProductId(StatusProduct statusProductId) {
+        this.statusProductId = statusProductId;
     }
 
 }
