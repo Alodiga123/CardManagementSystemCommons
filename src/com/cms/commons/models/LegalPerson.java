@@ -48,7 +48,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "LegalPerson.findByPayedCapital", query = "SELECT l FROM LegalPerson l WHERE l.payedCapital = :payedCapital"),
     @NamedQuery(name = "LegalPerson.findByEnterprisePhone", query = "SELECT l FROM LegalPerson l WHERE l.enterprisePhone = :enterprisePhone"),
     @NamedQuery(name = "LegalPerson.findByWebSite", query = "SELECT l FROM LegalPerson l WHERE l.webSite = :webSite"),
-    @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId")})
+    @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId"),
+    @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.personId.id=:personId")})
 public class LegalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
