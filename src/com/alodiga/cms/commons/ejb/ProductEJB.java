@@ -25,6 +25,7 @@ import com.cms.commons.models.Transaction;
 import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.ApprovalGeneralRate;
 import com.cms.commons.models.ApprovalProgramRate;
+import com.cms.commons.models.StatusProduct;
 import java.util.List;
 
 /**
@@ -132,4 +133,10 @@ public interface ProductEJB extends DistributionGenericEJB {
     public List<ApprovalProgramRate> getApprovalProgramRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApprovalProgramRate loadApprovalProgramRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApprovalProgramRate saveApprovalProgramRate(ApprovalProgramRate approvalProgramRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //StatusProduct
+    public List<StatusProduct> getStatusProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusProduct loadStatusProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusProduct saveStatusProduct(StatusProduct statusProduct) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
 }
