@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,21 +35,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "naturalPerson")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "NaturalPerson.findAll", query = "SELECT n FROM NaturalPerson n")
-    , @NamedQuery(name = "NaturalPerson.findById", query = "SELECT n FROM NaturalPerson n WHERE n.id = :id")
-    , @NamedQuery(name = "NaturalPerson.findByIdentificationNumber", query = "SELECT n FROM NaturalPerson n WHERE n.identificationNumber = :identificationNumber")
-    , @NamedQuery(name = "NaturalPerson.findByDueDateDocumentIdentification", query = "SELECT n FROM NaturalPerson n WHERE n.dueDateDocumentIdentification = :dueDateDocumentIdentification")
-    , @NamedQuery(name = "NaturalPerson.findByIdentificationNumberOld", query = "SELECT n FROM NaturalPerson n WHERE n.identificationNumberOld = :identificationNumberOld")
-    , @NamedQuery(name = "NaturalPerson.findByFirstNames", query = "SELECT n FROM NaturalPerson n WHERE n.firstNames = :firstNames")
-    , @NamedQuery(name = "NaturalPerson.findByLastNames", query = "SELECT n FROM NaturalPerson n WHERE n.lastNames = :lastNames")
-    , @NamedQuery(name = "NaturalPerson.findByMarriedLastName", query = "SELECT n FROM NaturalPerson n WHERE n.marriedLastName = :marriedLastName")
-    , @NamedQuery(name = "NaturalPerson.findByGender", query = "SELECT n FROM NaturalPerson n WHERE n.gender = :gender")
-    , @NamedQuery(name = "NaturalPerson.findByPlaceBirth", query = "SELECT n FROM NaturalPerson n WHERE n.placeBirth = :placeBirth")
-    , @NamedQuery(name = "NaturalPerson.findByDateBirth", query = "SELECT n FROM NaturalPerson n WHERE n.dateBirth = :dateBirth")
-    , @NamedQuery(name = "NaturalPerson.findByFamilyResponsibilities", query = "SELECT n FROM NaturalPerson n WHERE n.familyResponsibilities = :familyResponsibilities")
-    , @NamedQuery(name = "NaturalPerson.findByCreateDate", query = "SELECT n FROM NaturalPerson n WHERE n.createDate = :createDate")
-    , @NamedQuery(name = "NaturalPerson.findByUpdateDate", query = "SELECT n FROM NaturalPerson n WHERE n.updateDate = :updateDate")})
-public class NaturalPerson extends AbstractDistributionEntity implements Serializable{
+    @NamedQuery(name = "NaturalPerson.findAll", query = "SELECT n FROM NaturalPerson n"),
+    @NamedQuery(name = "NaturalPerson.findById", query = "SELECT n FROM NaturalPerson n WHERE n.id = :id"),
+    @NamedQuery(name = "NaturalPerson.findByIdentificationNumber", query = "SELECT n FROM NaturalPerson n WHERE n.identificationNumber = :identificationNumber"),
+    @NamedQuery(name = "NaturalPerson.findByDueDateDocumentIdentification", query = "SELECT n FROM NaturalPerson n WHERE n.dueDateDocumentIdentification = :dueDateDocumentIdentification"),
+    @NamedQuery(name = "NaturalPerson.findByIdentificationNumberOld", query = "SELECT n FROM NaturalPerson n WHERE n.identificationNumberOld = :identificationNumberOld"),
+    @NamedQuery(name = "NaturalPerson.findByFirstNames", query = "SELECT n FROM NaturalPerson n WHERE n.firstNames = :firstNames"),
+    @NamedQuery(name = "NaturalPerson.findByLastNames", query = "SELECT n FROM NaturalPerson n WHERE n.lastNames = :lastNames"),
+    @NamedQuery(name = "NaturalPerson.findByMarriedLastName", query = "SELECT n FROM NaturalPerson n WHERE n.marriedLastName = :marriedLastName"),
+    @NamedQuery(name = "NaturalPerson.findByGender", query = "SELECT n FROM NaturalPerson n WHERE n.gender = :gender"),
+    @NamedQuery(name = "NaturalPerson.findByPlaceBirth", query = "SELECT n FROM NaturalPerson n WHERE n.placeBirth = :placeBirth"),
+    @NamedQuery(name = "NaturalPerson.findByDateBirth", query = "SELECT n FROM NaturalPerson n WHERE n.dateBirth = :dateBirth"),
+    @NamedQuery(name = "NaturalPerson.findByFamilyResponsibilities", query = "SELECT n FROM NaturalPerson n WHERE n.familyResponsibilities = :familyResponsibilities"),
+    @NamedQuery(name = "NaturalPerson.findByCreateDate", query = "SELECT n FROM NaturalPerson n WHERE n.createDate = :createDate"),
+    @NamedQuery(name = "NaturalPerson.findByUpdateDate", query = "SELECT n FROM NaturalPerson n WHERE n.updateDate = :updateDate"),
+    @NamedQuery(name = QueryConstants.NATURAL_PERSON_BY_PERSON, query = "SELECT n FROM NaturalPerson n WHERE n.personId.id=:personId"),})
+public class NaturalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -231,7 +233,7 @@ public class NaturalPerson extends AbstractDistributionEntity implements Seriali
     public void setPersonId(Person personId) {
         this.personId = personId;
     }
-    
+
     public DocumentsPersonType getDocumentsPersonTypeId() {
         return documentsPersonTypeId;
     }
@@ -260,7 +262,7 @@ public class NaturalPerson extends AbstractDistributionEntity implements Seriali
         return true;
     }
 
-     @Override
+    @Override
     public String toString() {
         return super.toString();
     }
@@ -274,5 +276,5 @@ public class NaturalPerson extends AbstractDistributionEntity implements Seriali
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }
