@@ -65,12 +65,14 @@ public class Constants {
     //PersonClassification
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
+    public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static Integer CARD_STATUS_REQUESTED = 1;
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
     public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
     public static Integer CHANNEL_CREATION_ACCOUNT = 7;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static Integer CLASSIFICATION_PERSON_OWNER = 3;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
     public static Integer CLASSIFICATION_PERSON_USER = 2;
     public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
