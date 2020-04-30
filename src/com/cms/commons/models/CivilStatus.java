@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -44,6 +46,9 @@ public class CivilStatus implements Serializable {
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
     private Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
@@ -120,6 +125,14 @@ public class CivilStatus implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.CivilStatus[ id=" + id + " ]";
+    }
+
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
     }
     
 }
