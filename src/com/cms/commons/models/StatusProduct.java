@@ -14,12 +14,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -29,13 +29,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "civilStatus")
+@Table(name = "statusProduct")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CivilStatus.findAll", query = "SELECT c FROM CivilStatus c")
-    , @NamedQuery(name = "CivilStatus.findById", query = "SELECT c FROM CivilStatus c WHERE c.id = :id")
-    , @NamedQuery(name = "CivilStatus.findByDescription", query = "SELECT c FROM CivilStatus c WHERE c.description = :description")})
-public class CivilStatus implements Serializable {
+    @NamedQuery(name = "StatusProduct.findAll", query = "SELECT s FROM StatusProduct s")
+    , @NamedQuery(name = "StatusProduct.findById", query = "SELECT s FROM StatusProduct s WHERE s.id = :id")
+    , @NamedQuery(name = "StatusProduct.findByDescription", query = "SELECT s FROM StatusProduct s WHERE s.description = :description")})
+public class StatusProduct implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,24 +44,21 @@ public class CivilStatus implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
     @Column(name = "description")
     private String description;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Country countryId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
-    private Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
-    private Collection<NaturalPerson> naturalPersonCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusProductId")
+    private Collection<Product> productCollection;
 
-    public CivilStatus() {
+    public StatusProduct() {
     }
 
-    public CivilStatus(Integer id) {
+    public StatusProduct(Integer id) {
         this.id = id;
     }
 
-    public CivilStatus(Integer id, String description) {
+    public StatusProduct(Integer id, String description) {
         this.id = id;
         this.description = description;
     }
@@ -84,22 +81,12 @@ public class CivilStatus implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<ApplicantNaturalPerson> getApplicantNaturalPersonCollection() {
-        return applicantNaturalPersonCollection;
+    public Collection<Product> getProductCollection() {
+        return productCollection;
     }
 
-    public void setApplicantNaturalPersonCollection(Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection) {
-        this.applicantNaturalPersonCollection = applicantNaturalPersonCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<NaturalPerson> getNaturalPersonCollection() {
-        return naturalPersonCollection;
-    }
-
-    public void setNaturalPersonCollection(Collection<NaturalPerson> naturalPersonCollection) {
-        this.naturalPersonCollection = naturalPersonCollection;
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
     }
 
     @Override
@@ -112,10 +99,10 @@ public class CivilStatus implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CivilStatus)) {
+        if (!(object instanceof StatusProduct)) {
             return false;
         }
-        CivilStatus other = (CivilStatus) object;
+        StatusProduct other = (StatusProduct) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -124,15 +111,7 @@ public class CivilStatus implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.CivilStatus[ id=" + id + " ]";
-    }
-
-    public Country getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+        return "com.cms.commons.models.StatusProduct[ id=" + id + " ]";
     }
     
 }
