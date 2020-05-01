@@ -344,3 +344,77 @@ ALTER TABLE `CardManagementSystem`.`product`
 ADD COLUMN `activationDate` DATE NULL AFTER `statusProductId`,
 ADD COLUMN `indActivation` TINYINT(1) NULL AFTER `activationDate`,
 ADD COLUMN `observations` VARCHAR(1000)  NULL AFTER `indActivation`;
+
+-- Agregar campos en tabla rateByProgram
+-- author: Jesús Gomez
+-- Fecha: 27/04/2020
+ALTER TABLE `CardManagementSystem`.`rateByProgram` 
+ADD COLUMN `fixedRateGR` FLOAT NULL AFTER `approvalProgramRateId`,
+ADD COLUMN `percentageRateGR` FLOAT NULL AFTER `fixedRateGR`,
+ADD COLUMN `totalInitialTransactionsExemptGR` INT(11) NULL AFTER `percentageRateGR`,
+ADD COLUMN `totalTransactionsExemptPerMonthGR` INT(11) NULL AFTER `totalInitialTransactionsExemptGR`,
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `totalTransactionsExemptPerMonthGR`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+-- Agregar campos en tabla rateByProduct
+-- author: Jesús Gomez
+-- Fecha: 27/04/2020
+ALTER TABLE `CardManagementSystem`.`rateByProduct` 
+ADD COLUMN `fixedRatePR` FLOAT NULL AFTER `approvalProductRateId`,
+ADD COLUMN `percentageRatePR` FLOAT NULL AFTER `fixedRatePR`,
+ADD COLUMN `totalInitialTransactionsExemptPR` INT(11) NULL AFTER `percentageRatePR`,
+ADD COLUMN `totalTransactionsExemptPerMonthPR` INT(11) NULL AFTER `totalInitialTransactionsExemptPR`,
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `totalTransactionsExemptPerMonthPR`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+-- Agregar campos en tabla programLoyalty
+-- author: Jesús Gomez
+-- Fecha: 28/04/2020
+ALTER TABLE `CardManagementSystem`.`programLoyalty` 
+ADD COLUMN `activationDate` DATE NULL AFTER `observations`,
+ADD COLUMN `indActivation` TINYINT(1) NULL AFTER `activationDate`,
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `indActivation`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+-- Agregar FK en programLoyalty
+-- author: Jesús Gómez
+-- Fecha: 28/04/2020
+ALTER TABLE `CardManagementSystem`.`programLoyalty` 
+ADD COLUMN `userActivationId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`programLoyalty` 
+ADD CONSTRAINT `fk_programLoyalty_user1` 
+FOREIGN KEY (`userActivationId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar campos en tabla address
+-- author: Jesús Gomez
+-- Fecha: 30/04/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `addressLine1` VARCHAR(250) NULL AFTER `number`,
+ADD COLUMN `addressLine2` VARCHAR(250) NULL AFTER `addressLine1`;
+
+ALTER TABLE `CardManagementSystem`.`address` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NULL DEFAULT NULL AFTER `addressLine2`
+CHANGE COLUMN `updateDate` `updateDate` TIMESTAMP NULL DEFAULT NULL AFTER `createDate`;
+
+-- Agregar FK en tabla civilStatus
+-- author: Jesús Gómez
+-- Fecha: 30/04/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD COLUMN `countryId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD INDEX `fk_civilStatus1_idx` (`countryId` ASC);
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD CONSTRAINT `fk_civilStatus_country1` 
+FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+SET FOREIGN_KEY_CHECKS=1;
+
+
+

@@ -9,7 +9,9 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,9 +21,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -35,8 +40,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DocumentsPersonType.findById", query = "SELECT d FROM DocumentsPersonType d WHERE d.id = :id"),
     @NamedQuery(name = "DocumentsPersonType.findByDescription", query = "SELECT d FROM DocumentsPersonType d WHERE d.description = :description"),
     @NamedQuery(name = "DocumentsPersonType.findByCodeIdentificationNumber", query = "SELECT d FROM DocumentsPersonType d WHERE d.codeIdentificationNumber = :codeIdentificationNumber"),
-    @NamedQuery(name = QueryConstants.DOCUMENTS_BY_COUNTRY, query = "SELECT d FROM DocumentsPersonType d, PersonType e, Country f WHERE d.personTypeId.id = e.id AND f.id = e.countryId.id AND e.countryId.id=:countryId AND e.indNaturalPerson=:indNaturalPerson")})
+    @NamedQuery(name = QueryConstants.DOCUMENTS_BY_COUNTRY, query = "SELECT d FROM DocumentsPersonType d, PersonType e, Country f WHERE d.personTypeId.id = e.id AND f.id = e.countryId.id AND e.countryId.id=:countryId AND e.originApplicationId.id=:originApplicationId AND e.indNaturalPerson=:indNaturalPerson")})
 public class DocumentsPersonType extends AbstractDistributionEntity implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "documentsPersonTypeId")
+    private Collection<User> userCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -126,6 +134,16 @@ public class DocumentsPersonType extends AbstractDistributionEntity implements S
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<User> getUserCollection() {
+        return userCollection;
+    }
+
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
     
 }
