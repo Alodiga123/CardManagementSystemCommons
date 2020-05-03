@@ -52,8 +52,8 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     //ApplicantNaturalPerson
     public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
                                                         String firstNames, String lastNames,  String gender, Date dateBirth, int civilStatusId,  
-                                                        String cellPhone, int countryAddress, int state, int city, int zipZone, int edificationType, 
-                                                        String nameStreet, Long applicantId, int kinShipApplicantId)
+                                                        String cellPhone, int countryAddress, int state, int city, int zipZone, 
+                                                        String nameStreet,String nameStreet2, Long applicantId, int kinShipApplicantId)
                                                         throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     public boolean existsApplicantNaturalPersonByEmail(String email) throws EmptyListException, GeneralException, NullParameterException;
     public boolean existsApplicantNaturalPersonByPhoneNumber(String numberPhone) throws EmptyListException, GeneralException, NullParameterException;
@@ -116,7 +116,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
           //ApplicantNaturalPerson Modificado
     public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
             String cellPhone, int countryAddress, int state, int city, ZipZone postalZone, boolean recommendation, boolean promotion,boolean citizen,
-            DocumentsPersonType documentsPersonType,String documentNumber,String gender,CivilStatus civilStatus,EdificationType edificationType,String street,String number) 
+            DocumentsPersonType documentsPersonType,String documentNumber,String gender,CivilStatus civilStatus,String street,String nameStreet,String number) 
             throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     
     

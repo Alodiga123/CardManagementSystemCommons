@@ -21,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -34,13 +35,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "programLoyalty")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProgramLoyalty.findAll", query = "SELECT p FROM ProgramLoyalty p")
-    , @NamedQuery(name = "ProgramLoyalty.findById", query = "SELECT p FROM ProgramLoyalty p WHERE p.id = :id")
-    , @NamedQuery(name = "ProgramLoyalty.findByDescription", query = "SELECT p FROM ProgramLoyalty p WHERE p.description = :description")
-    , @NamedQuery(name = "ProgramLoyalty.findByStartDate", query = "SELECT p FROM ProgramLoyalty p WHERE p.startDate = :startDate")
-    , @NamedQuery(name = "ProgramLoyalty.findByEndDate", query = "SELECT p FROM ProgramLoyalty p WHERE p.endDate = :endDate")
-    , @NamedQuery(name = "ProgramLoyalty.findByConversionRatePoints", query = "SELECT p FROM ProgramLoyalty p WHERE p.conversionRatePoints = :conversionRatePoints")
-    , @NamedQuery(name = "ProgramLoyalty.findByObservations", query = "SELECT p FROM ProgramLoyalty p WHERE p.observations = :observations")})
+    @NamedQuery(name = "ProgramLoyalty.findAll", query = "SELECT p FROM ProgramLoyalty p"),
+    @NamedQuery(name = "ProgramLoyalty.findById", query = "SELECT p FROM ProgramLoyalty p WHERE p.id = :id"),
+    @NamedQuery(name = "ProgramLoyalty.findByDescription", query = "SELECT p FROM ProgramLoyalty p WHERE p.description = :description"),
+    @NamedQuery(name = "ProgramLoyalty.findByStartDate", query = "SELECT p FROM ProgramLoyalty p WHERE p.startDate = :startDate"),
+    @NamedQuery(name = "ProgramLoyalty.findByEndDate", query = "SELECT p FROM ProgramLoyalty p WHERE p.endDate = :endDate"),
+    @NamedQuery(name = "ProgramLoyalty.findByConversionRatePoints", query = "SELECT p FROM ProgramLoyalty p WHERE p.conversionRatePoints = :conversionRatePoints"),
+    @NamedQuery(name = "ProgramLoyalty.findByObservations", query = "SELECT p FROM ProgramLoyalty p WHERE p.observations = :observations")})
 public class ProgramLoyalty extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,6 +81,26 @@ public class ProgramLoyalty extends AbstractDistributionEntity implements Serial
     @JoinColumn(name = "statusProgramLoyaltyId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusProgramLoyalty statusProgramLoyaltyId;
+
+    @Column(name = "activationDate")
+    @Temporal(TemporalType.DATE)
+    private Date activationDate;
+    @Column(name = "indActivation")
+    private Boolean indActivation;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
+    @Size(max = 1500)
+    @Column(name = "activationObservations")
+    private String activationObservations;
+    @JoinColumn(name = "userActivationId", referencedColumnName = "id")
+    @ManyToOne
+    private User userActivationId;
 
     public ProgramLoyalty() {
     }
@@ -212,7 +233,7 @@ public class ProgramLoyalty extends AbstractDistributionEntity implements Serial
     public String toString() {
         return "com.cms.commons.models.ProgramLoyalty[ id=" + id + " ]";
     }
-    
+
     @Override
     public Object getPk() {
         return getId();
@@ -221,5 +242,53 @@ public class ProgramLoyalty extends AbstractDistributionEntity implements Serial
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getActivationDate() {
+        return activationDate;
+    }
+
+    public void setActivationDate(Date activationDate) {
+        this.activationDate = activationDate;
+    }
+
+    public Boolean getIndActivation() {
+        return indActivation;
+    }
+
+    public void setIndActivation(Boolean indActivation) {
+        this.indActivation = indActivation;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getActivationObservations() {
+        return activationObservations;
+    }
+
+    public void setActivationObservations(String activationObservations) {
+        this.activationObservations = activationObservations;
+    }
+
+    public User getUserActivationId() {
+        return userActivationId;
+    }
+
+    public void setUserActivationId(User userActivationId) {
+        this.userActivationId = userActivationId;
     }
 }
