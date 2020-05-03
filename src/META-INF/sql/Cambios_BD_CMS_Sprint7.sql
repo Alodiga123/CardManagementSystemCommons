@@ -416,5 +416,9 @@ FOREIGN KEY (`countryId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+ALTER TABLE `CardManagementSystem`.`approvalProductRate` 
+DROP INDEX `productId` ,
+ADD INDEX `productId` (`productId` ASC);
+
 
 
