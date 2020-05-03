@@ -40,6 +40,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "DocumentsPersonType.findById", query = "SELECT d FROM DocumentsPersonType d WHERE d.id = :id"),
     @NamedQuery(name = "DocumentsPersonType.findByDescription", query = "SELECT d FROM DocumentsPersonType d WHERE d.description = :description"),
     @NamedQuery(name = "DocumentsPersonType.findByCodeIdentificationNumber", query = "SELECT d FROM DocumentsPersonType d WHERE d.codeIdentificationNumber = :codeIdentificationNumber"),
+    @NamedQuery(name = "DocumentsPersonType.findByPersonType", query = "SELECT d FROM DocumentsPersonType d, PersonType e WHERE d.personTypeId.id = e.id and e.id = :personTypeId"),
     @NamedQuery(name = QueryConstants.DOCUMENTS_BY_COUNTRY, query = "SELECT d FROM DocumentsPersonType d, PersonType e, Country f WHERE d.personTypeId.id = e.id AND f.id = e.countryId.id AND e.countryId.id=:countryId AND e.originApplicationId.id=:originApplicationId AND e.indNaturalPerson=:indNaturalPerson")})
 public class DocumentsPersonType extends AbstractDistributionEntity implements Serializable {
 
