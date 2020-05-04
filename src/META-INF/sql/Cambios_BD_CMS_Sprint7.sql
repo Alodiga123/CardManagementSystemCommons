@@ -416,9 +416,18 @@ FOREIGN KEY (`countryId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+-- Modificar índice en tabla approvalProductRate
+-- author: Jesús Gómez
+-- Fecha: 02/05/2020
 ALTER TABLE `CardManagementSystem`.`approvalProductRate` 
 DROP INDEX `productId` ,
 ADD INDEX `productId` (`productId` ASC);
+
+-- Agregar columna en tabla programLoyalty
+-- author: Lulymar Gutiérrez
+-- Fecha: 02/05/2020
+ALTER TABLE `CardManagementSystem`.`programLoyalty`
+ADD COLUMN `activationObservations` VARCHAR(1500) NULL AFTER `userActivationId`;
 
 
 
