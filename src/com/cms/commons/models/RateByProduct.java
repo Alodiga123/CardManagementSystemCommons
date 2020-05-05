@@ -4,6 +4,7 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -68,6 +72,22 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
     @JoinColumn(name = "approvalProductRateId", referencedColumnName = "id")
     @ManyToOne
     private ApprovalProductRate approvalProductRateId;
+    @Column(name = "fixedRatePR")
+    private Float fixedRatePR;
+    @Column(name = "percentageRatePR")
+    private Float percentageRatePR;
+    @Column(name = "totalInitialTransactionsExemptPR")
+    private Integer totalInitialTransactionsExemptPR;
+    @Column(name = "totalTransactionsExemptPerMonthPR")
+    private Integer totalTransactionsExemptPerMonthPR;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     public RateByProduct() {
     }
@@ -197,6 +217,54 @@ public class RateByProduct extends AbstractDistributionEntity implements Seriali
 
     public void setApprovalProductRateId(ApprovalProductRate approvalProductRateId) {
         this.approvalProductRateId = approvalProductRateId;
+    }
+
+    public Float getFixedRatePR() {
+        return fixedRatePR;
+    }
+
+    public void setFixedRatePR(Float fixedRatePR) {
+        this.fixedRatePR = fixedRatePR;
+    }
+
+    public Float getPercentageRatePR() {
+        return percentageRatePR;
+    }
+
+    public void setPercentageRatePR(Float percentageRatePR) {
+        this.percentageRatePR = percentageRatePR;
+    }
+
+    public Integer getTotalInitialTransactionsExemptPR() {
+        return totalInitialTransactionsExemptPR;
+    }
+
+    public void setTotalInitialTransactionsExemptPR(Integer totalInitialTransactionsExemptPR) {
+        this.totalInitialTransactionsExemptPR = totalInitialTransactionsExemptPR;
+    }
+
+    public Integer getTotalTransactionsExemptPerMonthPR() {
+        return totalTransactionsExemptPerMonthPR;
+    }
+
+    public void setTotalTransactionsExemptPerMonthPR(Integer totalTransactionsExemptPerMonthPR) {
+        this.totalTransactionsExemptPerMonthPR = totalTransactionsExemptPerMonthPR;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
     
 }

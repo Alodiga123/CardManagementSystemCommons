@@ -25,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -83,7 +84,13 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @ManyToOne(optional = false)
     private Country countryId;
     @Column(name = "number")
-    private String number;
+    private String number;    
+    @Size(max = 250)
+    @Column(name = "addressLine1")
+    private String addressLine1;
+    @Size(max = 250)
+    @Column(name = "addressLine2")
+    private String addressLine2;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -259,6 +266,22 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
     
 }
