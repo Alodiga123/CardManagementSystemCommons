@@ -84,6 +84,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<CivilStatus> getCivilStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public List<CivilStatus> getCivilStatusByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Profession
     public List<Profession> getProfession(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -105,6 +106,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType (DocumentsPersonType documentspersonType)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public List<DocumentsPersonType> getDocumentsPersonTypeByPersonType(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
  
     //CardRequestNaturalPerson
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersons(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
