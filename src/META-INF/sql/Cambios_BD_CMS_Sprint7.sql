@@ -429,5 +429,32 @@ ADD INDEX `productId` (`productId` ASC);
 ALTER TABLE `CardManagementSystem`.`programLoyalty`
 ADD COLUMN `activationObservations` VARCHAR(1500) NULL AFTER `userActivationId`;
 
+-- Modificar FK en tabla zipZone
+-- author: Jesús Gómez
+-- Fecha: 05/05/2020
+ALTER TABLE `CardManagementSystem`.`zipZone` 
+DROP FOREIGN KEY `fk_zipZone_cities1`;
+ALTER TABLE `CardManagementSystem`.`zipZone` 
+CHANGE COLUMN `cityId` `cityId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`zipZone` 
+ADD CONSTRAINT `fk_zipZone_cities1`
+  FOREIGN KEY (`cityId`)
+  REFERENCES `CardManagementSystem`.`city` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Agregar campos en tabla rateByCard
+-- author: Jesús Gomez
+-- Fecha: 05/05/2020
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD COLUMN `fixedRateCR` FLOAT NULL AFTER `approvalCardRateId`,
+ADD COLUMN `percentageRateCR` FLOAT NULL AFTER `fixedRateCR`,
+ADD COLUMN `totalInitialTransactionsExemptCR` INT(11) NULL AFTER `percentageRateCR`,
+ADD COLUMN `totalTransactionsExemptPerMonthCR` INT(11) NULL AFTER `totalInitialTransactionsExemptCR`,
+ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `totalTransactionsExemptPerMonthCR`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
+
+
+
 
 
