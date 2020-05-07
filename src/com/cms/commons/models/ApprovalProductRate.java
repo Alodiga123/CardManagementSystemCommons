@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -38,7 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ApprovalProductRate.findByIndApproved", query = "SELECT a FROM ApprovalProductRate a WHERE a.indApproved = :indApproved")
     , @NamedQuery(name = "ApprovalProductRate.findByCreateDate", query = "SELECT a FROM ApprovalProductRate a WHERE a.createDate = :createDate")
     , @NamedQuery(name = "ApprovalProductRate.findByUpdateDate", query = "SELECT a FROM ApprovalProductRate a WHERE a.updateDate = :updateDate")})
-public class ApprovalProductRate implements Serializable {
+public class ApprovalProductRate extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -160,6 +162,16 @@ public class ApprovalProductRate implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ApprovalProductRate[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
