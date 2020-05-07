@@ -34,6 +34,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "CivilStatus.findAll", query = "SELECT c FROM CivilStatus c")
     , @NamedQuery(name = "CivilStatus.findById", query = "SELECT c FROM CivilStatus c WHERE c.id = :id")
+    , @NamedQuery(name = "CivilStatus.findByCountryId", query = "SELECT c FROM CivilStatus c WHERE c.countryId.id = :countryId")
     , @NamedQuery(name = "CivilStatus.findByDescription", query = "SELECT c FROM CivilStatus c WHERE c.description = :description")})
 public class CivilStatus implements Serializable {
 
