@@ -454,6 +454,23 @@ ADD COLUMN `totalTransactionsExemptPerMonthCR` INT(11) NULL AFTER `totalInitialT
 ADD COLUMN `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `totalTransactionsExemptPerMonthCR`,
 ADD COLUMN `updateDate` TIMESTAMP NULL AFTER `createDate`;
 
+-- Agregar FK en tabla kinShipApplicant
+-- author: Jesús Gómez
+-- Fecha: 06/05/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD COLUMN `countryId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD INDEX `fk_kinShipApplicant1_idx` (`countryId` ASC);
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD CONSTRAINT `fk_kinShipApplicant_country1` 
+FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+SET FOREIGN_KEY_CHECKS=1;
+
 
 
 

@@ -77,6 +77,14 @@ public class KinShipApplicant extends AbstractDistributionEntity implements Seri
         this.description = description;
     }
 
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
+    }   
+
     @XmlTransient
     @JsonIgnore
     public Collection<ApplicantNaturalPerson> getApplicantNaturalPersonCollection() {
