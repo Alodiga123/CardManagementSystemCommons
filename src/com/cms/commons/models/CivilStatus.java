@@ -34,7 +34,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "CivilStatus.findAll", query = "SELECT c FROM CivilStatus c")
     , @NamedQuery(name = "CivilStatus.findById", query = "SELECT c FROM CivilStatus c WHERE c.id = :id")
-    , @NamedQuery(name = "CivilStatus.findByCountryId", query = "SELECT c FROM CivilStatus c WHERE c.countryId.id = :countryId")
+    , @NamedQuery(name = "CivilStatus.findByLanguageId", query = "SELECT c FROM CivilStatus c WHERE c.languageId.id = :languageId")
     , @NamedQuery(name = "CivilStatus.findByDescription", query = "SELECT c FROM CivilStatus c WHERE c.description = :description")})
 public class CivilStatus implements Serializable {
 
@@ -47,9 +47,9 @@ public class CivilStatus implements Serializable {
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @JoinColumn(name = "languageId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
+    private Language languageId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
     private Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "civilStatusId")
@@ -128,12 +128,13 @@ public class CivilStatus implements Serializable {
         return "com.cms.commons.models.CivilStatus[ id=" + id + " ]";
     }
 
-    public Country getCountryId() {
-        return countryId;
+    public Language getLanguageId() {
+        return languageId;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
+    public void setLanguageId(Language languageId) {
+        this.languageId = languageId;
     }
-    
+
+
 }

@@ -36,7 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "KinShipApplicant.findAll", query = "SELECT k FROM KinShipApplicant k")
     , @NamedQuery(name = "KinShipApplicant.findById", query = "SELECT k FROM KinShipApplicant k WHERE k.id = :id")
-    , @NamedQuery(name = "KinShipApplicant.findByCountryId", query = "SELECT k FROM KinShipApplicant k WHERE k.countryId.id = :countryId")    
+    , @NamedQuery(name = "KinShipApplicant.findByLanguageId", query = "SELECT k FROM KinShipApplicant k WHERE k.languageId.id = :languageId")
     , @NamedQuery(name = "KinShipApplicant.findByDescription", query = "SELECT k FROM KinShipApplicant k WHERE k.description = :description")})
 public class KinShipApplicant extends AbstractDistributionEntity implements Serializable {
 
@@ -48,9 +48,9 @@ public class KinShipApplicant extends AbstractDistributionEntity implements Seri
     private Integer id;
     @Column(name = "description")
     private String description;
-    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @JoinColumn(name = "languageId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Country countryId;
+    private Language languageId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "kinShipApplicantId")
     private Collection<ApplicantNaturalPerson> applicantNaturalPersonCollection;
 
@@ -77,13 +77,15 @@ public class KinShipApplicant extends AbstractDistributionEntity implements Seri
         this.description = description;
     }
 
-    public Country getCountryId() {
-        return countryId;
+    public Language getLanguageId() {
+        return languageId;
     }
 
-    public void setCountryId(Country countryId) {
-        this.countryId = countryId;
-    }   
+    public void setLanguageId(Language languageId) {
+        this.languageId = languageId;
+    }
+
+    
 
     @XmlTransient
     @JsonIgnore

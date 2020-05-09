@@ -79,13 +79,13 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<KinShipApplicant> getKinShipApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public KinShipApplicant loadKinShipApplicant(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public KinShipApplicant saveKinShipApplicant (KinShipApplicant kinShipApplicant)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public List<KinShipApplicant> getKinShipApplicantByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<KinShipApplicant> getKinShipApplicantByLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //CivilStatus
     public List<CivilStatus> getCivilStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-    public List<CivilStatus> getCivilStatusByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<CivilStatus> getCivilStatusByLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Profession
     public List<Profession> getProfession(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
