@@ -83,6 +83,14 @@ public class CivilStatus implements Serializable {
         this.description = description;
     }
 
+    public Language getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Language languageId) {
+        this.languageId = languageId;
+    }
+
     @XmlTransient
     @JsonIgnore
     public Collection<ApplicantNaturalPerson> getApplicantNaturalPersonCollection() {

@@ -83,10 +83,8 @@ public class KinShipApplicant extends AbstractDistributionEntity implements Seri
 
     public void setLanguageId(Language languageId) {
         this.languageId = languageId;
-    }
-
+    }    
     
-
     @XmlTransient
     @JsonIgnore
     public Collection<ApplicantNaturalPerson> getApplicantNaturalPersonCollection() {

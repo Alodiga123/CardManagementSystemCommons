@@ -82,8 +82,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     //CivilStatus
     public List<CivilStatus> getCivilStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-    public List<CivilStatus> getCivilStatusByLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //Profession
     public List<Profession> getProfession(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -116,7 +115,10 @@ public interface PersonEJB extends DistributionGenericEJB {
     public NaturalPerson saveNaturalPerson(NaturalPerson naturalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //LegalPerson
-    public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalPerson>getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalPerson> getLegalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public LegalPerson saveLegalegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
