@@ -136,13 +136,5 @@ public class CivilStatus implements Serializable {
         return "com.cms.commons.models.CivilStatus[ id=" + id + " ]";
     }
 
-    public Language getLanguageId() {
-        return languageId;
-    }
-
-    public void setLanguageId(Language languageId) {
-        this.languageId = languageId;
-    }
-
 
 }
