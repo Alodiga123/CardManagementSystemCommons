@@ -471,6 +471,60 @@ FOREIGN KEY (`countryId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+-- Eliminar FK tabla civilStatus
+-- author: Jesús Gómez
+-- Fecha: 08/05/2020
+ALTER TABLE `CardManagementSystem`.`civilStatus`
+DROP FOREIGN KEY `fk_civilStatus_country1`;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+DROP INDEX  `fk_civilStatus1_idx`;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+DROP COLUMN `countryId`;
+
+-- Agregar FK en tabla civilStatus
+-- author: Jesús Gómez
+-- Fecha: 08/05/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD COLUMN `languageId` BIGINT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD INDEX `fk_civilStatus_language1_idx` (`languageId` ASC);
+ALTER TABLE `CardManagementSystem`.`civilStatus` 
+ADD CONSTRAINT `fk_civilStatus_language1` 
+FOREIGN KEY (`languageId`)
+    REFERENCES `CardManagementSystem`.`language` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+SET FOREIGN_KEY_CHECKS=1;
+
+-- Eliminar FK tabla kinShipApplicant
+-- author: Jesús Gómez
+-- Fecha: 08/05/2020
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant`
+DROP FOREIGN KEY `fk_kinShipApplicant_country1`;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+DROP INDEX  `fk_kinShipApplicant1_idx`;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+DROP COLUMN `countryId`;
+
+-- Agregar FK en tabla kinShipApplicant
+-- author: Jesús Gómez
+-- Fecha: 08/05/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD COLUMN `languageId` BIGINT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD INDEX `fk_kinShipApplicant_language1_idx` (`languageId` ASC);
+ALTER TABLE `CardManagementSystem`.`kinShipApplicant` 
+ADD CONSTRAINT `fk_kinShipApplicant_language1` 
+FOREIGN KEY (`languageId`)
+    REFERENCES `CardManagementSystem`.`language` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+SET FOREIGN_KEY_CHECKS=1;
+
 
 
 
