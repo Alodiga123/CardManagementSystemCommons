@@ -85,6 +85,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<CivilStatus> getCivilStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CivilStatus loadCivilStatus(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CivilStatus saveCivilStatus (CivilStatus civilStatus)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<CivilStatus> getCivilStatusByLanguage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Profession
     public List<Profession> getProfession(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
