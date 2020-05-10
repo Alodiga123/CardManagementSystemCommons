@@ -36,6 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "KinShipApplicant.findAll", query = "SELECT k FROM KinShipApplicant k")
     , @NamedQuery(name = "KinShipApplicant.findById", query = "SELECT k FROM KinShipApplicant k WHERE k.id = :id")
+    , @NamedQuery(name = "KinShipApplicant.findByLanguageId", query = "SELECT k FROM KinShipApplicant k WHERE k.languageId.id = :languageId")
     , @NamedQuery(name = "KinShipApplicant.findByDescription", query = "SELECT k FROM KinShipApplicant k WHERE k.description = :description")})
 public class KinShipApplicant extends AbstractDistributionEntity implements Serializable {
 

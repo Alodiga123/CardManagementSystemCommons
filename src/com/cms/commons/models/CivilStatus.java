@@ -34,6 +34,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "CivilStatus.findAll", query = "SELECT c FROM CivilStatus c")
     , @NamedQuery(name = "CivilStatus.findById", query = "SELECT c FROM CivilStatus c WHERE c.id = :id")
+    , @NamedQuery(name = "CivilStatus.findByLanguageId", query = "SELECT c FROM CivilStatus c WHERE c.languageId.id = :languageId")
     , @NamedQuery(name = "CivilStatus.findByDescription", query = "SELECT c FROM CivilStatus c WHERE c.description = :description")})
 public class CivilStatus implements Serializable {
 
@@ -134,5 +135,14 @@ public class CivilStatus implements Serializable {
     public String toString() {
         return "com.cms.commons.models.CivilStatus[ id=" + id + " ]";
     }
-    
+
+    public Language getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Language languageId) {
+        this.languageId = languageId;
+    }
+
+
 }
