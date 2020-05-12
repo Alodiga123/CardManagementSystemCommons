@@ -34,6 +34,7 @@ import com.cms.commons.models.PersonClassification;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.ProductType;
 import com.cms.commons.models.Profile;
+import com.cms.commons.models.ProfileData;
 import com.cms.commons.models.ProgramHasNetwork;
 import com.cms.commons.models.ProgramType;
 import com.cms.commons.models.SourceFunds;
@@ -241,4 +242,10 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<Profile> getProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Profile loadProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Profile saveProfile (Profile profile) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+     //Tabla  ProfileData
+    public List<ProfileData> getProfileData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProfileData loadProfileData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProfileData saveProfileData (ProfileData profileData) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 }
