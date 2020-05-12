@@ -105,7 +105,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     
     //Person
     public List<Person> getPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List<Person> getPersonByCustommer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Person> getPersonByClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -116,10 +116,10 @@ public interface PersonEJB extends DistributionGenericEJB {
     public NaturalPerson saveNaturalPerson(NaturalPerson naturalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //LegalPerson
-    public List<LegalPerson>getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<LegalPerson> getLegalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LegalPerson loadLegalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalPerson saveLegalegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
