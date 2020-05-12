@@ -61,6 +61,8 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Country loadCountry(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
+    public Country searchCountry(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Country> getSearchCountry(String name) throws EmptyListException, GeneralException, NullParameterException;
 
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
