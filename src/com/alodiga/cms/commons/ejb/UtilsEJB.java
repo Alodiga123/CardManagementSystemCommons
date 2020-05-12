@@ -43,6 +43,7 @@ import com.cms.commons.models.PermissionData;
 import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
 import com.cms.commons.models.Profile;
+import com.cms.commons.models.ProfileData;
 import java.util.List;
 
 /**
@@ -240,5 +241,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<Profile> getProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Profile loadProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Profile saveProfile (Profile profile) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla  ProfileData
+    public List<ProfileData> getProfileData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProfileData loadProfileData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProfileData saveProfileData (ProfileData profileData) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
