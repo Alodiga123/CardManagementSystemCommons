@@ -59,9 +59,6 @@ public class Country extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "currency_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Currency currencyId;
-    @JoinColumn(name = "languageId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Language languageId;
 
     public Country() {
     }
@@ -151,14 +148,6 @@ public class Country extends AbstractDistributionEntity implements Serializable 
 
     public void setCurrencyId(Currency currencyId) {
         this.currencyId = currencyId;
-    }
-
-    public Language getLanguageId() {
-        return languageId;
-    }
-
-    public void setLanguageId(Language languageId) {
-        this.languageId = languageId;
     }
 
 }
