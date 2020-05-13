@@ -43,6 +43,7 @@ import com.cms.commons.models.PermissionData;
 import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
 import com.cms.commons.models.Profile;
+import com.cms.commons.models.ProfileData;
 import java.util.List;
 
 /**
@@ -61,6 +62,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Country loadCountry(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
+    public Country searchCountry(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Country> getSearchCountry(String name) throws EmptyListException, GeneralException, NullParameterException;
 
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -241,6 +244,11 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<Profile> getProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Profile loadProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Profile saveProfile (Profile profile) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla  ProfileData
+    public List<ProfileData> getProfileData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProfileData loadProfileData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProfileData saveProfileData (ProfileData profileData) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //legalPerson
     public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
