@@ -5,6 +5,7 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -65,6 +69,22 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "approvalCardRateId", referencedColumnName = "id")
     @ManyToOne
     private ApprovalCardRate approvalCardRateId;
+    @Column(name = "fixedRateCR")
+    private Float fixedRateCR;
+    @Column(name = "percentageRateCR")
+    private Float percentageRateCR;
+    @Column(name = "totalInitialTransactionsExemptCR")
+    private Integer totalInitialTransactionsExemptCR;
+    @Column(name = "totalTransactionsExemptPerMonthCR")
+    private Integer totalTransactionsExemptPerMonthCR;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     public RateByCard() {
     }
@@ -186,6 +206,54 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
 
     public void setApprovalCardRateId(ApprovalCardRate approvalCardRateId) {
         this.approvalCardRateId = approvalCardRateId;
+    }
+
+    public Float getFixedRateCR() {
+        return fixedRateCR;
+    }
+
+    public void setFixedRateCR(Float fixedRateCR) {
+        this.fixedRateCR = fixedRateCR;
+    }
+
+    public Float getPercentageRateCR() {
+        return percentageRateCR;
+    }
+
+    public void setPercentageRateCR(Float percentageRateCR) {
+        this.percentageRateCR = percentageRateCR;
+    }
+
+    public Integer getTotalInitialTransactionsExemptCR() {
+        return totalInitialTransactionsExemptCR;
+    }
+
+    public void setTotalInitialTransactionsExemptCR(Integer totalInitialTransactionsExemptCR) {
+        this.totalInitialTransactionsExemptCR = totalInitialTransactionsExemptCR;
+    }
+
+    public Integer getTotalTransactionsExemptPerMonthCR() {
+        return totalTransactionsExemptPerMonthCR;
+    }
+
+    public void setTotalTransactionsExemptPerMonthCR(Integer totalTransactionsExemptPerMonthCR) {
+        this.totalTransactionsExemptPerMonthCR = totalTransactionsExemptPerMonthCR;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
     
 }

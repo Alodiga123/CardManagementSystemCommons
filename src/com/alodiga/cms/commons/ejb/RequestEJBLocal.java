@@ -12,7 +12,6 @@ import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.DocumentsPersonType;
-import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PlastiCustomizingRequestHasCard;
 import com.cms.commons.models.PlasticCustomizingRequest;
@@ -127,6 +126,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
 
     //Tabla de PlastiCustomizingRequestHasCard
     public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingHasRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PlastiCustomizingRequestHasCard loadPlastiCustomizingRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlastiCustomizingRequestHasCard savePlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) throws NullParameterException, GeneralException;
         

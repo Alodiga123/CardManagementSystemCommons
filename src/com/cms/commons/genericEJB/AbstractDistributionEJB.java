@@ -27,7 +27,6 @@ import java.util.Date;
 
 public class AbstractDistributionEJB {
 
-//    @PersistenceContext(name = "cmsPu")
     protected EntityManager entityManager;
     @Resource
     protected EJBContext context;

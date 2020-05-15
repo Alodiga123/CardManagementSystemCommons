@@ -42,6 +42,8 @@ import com.cms.commons.models.Permission;
 import com.cms.commons.models.PermissionData;
 import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
+import com.cms.commons.models.Profile;
+import com.cms.commons.models.ProfileData;
 import java.util.List;
 
 /**
@@ -60,6 +62,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Country loadCountry(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Country saveCountry(Country country) throws NullParameterException, GeneralException;
+    public Country searchCountry(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Country> getSearchCountry(String name) throws EmptyListException, GeneralException, NullParameterException;
 
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -106,7 +110,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //Tabla de binSponsor
     public List< BinSponsor> getBinSponsor(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public BinSponsor loadBinSponsore(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public BinSponsor loadBinSponsor(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public BinSponsor saveBinSponsor(BinSponsor binsponsor) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //SourceFunds
     public List< SourceFunds> getSourceFunds(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -234,5 +239,18 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<PermissionData> getPermissionData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PermissionData loadPermissionData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PermissionData savePermissionData (PermissionData permissionData) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla  Profile
+    public List<Profile> getProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Profile loadProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Profile saveProfile (Profile profile) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //Tabla  ProfileData
+    public List<ProfileData> getProfileData(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ProfileData loadProfileData(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ProfileData saveProfileData (ProfileData profileData) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //legalPerson
+    public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
 }
