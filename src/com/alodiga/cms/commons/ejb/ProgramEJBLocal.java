@@ -1,3 +1,4 @@
+//ProgramEJBLocal
 package com.alodiga.cms.commons.ejb;
 
 import com.alodiga.cms.commons.exception.EmptyListException;
