@@ -39,6 +39,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class Currency extends AbstractDistributionEntity implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "currencyId")
+    private Collection<Country> countryCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -114,6 +117,16 @@ public class Currency extends AbstractDistributionEntity implements Serializable
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Country> getCountryCollection() {
+        return countryCollection;
+    }
+
+    public void setCountryCollection(Collection<Country> countryCollection) {
+        this.countryCollection = countryCollection;
     }
 
 }

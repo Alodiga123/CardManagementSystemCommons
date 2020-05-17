@@ -88,5 +88,6 @@ public class EjbConstants {
     public static final String PARAM_CARD_STATUS = "cardStatusId";
     public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
     public static final String PARAM_ECONOMIC_ACTIVITY_ID = "economicActivityId";
+    public static final String PARAM_LANGUAGE_ID = "languageId";
 
 }

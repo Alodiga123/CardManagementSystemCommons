@@ -7,12 +7,9 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +19,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.cms.commons.util.QueryConstants;
 
 /**
  *
@@ -39,17 +36,20 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "legalPerson")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "LegalPerson.findAll", query = "SELECT l FROM LegalPerson l"),
-    @NamedQuery(name = "LegalPerson.findById", query = "SELECT l FROM LegalPerson l WHERE l.id = :id"),
-    @NamedQuery(name = "LegalPerson.findByTradeName", query = "SELECT l FROM LegalPerson l WHERE l.tradeName = :tradeName"),
-    @NamedQuery(name = "LegalPerson.findByEnterpriseName", query = "SELECT l FROM LegalPerson l WHERE l.enterpriseName = :enterpriseName"),
-    @NamedQuery(name = "LegalPerson.findByDateInscriptionRegister", query = "SELECT l FROM LegalPerson l WHERE l.dateInscriptionRegister = :dateInscriptionRegister"),
-    @NamedQuery(name = "LegalPerson.findByRegisterNumber", query = "SELECT l FROM LegalPerson l WHERE l.registerNumber = :registerNumber"),
-    @NamedQuery(name = "LegalPerson.findByPayedCapital", query = "SELECT l FROM LegalPerson l WHERE l.payedCapital = :payedCapital"),
-    @NamedQuery(name = "LegalPerson.findByEnterprisePhone", query = "SELECT l FROM LegalPerson l WHERE l.enterprisePhone = :enterprisePhone"),
-    @NamedQuery(name = "LegalPerson.findByWebSite", query = "SELECT l FROM LegalPerson l WHERE l.webSite = :webSite"),
-    @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId"),
-    @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.personId.id=:personId")})
+    @NamedQuery(name = "LegalPerson.findAll", query = "SELECT l FROM LegalPerson l")
+    , @NamedQuery(name = "LegalPerson.findById", query = "SELECT l FROM LegalPerson l WHERE l.id = :id")
+    , @NamedQuery(name = "LegalPerson.findByTradeName", query = "SELECT l FROM LegalPerson l WHERE l.tradeName = :tradeName")
+    , @NamedQuery(name = "LegalPerson.findByEnterpriseName", query = "SELECT l FROM LegalPerson l WHERE l.enterpriseName = :enterpriseName")
+    , @NamedQuery(name = "LegalPerson.findByDateInscriptionRegister", query = "SELECT l FROM LegalPerson l WHERE l.dateInscriptionRegister = :dateInscriptionRegister")
+    , @NamedQuery(name = "LegalPerson.findByRegisterNumber", query = "SELECT l FROM LegalPerson l WHERE l.registerNumber = :registerNumber")
+    , @NamedQuery(name = "LegalPerson.findByPayedCapital", query = "SELECT l FROM LegalPerson l WHERE l.payedCapital = :payedCapital")
+    , @NamedQuery(name = "LegalPerson.findByEnterprisePhone", query = "SELECT l FROM LegalPerson l WHERE l.enterprisePhone = :enterprisePhone")
+    , @NamedQuery(name = "LegalPerson.findByWebSite", query = "SELECT l FROM LegalPerson l WHERE l.webSite = :webSite")
+    , @NamedQuery(name = "LegalPerson.findByIdentificationNumber", query = "SELECT l FROM LegalPerson l WHERE l.identificationNumber = :identificationNumber")
+    , @NamedQuery(name = "LegalPerson.findByCodeIdentificationNumber", query = "SELECT l FROM LegalPerson l WHERE l.codeIdentificationNumber = :codeIdentificationNumber")
+    , @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId")
+    , @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.personId.id=:personId")})
+
 public class LegalPerson extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,34 +58,45 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "identificationNumber")
-    private String identificationNumber;
+    @Size(max = 60)
     @Column(name = "tradeName")
     private String tradeName;
+    @Size(max = 45)
     @Column(name = "enterpriseName")
     private String enterpriseName;
     @Column(name = "dateInscriptionRegister")
     @Temporal(TemporalType.DATE)
     private Date dateInscriptionRegister;
+    @Size(max = 45)
     @Column(name = "registerNumber")
     private String registerNumber;
     @Column(name = "payedCapital")
     private Float payedCapital;
+    @Size(max = 30)
     @Column(name = "enterprisePhone")
     private String enterprisePhone;
+    @Size(max = 45)
     @Column(name = "webSite")
     private String webSite;
-    @JoinColumn(name = "personId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Person personId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 40)
+    @Column(name = "identificationNumber")
+    private String identificationNumber;
+    @Size(max = 10)
+    @Column(name = "codeIdentificationNumber")
+    private String codeIdentificationNumber;
     @JoinColumn(name = "economicActivityId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private EconomicActivity economicActivityId;
     @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "personId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Person personId;
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private StatusApplicant statusApplicantId;
 
     public LegalPerson() {
@@ -95,20 +106,17 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
         this.id = id;
     }
 
+    public LegalPerson(Long id, String identificationNumber) {
+        this.id = id;
+        this.identificationNumber = identificationNumber;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getIdentificationNumber() {
-        return identificationNumber;
-    }
-
-    public void setIdentificationNumber(String identificationNumber) {
-        this.identificationNumber = identificationNumber;
     }
 
     public String getTradeName() {
@@ -167,20 +175,20 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
         this.webSite = webSite;
     }
 
-    public DocumentsPersonType getDocumentsPersonTypeId() {
-        return documentsPersonTypeId;
+    public String getIdentificationNumber() {
+        return identificationNumber;
     }
 
-    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
-        this.documentsPersonTypeId = documentsPersonTypeId;
+    public void setIdentificationNumber(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
     }
 
-    public void setPersonId(Person personId) {
-        this.personId = personId;
+    public String getCodeIdentificationNumber() {
+        return codeIdentificationNumber;
     }
 
-    public Person getPersonId() {
-        return personId;
+    public void setCodeIdentificationNumber(String codeIdentificationNumber) {
+        this.codeIdentificationNumber = codeIdentificationNumber;
     }
 
     public EconomicActivity getEconomicActivityId() {
@@ -189,6 +197,22 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
 
     public void setEconomicActivityId(EconomicActivity economicActivityId) {
         this.economicActivityId = economicActivityId;
+    }
+
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
+    }
+
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
+    }
+
+    public Person getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Person personId) {
+        this.personId = personId;
     }
 
     public StatusApplicant getStatusApplicantId() {
@@ -233,5 +257,5 @@ public class LegalPerson extends AbstractDistributionEntity implements Serializa
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
+    
 }
