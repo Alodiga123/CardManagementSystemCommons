@@ -42,6 +42,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Country.findByName", query = "SELECT c FROM Country c WHERE c.name = :name")})
 public class Country extends AbstractDistributionEntity implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "countryId")
+    private Collection<CollectionType> collectionTypeCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -148,6 +151,16 @@ public class Country extends AbstractDistributionEntity implements Serializable 
 
     public void setCurrencyId(Currency currencyId) {
         this.currencyId = currencyId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<CollectionType> getCollectionTypeCollection() {
+        return collectionTypeCollection;
+    }
+
+    public void setCollectionTypeCollection(Collection<CollectionType> collectionTypeCollection) {
+        this.collectionTypeCollection = collectionTypeCollection;
     }
 
 }

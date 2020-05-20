@@ -57,6 +57,8 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<RequestType> getRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RequestType loadRequestType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public RequestType saveRequestType(RequestType requestType) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public RequestType searchRequestType(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<RequestType> getSearchRequestType(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //Tabla de Country
     public List<Country> getCountries(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -79,11 +81,15 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public Currency saveCurrency(Currency currency) throws NullParameterException, GeneralException;
     public Currency loadCurrency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public Currency searchCurrency(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Currency> getSearchCurrency(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //Tabla de PersonClassification   
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonClassification loadPersonClassification(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PersonClassification savePersonClassification(PersonClassification personClassification) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PersonClassification searchPersonClassification(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<PersonClassification> getSearchPersonClassification(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //Tabla de ProductType
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -95,7 +101,9 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public State loadState(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public State saveState(State state) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<State> getStatesByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
+    public State searchState(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<State> getSearchState(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Tabla de PersonType
     public List<PersonType> getPersonTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
