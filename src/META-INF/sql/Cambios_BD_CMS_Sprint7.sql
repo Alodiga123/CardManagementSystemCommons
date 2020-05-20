@@ -525,6 +525,10 @@ FOREIGN KEY (`languageId`)
 
 SET FOREIGN_KEY_CHECKS=1;
 
+ALTER TABLE `CardManagementSystem`.`plastiCustomizingRequestHasCard` 
+DROP INDEX `plasticCustomizingRequestId` ,
+ADD INDEX `plasticCustomizingRequestId` (`plasticCustomizingRequestId` ASC);
+
 
 
 
