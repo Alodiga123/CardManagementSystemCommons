@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PlastiCustomizingRequestHasCard.findById", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.id = :id"),
     @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByCreateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.createDate = :createDate"),
     @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByUpdateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.PLASTIC_CUSTOMER_BY_REQUEST, query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.plasticCustomizingRequestId.id = :plasticCustomizingRequestId")})
+    @NamedQuery(name = QueryConstants.CARD_BY_PLASTIC_CUSTOMIZING_REQUEST, query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.plasticCustomizingRequestId.id = :plasticCustomizingRequestId")})
+
 public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
