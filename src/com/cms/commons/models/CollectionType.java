@@ -111,14 +111,14 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.CollectionType[ id=" + id + " ]";
+        return "com.cms.commons.models.Country[ id=" + id + " ]";
     }
 
     @Override
-   public Object getPk() {
+    public Object getPk() {
         return getId();
     }
-   
+
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
