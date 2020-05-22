@@ -79,6 +79,7 @@ FOREIGN KEY (`documentsPersonTypeId`)
 -- Fecha: 14/11/2019
 ALTER TABLE `CardManagementSystem`.`legalPerson` 
 ADD COLUMN `identificationNumber` VARCHAR(40) NOT NULL;
+ADD COLUMN `codeIdentificationNumber` VARCHAR(10) NULL; 
 
 -- Eliminar FK tabla naturalPerson
 -- author: Jesús Gómez
