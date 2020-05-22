@@ -123,15 +123,5 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
-    @Override
-   public Object getPk() {
-        return getId();
-    }
-   
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
     
 }
