@@ -55,6 +55,8 @@ public class Constants {
     public static final int STATUS_REQUEST_PENDING_APPROVAL = 4;
     public static final int STATUS_REQUEST_BLACK_LIST_OK = 5;
     public static final int STATUS_REQUEST_APPROVED = 6;
+    public static final int CARD_STATUS_REQUESTED = 1;
+    public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
     public static final int STATUS_CARDS_REQUESTED = 1;
     public static final int STATUS_CARDS_PENDING_PERSONALIZED = 3;
     public static final int STATUS_CARDS_PERSONALIZED = 2;
@@ -70,7 +72,6 @@ public class Constants {
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
-    public static Integer CARD_STATUS_REQUESTED = 1;
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
     public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
     public static Integer CHANNEL_CREATION_ACCOUNT = 7;

@@ -1,7 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -10,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,23 +26,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author usuario
+ * @author jose
  */
 @Entity
 @Table(name = "cardDeliveryRegister")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardDeliveryRegister.findAll", query = "SELECT c FROM CardDeliveryRegister c"),
-    @NamedQuery(name = "CardDeliveryRegister.findById", query = "SELECT c FROM CardDeliveryRegister c WHERE c.id = :id"),
-    @NamedQuery(name = "CardDeliveryRegister.findByNumberDeliveryAttempts", query = "SELECT c FROM CardDeliveryRegister c WHERE c.numberDeliveryAttempts = :numberDeliveryAttempts"),
-    @NamedQuery(name = "CardDeliveryRegister.findByDeliveryDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.deliveryDate = :deliveryDate"),
-    @NamedQuery(name = "CardDeliveryRegister.findByReceiverFirstName", query = "SELECT c FROM CardDeliveryRegister c WHERE c.receiverFirstName = :receiverFirstName"),
-    @NamedQuery(name = "CardDeliveryRegister.findByReceiverLastName", query = "SELECT c FROM CardDeliveryRegister c WHERE c.receiverLastName = :receiverLastName"),
-    @NamedQuery(name = "CardDeliveryRegister.findByDeliveryObservations", query = "SELECT c FROM CardDeliveryRegister c WHERE c.deliveryObservations = :deliveryObservations"),
-    @NamedQuery(name = "CardDeliveryRegister.findByIndDelivery", query = "SELECT c FROM CardDeliveryRegister c WHERE c.indDelivery = :indDelivery"),
-    @NamedQuery(name = "CardDeliveryRegister.findByCreateDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.createDate = :createDate"),
-    @NamedQuery(name = "CardDeliveryRegister.findByUpdateDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.updateDate = :updateDate")})
-public class CardDeliveryRegister extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "CardDeliveryRegister.findAll", query = "SELECT c FROM CardDeliveryRegister c")
+    , @NamedQuery(name = "CardDeliveryRegister.findById", query = "SELECT c FROM CardDeliveryRegister c WHERE c.id = :id")
+    , @NamedQuery(name = "CardDeliveryRegister.findByNumberDeliveryAttempts", query = "SELECT c FROM CardDeliveryRegister c WHERE c.numberDeliveryAttempts = :numberDeliveryAttempts")
+    , @NamedQuery(name = "CardDeliveryRegister.findByDeliveryDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.deliveryDate = :deliveryDate")
+    , @NamedQuery(name = "CardDeliveryRegister.findByReceiverFirstName", query = "SELECT c FROM CardDeliveryRegister c WHERE c.receiverFirstName = :receiverFirstName")
+    , @NamedQuery(name = "CardDeliveryRegister.findByReceiverLastName", query = "SELECT c FROM CardDeliveryRegister c WHERE c.receiverLastName = :receiverLastName")
+    , @NamedQuery(name = "CardDeliveryRegister.findByDeliveryObservations", query = "SELECT c FROM CardDeliveryRegister c WHERE c.deliveryObservations = :deliveryObservations")
+    , @NamedQuery(name = "CardDeliveryRegister.findByIndDelivery", query = "SELECT c FROM CardDeliveryRegister c WHERE c.indDelivery = :indDelivery")
+    , @NamedQuery(name = "CardDeliveryRegister.findByCreateDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.createDate = :createDate")
+    , @NamedQuery(name = "CardDeliveryRegister.findByUpdateDate", query = "SELECT c FROM CardDeliveryRegister c WHERE c.updateDate = :updateDate")})
+public class CardDeliveryRegister implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,6 +76,9 @@ public class CardDeliveryRegister extends AbstractDistributionEntity implements 
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @JoinColumn(name = "deliveryRequetsHasCardId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DeliveryRequetsHasCard deliveryRequetsHasCardId;
 
     public CardDeliveryRegister() {
     }
@@ -156,6 +165,14 @@ public class CardDeliveryRegister extends AbstractDistributionEntity implements 
         this.updateDate = updateDate;
     }
 
+    public DeliveryRequetsHasCard getDeliveryRequetsHasCardId() {
+        return deliveryRequetsHasCardId;
+    }
+
+    public void setDeliveryRequetsHasCardId(DeliveryRequetsHasCard deliveryRequetsHasCardId) {
+        this.deliveryRequetsHasCardId = deliveryRequetsHasCardId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -180,14 +197,5 @@ public class CardDeliveryRegister extends AbstractDistributionEntity implements 
     public String toString() {
         return "com.cms.commons.models.CardDeliveryRegister[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
+    
 }
