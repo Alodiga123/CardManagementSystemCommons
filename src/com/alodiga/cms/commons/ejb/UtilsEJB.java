@@ -135,11 +135,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     //Network
     public List<Network> getNetworks(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network loadNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public Network  saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Network  saveNetwork(Network network) throws RegisterNotFoundException, NullParameterException, GeneralException;   
     public List<Network> getNetworkByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Network searchNetwork(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public List<Network> searchNetworkByCountry(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public List<Network> getSearchNetwork(String name) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Network> searchNetworkByCountry(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //ProgramHasNetwork
     public List< ProgramHasNetwork> getProgramHasNetwork(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

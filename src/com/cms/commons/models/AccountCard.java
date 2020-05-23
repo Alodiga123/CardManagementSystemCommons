@@ -72,6 +72,12 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
+    @Size(max = 1000)
+    @Column(name = "reasonCancellation")
+    private String reasonCancellation;
+    @Column(name = "cancellationDate")
+    @Temporal(TemporalType.DATE)
+    private Date cancellationDate;
 
     public AccountCard() {
     }
@@ -190,5 +196,21 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public String getReasonCancellation() {
+        return reasonCancellation;
+    }
+
+    public void setReasonCancellation(String reasonCancellation) {
+        this.reasonCancellation = reasonCancellation;
+    }
+
+    public Date getCancellationDate() {
+        return cancellationDate;
+    }
+
+    public void setCancellationDate(Date cancellationDate) {
+        this.cancellationDate = cancellationDate;
     }
 }
