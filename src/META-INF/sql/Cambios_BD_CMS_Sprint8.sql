@@ -110,6 +110,16 @@ ALTER TABLE `CardManagementSystem`.`accountCard`
 ADD COLUMN `reasonCancellation` VARCHAR(1000) NULL,
 ADD COLUMN `cancellationDate` DATE NULL;
 
-
+-- Agregar FK en accountCard
+-- author: Jesús Gómez
+-- Fecha: 23/05/2020
+ALTER TABLE `CardManagementSystem`.`accountCard` 
+ADD COLUMN `userCancellationAccountId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`accountCard` 
+ADD CONSTRAINT `fk_accountCard_user1` 
+FOREIGN KEY (`userCancellationAccountId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
 
