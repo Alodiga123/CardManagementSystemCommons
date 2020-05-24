@@ -1,3 +1,4 @@
+//ProgramEJBLocal
 package com.alodiga.cms.commons.ejb;
 
 import com.alodiga.cms.commons.exception.EmptyListException;
@@ -28,6 +29,7 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     public List<Program> getProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Program loadProgram(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Program saveProgram(Program Program) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public Program searchProgram(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Program> getProgramByProgramType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Program> getProgramByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     

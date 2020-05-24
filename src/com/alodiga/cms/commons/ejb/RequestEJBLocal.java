@@ -12,7 +12,6 @@ import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.CollectionType;
 import com.cms.commons.models.CollectionsRequest;
 import com.cms.commons.models.DocumentsPersonType;
-import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.PersonType;
 import com.cms.commons.models.PlastiCustomizingRequestHasCard;
 import com.cms.commons.models.PlasticCustomizingRequest;
@@ -66,6 +65,8 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<CollectionsRequest> getCollectionsByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CollectionsRequest loadCollectionsRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionsRequest saveCollectionRequest(CollectionsRequest collectionRequest) throws NullParameterException, GeneralException;
+    public CollectionsRequest searchCollectionsRequest(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<CollectionsRequest> getSearchCollectionsRequest(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //RequestHasCollectionsRequest
     public List<RequestHasCollectionsRequest> getRequestsHasCollectionsRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -79,7 +80,8 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<CollectionType> getCollectionTypeByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CollectionType loadCollectionType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionType saveCollectionType(CollectionType collectionType) throws NullParameterException, GeneralException;
-
+    public CollectionType searchCollectionType(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
     //ReviewRequest
     public List<ReviewRequest> getReviewRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<ReviewRequest> getReviewRequestByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -127,6 +129,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
 
     //Tabla de PlastiCustomizingRequestHasCard
     public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<PlastiCustomizingRequestHasCard> getCardByPlastiCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PlastiCustomizingRequestHasCard loadPlastiCustomizingRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlastiCustomizingRequestHasCard savePlastiCustomizingRequestHasCard(PlastiCustomizingRequestHasCard plastiCustomizingRequestHasCard) throws NullParameterException, GeneralException;
         

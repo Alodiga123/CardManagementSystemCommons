@@ -5,9 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,23 +29,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "plastiCustomizingRequestHasCard")
+@Table(name = "cardRenewalRequestHasCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findAll", query = "SELECT p FROM PlastiCustomizingRequestHasCard p"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findById", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.id = :id"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByCreateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.createDate = :createDate"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByUpdateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_BY_PLASTIC_CUSTOMIZING_REQUEST, query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.plasticCustomizingRequestId.id = :plasticCustomizingRequestId")})
-
-public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "CardRenewalRequestHasCard.findAll", query = "SELECT c FROM CardRenewalRequestHasCard c")
+    , @NamedQuery(name = "CardRenewalRequestHasCard.findByCreateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.createDate = :createDate")
+    , @NamedQuery(name = "CardRenewalRequestHasCard.findByUpdateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.updateDate = :updateDate")
+    , @NamedQuery(name = "CardRenewalRequestHasCard.findById", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.id = :id")})
+public class CardRenewalRequestHasCard implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "createDate")
@@ -57,31 +47,28 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Long id;
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
-    @JoinColumn(name = "plasticCustomizingRequestId", referencedColumnName = "id")
+    @JoinColumn(name = "cardRenewalRequestId", referencedColumnName = "id")
     @OneToOne(optional = false)
-    private PlasticCustomizingRequest plasticCustomizingRequestId;
+    private CardRenewalRequest cardRenewalRequestId;
 
-    public PlastiCustomizingRequestHasCard() {
+    public CardRenewalRequestHasCard() {
     }
 
-    public PlastiCustomizingRequestHasCard(Long id) {
+    public CardRenewalRequestHasCard(Long id) {
         this.id = id;
     }
 
-    public PlastiCustomizingRequestHasCard(Long id, Date createDate) {
+    public CardRenewalRequestHasCard(Long id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Date getCreateDate() {
@@ -100,6 +87,14 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
         this.updateDate = updateDate;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Card getCardId() {
         return cardId;
     }
@@ -108,12 +103,12 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
         this.cardId = cardId;
     }
 
-    public PlasticCustomizingRequest getPlasticCustomizingRequestId() {
-        return plasticCustomizingRequestId;
+    public CardRenewalRequest getCardRenewalRequestId() {
+        return cardRenewalRequestId;
     }
 
-    public void setPlasticCustomizingRequestId(PlasticCustomizingRequest plasticCustomizingRequestId) {
-        this.plasticCustomizingRequestId = plasticCustomizingRequestId;
+    public void setCardRenewalRequestId(CardRenewalRequest cardRenewalRequestId) {
+        this.cardRenewalRequestId = cardRenewalRequestId;
     }
 
     @Override
@@ -126,10 +121,10 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlastiCustomizingRequestHasCard)) {
+        if (!(object instanceof CardRenewalRequestHasCard)) {
             return false;
         }
-        PlastiCustomizingRequestHasCard other = (PlastiCustomizingRequestHasCard) object;
+        CardRenewalRequestHasCard other = (CardRenewalRequestHasCard) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,17 +133,7 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PlastiCustomizingRequestHasCard[ id=" + id + " ]";
+        return "com.cms.commons.models.CardRenewalRequestHasCard[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
+    
 }

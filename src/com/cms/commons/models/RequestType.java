@@ -37,7 +37,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "RequestType.findById", query = "SELECT r FROM RequestType r WHERE r.id = :id"),
     @NamedQuery(name = "RequestType.findByCode", query = "SELECT r FROM RequestType r WHERE r.code = :code"),
     @NamedQuery(name = "RequestType.findByDescription", query = "SELECT r FROM RequestType r WHERE r.description = :description")})
-
 public class RequestType extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

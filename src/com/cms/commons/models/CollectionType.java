@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author usuario
+ * @author yalmea
  */
 @Entity
 @Table(name = "collectionType")
@@ -111,7 +111,7 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.CollectionType[ id=" + id + " ]";
+        return "com.cms.commons.models.Country[ id=" + id + " ]";
     }
 
     @Override
@@ -123,4 +123,5 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+    
 }

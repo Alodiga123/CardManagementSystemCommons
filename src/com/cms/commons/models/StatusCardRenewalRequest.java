@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -20,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -29,18 +28,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "currency")
+@Table(name = "statusCardRenewalRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Currency.findAll", query = "SELECT c FROM Currency c"),
-    @NamedQuery(name = "Currency.findById", query = "SELECT c FROM Currency c WHERE c.id = :id"),
-    @NamedQuery(name = "Currency.findByName", query = "SELECT c FROM Currency c WHERE c.name = :name"),
-    @NamedQuery(name = "Currency.findBySymbol", query = "SELECT c FROM Currency c WHERE c.symbol = :symbol")})
-
-public class Currency extends AbstractDistributionEntity implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "currencyId")
-    private Collection<Country> countryCollection;
+    @NamedQuery(name = "StatusCardRenewalRequest.findAll", query = "SELECT s FROM StatusCardRenewalRequest s")
+    , @NamedQuery(name = "StatusCardRenewalRequest.findById", query = "SELECT s FROM StatusCardRenewalRequest s WHERE s.id = :id")
+    , @NamedQuery(name = "StatusCardRenewalRequest.findByDescription", query = "SELECT s FROM StatusCardRenewalRequest s WHERE s.description = :description")})
+public class StatusCardRenewalRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,15 +42,16 @@ public class Currency extends AbstractDistributionEntity implements Serializable
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "symbol")
-    private String symbol;
+    @Size(max = 50)
+    @Column(name = "description")
+    private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusCardRenewalRequestId")
+    private Collection<CardRenewalRequest> cardRenewalRequestCollection;
 
-    public Currency() {
+    public StatusCardRenewalRequest() {
     }
 
-    public Currency(Integer id) {
+    public StatusCardRenewalRequest(Integer id) {
         this.id = id;
     }
 
@@ -68,20 +63,22 @@ public class Currency extends AbstractDistributionEntity implements Serializable
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getSymbol() {
-        return symbol;
+    @XmlTransient
+    @JsonIgnore
+    public Collection<CardRenewalRequest> getCardRenewalRequestCollection() {
+        return cardRenewalRequestCollection;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setCardRenewalRequestCollection(Collection<CardRenewalRequest> cardRenewalRequestCollection) {
+        this.cardRenewalRequestCollection = cardRenewalRequestCollection;
     }
 
     @Override
@@ -94,10 +91,10 @@ public class Currency extends AbstractDistributionEntity implements Serializable
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Currency)) {
+        if (!(object instanceof StatusCardRenewalRequest)) {
             return false;
         }
-        Currency other = (Currency) object;
+        StatusCardRenewalRequest other = (StatusCardRenewalRequest) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -106,27 +103,7 @@ public class Currency extends AbstractDistributionEntity implements Serializable
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.Courrency[ id=" + id + " ]";
+        return "com.cms.commons.models.StatusCardRenewalRequest[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Country> getCountryCollection() {
-        return countryCollection;
-    }
-
-    public void setCountryCollection(Collection<Country> countryCollection) {
-        this.countryCollection = countryCollection;
-    }
-
+    
 }
