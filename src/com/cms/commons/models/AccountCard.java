@@ -78,6 +78,9 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @Column(name = "cancellationDate")
     @Temporal(TemporalType.DATE)
     private Date cancellationDate;
+    @JoinColumn(name = "userCancellationAccountId", referencedColumnName = "id")
+    @ManyToOne
+    private User userCancellationAccountId;
 
     public AccountCard() {
     }
@@ -212,5 +215,13 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
 
     public void setCancellationDate(Date cancellationDate) {
         this.cancellationDate = cancellationDate;
+    }
+
+    public User getUserCancellationAccountId() {
+        return userCancellationAccountId;
+    }
+
+    public void setUserCancellationAccountId(User userCancellationAccountId) {
+        this.userCancellationAccountId = userCancellationAccountId;
     }
 }
