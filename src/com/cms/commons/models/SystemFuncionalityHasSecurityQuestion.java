@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -19,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,15 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "user_has_profile")
+@Table(name = "systemFuncionalityHasSecurityQuestion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UserHasProfile.findAll", query = "SELECT u FROM UserHasProfile u")
-    , @NamedQuery(name = "UserHasProfile.findById", query = "SELECT u FROM UserHasProfile u WHERE u.id = :id")
-    , @NamedQuery(name = "UserHasProfile.findByCreateDate", query = "SELECT u FROM UserHasProfile u WHERE u.createDate = :createDate")
-    , @NamedQuery(name = "UserHasProfile.findByUpdateDate", query = "SELECT u FROM UserHasProfile u WHERE u.updateDate = :updateDate")
-    , @NamedQuery(name = "UserHasProfile.findByEnabled", query = "SELECT u FROM UserHasProfile u WHERE u.enabled = :enabled")})
-public class UserHasProfile extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findAll", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findById", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.id = :id")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByCreateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.createDate = :createDate")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByUpdateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.updateDate = :updateDate")})
+public class SystemFuncionalityHasSecurityQuestion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,23 +52,21 @@ public class UserHasProfile extends AbstractDistributionEntity implements Serial
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @Column(name = "enabled")
-    private Boolean enabled;
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @JoinColumn(name = "systemFuncionalityId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User userId;
-    @JoinColumn(name = "profileId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Profile profileId;
+    private SystemFuncionality systemFuncionalityId;
+    @JoinColumn(name = "securityQuestionId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private SecurityQuestion securityQuestionId;
 
-    public UserHasProfile() {
+    public SystemFuncionalityHasSecurityQuestion() {
     }
 
-    public UserHasProfile(Long id) {
+    public SystemFuncionalityHasSecurityQuestion(Long id) {
         this.id = id;
     }
 
-    public UserHasProfile(Long id, Date createDate) {
+    public SystemFuncionalityHasSecurityQuestion(Long id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
     }
@@ -99,28 +95,20 @@ public class UserHasProfile extends AbstractDistributionEntity implements Serial
         this.updateDate = updateDate;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public SystemFuncionality getSystemFuncionalityId() {
+        return systemFuncionalityId;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setSystemFuncionalityId(SystemFuncionality systemFuncionalityId) {
+        this.systemFuncionalityId = systemFuncionalityId;
     }
 
-    public User getUserId() {
-        return userId;
+    public SecurityQuestion getSecurityQuestionId() {
+        return securityQuestionId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
-
-    public Profile getProfileId() {
-        return profileId;
-    }
-
-    public void setProfileId(Profile profileId) {
-        this.profileId = profileId;
+    public void setSecurityQuestionId(SecurityQuestion securityQuestionId) {
+        this.securityQuestionId = securityQuestionId;
     }
 
     @Override
@@ -133,10 +121,10 @@ public class UserHasProfile extends AbstractDistributionEntity implements Serial
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserHasProfile)) {
+        if (!(object instanceof SystemFuncionalityHasSecurityQuestion)) {
             return false;
         }
-        UserHasProfile other = (UserHasProfile) object;
+        SystemFuncionalityHasSecurityQuestion other = (SystemFuncionalityHasSecurityQuestion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -145,17 +133,7 @@ public class UserHasProfile extends AbstractDistributionEntity implements Serial
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.UserHasProfile[ id=" + id + " ]";
-    }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
+        return "com.cms.commons.models.SystemFuncionalityHasSecurityQuestion[ id=" + id + " ]";
     }
     
 }

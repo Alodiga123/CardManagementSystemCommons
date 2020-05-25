@@ -122,4 +122,67 @@ FOREIGN KEY (`userCancellationAccountId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+-- Crear tabla securityQuestion
+-- author: Jesús Gómez
+-- Fecha: 25/05/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`securityQuestion` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `securityQuestion` VARCHAR(250) NULL,
+  `languageId` BIGINT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_questionSecurity_language1_idx` (`languageId` ASC),
+  CONSTRAINT `fk_questionSecurity_language1`
+    FOREIGN KEY (`languageId`)
+    REFERENCES `CardManagementSystem`.`language` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+-- Crear tabla systemFuncionality
+-- author: Jesús Gómez
+-- Fecha: 25/05/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemFuncionality` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL,
+  `originApplicationId` INT NOT NULL,
+  `languageId` BIGINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_systemFuncionality_originApplication1_idx` (`originApplicationId` ASC),
+  INDEX `fk_systemFuncionality_language1_idx` (`languageId` ASC),
+  CONSTRAINT `fk_systemFuncionality_originApplication1`
+    FOREIGN KEY (`originApplicationId`)
+    REFERENCES `CardManagementSystem`.`originApplication` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_systemFuncionality_language1`
+    FOREIGN KEY (`languageId`)
+    REFERENCES `CardManagementSystem`.`language` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Crear tabla systemFuncionalityHasQuestionSecurity
+-- author: Jesús Gómez
+-- Fecha: 25/05/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemFuncionalityHasSecurityQuestion` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `systemFuncionalityId` INT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  `securityQuestionId` BIGINT UNIQUE NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_questionSecurityHasPermission_systemFuncionality1_idx` (`systemFuncionalityId` ASC),
+  INDEX `fk_systemFuncionalityHasSecurityQuestion_securityQuestion1_idx` (`securityQuestionId` ASC),
+  CONSTRAINT `fk_questionSecurityHasPermission_systemFuncionality1`
+    FOREIGN KEY (`systemFuncionalityId`)
+    REFERENCES `CardManagementSystem`.`systemFuncionality` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_systemFuncionalityHasSecurityQuestion_securityQuestion1`
+    FOREIGN KEY (`securityQuestionId`)
+    REFERENCES `CardManagementSystem`.`securityQuestion` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
 

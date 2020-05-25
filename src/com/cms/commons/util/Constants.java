@@ -59,7 +59,8 @@ public class Constants {
     public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
     public static final int CARD_STATUS_RENEWAL = 10;  
     public static final int CARD_STATUS_DELIVERED = 7;
-    public static final int STATUS_CARDS_PERSONALIZED = 2;  
+    public static final int CARD_STATUS_INVENTORY = 4;
+    public static final int CARD_STATUS_ERROR = 5;
     public static final int ECONOMIC_ACTIVITY = 4;
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
