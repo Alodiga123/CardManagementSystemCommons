@@ -4,8 +4,10 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -106,6 +111,11 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private Date updateDate;
     @Column(name = "indDeliveryRequest")
     private Boolean indDeliveryRequest;
+    @Column(name = "automaticRenewalDate")
+    @Temporal(TemporalType.DATE)
+    private Date automaticRenewalDate;
+    @Column(name = "indRenewal")
+    private Boolean indRenewal;
 
     public Card() {
     }
@@ -299,6 +309,22 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getAutomaticRenewalDate() {
+        return automaticRenewalDate;
+    }
+
+    public void setAutomaticRenewalDate(Date automaticRenewalDate) {
+        this.automaticRenewalDate = automaticRenewalDate;
+    }
+
+    public Boolean getIndRenewal() {
+        return indRenewal;
+    }
+
+    public void setIndRenewal(Boolean indRenewal) {
+        this.indRenewal = indRenewal;
     }
 
 }
