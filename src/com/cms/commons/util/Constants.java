@@ -27,6 +27,7 @@ public class Constants {
     public static String GENERAL_EXCEPTION = "E-02";
     public static String INVALID_PASSWORD_EXCEPTION = "E-03";
     public static String DISABLED_USER_EXCEPTION = "E-04";
+    public static String INVALID_QUESTION_EXCEPTION = "E-05";
 
     //CONSTANT VIEW
     public static String HOME_ADMIN = "home-admin.zul";
@@ -59,6 +60,7 @@ public class Constants {
     public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
     public static final int CARD_STATUS_RENEWAL = 10;  
     public static final int CARD_STATUS_DELIVERED = 7;
+    public static final int CARD_STATUS_ACTIVE = 8;
     public static final int CARD_STATUS_INVENTORY = 4;
     public static final int CARD_STATUS_ERROR = 5;
     public static final int ECONOMIC_ACTIVITY = 4;
