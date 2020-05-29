@@ -3,6 +3,7 @@ package com.alodiga.cms.commons.ejb;
 import com.alodiga.cms.commons.exception.EmptyListException;
 import javax.ejb.Local;
 import com.alodiga.cms.commons.exception.GeneralException;
+import com.alodiga.cms.commons.exception.InvalidQuestionException;
 import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
@@ -18,9 +19,12 @@ import com.cms.commons.models.CardNumberCredential;
 import com.cms.commons.models.DeliveryRequest;
 import com.cms.commons.models.DeliveryRequetsHasCard;
 import com.cms.commons.models.RateByCard;
+import com.cms.commons.models.SecurityQuestion;
 import com.cms.commons.models.StatusAccount;
 import com.cms.commons.models.StatusDeliveryRequest;
 import com.cms.commons.models.SubAccountType;
+import com.cms.commons.models.SystemFuncionality;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,6 +72,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List<Card> getCardByCardNumber(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Card loadCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Card saveCard(Card card) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public Card validateQuestionCard(Long cardId, Date expirationDate, Date createDate, String ICVVMagneticStrip) throws RegisterNotFoundException, NullParameterException, GeneralException, InvalidQuestionException;
     
     //CardNumberCredential
     public List<CardNumberCredential> getCardNumberCredential(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -111,5 +116,19 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public StatusDeliveryRequest loadStatusDeliveryRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusDeliveryRequest saveStatusDeliveryRequest(StatusDeliveryRequest statusDeliveryRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
+    //SecurityQuestion
+    public List<SecurityQuestion> getSecurityQuestion(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public SecurityQuestion loadSecurityQuestion(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public SecurityQuestion saveSecurityQuestion(SecurityQuestion securityQuestion) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //SystemFuncionality
+    public List<SystemFuncionality> getSystemFuncionality(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public SystemFuncionality loadSystemFuncionality(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public SystemFuncionality saveSystemFuncionality(SystemFuncionality systemFuncionality) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //SystemFuncionalityHasSecurityQuestion
+    public List<com.cms.commons.models.SystemFuncionalityHasSecurityQuestion> getSystemFuncionalityHasSecurityQuestion(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public com.cms.commons.models.SystemFuncionalityHasSecurityQuestion loadSystemFuncionalityHasSecurityQuestion(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public com.cms.commons.models.SystemFuncionalityHasSecurityQuestion saveSystemFuncionalityHasSecurityQuestion(com.cms.commons.models.SystemFuncionalityHasSecurityQuestion systemFuncionalityHasSecurityQuestion) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
     
