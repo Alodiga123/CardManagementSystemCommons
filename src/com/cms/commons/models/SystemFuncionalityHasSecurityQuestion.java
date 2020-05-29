@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -36,7 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findById", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.id = :id")
     , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByCreateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.createDate = :createDate")
     , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByUpdateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.updateDate = :updateDate")})
-public class SystemFuncionalityHasSecurityQuestion implements Serializable {
+public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -136,4 +138,13 @@ public class SystemFuncionalityHasSecurityQuestion implements Serializable {
         return "com.cms.commons.models.SystemFuncionalityHasSecurityQuestion[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }    
 }
