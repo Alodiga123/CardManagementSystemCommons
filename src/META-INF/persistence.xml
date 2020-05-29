@@ -11,6 +11,7 @@
     <class>com.cms.commons.models.Issuer</class>
     <class>com.cms.commons.models.AccountTypeHasProductType</class>
     <class>com.cms.commons.models.CardNumberCredential</class>
+    <class>com.cms.commons.models.CardDeliveryRegister</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/CardManagementSystem?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

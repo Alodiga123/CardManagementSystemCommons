@@ -7,7 +7,6 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,16 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "plastiCustomizingRequestHasCard")
+@Table(name = "systemFuncionalityHasSecurityQuestion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findAll", query = "SELECT p FROM PlastiCustomizingRequestHasCard p"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findById", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.id = :id"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByCreateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.createDate = :createDate"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByUpdateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_BY_PLASTIC_CUSTOMIZING_REQUEST, query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.plasticCustomizingRequestId.id = :plasticCustomizingRequestId")})
-
-public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findAll", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findById", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.id = :id")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByCreateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.createDate = :createDate")
+    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByUpdateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.updateDate = :updateDate")})
+public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,21 +54,21 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "cardId", referencedColumnName = "id")
+    @JoinColumn(name = "systemFuncionalityId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Card cardId;
-    @JoinColumn(name = "plasticCustomizingRequestId", referencedColumnName = "id")
+    private SystemFuncionality systemFuncionalityId;
+    @JoinColumn(name = "securityQuestionId", referencedColumnName = "id")
     @OneToOne(optional = false)
-    private PlasticCustomizingRequest plasticCustomizingRequestId;
+    private SecurityQuestion securityQuestionId;
 
-    public PlastiCustomizingRequestHasCard() {
+    public SystemFuncionalityHasSecurityQuestion() {
     }
 
-    public PlastiCustomizingRequestHasCard(Long id) {
+    public SystemFuncionalityHasSecurityQuestion(Long id) {
         this.id = id;
     }
 
-    public PlastiCustomizingRequestHasCard(Long id, Date createDate) {
+    public SystemFuncionalityHasSecurityQuestion(Long id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
     }
@@ -100,20 +97,20 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
         this.updateDate = updateDate;
     }
 
-    public Card getCardId() {
-        return cardId;
+    public SystemFuncionality getSystemFuncionalityId() {
+        return systemFuncionalityId;
     }
 
-    public void setCardId(Card cardId) {
-        this.cardId = cardId;
+    public void setSystemFuncionalityId(SystemFuncionality systemFuncionalityId) {
+        this.systemFuncionalityId = systemFuncionalityId;
     }
 
-    public PlasticCustomizingRequest getPlasticCustomizingRequestId() {
-        return plasticCustomizingRequestId;
+    public SecurityQuestion getSecurityQuestionId() {
+        return securityQuestionId;
     }
 
-    public void setPlasticCustomizingRequestId(PlasticCustomizingRequest plasticCustomizingRequestId) {
-        this.plasticCustomizingRequestId = plasticCustomizingRequestId;
+    public void setSecurityQuestionId(SecurityQuestion securityQuestionId) {
+        this.securityQuestionId = securityQuestionId;
     }
 
     @Override
@@ -126,10 +123,10 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlastiCustomizingRequestHasCard)) {
+        if (!(object instanceof SystemFuncionalityHasSecurityQuestion)) {
             return false;
         }
-        PlastiCustomizingRequestHasCard other = (PlastiCustomizingRequestHasCard) object;
+        SystemFuncionalityHasSecurityQuestion other = (SystemFuncionalityHasSecurityQuestion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,9 +135,9 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PlastiCustomizingRequestHasCard[ id=" + id + " ]";
+        return "com.cms.commons.models.SystemFuncionalityHasSecurityQuestion[ id=" + id + " ]";
     }
-
+    
     @Override
     public Object getPk() {
         return getId();
@@ -149,6 +146,5 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
-    }
-
+    }    
 }

@@ -27,6 +27,7 @@ public class Constants {
     public static String GENERAL_EXCEPTION = "E-02";
     public static String INVALID_PASSWORD_EXCEPTION = "E-03";
     public static String DISABLED_USER_EXCEPTION = "E-04";
+    public static String INVALID_QUESTION_EXCEPTION = "E-05";
 
     //CONSTANT VIEW
     public static String HOME_ADMIN = "home-admin.zul";
@@ -55,9 +56,13 @@ public class Constants {
     public static final int STATUS_REQUEST_PENDING_APPROVAL = 4;
     public static final int STATUS_REQUEST_BLACK_LIST_OK = 5;
     public static final int STATUS_REQUEST_APPROVED = 6;
-    public static final int STATUS_CARDS_REQUESTED = 1;
-    public static final int STATUS_CARDS_PERSONALIZED = 3;
+    public static final int CARD_STATUS_REQUESTED = 1;
+    public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
+    public static final int CARD_STATUS_RENEWAL = 10;  
     public static final int CARD_STATUS_DELIVERED = 7;
+    public static final int CARD_STATUS_ACTIVE = 8;
+    public static final int CARD_STATUS_INVENTORY = 4;
+    public static final int CARD_STATUS_ERROR = 5;
     public static final int ECONOMIC_ACTIVITY = 4;
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
@@ -68,7 +73,6 @@ public class Constants {
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
     public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
-    public static Integer CARD_STATUS_REQUESTED = 1;
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
     public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
     public static Integer CHANNEL_CREATION_ACCOUNT = 7;

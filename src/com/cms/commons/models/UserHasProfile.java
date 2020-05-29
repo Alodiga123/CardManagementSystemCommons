@@ -7,7 +7,6 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -20,7 +19,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,16 +30,15 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "plastiCustomizingRequestHasCard")
+@Table(name = "user_has_profile")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findAll", query = "SELECT p FROM PlastiCustomizingRequestHasCard p"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findById", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.id = :id"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByCreateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.createDate = :createDate"),
-    @NamedQuery(name = "PlastiCustomizingRequestHasCard.findByUpdateDate", query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.CARD_BY_PLASTIC_CUSTOMIZING_REQUEST, query = "SELECT p FROM PlastiCustomizingRequestHasCard p WHERE p.plasticCustomizingRequestId.id = :plasticCustomizingRequestId")})
-
-public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "UserHasProfile.findAll", query = "SELECT u FROM UserHasProfile u")
+    , @NamedQuery(name = "UserHasProfile.findById", query = "SELECT u FROM UserHasProfile u WHERE u.id = :id")
+    , @NamedQuery(name = "UserHasProfile.findByCreateDate", query = "SELECT u FROM UserHasProfile u WHERE u.createDate = :createDate")
+    , @NamedQuery(name = "UserHasProfile.findByUpdateDate", query = "SELECT u FROM UserHasProfile u WHERE u.updateDate = :updateDate")
+    , @NamedQuery(name = "UserHasProfile.findByEnabled", query = "SELECT u FROM UserHasProfile u WHERE u.enabled = :enabled")})
+public class UserHasProfile extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,21 +54,23 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "cardId", referencedColumnName = "id")
+    @Column(name = "enabled")
+    private Boolean enabled;
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Card cardId;
-    @JoinColumn(name = "plasticCustomizingRequestId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private PlasticCustomizingRequest plasticCustomizingRequestId;
+    private User userId;
+    @JoinColumn(name = "profileId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Profile profileId;
 
-    public PlastiCustomizingRequestHasCard() {
+    public UserHasProfile() {
     }
 
-    public PlastiCustomizingRequestHasCard(Long id) {
+    public UserHasProfile(Long id) {
         this.id = id;
     }
 
-    public PlastiCustomizingRequestHasCard(Long id, Date createDate) {
+    public UserHasProfile(Long id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
     }
@@ -100,20 +99,28 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
         this.updateDate = updateDate;
     }
 
-    public Card getCardId() {
-        return cardId;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setCardId(Card cardId) {
-        this.cardId = cardId;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public PlasticCustomizingRequest getPlasticCustomizingRequestId() {
-        return plasticCustomizingRequestId;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setPlasticCustomizingRequestId(PlasticCustomizingRequest plasticCustomizingRequestId) {
-        this.plasticCustomizingRequestId = plasticCustomizingRequestId;
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+    public Profile getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Profile profileId) {
+        this.profileId = profileId;
     }
 
     @Override
@@ -126,10 +133,10 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PlastiCustomizingRequestHasCard)) {
+        if (!(object instanceof UserHasProfile)) {
             return false;
         }
-        PlastiCustomizingRequestHasCard other = (PlastiCustomizingRequestHasCard) object;
+        UserHasProfile other = (UserHasProfile) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,7 +145,7 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.PlastiCustomizingRequestHasCard[ id=" + id + " ]";
+        return "com.cms.commons.models.UserHasProfile[ id=" + id + " ]";
     }
 
     @Override
@@ -150,5 +157,5 @@ public class PlastiCustomizingRequestHasCard extends AbstractDistributionEntity 
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-
+    
 }
