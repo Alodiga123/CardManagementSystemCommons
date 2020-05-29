@@ -146,6 +146,7 @@ public interface RequestEJB extends DistributionGenericEJB {
     public List<StatusResultPlasticCustomizing> getStatusByDescription(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<StatusResultPlasticCustomizing> getStatusByPlasticManufacturer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<StatusResultPlasticCustomizing> getStatusByCardStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<StatusResultPlasticCustomizing> getStatusByStatusPlasticCustomizing(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusResultPlasticCustomizing loadStatusResultPlasticCustomizing(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusResultPlasticCustomizing saveStatusResultPlasticCustomizing(StatusResultPlasticCustomizing statusResultPlasticCustomizing) throws NullParameterException, GeneralException;
     

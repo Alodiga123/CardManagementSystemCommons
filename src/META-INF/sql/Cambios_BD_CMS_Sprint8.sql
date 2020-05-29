@@ -183,6 +183,34 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemFuncionalityHasSecurity
     FOREIGN KEY (`securityQuestionId`)
     REFERENCES `CardManagementSystem`.`securityQuestion` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
+-- Cambios en los indices relacionados con tablas de solicitud de personalización de plasticos
+-- author: Jesús Gómez
+-- Fecha: 26/05/2020
+ALTER TABLE `CardManagementSystem`.`plastiCustomizingRequestHasCard` 
+DROP INDEX `plasticCustomizingRequestId` ,
+ADD INDEX `plasticCustomizingRequestId` (`plasticCustomizingRequestId` ASC);
 
+ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
+DROP INDEX `plasticCustomizingRequestId` ,
+ADD INDEX `plasticCustomizingRequestId` (`plasticCustomizingRequestId` ASC);
+
+-- Agregar campos en tabla statusResultPlasticCustomizing
+-- author: Jesús Gómez
+-- Fecha: 28/05/2020
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+ADD COLUMN `statusPlasticCustomizing` VARCHAR(20) NOT NULL AFTER `plasticManufacturerId`;
+
+-- Modificar ndice en tabla deliveryRequetsHasCard
+-- author: Jesús Gómez
+-- Fecha: 28/05/2020
+ALTER TABLE `CardManagementSystem`.`deliveryRequetsHasCard` 
+DROP INDEX `deliveryRequestId` ,
+ADD INDEX `deliveryRequestId` (`deliveryRequestId` ASC);
+
+-- Agregar campos en tabla documentType
+-- author: Jesús Gómez
+-- Fecha: 29/05/2020
+ALTER TABLE `CardManagementSystem`.`documentType` 
+ADD COLUMN `acronym` VARCHAR(10) NOT NULL AFTER `name`;

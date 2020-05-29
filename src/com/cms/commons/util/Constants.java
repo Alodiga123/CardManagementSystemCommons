@@ -84,6 +84,7 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
     public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;
+    public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
 
     //RequestEJB
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
@@ -121,6 +122,7 @@ public class Constants {
     public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
     public static final String PLASTIC_MANUFACTURER_KEY = "plasticManufacturerId";
     public static final String PLASTIC_CARD_STATUS_KEY = "cardStatusId";
+    public static final String STATUS_PLASTIC_CUSTOMIZING_KEY = "statusPlasticCustomizing";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
     public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
     public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
