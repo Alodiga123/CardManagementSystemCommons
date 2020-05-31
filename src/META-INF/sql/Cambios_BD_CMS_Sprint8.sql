@@ -183,6 +183,86 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`systemFuncionalityHasSecurity
     FOREIGN KEY (`securityQuestionId`)
     REFERENCES `CardManagementSystem`.`securityQuestion` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
+-- Cambios en los indices relacionados con tablas de solicitud de personalización de plasticos
+-- author: Jesús Gómez
+-- Fecha: 26/05/2020
+ALTER TABLE `CardManagementSystem`.`plastiCustomizingRequestHasCard` 
+DROP INDEX `plasticCustomizingRequestId` ,
+ADD INDEX `plasticCustomizingRequestId` (`plasticCustomizingRequestId` ASC);
+
+ALTER TABLE `CardManagementSystem`.`resultPlasticCustomizingRequest` 
+DROP INDEX `plasticCustomizingRequestId` ,
+ADD INDEX `plasticCustomizingRequestId` (`plasticCustomizingRequestId` ASC);
+
+-- Agregar campos en tabla statusResultPlasticCustomizing
+-- author: Jesús Gómez
+-- Fecha: 28/05/2020
+ALTER TABLE `CardManagementSystem`.`statusResultPlasticCustomizing` 
+ADD COLUMN `statusPlasticCustomizing` VARCHAR(20) NOT NULL AFTER `plasticManufacturerId`;
+
+-- Modificar ndice en tabla deliveryRequetsHasCard
+-- author: Jesús Gómez
+-- Fecha: 28/05/2020
+ALTER TABLE `CardManagementSystem`.`deliveryRequetsHasCard` 
+DROP INDEX `deliveryRequestId` ,
+ADD INDEX `deliveryRequestId` (`deliveryRequestId` ASC);
+
+-- Agregar campos en tabla documentType
+-- author: Jesús Gómez
+-- Fecha: 29/05/2020
+ALTER TABLE `CardManagementSystem`.`documentType` 
+ADD COLUMN `acronym` VARCHAR(10) NOT NULL AFTER `name`;
+
+-- Crear tabla statusUpdateReason
+-- author: Jesús Gómez
+-- Fecha: 30/05/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusUpdateReason` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Crear tabla cardStatusHasUpdateReason
+-- author: Jesús Gómez
+-- Fecha: 30/05/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardStatusHasUpdateReason` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `statusUpdateReasonId` INT NOT NULL,
+  `cardStatusId` INT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_timestamps_statusUpdateReason1_idx` (`statusUpdateReasonId` ASC),
+  INDEX `fk_timestamps_cardStatus1_idx` (`cardStatusId` ASC),
+  CONSTRAINT `fk_timestamps_statusUpdateReason1`
+    FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_timestamps_cardStatus1`
+    FOREIGN KEY (`cardStatusId`)
+    REFERENCES `CardManagementSystem`.`cardStatus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+-- Agregar campos en tabla card
+-- author: Jesús Gómez
+-- Fecha: 30/05/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `observations` VARCHAR(1500) NULL AFTER `indRenewal`,
+ADD COLUMN `statusUpdateReasonDate` DATE NULL AFTER `observations`;
+
+-- Agregar FK en card
+-- author: Jesús Gómez
+-- Fecha: 30/05/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `userResponsibleStatusUpdateId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD CONSTRAINT `fk_card_user1` 
+FOREIGN KEY (`userResponsibleStatusUpdateId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
 
