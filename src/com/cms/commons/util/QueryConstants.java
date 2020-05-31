@@ -84,6 +84,7 @@ public class QueryConstants {
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
     public static final String ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES = "accountSegmentByAccountProperties";
     public static final String CARD_NUMBER_BY_USE = "cardNumberByUse";
+    public static final String ACCOUNT_CARD_BY_PRODUCT = "accountCardByProduct";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
