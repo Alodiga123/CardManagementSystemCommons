@@ -27,6 +27,7 @@ public class Constants {
     public static String GENERAL_EXCEPTION = "E-02";
     public static String INVALID_PASSWORD_EXCEPTION = "E-03";
     public static String DISABLED_USER_EXCEPTION = "E-04";
+    public static String INVALID_QUESTION_EXCEPTION = "E-05";
 
     //CONSTANT VIEW
     public static String HOME_ADMIN = "home-admin.zul";
@@ -59,6 +60,7 @@ public class Constants {
     public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
     public static final int CARD_STATUS_RENEWAL = 10;  
     public static final int CARD_STATUS_DELIVERED = 7;
+    public static final int CARD_STATUS_ACTIVE = 8;
     public static final int CARD_STATUS_INVENTORY = 4;
     public static final int CARD_STATUS_ERROR = 5;
     public static final int ECONOMIC_ACTIVITY = 4;
@@ -82,6 +84,7 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
     public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;
+    public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
 
     //RequestEJB
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
@@ -119,6 +122,7 @@ public class Constants {
     public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
     public static final String PLASTIC_MANUFACTURER_KEY = "plasticManufacturerId";
     public static final String PLASTIC_CARD_STATUS_KEY = "cardStatusId";
+    public static final String STATUS_PLASTIC_CUSTOMIZING_KEY = "statusPlasticCustomizing";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
     public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
     public static final int PRODUCT_TYPE_WALLET_APP_ID = 1;
