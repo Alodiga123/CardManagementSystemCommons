@@ -13,6 +13,7 @@ import com.cms.commons.models.AccountSegment;
 import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.Card;
+import com.cms.commons.models.CardDeliveryRegister;
 import com.cms.commons.models.CardNumberCredential;
 import com.cms.commons.models.DeliveryRequest;
 import com.cms.commons.models.DeliveryRequetsHasCard;
@@ -30,18 +31,18 @@ import java.util.List;
 public interface CardEJB extends DistributionGenericEJB {
 
     //AccountProperties
-    public List< AccountProperties> getAccountProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List< AccountProperties> getAccountPropertiesByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AccountProperties> getAccountProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AccountProperties> getAccountPropertiesByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountProperties loadAccountProperties(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountProperties saveAccountProperties(AccountProperties accountProperties) throws RegisterNotFoundException, NullParameterException, GeneralException;    
     
     //AccountType
-    public List< AccountType> getAccountType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AccountType> getAccountType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountType loadAccountType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountType saveAccountType(AccountType accountType) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
     //AccountTypeHasProductType
-    public List< AccountTypeHasProductType> getAccountTypeHasProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AccountTypeHasProductType> getAccountTypeHasProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<AccountTypeHasProductType> getAccountTypeHasProductTypeByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountTypeHasProductType loadAccountTypeHasProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountTypeHasProductType saveAccountTypeHasProductType(AccountTypeHasProductType accountTypeHasProductType) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -74,6 +75,11 @@ public interface CardEJB extends DistributionGenericEJB {
     public CardNumberCredential loadCardNumberCredential(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardNumberCredential saveCardNumberCredential(CardNumberCredential cardNumberCredential) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
+    //CardDeliveryRegister
+    public List< CardDeliveryRegister> getCardDeliveryRegister(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CardDeliveryRegister loadCardDeliveryRegister(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public CardDeliveryRegister saveCardDeliveryRegister(CardDeliveryRegister cardDeliveryRegister) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
     //RateByCard
     public List<RateByCard> getRateByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<RateByCard> getRateByCardByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -84,6 +90,7 @@ public interface CardEJB extends DistributionGenericEJB {
     public List< AccountCard> getAccountCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountCard loadAccountCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountCard saveAccountCard(AccountCard accountCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public List<AccountCard> getAccountCardByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //StatusAccount
     public List<StatusAccount> getStatusAccount(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
