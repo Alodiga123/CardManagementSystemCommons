@@ -37,9 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StatusResultPlasticCustomizing.findByDescription", query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description = :description"),
     @NamedQuery(name = QueryConstants.STATUS_BY_DESCRIPTION, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.description LIKE :description"),
     @NamedQuery(name = QueryConstants.STATUS_BY_CARD_STATUS, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.id = :id"),
-    @NamedQuery(name = QueryConstants.STATUS_BY_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.plasticManufacturerId.id=:plasticManufacturerId")})
+    @NamedQuery(name = QueryConstants.STATUS_BY_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.plasticManufacturerId.id=:plasticManufacturerId"),
+    @NamedQuery(name = QueryConstants.SRPC_BY_STATUS_PLASTIC_MANUFACTURER, query = "SELECT s FROM StatusResultPlasticCustomizing s WHERE s.statusPlasticCustomizing=:statusPlasticCustomizing")})
 public class StatusResultPlasticCustomizing extends AbstractDistributionEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,6 +57,11 @@ public class StatusResultPlasticCustomizing extends AbstractDistributionEntity i
     @JoinColumn(name = "cardStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CardStatus cardStatusId;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "statusPlasticCustomizing")
+    private String statusPlasticCustomizing;
 
     public StatusResultPlasticCustomizing() {
     }
@@ -135,5 +140,13 @@ public class StatusResultPlasticCustomizing extends AbstractDistributionEntity i
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public String getStatusPlasticCustomizing() {
+        return statusPlasticCustomizing;
+    }
+
+    public void setStatusPlasticCustomizing(String statusPlasticCustomizing) {
+        this.statusPlasticCustomizing = statusPlasticCustomizing;
     }
 }
