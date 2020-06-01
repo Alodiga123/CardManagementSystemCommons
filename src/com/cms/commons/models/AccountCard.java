@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AccountCard.findAll", query = "SELECT a FROM AccountCard a"),
     @NamedQuery(name = "AccountCard.findById", query = "SELECT a FROM AccountCard a WHERE a.id = :id"),
     @NamedQuery(name = "AccountCard.findByCreateDate", query = "SELECT a FROM AccountCard a WHERE a.createDate = :createDate"),
-    @NamedQuery(name = "AccountCard.findByUpdateDate", query = "SELECT a FROM AccountCard a WHERE a.updateDate = :updateDate")})
+    @NamedQuery(name = "AccountCard.findByUpdateDate", query = "SELECT a FROM AccountCard a WHERE a.updateDate = :updateDate"),
+    @NamedQuery(name = QueryConstants.ACCOUNT_CARD_BY_PRODUCT, query = "SELECT a FROM AccountCard a WHERE a.cardId.productId.id = :productId")})
 public class AccountCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
