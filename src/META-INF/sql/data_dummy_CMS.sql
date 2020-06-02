@@ -366,4 +366,20 @@ VALUES
 (@PersonID,3,"J105826932","Credential Argentina","PO-1586328-A","Yoan Leon","yleon@gmail.com",1);
 
 
+-- Insertar datos tabla cardNumberCredential
+INSERT INTO `CardManagementSystem`.`cardNumberCredential`
+(`cardNumber`,`securityCodeCard`,`indUse`)
+VALUES 
+('5412101234567890','659',0),
+('5412341234567890','793',0),
+('5412781234567890','884',0),
+('5412330987654321','385',0),
+('5412569877730932','659',0),
+('5412156874009834','123',0),
+('5412105888400936','943',0),
+('5412757578484899','847',0),
+('5412104466379833','008',0),
+('5412345678936278','447',0),
+('5412102377593847','472',0);
+
 
