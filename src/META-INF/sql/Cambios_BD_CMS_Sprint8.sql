@@ -218,9 +218,12 @@ ADD COLUMN `acronym` VARCHAR(10) NOT NULL AFTER `name`;
 -- Crear tabla statusUpdateReason
 -- author: Jesús Gómez
 -- Fecha: 30/05/2020
+-- A partir de aquí no se actualizó en el servidor de AWS
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusUpdateReason` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(50) NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
