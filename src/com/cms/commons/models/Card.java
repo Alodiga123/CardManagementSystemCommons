@@ -116,6 +116,15 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private Date automaticRenewalDate;
     @Column(name = "indRenewal")
     private Boolean indRenewal;
+    @Size(max = 1500)
+    @Column(name = "observations")
+    private String observations;
+    @Column(name = "statusUpdateReasonDate")
+    @Temporal(TemporalType.DATE)
+    private Date statusUpdateReasonDate;
+    @JoinColumn(name = "userResponsibleStatusUpdateId", referencedColumnName = "id")
+    @ManyToOne
+    private User userResponsibleStatusUpdateId;
 
     public Card() {
     }
@@ -325,6 +334,30 @@ public class Card extends AbstractDistributionEntity implements Serializable {
 
     public void setIndRenewal(Boolean indRenewal) {
         this.indRenewal = indRenewal;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
+    }
+
+    public Date getStatusUpdateReasonDate() {
+        return statusUpdateReasonDate;
+    }
+
+    public void setStatusUpdateReasonDate(Date statusUpdateReasonDate) {
+        this.statusUpdateReasonDate = statusUpdateReasonDate;
+    }
+
+    public User getUserResponsibleStatusUpdateId() {
+        return userResponsibleStatusUpdateId;
+    }
+
+    public void setUserResponsibleStatusUpdateId(User userResponsibleStatusUpdateId) {
+        this.userResponsibleStatusUpdateId = userResponsibleStatusUpdateId;
     }
 
 }

@@ -44,6 +44,8 @@ import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
 import com.cms.commons.models.Profile;
 import com.cms.commons.models.ProfileData;
+import com.cms.commons.models.User;
+import com.cms.commons.models.UserHasProfile;
 import java.util.List;
 
 /**
@@ -263,5 +265,10 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //legalPerson
     public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //Tabla  UserHasProfile
+    public List<UserHasProfile> getUserHasProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public UserHasProfile loadUserHasProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
 }
