@@ -49,6 +49,7 @@ public class QueryConstants {
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String STATUS_BY_DESCRIPTION = "statusByDescription";
     public static final String STATUS_BY_PLASTIC_MANUFACTURER = "statusByPlasticManufacturer";
+    public static final String SRPC_BY_STATUS_PLASTIC_MANUFACTURER = "srpcByStatusPlasticManufacturer";
     public static final String STATUS_BY_CARD_STATUS = "statusByCardStatus";
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
@@ -57,6 +58,7 @@ public class QueryConstants {
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String ECONOMIC_ACTIVITY_BY_LEGAL_PERSON = "economicActivityByLegalPerson";
+    public static final String LEGAL_PERSON_BY_PERSON_CLASSIFICATION = "legalPersonByPersonClassification";
     public static final String PROGRAM_HAS_NETWORK_BD = "programHasNetworkBD";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
@@ -84,6 +86,7 @@ public class QueryConstants {
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
     public static final String ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES = "accountSegmentByAccountProperties";
     public static final String CARD_NUMBER_BY_USE = "cardNumberByUse";
+    public static final String ACCOUNT_CARD_BY_PRODUCT = "accountCardByProduct";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
@@ -177,6 +180,7 @@ public class QueryConstants {
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
+    public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
     public static final String PARAM_CHANNEL_ID = "channelId";
     public static final String PARAM_IS_ADMIN = "isAdmin";

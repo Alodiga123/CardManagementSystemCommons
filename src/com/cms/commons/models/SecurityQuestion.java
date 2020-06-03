@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,12 +36,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "securityQuestion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SecurityQuestion.findAll", query = "SELECT s FROM SecurityQuestion s")
-    , @NamedQuery(name = "SecurityQuestion.findById", query = "SELECT s FROM SecurityQuestion s WHERE s.id = :id")
-    , @NamedQuery(name = "SecurityQuestion.findBySecurityQuestion", query = "SELECT s FROM SecurityQuestion s WHERE s.securityQuestion = :securityQuestion")
-    , @NamedQuery(name = "SecurityQuestion.findByCreateDate", query = "SELECT s FROM SecurityQuestion s WHERE s.createDate = :createDate")
-    , @NamedQuery(name = "SecurityQuestion.findByUpdateDate", query = "SELECT s FROM SecurityQuestion s WHERE s.updateDate = :updateDate")})
-public class SecurityQuestion implements Serializable {
+    @NamedQuery(name = "SecurityQuestion.findAll", query = "SELECT s FROM SecurityQuestion s"),
+    @NamedQuery(name = "SecurityQuestion.findById", query = "SELECT s FROM SecurityQuestion s WHERE s.id = :id"),
+    @NamedQuery(name = "SecurityQuestion.findBySecurityQuestion", query = "SELECT s FROM SecurityQuestion s WHERE s.securityQuestion = :securityQuestion"),
+    @NamedQuery(name = "SecurityQuestion.findByCreateDate", query = "SELECT s FROM SecurityQuestion s WHERE s.createDate = :createDate"),
+    @NamedQuery(name = "SecurityQuestion.findByUpdateDate", query = "SELECT s FROM SecurityQuestion s WHERE s.updateDate = :updateDate")})
+public class SecurityQuestion extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -148,5 +150,14 @@ public class SecurityQuestion implements Serializable {
     public String toString() {
         return "com.cms.commons.models.SecurityQuestion[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -19,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,14 +28,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "systemFuncionalityHasSecurityQuestion")
+@Table(name = "cardStatusHasUpdateReason")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findAll", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s")
-    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findById", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.id = :id")
-    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByCreateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.createDate = :createDate")
-    , @NamedQuery(name = "SystemFuncionalityHasSecurityQuestion.findByUpdateDate", query = "SELECT s FROM SystemFuncionalityHasSecurityQuestion s WHERE s.updateDate = :updateDate")})
-public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "CardStatusHasUpdateReason.findAll", query = "SELECT c FROM CardStatusHasUpdateReason c")
+    , @NamedQuery(name = "CardStatusHasUpdateReason.findById", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.id = :id")
+    , @NamedQuery(name = "CardStatusHasUpdateReason.findByCreateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.createDate = :createDate")
+    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")})
+public class CardStatusHasUpdateReason implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,21 +51,21 @@ public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionE
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "systemFuncionalityId", referencedColumnName = "id")
+    @JoinColumn(name = "cardStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private SystemFuncionality systemFuncionalityId;
-    @JoinColumn(name = "securityQuestionId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private SecurityQuestion securityQuestionId;
+    private CardStatus cardStatusId;
+    @JoinColumn(name = "statusUpdateReasonId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusUpdateReason statusUpdateReasonId;
 
-    public SystemFuncionalityHasSecurityQuestion() {
+    public CardStatusHasUpdateReason() {
     }
 
-    public SystemFuncionalityHasSecurityQuestion(Long id) {
+    public CardStatusHasUpdateReason(Long id) {
         this.id = id;
     }
 
-    public SystemFuncionalityHasSecurityQuestion(Long id, Date createDate) {
+    public CardStatusHasUpdateReason(Long id, Date createDate) {
         this.id = id;
         this.createDate = createDate;
     }
@@ -97,20 +94,20 @@ public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionE
         this.updateDate = updateDate;
     }
 
-    public SystemFuncionality getSystemFuncionalityId() {
-        return systemFuncionalityId;
+    public CardStatus getCardStatusId() {
+        return cardStatusId;
     }
 
-    public void setSystemFuncionalityId(SystemFuncionality systemFuncionalityId) {
-        this.systemFuncionalityId = systemFuncionalityId;
+    public void setCardStatusId(CardStatus cardStatusId) {
+        this.cardStatusId = cardStatusId;
     }
 
-    public SecurityQuestion getSecurityQuestionId() {
-        return securityQuestionId;
+    public StatusUpdateReason getStatusUpdateReasonId() {
+        return statusUpdateReasonId;
     }
 
-    public void setSecurityQuestionId(SecurityQuestion securityQuestionId) {
-        this.securityQuestionId = securityQuestionId;
+    public void setStatusUpdateReasonId(StatusUpdateReason statusUpdateReasonId) {
+        this.statusUpdateReasonId = statusUpdateReasonId;
     }
 
     @Override
@@ -123,10 +120,10 @@ public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionE
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SystemFuncionalityHasSecurityQuestion)) {
+        if (!(object instanceof CardStatusHasUpdateReason)) {
             return false;
         }
-        SystemFuncionalityHasSecurityQuestion other = (SystemFuncionalityHasSecurityQuestion) object;
+        CardStatusHasUpdateReason other = (CardStatusHasUpdateReason) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -135,16 +132,7 @@ public class SystemFuncionalityHasSecurityQuestion extends AbstractDistributionE
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.SystemFuncionalityHasSecurityQuestion[ id=" + id + " ]";
+        return "com.cms.commons.models.CardStatusHasUpdateReason[ id=" + id + " ]";
     }
     
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }    
 }
