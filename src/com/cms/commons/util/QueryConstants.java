@@ -35,6 +35,8 @@ public class QueryConstants {
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
+    public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
+    public static final String CARD_RENEWAL_BY_REQUEST = "cardRenewalByRequest";
     public static final String CARD_BY_PLASTIC_CUSTOMIZING_REQUEST = "cardByPlasticCustomizingRequest";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
@@ -176,6 +178,7 @@ public class QueryConstants {
     public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
     public static final String PARAM_STATUS_DESCRIPTION = "description";
     public static final String PARAM_CARDS_STATUS_ID = "cardStatusId";
+    public static final String PARAM_IND_RENEWAL_ID = "indRenewal";
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
