@@ -35,6 +35,8 @@ public class QueryConstants {
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
+    public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
+    public static final String CARD_RENEWAL_BY_REQUEST = "cardRenewalByRequest";
     public static final String CARD_BY_PLASTIC_CUSTOMIZING_REQUEST = "cardByPlasticCustomizingRequest";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
@@ -86,6 +88,7 @@ public class QueryConstants {
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
     public static final String ACCOUNT_SEGMENT_BY_ACCOUNT_PROPERTIES = "accountSegmentByAccountProperties";
     public static final String CARD_NUMBER_BY_USE = "cardNumberByUse";
+    public static final String ACCOUNT_CARD_BY_PRODUCT = "accountCardByProduct";
     public static final String GENERAL_RATE_BY_PRODUCT_TYPE = "generalRateByProductType";
     public static final String RATE_BY_PROGRAM_BY_TRANSACTIONS_BY_CHANNEL = "rateByProgramByTransactionsByChannel";
     public static final String RATE_BY_PROGRAM_BY_PROGRAM = "rateByProgramByProgram";
@@ -175,6 +178,7 @@ public class QueryConstants {
     public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
     public static final String PARAM_STATUS_DESCRIPTION = "description";
     public static final String PARAM_CARDS_STATUS_ID = "cardStatusId";
+    public static final String PARAM_IND_RENEWAL_ID = "indRenewal";
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
