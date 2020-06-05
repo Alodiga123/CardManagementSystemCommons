@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,11 +35,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardRenewalRequestHasCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardRenewalRequestHasCard.findAll", query = "SELECT c FROM CardRenewalRequestHasCard c")
-    , @NamedQuery(name = "CardRenewalRequestHasCard.findByCreateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "CardRenewalRequestHasCard.findByUpdateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.updateDate = :updateDate")
-    , @NamedQuery(name = "CardRenewalRequestHasCard.findById", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.id = :id")})
-public class CardRenewalRequestHasCard implements Serializable {
+    @NamedQuery(name = "CardRenewalRequestHasCard.findAll", query = "SELECT c FROM CardRenewalRequestHasCard c"),
+    @NamedQuery(name = "CardRenewalRequestHasCard.findByCreateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.createDate = :createDate"),
+    @NamedQuery(name = "CardRenewalRequestHasCard.findByUpdateDate", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.updateDate = :updateDate"),
+    @NamedQuery(name = "CardRenewalRequestHasCard.findById", query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.id = :id"),
+    @NamedQuery(name = QueryConstants.CARD_RENEWAL_BY_REQUEST, query = "SELECT c FROM CardRenewalRequestHasCard c WHERE c.cardRenewalRequestId.id = :cardRenewalRequestId")})
+public class CardRenewalRequestHasCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -135,5 +139,14 @@ public class CardRenewalRequestHasCard implements Serializable {
     public String toString() {
         return "com.cms.commons.models.CardRenewalRequestHasCard[ id=" + id + " ]";
     }
-    
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }
