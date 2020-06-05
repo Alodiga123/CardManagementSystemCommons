@@ -58,7 +58,8 @@ public class Constants {
     public static final int STATUS_REQUEST_APPROVED = 6;
     public static final int CARD_STATUS_REQUESTED = 1;
     public static final int CARD_STATUS_PENDING_CUSTOMIZING = 3;
-    public static final int CARD_STATUS_RENEWAL = 10;  
+    public static final int CARD_STATUS_RENEWAL = 10;
+    public static final boolean CARD_IND_RENEWAL = true;
     public static final int CARD_STATUS_DELIVERED = 7;
     public static final int CARD_STATUS_ACTIVE = 8;
     public static final int CARD_STATUS_INVENTORY = 4;
@@ -93,6 +94,7 @@ public class Constants {
     public static final String CARDNUMBER_KEY = "cardNumber";
     public static final String USE_KEY = "indUse";
     public static final String REQUESTS_KEY = "requestId";
+    public static final String REQUESTS_NUMBER_KEY = "cardRenewalRequestId";
     public static final String NATURAL_CUSTOMER_KEY = "naturalCustomerId";
     public static final String COLLECTIONS_REQUEST_KEY = "naturalCustomerId";
     public static final String COUNTRY_KEY = "countryId";
@@ -137,6 +139,7 @@ public class Constants {
     public static final int DOCUMENT_TYPE_REQUEST = 1;
     public static final int DOCUMENT_TYPE_PLASTIC_REQUEST = 2;
     public static final int DOCUMENT_TYPE_DELIVERY_REQUEST = 3;
+    public static final int DOCUMENT_TYPE_RENEWAL_REQUEST = 4;
     public static final int APP_IDENTIFICATION_DOCUMENT = 9;
     public static final int PHOTO_WITH_IDENTITY_DOCUMENT = 10;
 
