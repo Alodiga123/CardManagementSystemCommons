@@ -73,6 +73,9 @@ public class CardRenewalRequest extends AbstractDistributionEntity implements Se
     @JoinColumn(name = "statusCardRenewalRequestId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusCardRenewalRequest statusCardRenewalRequestId;
+    @JoinColumn(name = "IssuerId", referencedColumnName = "id")
+    @ManyToOne
+    private Issuer issuerId;
 
     public CardRenewalRequest() {
     }
@@ -173,6 +176,14 @@ public class CardRenewalRequest extends AbstractDistributionEntity implements Se
     @Override
     public String toString() {
         return "com.cms.commons.models.CardRenewalRequest[ id=" + id + " ]";
+    }    
+
+    public Issuer getIssuerId() {
+        return issuerId;
+    }
+
+    public void setIssuerId(Issuer issuerId) {
+        this.issuerId = issuerId;
     }
 
     @Override
