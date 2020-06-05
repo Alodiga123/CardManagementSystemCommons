@@ -50,6 +50,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = QueryConstants.CARD_BY_PROGRAM_BY_STATUS, query = "SELECT c FROM Card c WHERE c.programId.id = :programId AND c.productId.id = :productId AND c.cardStatusId.id = :cardStatusId"),
     @NamedQuery(name = QueryConstants.CARD_BY_STATUS, query = "SELECT c FROM Card c WHERE c.cardStatusId.id = :cardStatusId"),
     @NamedQuery(name = QueryConstants.CARD_BY_CARDNUMBER, query = "SELECT c FROM Card c WHERE c.cardNumber = :cardNumber AND c.cardStatusId.id = :cardStatusId"),
+    @NamedQuery(name = QueryConstants.CARD_BY_IND_RENEWAL, query = "SELECT c FROM Card c WHERE c.indRenewal = :indRenewal AND c.cardStatusId.id = :cardStatusId"),
     @NamedQuery(name = QueryConstants.CARD_BY_CARDHOLDER, query = "SELECT c FROM Card c WHERE c.cardHolder = :cardHolder")})
 
 public class Card extends AbstractDistributionEntity implements Serializable {
