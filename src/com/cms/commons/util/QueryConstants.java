@@ -33,6 +33,7 @@ public class QueryConstants {
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
     public static final String CARD_BY_STATUS = "cardByStatus";
+    public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
     public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";

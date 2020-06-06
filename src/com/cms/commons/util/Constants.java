@@ -100,6 +100,7 @@ public class Constants {
     public static final String COUNTRY_KEY = "countryId";
     public static final String PERSON_TYPE_KEY = "personTypeId";
     public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
+    public static final String STATUS_UPDATE_REASON_KEY = "statusUpdateReasonId";
     public static final String PROGRAM_KEY = "programId";
     public static final String NETWORK_KEY = "networkId";
     public static final String REQUEST_TYPE_KEY = "requestTypeId";
