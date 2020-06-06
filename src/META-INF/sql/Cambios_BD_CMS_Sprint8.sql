@@ -269,3 +269,29 @@ FOREIGN KEY (`userResponsibleStatusUpdateId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+-- Agregar FK en cardRenewalRequest
+-- author: Jesús Gómez
+-- Fecha: 03/06/2020
+ALTER TABLE `CardManagementSystem`.`cardRenewalRequest` 
+ADD COLUMN `IssuerId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`cardRenewalRequest` 
+ADD CONSTRAINT `fk_cardRenewalRequest_issuer1` 
+FOREIGN KEY (`IssuerId`)
+    REFERENCES `CardManagementSystem`.`issuer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en card
+-- author: Jesús Gómez
+-- Fecha: 05/06/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `statusUpdateReasonId` INT NULL AFTER `observations`;
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD CONSTRAINT `fk_card_statusUpdateReason1` 
+FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+
+

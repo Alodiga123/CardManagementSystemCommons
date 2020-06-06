@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,14 +36,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardRenewalRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardRenewalRequest.findAll", query = "SELECT c FROM CardRenewalRequest c")
-    , @NamedQuery(name = "CardRenewalRequest.findById", query = "SELECT c FROM CardRenewalRequest c WHERE c.id = :id")
-    , @NamedQuery(name = "CardRenewalRequest.findByRequestNumber", query = "SELECT c FROM CardRenewalRequest c WHERE c.requestNumber = :requestNumber")
-    , @NamedQuery(name = "CardRenewalRequest.findByRequestDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.requestDate = :requestDate")
-    , @NamedQuery(name = "CardRenewalRequest.findByCreateDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "CardRenewalRequest.findByUpdateDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.updateDate = :updateDate")
-    , @NamedQuery(name = "CardRenewalRequest.findByObservations", query = "SELECT c FROM CardRenewalRequest c WHERE c.observations = :observations")})
-public class CardRenewalRequest implements Serializable {
+    @NamedQuery(name = "CardRenewalRequest.findAll", query = "SELECT c FROM CardRenewalRequest c"),
+    @NamedQuery(name = "CardRenewalRequest.findById", query = "SELECT c FROM CardRenewalRequest c WHERE c.id = :id"),
+    @NamedQuery(name = "CardRenewalRequest.findByRequestNumber", query = "SELECT c FROM CardRenewalRequest c WHERE c.requestNumber = :requestNumber"),
+    @NamedQuery(name = "CardRenewalRequest.findByRequestDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.requestDate = :requestDate"),
+    @NamedQuery(name = "CardRenewalRequest.findByCreateDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.createDate = :createDate"),
+    @NamedQuery(name = "CardRenewalRequest.findByUpdateDate", query = "SELECT c FROM CardRenewalRequest c WHERE c.updateDate = :updateDate"),
+    @NamedQuery(name = "CardRenewalRequest.findByObservations", query = "SELECT c FROM CardRenewalRequest c WHERE c.observations = :observations")})
+public class CardRenewalRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,6 +73,9 @@ public class CardRenewalRequest implements Serializable {
     @JoinColumn(name = "statusCardRenewalRequestId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusCardRenewalRequest statusCardRenewalRequestId;
+    @JoinColumn(name = "IssuerId", referencedColumnName = "id")
+    @ManyToOne
+    private Issuer issuerId;
 
     public CardRenewalRequest() {
     }
@@ -171,6 +176,23 @@ public class CardRenewalRequest implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.CardRenewalRequest[ id=" + id + " ]";
+    }    
+
+    public Issuer getIssuerId() {
+        return issuerId;
     }
-    
+
+    public void setIssuerId(Issuer issuerId) {
+        this.issuerId = issuerId;
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

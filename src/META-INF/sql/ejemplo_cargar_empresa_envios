@@ -1,0 +1,7 @@
+INSERT INTO `CardManagementSystem`.`person` (`countryId`,`personTypeId`,`email`,`createDate`,`updateDate`,`personClassificationId`) VALUES (4,2,'shippingDelivery@company.com','2020-04-08 00:00:00',NULL,10);
+
+SET @PersonID = 0;
+SELECT MAX(p.id) INTO @PersonID FROM `CardManagementSystem`.`person` p;
+
+INSERT INTO `CardManagementSystem`.`legalPerson` (`personId`,`tradeName`,`enterpriseName`,`dateInscriptionRegister`,`registerNumber`,`payedCapital`,`enterprisePhone`,`webSite`,`economicActivityId`,`documentsPersonTypeId`,`identificationNumber`,`statusApplicantId`) 
+VALUES (@PersonID,'Shipping','Shipping Delivery','2020-04-08','987',987,'999888777','www.shippingDelivery.com',2,3,'987654',NULL);

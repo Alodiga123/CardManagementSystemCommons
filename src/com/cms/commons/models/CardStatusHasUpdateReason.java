@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,8 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CardStatusHasUpdateReason.findAll", query = "SELECT c FROM CardStatusHasUpdateReason c")
     , @NamedQuery(name = "CardStatusHasUpdateReason.findById", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.id = :id")
     , @NamedQuery(name = "CardStatusHasUpdateReason.findByCreateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")})
-public class CardStatusHasUpdateReason implements Serializable {
+    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")
+    , @NamedQuery(name = QueryConstants.CARD_STATUS_BY_REASON_UPDATE, query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.statusUpdateReasonId.id = :statusUpdateReasonId")})
+public class CardStatusHasUpdateReason extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -133,6 +137,16 @@ public class CardStatusHasUpdateReason implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.CardStatusHasUpdateReason[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return this.getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
