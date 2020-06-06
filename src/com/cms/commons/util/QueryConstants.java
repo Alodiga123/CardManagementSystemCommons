@@ -84,6 +84,7 @@ public class QueryConstants {
     public static final String PROGRAM_BY_PRODUCT_TYPE = "programByProductType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROJECT_ANNUAL_VOLUME_BY_PROGRAM = "projectAnnualVolumeByProgram";
+    public static final String AVERAGE_CARGE_USAGE_BY_PROGRAM = "averageCargeUsageByProgram";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
