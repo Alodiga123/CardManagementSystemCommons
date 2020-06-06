@@ -281,5 +281,17 @@ FOREIGN KEY (`IssuerId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+-- Agregar FK en card
+-- author: Jesús Gómez
+-- Fecha: 05/06/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `statusUpdateReasonId` INT NULL AFTER `observations`;
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD CONSTRAINT `fk_card_statusUpdateReason1` 
+FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
 
 
