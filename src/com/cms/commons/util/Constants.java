@@ -68,6 +68,7 @@ public class Constants {
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
     public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
+    public static final int STATUS_CARD_RENEWAL_REQUEST_PENDING = 1;
 
     //PersonClassification
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
