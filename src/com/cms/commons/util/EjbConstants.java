@@ -67,6 +67,7 @@ public class EjbConstants {
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_STATUS_UPDATE_REASON_ID = "statusUpdateReasonId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
     public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";

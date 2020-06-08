@@ -5,6 +5,9 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,8 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "AverageCargeUsage.findById", query = "SELECT a FROM AverageCargeUsage a WHERE a.id = :id")
     , @NamedQuery(name = "AverageCargeUsage.findByYear", query = "SELECT a FROM AverageCargeUsage a WHERE a.year = :year")
     , @NamedQuery(name = "AverageCargeUsage.findByAverageSpendMonth", query = "SELECT a FROM AverageCargeUsage a WHERE a.averageSpendMonth = :averageSpendMonth")
-    , @NamedQuery(name = "AverageCargeUsage.findByAverageLoadMonth", query = "SELECT a FROM AverageCargeUsage a WHERE a.averageLoadMonth = :averageLoadMonth")})
-public class AverageCargeUsage implements Serializable {
+    , @NamedQuery(name = "AverageCargeUsage.findByAverageLoadMonth", query = "SELECT a FROM AverageCargeUsage a WHERE a.averageLoadMonth = :averageLoadMonth")
+    , @NamedQuery(name = QueryConstants.AVERAGE_CARGE_USAGE_BY_PROGRAM, query = "SELECT a FROM AverageCargeUsage a WHERE a.programId.id=:programId")})
+public class AverageCargeUsage extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -121,6 +125,16 @@ public class AverageCargeUsage implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.AverageCargeUsage[ id=" + id + " ]";
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

@@ -33,6 +33,7 @@ public class QueryConstants {
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
     public static final String CARD_BY_STATUS = "cardByStatus";
+    public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
     public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
@@ -83,6 +84,7 @@ public class QueryConstants {
     public static final String PROGRAM_BY_PRODUCT_TYPE = "programByProductType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROJECT_ANNUAL_VOLUME_BY_PROGRAM = "projectAnnualVolumeByProgram";
+    public static final String AVERAGE_CARGE_USAGE_BY_PROGRAM = "averageCargeUsageByProgram";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";

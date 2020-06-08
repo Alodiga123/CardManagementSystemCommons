@@ -69,6 +69,7 @@ public class Constants {
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
     public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
+    public static final int STATUS_CARD_RENEWAL_REQUEST_PENDING = 1;
 
     //PersonClassification
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
@@ -101,6 +102,7 @@ public class Constants {
     public static final String COUNTRY_KEY = "countryId";
     public static final String PERSON_TYPE_KEY = "personTypeId";
     public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
+    public static final String STATUS_UPDATE_REASON_KEY = "statusUpdateReasonId";
     public static final String PROGRAM_KEY = "programId";
     public static final String NETWORK_KEY = "networkId";
     public static final String REQUEST_TYPE_KEY = "requestTypeId";
