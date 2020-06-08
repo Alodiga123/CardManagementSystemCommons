@@ -7,6 +7,7 @@ import com.alodiga.cms.commons.exception.NullParameterException;
 import com.alodiga.cms.commons.exception.RegisterNotFoundException;
 import com.cms.commons.genericEJB.DistributionGenericEJB;
 import com.cms.commons.genericEJB.EJBRequest;
+import com.cms.commons.models.AverageCargeUsage;
 import com.cms.commons.models.DaysWeek;
 import com.cms.commons.models.DaysWeekHasProgramLoyalty;
 import com.cms.commons.models.LegalPerson;
@@ -92,4 +93,10 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<ProjectAnnualVolume> getProjectAnnualVolumeByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProjectAnnualVolume loadProjectAnnualVolume(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProjectAnnualVolume saveProjectAnnualVolume(ProjectAnnualVolume projectAnnualVolume)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //AverageCargeUsage
+    public List<AverageCargeUsage> getAverageCargeUsage(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AverageCargeUsage> getAverageCargeUsageByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public AverageCargeUsage loadAverageCargeUsage(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public AverageCargeUsage saveAverageCargeUsage(AverageCargeUsage averageCargeUsage)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }

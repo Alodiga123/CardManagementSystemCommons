@@ -281,5 +281,38 @@ FOREIGN KEY (`IssuerId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 
+-- Agregar FK en card
+-- author: Jesús Gómez
+-- Fecha: 05/06/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `statusUpdateReasonId` INT NULL AFTER `observations`;
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD CONSTRAINT `fk_card_statusUpdateReason1` 
+FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Crear tabla passwordChangeRequest
+-- author: Jesús Gómez
+-- Fecha: 07/06/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`passwordChangeRequest` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `requestNumber` VARCHAR(40) NULL,
+  `requestDate` TIMESTAMP NULL,
+  `indApproved` TINYINT(1) NULL,
+  `userid` INT NOT NULL,
+  `currentPassword` VARCHAR(20) NULL,
+  `newPassword` VARCHAR(20) NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_passwordChangeRequest_user1_idx` (`userid` ASC),
+  CONSTRAINT `fk_passwordChangeRequest_user1`
+    FOREIGN KEY (`userid`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)    
+
 
 
