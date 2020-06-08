@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -40,7 +42,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "StatusUpdateReason.findByDescription", query = "SELECT s FROM StatusUpdateReason s WHERE s.description = :description")
     , @NamedQuery(name = "StatusUpdateReason.findByCreateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.createDate = :createDate")
     , @NamedQuery(name = "StatusUpdateReason.findByUpdateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.updateDate = :updateDate")})
-public class StatusUpdateReason implements Serializable {
+public class StatusUpdateReason extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -144,4 +146,13 @@ public class StatusUpdateReason implements Serializable {
         return "com.cms.commons.models.StatusUpdateReason[ id=" + id + " ]";
     }
     
+      @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

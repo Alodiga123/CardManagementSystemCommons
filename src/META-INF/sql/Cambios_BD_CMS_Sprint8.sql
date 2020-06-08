@@ -218,9 +218,12 @@ ADD COLUMN `acronym` VARCHAR(10) NOT NULL AFTER `name`;
 -- Crear tabla statusUpdateReason
 -- author: Jesús Gómez
 -- Fecha: 30/05/2020
+-- A partir de aquí no se actualizó en el servidor de AWS
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusUpdateReason` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(50) NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -265,4 +268,30 @@ FOREIGN KEY (`userResponsibleStatusUpdateId`)
     REFERENCES `CardManagementSystem`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+-- Agregar FK en cardRenewalRequest
+-- author: Jesús Gómez
+-- Fecha: 03/06/2020
+ALTER TABLE `CardManagementSystem`.`cardRenewalRequest` 
+ADD COLUMN `IssuerId` INT NULL;
+ALTER TABLE `CardManagementSystem`.`cardRenewalRequest` 
+ADD CONSTRAINT `fk_cardRenewalRequest_issuer1` 
+FOREIGN KEY (`IssuerId`)
+    REFERENCES `CardManagementSystem`.`issuer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+-- Agregar FK en card
+-- author: Jesús Gómez
+-- Fecha: 05/06/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `statusUpdateReasonId` INT NULL AFTER `observations`;
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD CONSTRAINT `fk_card_statusUpdateReason1` 
+FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+
 
