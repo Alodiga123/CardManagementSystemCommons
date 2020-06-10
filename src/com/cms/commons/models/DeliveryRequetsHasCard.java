@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -24,6 +25,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DeliveryRequetsHasCard.findAll", query = "SELECT d FROM DeliveryRequetsHasCard d"),
     @NamedQuery(name = "DeliveryRequetsHasCard.findById", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.id = :id"),
     @NamedQuery(name = "DeliveryRequetsHasCard.findByCreateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.createDate = :createDate"),
-    @NamedQuery(name = "DeliveryRequetsHasCard.findByUpdateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.updateDate = :updateDate")})
+    @NamedQuery(name = "DeliveryRequetsHasCard.findByUpdateDate", query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.updateDate = :updateDate"),
+    @NamedQuery(name = QueryConstants.CARD_BY_DELIVERY_REQUEST, query = "SELECT d FROM DeliveryRequetsHasCard d WHERE d.deliveryRequestId.id = :deliveryRequestId")})
 public class DeliveryRequetsHasCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,6 +63,22 @@ public class DeliveryRequetsHasCard extends AbstractDistributionEntity implement
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
+    @Column(name = "numberDeliveryAttempts")
+    private int numberDeliveryAttempts;
+    @Column(name = "deliveryDate")
+    @Temporal(TemporalType.DATE)
+    private Date deliveryDate;
+    @Size(max = 40)
+    @Column(name = "receiverFirstName")
+    private String receiverFirstName;
+    @Size(max = 40)
+    @Column(name = "receiverLastName")
+    private String receiverLastName;
+    @Size(max = 1500)
+    @Column(name = "deliveryObservations")
+    private String deliveryObservations;
+    @Column(name = "indDelivery")
+    private Boolean indDelivery;
 
     public DeliveryRequetsHasCard() {
     }
@@ -111,6 +130,54 @@ public class DeliveryRequetsHasCard extends AbstractDistributionEntity implement
 
     public void setCardId(Card cardId) {
         this.cardId = cardId;
+    }
+    
+    public int getNumberDeliveryAttempts() {
+        return numberDeliveryAttempts;
+    }
+
+    public void setNumberDeliveryAttempts(int numberDeliveryAttempts) {
+        this.numberDeliveryAttempts = numberDeliveryAttempts;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getReceiverFirstName() {
+        return receiverFirstName;
+    }
+
+    public void setReceiverFirstName(String receiverFirstName) {
+        this.receiverFirstName = receiverFirstName;
+    }
+
+    public String getReceiverLastName() {
+        return receiverLastName;
+    }
+
+    public void setReceiverLastName(String receiverLastName) {
+        this.receiverLastName = receiverLastName;
+    }
+
+    public String getDeliveryObservations() {
+        return deliveryObservations;
+    }
+
+    public void setDeliveryObservations(String deliveryObservations) {
+        this.deliveryObservations = deliveryObservations;
+    }
+
+    public Boolean getIndDelivery() {
+        return indDelivery;
+    }
+
+    public void setIndDelivery(Boolean indDelivery) {
+        this.indDelivery = indDelivery;
     }
 
     @Override
