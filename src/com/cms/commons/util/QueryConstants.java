@@ -35,6 +35,7 @@ public class QueryConstants {
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
+    public static final String CARD_BY_DELIVERY_REQUEST = "cardByDeliveryRequest";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
     public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
     public static final String CARD_RENEWAL_BY_REQUEST = "cardRenewalByRequest";
@@ -184,6 +185,7 @@ public class QueryConstants {
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_DELIVERY_REQUEST_ID = "deliveryRequestId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
