@@ -270,6 +270,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<UserHasProfile> getUserHasProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public UserHasProfile loadUserHasProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<UserHasProfile> getUserHasProfileByUser(UserHasProfile userHasProfile) throws EmptyListException, GeneralException, NullParameterException;
 
 
 }
