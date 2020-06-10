@@ -312,7 +312,21 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`passwordChangeRequest` (
     FOREIGN KEY (`userid`)
     REFERENCES `CardManagementSystem`.`user` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)    
+    ON UPDATE NO ACTION);
+
+-- Agregar campos en tabla deliveryRequetsHasCard
+-- author: Jesús Gómez
+-- Fecha: 09/06/2020
+ALTER TABLE `CardManagementSystem`.`deliveryRequetsHasCard` 
+ADD COLUMN `numberDeliveryAttempts` INT NULL AFTER `cardId`,
+ADD COLUMN `deliveryDate` DATE NULL AFTER `numberDeliveryAttempts`,
+ADD COLUMN `receiverFirstName` VARCHAR(40) NULL AFTER `deliveryDate`,
+ADD COLUMN `receiverLastName` VARCHAR(40) NULL AFTER `receiverFirstName`,
+ADD COLUMN `deliveryObservations` VARCHAR(1500) NULL AFTER `receiverLastName`,
+ADD COLUMN `indDelivery` TINYINT(1) NULL AFTER `deliveryObservations`;
 
 
-
+-- Eliminar tabla CardDeliveryRegister
+-- author: Jesús Gómez
+-- Fecha: 09/06/2020
+DROP TABLE `CardManagementSystem`.`CardDeliveryRegister`;
