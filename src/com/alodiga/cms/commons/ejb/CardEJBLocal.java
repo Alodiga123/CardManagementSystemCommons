@@ -161,9 +161,5 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     //CardStatusHasUpdateReason
     public List<CardStatusHasUpdateReason> getCardStatusByUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-    //CardStatus
-    public int updateCardStatus(Card card) throws EmptyListException, GeneralException, NullParameterException;
-
-
 }
     
