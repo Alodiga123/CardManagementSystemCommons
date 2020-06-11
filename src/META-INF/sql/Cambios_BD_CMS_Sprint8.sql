@@ -330,3 +330,23 @@ ADD COLUMN `indDelivery` TINYINT(1) NULL AFTER `deliveryObservations`;
 -- author: Jesús Gómez
 -- Fecha: 09/06/2020
 DROP TABLE `CardManagementSystem`.`CardDeliveryRegister`;
+
+-- Agregar campos en tabla cardStatusHasUpdateReason
+-- author: Jesús Gómez
+-- Fecha: 10/06/2020
+ALTER TABLE `CardManagementSystem`.`cardStatusHasUpdateReason` 
+ADD COLUMN `indAllowTable` TINYINT(1)  NOT NULL AFTER `cardStatusId`;
+
+-- Cambiar nombre de campo en tabla passwordChangeRequest
+-- author: Jesús Gómez
+-- Fecha: 10/06/2020
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+DROP FOREIGN KEY `fk_passwordChangeRequest_user1`;
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+CHANGE COLUMN `userid` `userId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+ADD CONSTRAINT `fk_passwordChangeRequest_user1`
+  FOREIGN KEY (`userId`)
+  REFERENCES `CardManagementSystem`.`user` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
