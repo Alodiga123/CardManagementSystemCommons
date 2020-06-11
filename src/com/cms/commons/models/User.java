@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -44,7 +45,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "User.findByCode", query = "SELECT u FROM User u WHERE u.code = :code")
     , @NamedQuery(name = "User.findByFirstNames", query = "SELECT u FROM User u WHERE u.firstNames = :firstNames")
     , @NamedQuery(name = "User.findByLastNames", query = "SELECT u FROM User u WHERE u.lastNames = :lastNames")
-    , @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled")})
+    , @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled")
+    , @NamedQuery(name = QueryConstants.VALIDATE_PASSWORD, query = "SELECT u FROM User u WHERE u.password LIKE '%currentPassword%'")})
 public class User extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

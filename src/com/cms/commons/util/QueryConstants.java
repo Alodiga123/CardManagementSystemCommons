@@ -35,6 +35,7 @@ public class QueryConstants {
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
+    public static final String CARD_BY_DELIVERY_REQUEST = "cardByDeliveryRequest";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
     public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
     public static final String CARD_RENEWAL_BY_REQUEST = "cardRenewalByRequest";
@@ -135,6 +136,7 @@ public class QueryConstants {
     public static final String PROFILES_BY_TYPE = "profilesByType";
     public static final String ATTACHMENTS_BY_TICKET = "getAttachmentFilesByTicket";
     public static final String PAYMENT_INFO_BY_CUSTOMER = "paymentInfoByCustomer";
+    public static final String VALIDATE_PASSWORD = "validatePassword";
     public static final String PAYMENT_INFO_BY_ACCOUNT = "paymentInfoByAccount";
     public static final String NOTIFICATIONS_BY_ACCOUNT = "notificationsByAccount";
     public static final String NOTIFICATIONS_BY_USER = "notificationsByUser";
@@ -184,6 +186,7 @@ public class QueryConstants {
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_DELIVERY_REQUEST_ID = "deliveryRequestId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
