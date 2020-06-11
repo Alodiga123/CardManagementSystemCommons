@@ -136,6 +136,7 @@ public class QueryConstants {
     public static final String PROFILES_BY_TYPE = "profilesByType";
     public static final String ATTACHMENTS_BY_TICKET = "getAttachmentFilesByTicket";
     public static final String PAYMENT_INFO_BY_CUSTOMER = "paymentInfoByCustomer";
+    public static final String VALIDATE_PASSWORD = "validatePassword";
     public static final String PAYMENT_INFO_BY_ACCOUNT = "paymentInfoByAccount";
     public static final String NOTIFICATIONS_BY_ACCOUNT = "notificationsByAccount";
     public static final String NOTIFICATIONS_BY_USER = "notificationsByUser";

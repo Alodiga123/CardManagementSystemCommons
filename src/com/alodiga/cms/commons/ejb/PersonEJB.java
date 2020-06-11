@@ -191,7 +191,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<User> getUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public User loadUser(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public User saveUser(User user)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+    public List<User> validatePassword(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Employee
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

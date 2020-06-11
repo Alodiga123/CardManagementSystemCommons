@@ -50,6 +50,7 @@ public class EjbConstants {
     public static final  String DB_URL = "jdbc:mysql://192.168.210.6:3306/distribution";
 
     //Parámetros Queries
+    public static final String PARAM_CURRENT_PASSWORD = "currentPassword";
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTRY_ID = "countryId";
