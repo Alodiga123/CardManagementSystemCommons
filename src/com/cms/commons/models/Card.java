@@ -129,6 +129,8 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @JoinColumn(name = "statusUpdateReasonId", referencedColumnName = "id")
     @ManyToOne
     private StatusUpdateReason statusUpdateReasonId;
+    @Column(name = "indPendingNewCardIssue")
+    private Boolean indPendingNewCardIssue;
 
     public Card() {
     }
@@ -370,6 +372,14 @@ public class Card extends AbstractDistributionEntity implements Serializable {
 
     public void setStatusUpdateReasonId(StatusUpdateReason statusUpdateReasonId) {
         this.statusUpdateReasonId = statusUpdateReasonId;
+    }
+
+    public Boolean getIndPendingNewCardIssue() {
+        return indPendingNewCardIssue;
+    }
+
+    public void setIndPendingNewCardIssue(Boolean indPendingNewCardIssue) {
+        this.indPendingNewCardIssue = indPendingNewCardIssue;
     }
 
 }
