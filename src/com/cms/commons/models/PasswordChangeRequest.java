@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -41,7 +43,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PasswordChangeRequest.findByNewPassword", query = "SELECT p FROM PasswordChangeRequest p WHERE p.newPassword = :newPassword")
     , @NamedQuery(name = "PasswordChangeRequest.findByCreateDate", query = "SELECT p FROM PasswordChangeRequest p WHERE p.createDate = :createDate")
     , @NamedQuery(name = "PasswordChangeRequest.findByUpdateDate", query = "SELECT p FROM PasswordChangeRequest p WHERE p.updateDate = :updateDate")})
-public class PasswordChangeRequest implements Serializable {
+public class PasswordChangeRequest extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -182,6 +184,16 @@ public class PasswordChangeRequest implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.PasswordChangeRequest[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
