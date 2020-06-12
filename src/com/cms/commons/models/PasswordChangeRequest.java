@@ -73,9 +73,9 @@ public class PasswordChangeRequest extends AbstractDistributionEntity implements
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "userid", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User userid;
+    private User userId;
 
     public PasswordChangeRequest() {
     }
@@ -153,12 +153,12 @@ public class PasswordChangeRequest extends AbstractDistributionEntity implements
         this.updateDate = updateDate;
     }
 
-    public User getUserid() {
-        return userid;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setUserid(User userid) {
-        this.userid = userid;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override

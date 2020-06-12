@@ -61,6 +61,10 @@ public class CardStatusHasUpdateReason extends AbstractDistributionEntity implem
     @JoinColumn(name = "statusUpdateReasonId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusUpdateReason statusUpdateReasonId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "indAllowTable")
+    private boolean indAllowTable;
 
     public CardStatusHasUpdateReason() {
     }
@@ -147,6 +151,14 @@ public class CardStatusHasUpdateReason extends AbstractDistributionEntity implem
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public boolean getIndAllowTable() {
+        return indAllowTable;
+    }
+
+    public void setIndAllowTable(boolean indAllowTable) {
+        this.indAllowTable = indAllowTable;
     }
     
 }
