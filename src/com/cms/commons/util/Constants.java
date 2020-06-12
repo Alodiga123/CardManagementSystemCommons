@@ -119,6 +119,7 @@ public class Constants {
     public static final String APPLICANT_LEGAL_PERSON_KEY = "legalPersonId";
     public static final String NETWORK_BY_PROGRAM = "programId";
     public static final String PRODUCT_KEY = "productId";
+    public static final String USER_KEY = "userId";
     public static final String PROGRAM_LOYALTY_KEY = "programLoyaltyId";
     public static final String COMMERCE_CATEGORY_KEY = "commerceCategoryId";
     public static final String CHANNEL_KEY = "channelId";
