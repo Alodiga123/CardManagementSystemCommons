@@ -32,6 +32,7 @@ public class QueryConstants {
     public static final String APPLICANT_BY_PERSON = "applicantByPerson";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
+    public static final String NEW_CARD_ISSUE_BY_CARD = "newCardIssueByCard";
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
@@ -81,6 +82,7 @@ public class QueryConstants {
     public static final String LOYALTY_TRANSACTION_COMMERCE_UNIQUE = "loyaltyTransactionCommerceUnique";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String PROGRAM_BY_COUNTRY = "programByCountry";
+    public static final String ISSUER_BY_COUNTRY = "issuerByCountry";
     public static final String PROGRAM_BY_PRODUCT_TYPE = "programByProductType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROJECT_ANNUAL_VOLUME_BY_PROGRAM = "projectAnnualVolumeByProgram";
@@ -176,6 +178,7 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_ISSUER_ID = "issuerId";
     public static final String PARAM_PLASTIC_CUSTOMIZING_REQUEST_ID = "plasticCustomizingRequestId";
     public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
     public static final String PARAM_STATUS_DESCRIPTION = "description";
