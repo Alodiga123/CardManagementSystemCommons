@@ -312,7 +312,87 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`passwordChangeRequest` (
     FOREIGN KEY (`userid`)
     REFERENCES `CardManagementSystem`.`user` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)    
+    ON UPDATE NO ACTION);
 
+-- Agregar campos en tabla deliveryRequetsHasCard
+-- author: Jesús Gómez
+-- Fecha: 09/06/2020
+ALTER TABLE `CardManagementSystem`.`deliveryRequetsHasCard` 
+ADD COLUMN `numberDeliveryAttempts` INT NULL AFTER `cardId`,
+ADD COLUMN `deliveryDate` DATE NULL AFTER `numberDeliveryAttempts`,
+ADD COLUMN `receiverFirstName` VARCHAR(40) NULL AFTER `deliveryDate`,
+ADD COLUMN `receiverLastName` VARCHAR(40) NULL AFTER `receiverFirstName`,
+ADD COLUMN `deliveryObservations` VARCHAR(1500) NULL AFTER `receiverLastName`,
+ADD COLUMN `indDelivery` TINYINT(1) NULL AFTER `deliveryObservations`;
+
+
+-- Eliminar tabla CardDeliveryRegister
+-- author: Jesús Gómez
+-- Fecha: 09/06/2020
+DROP TABLE `CardManagementSystem`.`CardDeliveryRegister`;
+
+-- Agregar campos en tabla cardStatusHasUpdateReason
+-- author: Jesús Gómez
+-- Fecha: 10/06/2020
+ALTER TABLE `CardManagementSystem`.`cardStatusHasUpdateReason` 
+ADD COLUMN `indAllowTable` TINYINT(1)  NOT NULL AFTER `cardStatusId`;
+
+-- Cambiar nombre de campo en tabla passwordChangeRequest
+-- author: Jesús Gómez
+-- Fecha: 10/06/2020
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+DROP FOREIGN KEY `fk_passwordChangeRequest_user1`;
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+CHANGE COLUMN `userid` `userId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`passwordChangeRequest` 
+ADD CONSTRAINT `fk_passwordChangeRequest_user1`
+  FOREIGN KEY (`userId`)
+  REFERENCES `CardManagementSystem`.`user` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Crear tabla statusNewCardIssueRequest
+-- author: Jesús Gómez
+-- Fecha: 11/06/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`statusNewCardIssueRequest` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(4) NOT NULL,
+  `description` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Crear tabla newCardIssueRequest
+-- author: Jesús Gómez
+-- Fecha: 11/06/2020
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`newCardIssueRequest` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `requestNumber` VARCHAR(40) NULL,
+  `requestDate` DATE NULL,
+  `statusNewCardIssueRequestId` INT NOT NULL,
+  `observations` VARCHAR(1500) NULL,
+  `indConfirmation` TINYINT(1) NULL,
+  `newCardIssueDate` DATE NULL,
+  `cardId` BIGINT NOT NULL,
+  `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_newCardIssueRequest_statusNewCardIssueRequest1_idx` (`statusNewCardIssueRequestId` ASC),
+  INDEX `fk_newCardIssueRequest_card1_idx` (`cardId` ASC),
+  CONSTRAINT `fk_newCardIssueRequest_statusNewCardIssueRequest1`
+    FOREIGN KEY (`statusNewCardIssueRequestId`)
+    REFERENCES `CardManagementSystem`.`statusNewCardIssueRequest` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_newCardIssueRequest_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+-- Agregar campos en tabla card
+-- author: Jesús Gómez
+-- Fecha: 11/06/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `indPendingNewCardIssue` TINYINT(1) NULL AFTER `observations`;
 
 
