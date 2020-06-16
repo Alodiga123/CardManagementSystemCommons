@@ -141,6 +141,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     
     //Issuer
     public List<Issuer> getIssuer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public List<Issuer> getIssuerByCountry(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Issuer saveIssuer (Issuer issuer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
