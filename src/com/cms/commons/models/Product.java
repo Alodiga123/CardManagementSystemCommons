@@ -160,6 +160,8 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "statusProductId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusProduct statusProductId;
+    @Column(name = "maximunDeactivationTimeBlocking")
+    private Integer maximunDeactivationTimeBlocking;
 
     public Product() {
     }
@@ -446,6 +448,14 @@ public class Product extends AbstractDistributionEntity implements Serializable 
 
     public void setApprovalProductRate(ApprovalProductRate approvalProductRate) {
         this.approvalProductRate = approvalProductRate;
+    }
+
+    public Integer getMaximunDeactivationTimeBlocking() {
+        return maximunDeactivationTimeBlocking;
+    }
+
+    public void setMaximunDeactivationTimeBlocking(Integer maximunDeactivationTimeBlocking) {
+        this.maximunDeactivationTimeBlocking = maximunDeactivationTimeBlocking;
     }
 
     @Override
