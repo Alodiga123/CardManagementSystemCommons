@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -43,7 +44,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Issuer.findByWebSite", query = "SELECT i FROM Issuer i WHERE i.webSite = :webSite"),
     @NamedQuery(name = "Issuer.findByFaxNumber", query = "SELECT i FROM Issuer i WHERE i.faxNumber = :faxNumber"),
     @NamedQuery(name = "Issuer.findByPersonContactName", query = "SELECT i FROM Issuer i WHERE i.personContactName = :personContactName"),
-    @NamedQuery(name = "Issuer.findByEmailPersonContact", query = "SELECT i FROM Issuer i WHERE i.emailPersonContact = :emailPersonContact")})
+    @NamedQuery(name = "Issuer.findByEmailPersonContact", query = "SELECT i FROM Issuer i WHERE i.emailPersonContact = :emailPersonContact"),
+    @NamedQuery(name = QueryConstants.ISSUER_BY_COUNTRY, query = "SELECT i FROM Issuer i WHERE i.countryId.id = :countryId")})
 
 public class Issuer extends AbstractDistributionEntity implements Serializable {
 
@@ -255,5 +257,5 @@ public class Issuer extends AbstractDistributionEntity implements Serializable {
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
-    
+
 }
