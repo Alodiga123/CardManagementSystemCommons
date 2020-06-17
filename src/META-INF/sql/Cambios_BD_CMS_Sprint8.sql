@@ -395,4 +395,8 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`newCardIssueRequest` (
 ALTER TABLE `CardManagementSystem`.`card` 
 ADD COLUMN `indPendingNewCardIssue` TINYINT(1) NULL AFTER `observations`;
 
-
+-- Agregar campos en tabla product
+-- author: Jesús Gómez
+-- Fecha: 16/06/2020
+ALTER TABLE `CardManagementSystem`.`product` 
+ADD COLUMN `maximunDeactivationTimeBlocking` INT NULL AFTER `userActivationId`;

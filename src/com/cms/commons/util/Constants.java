@@ -72,6 +72,7 @@ public class Constants {
     public static final int STATUS_REQUEST_CUSTOMER_ASSIGNED_CARD = 8;
     public static final int REASON_REQUEST_REJECTED_BY_COLLECTIONS = 1;
     public static final int STATUS_CARD_RENEWAL_REQUEST_PENDING = 1;
+    public static final int STATUS_NEW_CARD_ISSUE_PENDING = 1;
 
     //PersonClassification
     public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
@@ -131,6 +132,7 @@ public class Constants {
     public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
     public static final String PLASTIC_MANUFACTURER_KEY = "plasticManufacturerId";
     public static final String PLASTIC_CARD_STATUS_KEY = "cardStatusId";
+    public static final String CARD_KEY = "cardId";
     public static final String STATUS_PLASTIC_CUSTOMIZING_KEY = "statusPlasticCustomizing";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
     public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
@@ -147,6 +149,7 @@ public class Constants {
     public static final int DOCUMENT_TYPE_PLASTIC_REQUEST = 2;
     public static final int DOCUMENT_TYPE_DELIVERY_REQUEST = 3;
     public static final int DOCUMENT_TYPE_RENEWAL_REQUEST = 4;
+    public static final int DOCUMENT_TYPE_CANCELED_REQUEST = 5;
     public static final int APP_IDENTIFICATION_DOCUMENT = 9;
     public static final int PHOTO_WITH_IDENTITY_DOCUMENT = 10;
 
