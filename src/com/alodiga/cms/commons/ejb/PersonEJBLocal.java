@@ -206,4 +206,6 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<PasswordChangeRequest> getPasswordChangeRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PasswordChangeRequest loadPasswordChangeRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PasswordChangeRequest savePasswordChangeRequest(PasswordChangeRequest passwordChangeRequest)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    public Long havePhonesByPerson(Long personId) throws GeneralException;
 }
