@@ -5,9 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
-import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -35,17 +32,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "newCardIssueRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "NewCardIssueRequest.findAll", query = "SELECT n FROM NewCardIssueRequest n"),
-    @NamedQuery(name = "NewCardIssueRequest.findById", query = "SELECT n FROM NewCardIssueRequest n WHERE n.id = :id"),
-    @NamedQuery(name = "NewCardIssueRequest.findByRequestNumber", query = "SELECT n FROM NewCardIssueRequest n WHERE n.requestNumber = :requestNumber"),
-    @NamedQuery(name = "NewCardIssueRequest.findByRequestDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.requestDate = :requestDate"),
-    @NamedQuery(name = "NewCardIssueRequest.findByObservations", query = "SELECT n FROM NewCardIssueRequest n WHERE n.observations = :observations"),
-    @NamedQuery(name = "NewCardIssueRequest.findByIndConfirmation", query = "SELECT n FROM NewCardIssueRequest n WHERE n.indConfirmation = :indConfirmation"),
-    @NamedQuery(name = "NewCardIssueRequest.findByNewCardIssueDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.newCardIssueDate = :newCardIssueDate"),
-    @NamedQuery(name = "NewCardIssueRequest.findByCreateDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.createDate = :createDate"),
-    @NamedQuery(name = "NewCardIssueRequest.findByUpdateDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.updateDate = :updateDate"),
-    @NamedQuery(name = QueryConstants.NEW_CARD_ISSUE_BY_CARD, query = "SELECT n FROM NewCardIssueRequest n WHERE n.cardId.id = :cardId")})
-public class NewCardIssueRequest extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "NewCardIssueRequest.findAll", query = "SELECT n FROM NewCardIssueRequest n")
+    , @NamedQuery(name = "NewCardIssueRequest.findById", query = "SELECT n FROM NewCardIssueRequest n WHERE n.id = :id")
+    , @NamedQuery(name = "NewCardIssueRequest.findByRequestNumber", query = "SELECT n FROM NewCardIssueRequest n WHERE n.requestNumber = :requestNumber")
+    , @NamedQuery(name = "NewCardIssueRequest.findByRequestDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.requestDate = :requestDate")
+    , @NamedQuery(name = "NewCardIssueRequest.findByObservations", query = "SELECT n FROM NewCardIssueRequest n WHERE n.observations = :observations")
+    , @NamedQuery(name = "NewCardIssueRequest.findByIndConfirmation", query = "SELECT n FROM NewCardIssueRequest n WHERE n.indConfirmation = :indConfirmation")
+    , @NamedQuery(name = "NewCardIssueRequest.findByNewCardIssueDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.newCardIssueDate = :newCardIssueDate")
+    , @NamedQuery(name = "NewCardIssueRequest.findByCreateDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.createDate = :createDate")
+    , @NamedQuery(name = "NewCardIssueRequest.findByUpdateDate", query = "SELECT n FROM NewCardIssueRequest n WHERE n.updateDate = :updateDate")})
+public class NewCardIssueRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -198,14 +194,5 @@ public class NewCardIssueRequest extends AbstractDistributionEntity implements S
     public String toString() {
         return "com.cms.commons.models.NewCardIssueRequest[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return this.getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
+    
 }
