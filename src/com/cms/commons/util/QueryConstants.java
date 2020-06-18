@@ -32,8 +32,11 @@ public class QueryConstants {
     public static final String APPLICANT_BY_PERSON = "applicantByPerson";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
+    public static final String NEW_CARD_ISSUE_BY_CARD = "newCardIssueByCard";
     public static final String CARD_BY_STATUS = "cardByStatus";
+    public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
+    public static final String CARD_BY_DELIVERY_REQUEST = "cardByDeliveryRequest";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
     public static final String CARD_BY_IND_RENEWAL = "cardByIndRenewal";
     public static final String CARD_RENEWAL_BY_REQUEST = "cardRenewalByRequest";
@@ -80,9 +83,11 @@ public class QueryConstants {
     public static final String LOYALTY_TRANSACTION_COMMERCE_UNIQUE = "loyaltyTransactionCommerceUnique";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String PROGRAM_BY_COUNTRY = "programByCountry";
+    public static final String ISSUER_BY_COUNTRY = "issuerByCountry";
     public static final String PROGRAM_BY_PRODUCT_TYPE = "programByProductType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
     public static final String PROJECT_ANNUAL_VOLUME_BY_PROGRAM = "projectAnnualVolumeByProgram";
+    public static final String AVERAGE_CARGE_USAGE_BY_PROGRAM = "averageCargeUsageByProgram";
     public static final String PROGRAM_LOYALTY_TRANSACTION_UNIQUE = "programLoyaltyTransactionUnique";
     public static final String PRODUCT_BY_PROGRAM = "productByProgram";
     public static final String PRODUCT_BY_PROGRAM_BY_PRODUCT_TYPE = "productByProgramByProducType";
@@ -133,6 +138,7 @@ public class QueryConstants {
     public static final String PROFILES_BY_TYPE = "profilesByType";
     public static final String ATTACHMENTS_BY_TICKET = "getAttachmentFilesByTicket";
     public static final String PAYMENT_INFO_BY_CUSTOMER = "paymentInfoByCustomer";
+    public static final String VALIDATE_PASSWORD = "validatePassword";
     public static final String PAYMENT_INFO_BY_ACCOUNT = "paymentInfoByAccount";
     public static final String NOTIFICATIONS_BY_ACCOUNT = "notificationsByAccount";
     public static final String NOTIFICATIONS_BY_USER = "notificationsByUser";
@@ -174,6 +180,7 @@ public class QueryConstants {
     public static final String PARAM_DOCUMENT_PERSON_TYPE_ID = "documentPersonTypeId";
     public static final String PARAM_DOCUMENTS_PERSON_TYPE_ID = "documentsPersonTypeId";
     public static final String PARAM_PROGRAM_ID = "programId";
+    public static final String PARAM_ISSUER_ID = "issuerId";
     public static final String PARAM_PLASTIC_CUSTOMIZING_REQUEST_ID = "plasticCustomizingRequestId";
     public static final String PARAM_PLASTIC_MANUFACTURER_ID = "plasticManufacturerId";
     public static final String PARAM_STATUS_DESCRIPTION = "description";
@@ -182,6 +189,7 @@ public class QueryConstants {
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_DELIVERY_REQUEST_ID = "deliveryRequestId";
     public static final String PARAM_IND_NATURAL_PERSON = "indNaturalPerson";
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";

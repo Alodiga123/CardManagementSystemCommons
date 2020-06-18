@@ -50,6 +50,8 @@ public class EjbConstants {
     public static final  String DB_URL = "jdbc:mysql://192.168.210.6:3306/distribution";
 
     //Parámetros Queries
+    public static final String PARAM_CURRENT_PASSWORD = "currentPassword";
+    public static final String PARAM_USER_ID = "userId";
     public static final String PARAM_STATE_ID = "stateId";
     public static final String PARAM_CITY_ID = "cityId";
     public static final String PARAM_COUNTRY_ID = "countryId";
@@ -67,6 +69,7 @@ public class EjbConstants {
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
+    public static final String PARAM_STATUS_UPDATE_REASON_ID = "statusUpdateReasonId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
     public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";
@@ -74,8 +77,10 @@ public class EjbConstants {
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    
     public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";    
     public static final String PARAM_STATUS_REQUEST_ID = "statusRequestId";
+    public static final String PARAM_DELIVERY_REQUEST_ID = "deliveryRequestId";
     public static final String PARAM_COLLECTION_REQUEST_ID = "collectionsRequestId";
     public static final String PARAM_TRANSACTION_ID = "transactionId";
     public static final String PARAM_CHANNEL_ID = "channelId";

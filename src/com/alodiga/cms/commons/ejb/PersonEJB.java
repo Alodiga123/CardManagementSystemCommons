@@ -32,6 +32,7 @@ import com.cms.commons.models.LegalPerson;
 import com.cms.commons.models.LegalPersonHasLegalRepresentatives;
 import com.cms.commons.models.NaturalCustomer;
 import com.cms.commons.models.NaturalPerson;
+import com.cms.commons.models.PasswordChangeRequest;
 import com.cms.commons.models.PhoneType;
 import com.cms.commons.models.PlasticManufacturer;
 import com.cms.commons.models.StatusCustomer;
@@ -140,6 +141,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     
     //Issuer
     public List<Issuer> getIssuer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
+    public List<Issuer> getIssuerByCountry(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Issuer saveIssuer (Issuer issuer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
@@ -190,6 +192,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<User> getUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public User loadUser(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public User saveUser(User user)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<User> validatePassword(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Employee
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -200,4 +203,9 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<ComercialAgency> getComercialAgency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ComercialAgency loadComercialAgency(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ComercialAgency saveComercialAgency(ComercialAgency comercialAgency)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //PasswordChangeRequest
+    public List<PasswordChangeRequest> getPasswordChangeRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public PasswordChangeRequest loadPasswordChangeRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public PasswordChangeRequest savePasswordChangeRequest(PasswordChangeRequest passwordChangeRequest)  throws RegisterNotFoundException, NullParameterException, GeneralException;
 }

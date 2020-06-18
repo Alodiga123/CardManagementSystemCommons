@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -36,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CardStatusHasUpdateReason.findAll", query = "SELECT c FROM CardStatusHasUpdateReason c")
     , @NamedQuery(name = "CardStatusHasUpdateReason.findById", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.id = :id")
     , @NamedQuery(name = "CardStatusHasUpdateReason.findByCreateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")})
+    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")
+    , @NamedQuery(name = QueryConstants.CARD_STATUS_BY_REASON_UPDATE, query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.statusUpdateReasonId.id = :statusUpdateReasonId AND c.indAllowTable=true")})
 public class CardStatusHasUpdateReason extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +61,10 @@ public class CardStatusHasUpdateReason extends AbstractDistributionEntity implem
     @JoinColumn(name = "statusUpdateReasonId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusUpdateReason statusUpdateReasonId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "indAllowTable")
+    private boolean indAllowTable;
 
     public CardStatusHasUpdateReason() {
     }
@@ -145,6 +151,14 @@ public class CardStatusHasUpdateReason extends AbstractDistributionEntity implem
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public boolean getIndAllowTable() {
+        return indAllowTable;
+    }
+
+    public void setIndAllowTable(boolean indAllowTable) {
+        this.indAllowTable = indAllowTable;
     }
     
 }

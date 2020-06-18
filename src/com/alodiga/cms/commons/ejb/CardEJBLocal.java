@@ -1,3 +1,4 @@
+//CardEJBLocal
 package com.alodiga.cms.commons.ejb;
 
 import com.alodiga.cms.commons.exception.EmptyListException;
@@ -14,19 +15,19 @@ import com.cms.commons.models.AccountSegment;
 import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.Card;
-import com.cms.commons.models.CardDeliveryRegister;
 import com.cms.commons.models.CardNumberCredential;
-import com.cms.commons.models.CardStatus;
 import com.cms.commons.models.CardStatusHasUpdateReason;
 import com.cms.commons.models.CardRenewalRequest;
 import com.cms.commons.models.CardRenewalRequestHasCard;
 import com.cms.commons.models.DeliveryRequest;
 import com.cms.commons.models.DeliveryRequetsHasCard;
+import com.cms.commons.models.NewCardIssueRequest;
 import com.cms.commons.models.RateByCard;
 import com.cms.commons.models.SecurityQuestion;
 import com.cms.commons.models.StatusAccount;
 import com.cms.commons.models.StatusCardRenewalRequest;
 import com.cms.commons.models.StatusDeliveryRequest;
+import com.cms.commons.models.StatusNewCardIssueRequest;
 import com.cms.commons.models.StatusUpdateReason;
 import com.cms.commons.models.SubAccountType;
 import com.cms.commons.models.SystemFuncionality;
@@ -78,7 +79,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List<Card> getCardByCardHolder(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByCardNumber(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByIndRenewal(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List<Card> getCardCountByProgram(Integer cardStatus) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByIssuer(Integer issuerId) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
     public Card loadCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Card saveCard(Card card) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public Card validateQuestionCard(Long cardId, Date expirationDate, Date createDate, String ICVVMagneticStrip) throws RegisterNotFoundException, NullParameterException, GeneralException, InvalidQuestionException;
@@ -89,11 +90,6 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public CardNumberCredential loadCardNumberCredential(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardNumberCredential saveCardNumberCredential(CardNumberCredential cardNumberCredential) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    //CardDeliveryRegister
-    public List< CardDeliveryRegister> getCardDeliveryRegister(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public CardDeliveryRegister loadCardDeliveryRegister(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    public CardDeliveryRegister saveCardDeliveryRegister(CardDeliveryRegister cardDeliveryRegister) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
     //RateByCard
     public List<RateByCard> getRateByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<RateByCard> getRateByCardByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -101,7 +97,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public RateByCard saveRateByCard(RateByCard rateByCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     
     //AccountCard
-    public List< AccountCard> getAccountCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<AccountCard> getAccountCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountCard loadAccountCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountCard saveAccountCard(AccountCard accountCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
      public List<AccountCard> getAccountCardByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -118,6 +114,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
 
     //DeliveryRequestHasCard
     public List<DeliveryRequetsHasCard> getDeliveryRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<DeliveryRequetsHasCard> getCardByDeliveryRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DeliveryRequetsHasCard loadDeliveryRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DeliveryRequetsHasCard saveDeliveryRequestHasCard(DeliveryRequetsHasCard deliveryRequetsHasCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
 
@@ -143,18 +140,19 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     
     //statusUpdateReason
     public List<StatusUpdateReason> getStatusUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public StatusUpdateReason loadStatusUpdateReason(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;    
+    public StatusUpdateReason loadStatusUpdateReason(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
-    public List<CardStatus> getStatusCardByStatusUpdateReasonId(String id) throws EmptyListException, GeneralException, NullParameterException;
-    
     //CardRenewalRequest
     public List<CardRenewalRequest> getCardRenewalRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRenewalRequest loadCardRenewalRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRenewalRequest saveCardRenewalRequest(CardRenewalRequest cardRenewalRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<CardRenewalRequest> createCardRenewalRequestByIssuer(Integer cardStatus) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
+    public List<CardRenewalRequest> getCardRenewalRequestByCurrentDate(Integer cardStatus) throws EmptyListException, GeneralException, NullParameterException;
 
     //CardRenewalRequestHasCard
     public List<CardRenewalRequestHasCard> getCardRenewalRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<CardRenewalRequestHasCard> getCardRenewalRequestHasCardByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<CardRenewalRequestHasCard> getCardRenewalRequestByCard(Long cardId) throws EmptyListException, GeneralException, NullParameterException;
     public CardRenewalRequestHasCard loadCardRenewalRequestHasCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRenewalRequestHasCard saveCardRenewalRequestHasCard(CardRenewalRequestHasCard cardRenewalRequestHasCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
@@ -163,5 +161,21 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public StatusCardRenewalRequest loadStatusCardRenewalRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusCardRenewalRequest saveStatusCardRenewalRequest(StatusCardRenewalRequest statusCardRenewalRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
+    //CardStatusHasUpdateReason
+    public List<CardStatusHasUpdateReason> getCardStatusByUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<CardStatusHasUpdateReason> getUpdateReasonByCardStatus(String cardStatusId) throws EmptyListException, GeneralException, NullParameterException;
+
+
+    //NewCardIssueRequest
+    public List<NewCardIssueRequest> getNewCardIssueRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<NewCardIssueRequest> getNewCardIssueRequestByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<NewCardIssueRequest> createCardNewCardIssueRequest(Card cardId) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
+    public NewCardIssueRequest loadNewCardIssueRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public NewCardIssueRequest saveNewCardIssueRequest(NewCardIssueRequest newCardIssueRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //NewCardIssueRequest
+    public List<StatusNewCardIssueRequest> getStatusNewCardIssueRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public StatusNewCardIssueRequest loadStatusNewCardIssueRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusNewCardIssueRequest saveStatusNewCardIssueRequest(StatusNewCardIssueRequest statusNewCardIssueRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
 }
     
