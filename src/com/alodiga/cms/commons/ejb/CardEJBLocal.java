@@ -170,7 +170,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     //NewCardIssueRequest
     public List<NewCardIssueRequest> getNewCardIssueRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<NewCardIssueRequest> getNewCardIssueRequestByCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    public List<NewCardIssueRequest> createCardNewCardIssueRequest(Card card) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
+    public List<NewCardIssueRequest> createCardNewCardIssueRequest(Card cardId) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
     public NewCardIssueRequest loadNewCardIssueRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public NewCardIssueRequest saveNewCardIssueRequest(NewCardIssueRequest newCardIssueRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
