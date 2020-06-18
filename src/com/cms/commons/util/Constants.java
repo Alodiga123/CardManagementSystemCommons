@@ -75,10 +75,13 @@ public class Constants {
     public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
     public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
     public static Integer CLASSIFICATION_PERSON_OWNER = 3;
+    public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
     public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static Integer PERSON_CLASSIFICATION_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
     public static Integer CLASSIFICATION_PERSON_USER = 6;
     public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
+    public static Integer PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
     public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;   
     public static Integer CLASSIFICATION_PERSON_EMPLOYEE = 9; 
