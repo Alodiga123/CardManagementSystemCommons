@@ -10,6 +10,7 @@ import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -95,6 +96,9 @@ public class Issuer extends AbstractDistributionEntity implements Serializable {
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DocumentsPersonType documentsPersonTypeId;
 
     public Issuer() {
     }
@@ -221,6 +225,14 @@ public class Issuer extends AbstractDistributionEntity implements Serializable {
 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
+    }
+
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
+    }
+
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
     }
 
     @Override
