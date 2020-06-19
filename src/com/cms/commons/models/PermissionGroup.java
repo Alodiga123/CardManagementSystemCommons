@@ -9,10 +9,12 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,6 +61,9 @@ public class PermissionGroup extends AbstractDistributionEntity implements Seria
     private Collection<PermissionGroupData> permissionGroupDataCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permissionGroupId")
     private Collection<Permission> permissionCollection;
+    //bi-directional many-to-one association to PermissionGroupData
+    @OneToMany(mappedBy = "permissionGroupId", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<PermissionGroupData> permissionGroupData;
 
     public PermissionGroup() {
     }
@@ -115,6 +120,16 @@ public class PermissionGroup extends AbstractDistributionEntity implements Seria
 
     public void setPermissionCollection(Collection<Permission> permissionCollection) {
         this.permissionCollection = permissionCollection;
+    }
+    
+    public PermissionGroupData getPermissionGroupDataByLanguageId(Long languageId) {
+
+        for (PermissionGroupData pgData : this.permissionGroupData) {
+            if (pgData.getLanguageId().getId().equals(languageId)) {
+                return pgData;
+            }
+        }
+        return null;
     }
 
     @Override

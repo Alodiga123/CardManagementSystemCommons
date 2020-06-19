@@ -9,10 +9,12 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -75,6 +77,9 @@ public class Permission extends AbstractDistributionEntity implements Serializab
     @JoinColumn(name = "permissionGroupId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private PermissionGroup permissionGroupId;
+    //bi-directional many-to-one association to PermissionData
+    @OneToMany(mappedBy = "permissionId", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<PermissionData> permissionData;
 
     public Permission() {
     }
@@ -156,6 +161,17 @@ public class Permission extends AbstractDistributionEntity implements Serializab
 
     public void setPermissionGroupId(PermissionGroup permissionGroupId) {
         this.permissionGroupId = permissionGroupId;
+    }
+    
+    public PermissionData getPermissionDataByLanguageId(Long languageId) {
+        PermissionData pd = null;
+        for (PermissionData pData : this.permissionData) {
+            if (pData.getLanguageId().getId().equals(languageId)) {
+                pd = pData;
+                break;
+            }
+        }
+        return pd;
     }
 
     @Override
