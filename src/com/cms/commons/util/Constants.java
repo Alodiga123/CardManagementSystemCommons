@@ -1,3 +1,6 @@
+/*
+*
+*/
 package com.cms.commons.util;
 
 public class Constants {
@@ -31,10 +34,6 @@ public class Constants {
 
     //CONSTANT VIEW
     public static String HOME_ADMIN = "home-admin.zul";
-
-    //ProgramEJB
-    public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
-    public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
 
     //Request
     public static final String REQUEST_KEY = "id";
@@ -75,21 +74,20 @@ public class Constants {
     public static final int STATUS_NEW_CARD_ISSUE_PENDING = 1;
 
     //PersonClassification
-    public static final Long REQUEST_ID_NATURAL_PERSON = 2L;
-    public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
-    public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
-    public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
-    public static Integer ACCOUNT_STATUS_REQUESTED = 1;
-    public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
-    public static Integer CHANNEL_CREATION_ACCOUNT = 7;
-    public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
-    public static Integer CLASSIFICATION_PERSON_OWNER = 3;
     public static Integer CLASSIFICATION_PERSON_ISSUER = 1;
-    public static Integer CLASSIFICATION_PERSON_USER = 2;
-    public static Integer CLASSIFICATION_NATURAL_PERSON = 3;
+    public static Integer CLASSIFICATION_CARD_MANAGEMENT_PROGRAM = 2;
+    public static Integer PERSON_CLASSIFICATION_PROGRAM_OWNER = 3;
+    public static Integer CLASSIFICATION_PERSON_OWNER = 3;
+    public static Integer CLASSIFICATION_PERSON_PROGRAM_OWNER = 3;
+    public static Integer CLASSIFICATION_PERSON_APPLICANT = 4;
+    public static Integer PERSON_CLASSIFICATION_APPLICANT = 4;
     public static Integer CLASSIFICATION_PERSON_LEGAL_REPRESENTATIVES = 5;
+    public static Integer CLASSIFICATION_PERSON_USER = 6;
+    public static Integer PERSON_CLASSIFICATION_CUSTOMER = 7;
+    public static Integer PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
     public static Integer CLASSIFICATION_PERSON_CARD_REQUEST_NATURAL_PERSON = 8;
-    public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;
+    public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;   
+    public static Integer CLASSIFICATION_PERSON_EMPLOYEE = 9; 
     public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
 
     //RequestEJB
@@ -141,8 +139,6 @@ public class Constants {
     public static final int STATUS_CUSTOMER_ACTIVE = 1;
     public static final int STATUS_CLASSIFICATION_CUSTOMER_ACTIVE = 1;
     public static final int PENDING_APPROVAL = 2;
-    public static final int PERSON_CLASSIFICATION_APPLICANT = 4;
-    public static final int PERSON_CLASSIFICATION_CARD_COMPLEMENTARY = 8;
     public static final int PHONE_TYPE_MOBILE = 1;
     public static final int PHONE_TYPE_ROOM = 2;
     public static final int DOCUMENT_TYPE_REQUEST = 1;
@@ -156,4 +152,23 @@ public class Constants {
     //Queries PersonType
     public static final int ORIGIN_APPLICATION_WALLET_ID = 2;
     public static final int ORIGIN_APPLICATION_CMS_ID = 1;
+    
+    public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
+    public static Integer ACCOUNT_STATUS_REQUESTED = 1;
+    public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
+    public static Integer CHANNEL_CREATION_ACCOUNT = 7;
+    
+    //Menu Options
+    public static Long LIST_COUNTRY = 1L;
+    public static Long ADD_COUNTRY = 2L;
+    public static Long EDIT_COUNTRY = 3L;
+    public static Long VIEW_COUNTRY = 4L;
+    public static Long LIST_USER = 5L;
+    public static Long ADD_USER = 6L;
+    public static Long EDIT_USER = 7L;
+    public static Long VIEW_USER = 8L;
+    public static Long LIST_CURRENCY = 9L;
+    public static Long ADD_CURRENCY = 10L;
+    public static Long EDIT_CURRENCY = 11L;
+    public static Long VIEW_CURRENCY = 12L;
 }
