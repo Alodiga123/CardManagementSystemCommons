@@ -201,4 +201,10 @@ public class Constants {
     public static Long VIEW_COLLECTION_TYPE = 56L;
     public static Long LIST_CARD_REQUEST = 57L;
     public static Long LIST_PRODUCTS_MANAGEMENT = 58L;
+    public static Long LIST_CUSTOMER_MANAGEMENT = 59L;
+    public static Long LIST_CARD_MANAGEMENT = 60L;
+    public static Long ADD_CUSTOMER_CARD = 61L;
+    public static Long EDIT_CUSTOMER_CARD = 62L;
+    public static Long VIEW_CUSTOMER_CARD = 63L;
+    public static Long CARD_ASSIGMENT = 64L;
 }
