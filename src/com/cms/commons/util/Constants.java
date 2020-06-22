@@ -1,3 +1,6 @@
+/*
+*
+*/
 package com.cms.commons.util;
 
 public class Constants {
@@ -154,4 +157,18 @@ public class Constants {
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
     public static Integer TRANSACTION_CREATION_ACCOUNT = 23;
     public static Integer CHANNEL_CREATION_ACCOUNT = 7;
+    
+    //Menu Options
+    public static Long LIST_COUNTRY = 1L;
+    public static Long ADD_COUNTRY = 2L;
+    public static Long EDIT_COUNTRY = 3L;
+    public static Long VIEW_COUNTRY = 4L;
+    public static Long LIST_USER = 5L;
+    public static Long ADD_USER = 6L;
+    public static Long EDIT_USER = 7L;
+    public static Long VIEW_USER = 8L;
+    public static Long LIST_CURRENCY = 9L;
+    public static Long ADD_CURRENCY = 10L;
+    public static Long EDIT_CURRENCY = 11L;
+    public static Long VIEW_CURRENCY = 12L;
 }
