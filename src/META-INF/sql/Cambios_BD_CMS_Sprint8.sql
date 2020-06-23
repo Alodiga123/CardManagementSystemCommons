@@ -400,3 +400,15 @@ ADD COLUMN `indPendingNewCardIssue` TINYINT(1) NULL AFTER `observations`;
 -- Fecha: 16/06/2020
 ALTER TABLE `CardManagementSystem`.`product` 
 ADD COLUMN `maximunDeactivationTimeBlocking` INT NULL AFTER `userActivationId`;
+
+-- Agregar FK en issuer
+-- author: Jesús Gómez
+-- Fecha: 19/06/2020
+ALTER TABLE `CardManagementSystem`.`issuer` 
+ADD COLUMN `documentsPersonTypeId` INT NULL AFTER `documentIdentification`;
+ALTER TABLE `CardManagementSystem`.`issuer` 
+ADD CONSTRAINT `fk_issuer_documentsPersonType1` 
+FOREIGN KEY (`documentsPersonTypeId`)
+    REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;

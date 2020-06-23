@@ -41,7 +41,10 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "Language.findByEnabled", query = "SELECT l FROM Language l WHERE l.enabled = :enabled")})
 
 public class Language extends AbstractDistributionEntity implements Serializable {
-
+    
+    public static final Long ENGLISH = 1L;
+    public static final Long SPANISH = 2L;
+    public static final Long PORTUGUESE = 3L;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

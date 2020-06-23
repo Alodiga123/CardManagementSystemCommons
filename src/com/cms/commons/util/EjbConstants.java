@@ -11,7 +11,9 @@ public class EjbConstants {
     public static final String PERSON_EJB = "ejb/cms/PersonEJB";
     public static final String PRODUCT_EJB = "ejb/cms/ProductEJB";
     public static final String CARD_EJB = "ejb/cms/CardEJB";
-    //CAMBIAR
+    public static final String USER_EJB = "ejb/cms/UserEJB";
+    
+//CAMBIAR
     public static final String PROPERTIES_PACKAGE = "com.distribution.commons.util.";
     public static final String ERROR_FILE_NAME = PROPERTIES_PACKAGE + "system_error";
     

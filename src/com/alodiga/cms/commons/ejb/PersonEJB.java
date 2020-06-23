@@ -52,6 +52,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public PhonePerson loadPhonePerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhonePerson savePhonePerson(PhonePerson phonePerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PhonePerson validatePhoneQuestion(Long personId, String numberPhone) throws RegisterNotFoundException, NullParameterException, GeneralException, InvalidQuestionException;
+    
       
     //PersonHasAddress
     public List<PersonHasAddress> getPersonHasAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -208,4 +209,6 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<PasswordChangeRequest> getPasswordChangeRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PasswordChangeRequest loadPasswordChangeRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PasswordChangeRequest savePasswordChangeRequest(PasswordChangeRequest passwordChangeRequest)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    public Long havePhonesByPerson(Long personId) throws GeneralException;
 }
