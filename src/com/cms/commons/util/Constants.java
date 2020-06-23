@@ -210,4 +210,8 @@ public class Constants {
     public static Long LIST_PASSWORD_CHANGE_REQUEST = 65L;
     public static Long ADD_PASSWORD_CHANGE_REQUEST = 66L;
     public static Long VIEW_PASSWORD_CHANGE_REQUEST = 67L;
+    public static Long LIST_CUSTOMER_MANAGEMENT = 59L;
+    public static Long LIST_PASSWORD_CHANGE_REQUEST = 80L;
+    public static Long ADD_PASSWORD_CHANGE_REQUEST = 81L;
+    public static Long VIEW_PASSWORD_CHANGE_REQUEST = 82L;
 }
