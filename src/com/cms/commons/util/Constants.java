@@ -201,6 +201,7 @@ public class Constants {
     public static Long VIEW_COLLECTION_TYPE = 56L;
     public static Long LIST_CARD_REQUEST = 57L;
     public static Long LIST_PRODUCTS_MANAGEMENT = 58L;
+    public static Long LIST_CUSTOMER_MANAGEMENT = 59L;
     public static Long LIST_PASSWORD_CHANGE_REQUEST = 80L;
     public static Long ADD_PASSWORD_CHANGE_REQUEST = 81L;
     public static Long VIEW_PASSWORD_CHANGE_REQUEST = 82L;
