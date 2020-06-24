@@ -85,6 +85,7 @@ public interface RequestEJB extends DistributionGenericEJB {
     public CollectionType loadCollectionType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CollectionType saveCollectionType(CollectionType collectionType) throws NullParameterException, GeneralException;
     public CollectionType searchCollectionType(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<CollectionType> getSearchCollectionType(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //ReviewRequest
     public List<ReviewRequest> getReviewRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
