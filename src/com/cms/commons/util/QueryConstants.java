@@ -64,6 +64,8 @@ public class QueryConstants {
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String ECONOMIC_ACTIVITY_BY_LEGAL_PERSON = "economicActivityByLegalPerson";
     public static final String LEGAL_PERSON_BY_PERSON_CLASSIFICATION = "legalPersonByPersonClassification";
+    public static final String LEGAL_PERSON_BY_PERSON_CLASSIFICATION_LIKE = "legalPersonByPersonClassificationLike";
+    public static final String USER_LIKE = "userLike";
     public static final String PROGRAM_HAS_NETWORK_BD = "programHasNetworkBD";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";

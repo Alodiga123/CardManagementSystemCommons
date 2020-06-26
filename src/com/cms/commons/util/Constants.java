@@ -38,6 +38,9 @@ public class Constants {
     //Request
     public static final String REQUEST_KEY = "id";
     public static final String PERSON_CLASSIFICATION_KEY = "personClassificationId";
+    public static final String PERSON_ENTERPRISE_NAME_KEY = "enterpriseName";
+    public static final String PARAM_PERSON_NAME = "name";
+    public static final String PARAM_USER = "login";
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final int STATUS_APPLICANT_ACTIVE = 1;
     public static final int STATUS_APPLICANT_INACTIVE = 2;

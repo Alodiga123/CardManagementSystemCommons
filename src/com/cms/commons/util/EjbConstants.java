@@ -70,6 +70,9 @@ public class EjbConstants {
     public static final String PARAM_APPLICANT_LEGAL_PERSON_ID = "legalPersonId";
     public static final String PARAM_LEGAL_CUSTOMER_ID = "legalCustomerId";
     public static final String PARAM_PERSON_CLASSIFICATION_ID = "personClassificationId";
+    public static final String PARAM_PERSON_ENTERPRISE_NAME = "enterpriseName";
+    public static final String PARAM_PERSON_NAME = "name";
+    public static final String PARAM_USER = "login";
     public static final String PARAM_SEGMENT_COMMERCE_ID = "segmentCommerceId";
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_STATUS_UPDATE_REASON_ID = "statusUpdateReasonId";

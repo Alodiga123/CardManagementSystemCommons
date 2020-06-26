@@ -115,7 +115,8 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<Person> getPersonByClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+    public List<Person> searchPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
     //NaturalPerson
     public List<NaturalPerson> getNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<NaturalPerson> getNaturalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -128,7 +129,8 @@ public interface PersonEJB extends DistributionGenericEJB {
     public LegalPerson saveLegalegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<LegalPerson> getLegalPersonByPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    
+    public List<LegalPerson> searchLegalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PersonType loadPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -145,7 +147,8 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<Issuer> getIssuerByCountry(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public Issuer loadIssuer(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Issuer saveIssuer (Issuer issuer)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
-    
+    public List<Issuer> searchIssuer(String name)throws EmptyListException, GeneralException, NullParameterException;
+
     //IssuerType
     public List<IssuerType> getIssuerType(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public IssuerType loadIssuerType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -194,6 +197,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public User loadUser(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public User saveUser(User user)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<User> validatePassword(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<User> searchUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Employee
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
