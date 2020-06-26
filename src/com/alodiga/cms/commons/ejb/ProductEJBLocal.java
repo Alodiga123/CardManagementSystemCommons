@@ -41,6 +41,8 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Product> getProductByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Product> searchProduct(String name) throws EmptyListException, GeneralException, NullParameterException;
+
     
     //ProductType
     public List< ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
