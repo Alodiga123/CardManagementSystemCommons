@@ -46,6 +46,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "User.findByFirstNames", query = "SELECT u FROM User u WHERE u.firstNames = :firstNames")
     , @NamedQuery(name = "User.findByLastNames", query = "SELECT u FROM User u WHERE u.lastNames = :lastNames")
     , @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled")
+    , @NamedQuery(name = QueryConstants.USER_LIKE, query = "SELECT u FROM User u WHERE u.login like  CONCAT('%',:login,'%')")
     , @NamedQuery(name = QueryConstants.VALIDATE_PASSWORD, query = "SELECT u FROM User u WHERE u.password=:currentPassword AND u.id=:userId")})  
 public class User extends AbstractDistributionEntity implements Serializable {
 
