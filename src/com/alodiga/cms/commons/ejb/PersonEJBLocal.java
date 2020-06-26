@@ -125,7 +125,8 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<Person> getPersonByClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+    public List<Person> searchPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
     //NaturalPerson
     public List<NaturalPerson> getNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public NaturalPerson loadNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -137,7 +138,8 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public LegalPerson saveLegalegalPerson(LegalPerson legalPerson) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<LegalPerson> getLegalPersonByPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    
+    public List<LegalPerson> searchLegalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
     //Issuer
     public List<Issuer> getIssuer(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
     public List<Issuer> getIssuerByCountry(EJBRequest request)throws EmptyListException, GeneralException, NullParameterException;
@@ -193,7 +195,8 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public User loadUser(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public User saveUser(User user)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<User> validatePassword(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    
+    public List<User> searchUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
     //Employee
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Employee loadEmployee(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
