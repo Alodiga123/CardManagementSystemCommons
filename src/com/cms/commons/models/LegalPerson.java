@@ -49,6 +49,7 @@ import com.cms.commons.util.QueryConstants;
     , @NamedQuery(name = "LegalPerson.findByCodeIdentificationNumber", query = "SELECT l FROM LegalPerson l WHERE l.codeIdentificationNumber = :codeIdentificationNumber")
     , @NamedQuery(name = QueryConstants.ECONOMIC_ACTIVITY_BY_LEGAL_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.economicActivityId.id = :economicActivityId")
     , @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON, query = "SELECT l FROM LegalPerson l WHERE l.personId.id=:personId")
+    , @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON_CLASSIFICATION_LIKE, query = "SELECT l FROM LegalPerson l WHERE l.personId.personClassificationId.id=:personClassificationId and l.enterpriseName like  CONCAT('%',:enterpriseName,'%')")
     , @NamedQuery(name = QueryConstants.LEGAL_PERSON_BY_PERSON_CLASSIFICATION, query = "SELECT l FROM LegalPerson l WHERE l.personId.personClassificationId.id=:personClassificationId")})
 
 public class LegalPerson extends AbstractDistributionEntity implements Serializable {
