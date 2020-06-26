@@ -176,6 +176,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //Address
     public List<Address> getAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Address> getAddressesById(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Address loadAddress(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Address saveAddress (Address address)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     

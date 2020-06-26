@@ -96,6 +96,7 @@ public class Constants {
     //RequestEJB
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
     public static final String PERSON_KEY = "personId";
+    public static final String ADDRESS_KEY = "id";
     public static final String DESCRiPTION_KEY = "description";
     public static final String CARDNUMBER_KEY = "cardNumber";
     public static final String USE_KEY = "indUse";
