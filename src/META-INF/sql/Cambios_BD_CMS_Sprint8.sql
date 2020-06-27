@@ -329,7 +329,7 @@ ADD COLUMN `indDelivery` TINYINT(1) NULL AFTER `deliveryObservations`;
 -- Eliminar tabla CardDeliveryRegister
 -- author: Jesús Gómez
 -- Fecha: 09/06/2020
-DROP TABLE `CardManagementSystem`.`CardDeliveryRegister`;
+DROP TABLE `CardManagementSystem`.`cardDeliveryRegister`;
 
 -- Agregar campos en tabla cardStatusHasUpdateReason
 -- author: Jesús Gómez
