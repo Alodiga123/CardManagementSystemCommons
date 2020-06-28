@@ -176,6 +176,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //Address
     public List<Address> getAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Address> getAddressesById(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Address loadAddress(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Address saveAddress (Address address)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
@@ -272,4 +273,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<UserHasProfile> getUserHasProfileByUser(UserHasProfile userHasProfile) throws EmptyListException, GeneralException, NullParameterException;
 
+    //PersonType
+    public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
