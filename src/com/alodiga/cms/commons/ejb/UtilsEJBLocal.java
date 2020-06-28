@@ -43,7 +43,6 @@ import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
-import com.cms.commons.models.User;
 import com.cms.commons.models.UserHasProfile;
 import javax.ejb.Local;
 import java.util.List;
@@ -267,11 +266,12 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     //LegalPerson
     public List<LegalPerson> getLegalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
-//Tabla  UserHasProfile
+    //Tabla  UserHasProfile
     public List<UserHasProfile> getUserHasProfile(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public UserHasProfile loadUserHasProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<UserHasProfile> getUserHasProfileByUser(UserHasProfile userHasProfile) throws EmptyListException, GeneralException, NullParameterException;
 
-
+    //PersonType
+    public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
