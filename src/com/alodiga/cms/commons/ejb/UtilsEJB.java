@@ -273,4 +273,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<UserHasProfile> getUserHasProfileByUser(UserHasProfile userHasProfile) throws EmptyListException, GeneralException, NullParameterException;
 
+    //PersonType
+    public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
