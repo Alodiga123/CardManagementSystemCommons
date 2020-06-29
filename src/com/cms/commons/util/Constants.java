@@ -115,11 +115,12 @@ public class Constants {
     public static final String STATUS_REQUEST_KEY = "statusRequestId";
     public static final String CIVIL_STATUS_KEY = "civilStatusId";
     public static final String PROFESSION_KEY = "professionId";
-    public static final String DOCUMENT_TYPE_KEY = "documentTypeId";
+    public static final String DOCUMENT_TYPE_KEY = "documentTypeId";    
     public static final String APPLICANT_NATURAL_PERSON_KEY = "applicantNaturalPersonId";
     public static final String APPLICANT_NATURAL_CUSTOMER_KEY = "naturalCustomerId";
     public static final String LEGAL_CUSTOMER_KEY = "legalCustomerId";
     public static final String APPLICANT_LEGAL_PERSON_KEY = "legalPersonId";
+    public static final String LEGAL_PERSON_KEY = "legalPersonId";
     public static final String NETWORK_BY_PROGRAM = "programId";
     public static final String PRODUCT_KEY = "productId";
     public static final String USER_KEY = "userId";
@@ -179,7 +180,7 @@ public class Constants {
     public static Long ADD_CLASSIFICATION_PERSON = 14L;
     public static Long EDIT_CLASSIFICATION_PERSON = 15L;
     public static Long VIEW_CLASSIFICATION_PERSON = 16L;
-        public static Long LIST_STATE = 17L;
+    public static Long LIST_STATE = 17L;
     public static Long ADD_STATE = 18L;
     public static Long EDIT_STATE = 19L;
     public static Long VIEW_STATE = 20L; 
