@@ -347,5 +347,8 @@ public class Constants {
     public static Long ADD_USER_PROFILES = 181L;
     public static Long EDIT_USER_PROFILES = 182L;
     public static Long VIEW_USER_PROFILES = 183L;
-
+    public static long LIST_PRODUCTS_TYPE = 184L;
+    public static Long ADD_PRODUCTS_TYPE = 185L;
+    public static Long EDIT_PRODUCTS_TYPE = 186L;
+    public static Long VIEW_PRODUCTS_TYPE = 187L;
 }
