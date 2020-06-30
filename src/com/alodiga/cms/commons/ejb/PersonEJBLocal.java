@@ -74,6 +74,8 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     //ApplicantNaturalPerson
     public List<ApplicantNaturalPerson> getApplicantNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApplicantNaturalPerson loadApplicantNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<ApplicantNaturalPerson> searchCardComplementaryByApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ApplicantNaturalPerson> searchCardComplementaryByApplicantOFAC(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApplicantNaturalPerson saveApplicantNaturalPerson (ApplicantNaturalPerson applicantNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<ApplicantNaturalPerson> getCardComplementaryByApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Long countCardComplementaryByApplicant(long applicantNaturalPersonId) throws GeneralException, NullParameterException;
