@@ -39,6 +39,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
 
     public List<Request> getRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Request> getRequestsByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Request> searchRequestsByStatus(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Request loadRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Request saveRequest(Request request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Request> searchCardRequest(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
