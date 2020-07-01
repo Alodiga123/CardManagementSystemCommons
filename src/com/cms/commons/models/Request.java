@@ -39,6 +39,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Request.findById", query = "SELECT r FROM Request r WHERE r.id = :id"),
     @NamedQuery(name = "Request.findByRequestNumber", query = "SELECT r FROM Request r WHERE r.requestNumber = :requestNumber"),
     @NamedQuery(name = "Request.findByRequestDate", query = "SELECT r FROM Request r WHERE r.requestDate = :requestDate"),
+    @NamedQuery(name = QueryConstants.STATUS_REQUEST_LIKE, query = "SELECT r FROM Request r WHERE r.statusRequestId.id=:statusRequestId and r.requestNumber like  CONCAT('%',:name,'%')"),
     @NamedQuery(name = QueryConstants.STATUS_REQUEST, query = "SELECT r FROM Request r WHERE r.statusRequestId.id=:statusRequestId")})
 public class Request extends AbstractDistributionEntity implements Serializable {
 

@@ -115,6 +115,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     //Person
     public List<Person> getPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Person> getPersonByClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Person> searchPersonByClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Person> searchPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
