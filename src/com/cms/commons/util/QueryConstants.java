@@ -29,6 +29,7 @@ public class QueryConstants {
     public static final String FAMILY_REFERENCES_BY_CUSTOMER = "familyReferencesByCustomer";
     public static final String DAYS_WEEK_HAS_PROGRAM_BY_LOYALTY = "daysWeekHasProgramLoyaltyByLoyalty";
     public static final String CARD_COMPLEMENTARY_BY_APPLICANT = "cardComplementaryByApplicant";
+    public static final String CARD_COMPLEMENTARY_BY_APPLICANT_LIKE = "cardComplementaryByApplicantLike";
     public static final String APPLICANT_BY_PERSON = "applicantByPerson";
     public static final String CARD_BY_PROGRAM = "cardByProgram";
     public static final String CARD_BY_PROGRAM_BY_STATUS = "cardByProgramByStatus";
@@ -58,6 +59,7 @@ public class QueryConstants {
     public static final String STATUS_BY_CARD_STATUS = "statusByCardStatus";
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
+    public static final String STATUS_REQUEST_LIKE = "statusRequestLike";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";

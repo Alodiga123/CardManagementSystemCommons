@@ -122,7 +122,9 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public DocumentsPersonType loadDocumentsPersonType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DocumentsPersonType saveDocumentsPersonType(DocumentsPersonType documentsPersonType) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<DocumentsPersonType> getDocumentsPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-   
+     public DocumentsPersonType searchDocumentsPersonType(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<DocumentsPersonType> getSearchDocumentsPersonType(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Tabla de binSponsor
     public List< BinSponsor> getBinSponsor(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public BinSponsor loadBinSponsor(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
