@@ -106,6 +106,7 @@ public class Constants {
     public static final String COLLECTIONS_REQUEST_KEY = "naturalCustomerId";
     public static final String COUNTRY_KEY = "countryId";
     public static final String PERSON_TYPE_KEY = "personTypeId";
+    public static final String COLLECTION_TYPE_KEY = "collectionTypeId";
     public static final String ORIGIN_APPLICATION_KEY = "originApplicationId";
     public static final String STATUS_UPDATE_REASON_KEY = "statusUpdateReasonId";
     public static final String PROGRAM_KEY = "programId";
