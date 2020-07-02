@@ -53,6 +53,7 @@ public class QueryConstants {
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER ="legalRepresentativesByLegalCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
+    public static final String COLLECTIONS_REQUEST_UNIQUE = "CollectionsRequestsUnique";
     public static final String STATUS_BY_DESCRIPTION = "statusByDescription";
     public static final String STATUS_BY_PLASTIC_MANUFACTURER = "statusByPlasticManufacturer";
     public static final String SRPC_BY_STATUS_PLASTIC_MANUFACTURER = "srpcByStatusPlasticManufacturer";
