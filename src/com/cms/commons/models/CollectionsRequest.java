@@ -27,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CollectionsRequest.findAll", query = "SELECT c FROM CollectionsRequest c"), 
     @NamedQuery(name = "CollectionsRequest.findById", query = "SELECT c FROM CollectionsRequest c WHERE c.id = :id"),
-    @NamedQuery(name = QueryConstants.COLLECTIONS_BY_REQUEST, query = "SELECT c FROM CollectionsRequest c WHERE c.countryId.id=:countryId AND c.productTypeId.id=:productTypeId AND c.personTypeId.id=:personTypeId AND c.programId.id=:programId")})
+    @NamedQuery(name = QueryConstants.COLLECTIONS_BY_REQUEST, query = "SELECT c FROM CollectionsRequest c WHERE c.countryId.id=:countryId AND c.productTypeId.id=:productTypeId AND c.personTypeId.id=:personTypeId AND c.programId.id=:programId"),
+    @NamedQuery(name = QueryConstants.COLLECTIONS_REQUEST_UNIQUE, query = "SELECT c FROM CollectionsRequest c WHERE c.countryId.id=:countryId AND c.productTypeId.id=:productTypeId AND c.programId.id=:programId AND c.personTypeId.id=:personTypeId AND c.collectionTypeId.id=:collectionTypeId")})
 
 public class CollectionsRequest extends AbstractDistributionEntity implements Serializable{
 

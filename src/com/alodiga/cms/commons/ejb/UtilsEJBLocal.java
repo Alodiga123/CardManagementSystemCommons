@@ -91,6 +91,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public PersonClassification savePersonClassification(PersonClassification personClassification) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PersonClassification searchPersonClassification(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<PersonClassification> getSearchPersonClassification(String name) throws EmptyListException, GeneralException, NullParameterException;
+    public List<LegalPerson> getLegalPersonByPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Tabla de ProductType
     public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

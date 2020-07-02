@@ -78,6 +78,7 @@ public class EjbConstants {
     public static final String PARAM_PRODUCT_TYPE_ID = "productTypeId";
     public static final String PARAM_STATUS_UPDATE_REASON_ID = "statusUpdateReasonId";
     public static final String PARAM_PERSON_TYPE_ID = "personTypeId";
+    public static final String PARAM_COLLECTION_TYPE_ID = "collectionTypeId";
     public static final String PARAM_PRODUCT_ID = "productId";
     public static final String PARAM_ACCOUNT_PROPERTIES_ID = "accountPropertiesId";
     public static final String PARAM_CARD_NUMBER_IND_USE = "indUse";
