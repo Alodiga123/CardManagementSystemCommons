@@ -37,11 +37,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "statusUpdateReason")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "StatusUpdateReason.findAll", query = "SELECT s FROM StatusUpdateReason s")
-    , @NamedQuery(name = "StatusUpdateReason.findById", query = "SELECT s FROM StatusUpdateReason s WHERE s.id = :id")
-    , @NamedQuery(name = "StatusUpdateReason.findByDescription", query = "SELECT s FROM StatusUpdateReason s WHERE s.description = :description")
-    , @NamedQuery(name = "StatusUpdateReason.findByCreateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.createDate = :createDate")
-    , @NamedQuery(name = "StatusUpdateReason.findByUpdateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.updateDate = :updateDate")})
+    @NamedQuery(name = "StatusUpdateReason.findAll", query = "SELECT s FROM StatusUpdateReason s"),
+    @NamedQuery(name = "StatusUpdateReason.findById", query = "SELECT s FROM StatusUpdateReason s WHERE s.id = :id"),
+    @NamedQuery(name = "StatusUpdateReason.findByDescription", query = "SELECT s FROM StatusUpdateReason s WHERE s.description = :description"),
+    @NamedQuery(name = "StatusUpdateReason.findByCreateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.createDate = :createDate"),
+    @NamedQuery(name = "StatusUpdateReason.findByUpdateDate", query = "SELECT s FROM StatusUpdateReason s WHERE s.updateDate = :updateDate")})
 public class StatusUpdateReason extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -145,8 +145,8 @@ public class StatusUpdateReason extends AbstractDistributionEntity implements Se
     public String toString() {
         return "com.cms.commons.models.StatusUpdateReason[ id=" + id + " ]";
     }
-    
-      @Override
+
+    @Override
     public Object getPk() {
         return getId();
     }
