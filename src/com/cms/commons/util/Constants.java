@@ -353,4 +353,8 @@ public class Constants {
     public static Long ADD_PRODUCTS_TYPE = 185L;
     public static Long EDIT_PRODUCTS_TYPE = 186L;
     public static Long VIEW_PRODUCTS_TYPE = 187L;
+    public static long LIST_CARD_UPDATE_REASON = 188L;
+    public static Long ADD_CARD_UPDATE_REASON = 189L;
+    public static Long EDIT_CARD_UPDATE_REASON = 190L;
+    public static Long VIEW_CARD_UPDATE_REASON = 191L;
 }

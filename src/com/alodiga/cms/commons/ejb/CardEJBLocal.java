@@ -142,6 +142,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     //statusUpdateReason
     public List<StatusUpdateReason> getStatusUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusUpdateReason loadStatusUpdateReason(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusUpdateReason saveStatusUpdateReason(StatusUpdateReason statusUpdateReason) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //CardRenewalRequest
     public List<CardRenewalRequest> getCardRenewalRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
