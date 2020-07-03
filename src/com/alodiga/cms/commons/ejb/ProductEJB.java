@@ -26,6 +26,7 @@ import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.ApprovalGeneralRate;
 import com.cms.commons.models.ApprovalProductRate;
 import com.cms.commons.models.ApprovalProgramRate;
+import com.cms.commons.models.Country;
 import com.cms.commons.models.StatusProduct;
 import java.util.List;
 
@@ -106,9 +107,11 @@ public interface ProductEJB extends DistributionGenericEJB {
     //GeneralRate
     public List<GeneralRate> getGeneralRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<GeneralRate> getGeneralRateByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<GeneralRate> getGeneralRateBy4field(GeneralRate generalRate) throws EmptyListException, GeneralException, NullParameterException;
     public GeneralRate loadGeneralRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public GeneralRate saveGeneralRate(GeneralRate generalRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
-    
+    public List<GeneralRate> getGeneralRateByCountry(Country country) throws EmptyListException, GeneralException, NullParameterException;
+
     //RateApplicationType
     public List<RateApplicationType> getRateApplicationType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public RateApplicationType loadRateApplicationType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
