@@ -213,6 +213,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<LegalRepresentatives> getLegalRepresentativeses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public LegalRepresentatives loadLegalRepresentatives(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public LegalRepresentatives saveLegalRepresentatives (LegalRepresentatives legalRepresentatives)  throws RegisterNotFoundException, NullParameterException, GeneralException;                    
+    public List<LegalRepresentatives> getLegalRepresentativesByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Sequences
     public List<Sequences> getSequences(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
