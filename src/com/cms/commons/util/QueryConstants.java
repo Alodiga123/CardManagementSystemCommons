@@ -36,6 +36,7 @@ public class QueryConstants {
     public static final String NEW_CARD_ISSUE_BY_CARD = "newCardIssueByCard";
     public static final String CARD_BY_STATUS = "cardByStatus";
     public static final String CARD_STATUS_BY_REASON_UPDATE = "cardStatusByUpdateReason";
+    public static final String CARD_STATUS_BY_REASON_UNIQUE = "cardStatusByReasonUnique";
     public static final String CARD_BY_CARDHOLDER = "cardBYCardHolder";
     public static final String CARD_BY_DELIVERY_REQUEST = "cardByDeliveryRequest";
     public static final String CARD_BY_CARDNUMBER = "cardBYCardNumber";
