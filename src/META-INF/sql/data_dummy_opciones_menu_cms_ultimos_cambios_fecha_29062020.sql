@@ -49,3 +49,28 @@ INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`a
 
 
 
+-- Autor· Lulymar Gutierrez
+-- Fecha 06 Julio 2020
+-- tabla permission -- cardStatusByReason
+INSERT INTO CardManagementSystem.permission (`permissionGroupId`,`action`,`entity`,`name`,`enabled`) VALUES 
+(4,'listCardStatusByReason.zul','cardStatusByReason','List Card Status By Reason',1),
+(4,'listCardStatusByReason.zul?eventType=1','cardStatusByReason','Add Card Status By Reason',1),
+(4,'listCardStatusByReason.zul?eventType=2','cardStatusByReason','Edit Card Status By Reason',1),
+(4,'listCardStatusByReason.zul?eventType=4','cardStatusByReason','View Card Status By Reason',1);
+
+
+
+-- Autor· Lulymar Gutierrez
+-- Fecha 06 Julio 2020
+-- tabla permission_data -- cardStatusByReason
+INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`alias`,`description`) VALUES 
+(192,1,'Card Status By Reason','Card Status By Reason'),
+(192,2,'Estatus de la Tarjeta por Motivo','Estatus de la Tarjeta por Motivo'),
+(193,1,'Add Card Status By Reason','Add Card Status By Reason'),
+(193,2,'Agregar Estatus de la Tarjeta por Motivo','Agregar Estatus de la Tarjeta por Motivo'),
+(194,1,'Edit Card Status By Reason','Edit Card Status By Reason'),
+(194,2,'Editar Estatus de la Tarjeta por Motivo','Editar Estatus de la Tarjeta por Motivo'),
+(195,1,'View Card Status By Reason','View Card Status By Reason'),
+(195,2,'Ver Estatus de la Tarjeta por Motivo','Ver Estatus de la Tarjeta por Motivo');
+
+
