@@ -49,7 +49,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "LegalRepresentatives.findByAge", query = "SELECT l FROM LegalRepresentatives l WHERE l.age = :age")
     , @NamedQuery(name = "LegalRepresentatives.findByGender", query = "SELECT l FROM LegalRepresentatives l WHERE l.gender = :gender")
     , @NamedQuery(name = "LegalRepresentatives.findByPlaceBirth", query = "SELECT l FROM LegalRepresentatives l WHERE l.placeBirth = :placeBirth")
-    , @NamedQuery(name = "LegalRepresentatives.findByDateBirth", query = "SELECT l FROM LegalRepresentatives l WHERE l.dateBirth = :dateBirth")})
+    , @NamedQuery(name = "LegalRepresentatives.findByDateBirth", query = "SELECT l FROM LegalRepresentatives l WHERE l.dateBirth = :dateBirth")
+    , @NamedQuery(name = QueryConstants.LEGAL_REPRESENTATIVES_BY_PERSON, query = "SELECT l FROM LegalRepresentatives l WHERE l.personId.id=:personId")})
 public class LegalRepresentatives extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

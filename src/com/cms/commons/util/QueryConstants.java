@@ -50,6 +50,7 @@ public class QueryConstants {
     public static final String NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES = "naturalCustomerByCardComplementaries";
     public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
     public static final String LEGAL_PERSON_BY_PERSON = "legalPersonByPerson";
+    public static final String LEGAL_REPRESENTATIVES_BY_PERSON = "legalRepresentativesByPerson";
     public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
     public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER ="legalRepresentativesByLegalCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
