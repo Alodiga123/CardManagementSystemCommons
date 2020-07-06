@@ -137,6 +137,8 @@ public class Constants {
     public static final String ACCOUNT_SEGMENT_KEY = "accountSegmentId";
     public static final String PLASTIC_MANUFACTURER_KEY = "plasticManufacturerId";
     public static final String PLASTIC_CARD_STATUS_KEY = "cardStatusId";
+    public static final String CARD_STATUS_KEY = "cardStatusId";
+    public static final String CARD_IND_ALLOW_TABLE = "indAllowTable";
     public static final String CARD_KEY = "cardId";
     public static final String STATUS_PLASTIC_CUSTOMIZING_KEY = "statusPlasticCustomizing";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
@@ -353,4 +355,12 @@ public class Constants {
     public static Long ADD_PRODUCTS_TYPE = 185L;
     public static Long EDIT_PRODUCTS_TYPE = 186L;
     public static Long VIEW_PRODUCTS_TYPE = 187L;
+    public static long LIST_CARD_UPDATE_REASON = 188L;
+    public static Long ADD_CARD_UPDATE_REASON = 189L;
+    public static Long EDIT_CARD_UPDATE_REASON = 190L;
+    public static Long VIEW_CARD_UPDATE_REASON = 191L;
+    public static long LIST_CARD_STATUS_BY_REASON = 192L;
+    public static Long ADD_CARD_STATUS_BY_REASON = 193L;
+    public static Long EDIT_CARD_STATUS_BY_REASON = 194L;
+    public static Long VIEW_CARD_STATUS_BY_REASON = 195L;
 }

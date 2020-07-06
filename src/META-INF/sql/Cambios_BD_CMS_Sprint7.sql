@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`approvalCardRate` (
 -- Fecha: 22/04/2020
 SET FOREIGN_KEY_CHECKS=0;
 ALTER TABLE `CardManagementSystem`.`generalRate` 
-ADD COLUMN `approvalGeneralRateId` INT NOT NULL;
+ADD COLUMN `approvalGeneralRateId` INT NULL;
 ALTER TABLE `CardManagementSystem`.`generalRate` 
 ADD CONSTRAINT `fk_generalRate_approvalGeneralRate1` 
 FOREIGN KEY (`approvalGeneralRateId`)

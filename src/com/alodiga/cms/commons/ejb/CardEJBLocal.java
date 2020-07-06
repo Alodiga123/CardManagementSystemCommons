@@ -142,6 +142,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     //statusUpdateReason
     public List<StatusUpdateReason> getStatusUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusUpdateReason loadStatusUpdateReason(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public StatusUpdateReason saveStatusUpdateReason(StatusUpdateReason statusUpdateReason) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //CardRenewalRequest
     public List<CardRenewalRequest> getCardRenewalRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -163,8 +164,12 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public StatusCardRenewalRequest saveStatusCardRenewalRequest(StatusCardRenewalRequest statusCardRenewalRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //CardStatusHasUpdateReason
+    public List<CardStatusHasUpdateReason> getCardStatusHasUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<CardStatusHasUpdateReason> getCardStatusByUpdateReason(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<CardStatusHasUpdateReason> getUpdateReasonByCardStatus(String cardStatusId) throws EmptyListException, GeneralException, NullParameterException;
+    public List<CardStatusHasUpdateReason> getCardStatusHasUpdateReasonUnique(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public CardStatusHasUpdateReason loadCardStatusHasUpdateReason(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public CardStatusHasUpdateReason saveCardStatusHasUpdateReason(CardStatusHasUpdateReason cardStatusHasUpdateReason) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
 
     //NewCardIssueRequest
