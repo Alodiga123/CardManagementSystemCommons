@@ -34,11 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "cardStatusHasUpdateReason")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CardStatusHasUpdateReason.findAll", query = "SELECT c FROM CardStatusHasUpdateReason c")
-    , @NamedQuery(name = "CardStatusHasUpdateReason.findById", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.id = :id")
-    , @NamedQuery(name = "CardStatusHasUpdateReason.findByCreateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate")
-    , @NamedQuery(name = QueryConstants.CARD_STATUS_BY_REASON_UPDATE, query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.statusUpdateReasonId.id = :statusUpdateReasonId AND c.indAllowTable=true")})
+    @NamedQuery(name = "CardStatusHasUpdateReason.findAll", query = "SELECT c FROM CardStatusHasUpdateReason c"),
+    @NamedQuery(name = "CardStatusHasUpdateReason.findById", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.id = :id"),
+    @NamedQuery(name = "CardStatusHasUpdateReason.findByCreateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.createDate = :createDate"),
+    @NamedQuery(name = "CardStatusHasUpdateReason.findByUpdateDate", query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.updateDate = :updateDate"),
+    @NamedQuery(name = QueryConstants.CARD_STATUS_BY_REASON_UPDATE, query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.statusUpdateReasonId.id = :statusUpdateReasonId AND c.indAllowTable=true"),
+    @NamedQuery(name = QueryConstants.CARD_STATUS_BY_REASON_UNIQUE, query = "SELECT c FROM CardStatusHasUpdateReason c WHERE c.statusUpdateReasonId.id = :statusUpdateReasonId AND c.cardStatusId.id = :cardStatusId AND c.indAllowTable = :indAllowTable")})
 public class CardStatusHasUpdateReason extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -160,5 +161,5 @@ public class CardStatusHasUpdateReason extends AbstractDistributionEntity implem
     public void setIndAllowTable(boolean indAllowTable) {
         this.indAllowTable = indAllowTable;
     }
-    
+
 }
