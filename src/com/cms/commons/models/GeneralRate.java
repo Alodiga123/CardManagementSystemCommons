@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "GeneralRate.findByTotalInitialTransactionsExempt", query = "SELECT g FROM GeneralRate g WHERE g.totalInitialTransactionsExempt = :totalInitialTransactionsExempt"),
     @NamedQuery(name = "GeneralRate.findByTotalTransactionsExemptPerMonth", query = "SELECT g FROM GeneralRate g WHERE g.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth"),
     @NamedQuery(name = "GeneralRate.findByIndCardHolderModification", query = "SELECT g FROM GeneralRate g WHERE g.indCardHolderModification = :indCardHolderModification"),
-    @NamedQuery(name = QueryConstants.GENERAL_RATE_BY_PRODUCT_TYPE, query = "SELECT g FROM GeneralRate g WHERE g.productTypeId.id = :productTypeId")})
+    @NamedQuery(name = QueryConstants.GENERAL_RATE_BY_PRODUCT_TYPE, query = "SELECT g FROM GeneralRate g WHERE g.productTypeId.id = :productTypeId and g.approvalGeneralRateId is not null")})
 public class GeneralRate extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
