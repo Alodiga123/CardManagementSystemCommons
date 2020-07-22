@@ -48,6 +48,7 @@ import com.cms.commons.models.User;
 import com.cms.commons.models.UserHasProfile;
 import java.util.List;
 
+
 /**
  * @author Jesus Gomez
  * @since 28/10/2019
@@ -170,7 +171,8 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<EconomicActivity> getEconomicActivitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public EconomicActivity loadEconomicActivity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public EconomicActivity saveEconomicActivity (EconomicActivity economicActivity)  throws RegisterNotFoundException, NullParameterException, GeneralException;
-  
+    public List<EconomicActivity> SearchDescription(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //ResponsibleNetworkReporting
     public List<ResponsibleNetworkReporting> getResponsibleNetworkReportings(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ResponsibleNetworkReporting loadResponsibleNetworkReporting(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;

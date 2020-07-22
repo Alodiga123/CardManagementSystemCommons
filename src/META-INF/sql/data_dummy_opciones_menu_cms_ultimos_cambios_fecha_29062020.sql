@@ -74,3 +74,25 @@ INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`a
 (195,2,'Ver Estatus de la Tarjeta por Motivo','Ver Estatus de la Tarjeta por Motivo');
 
 
+-- Autor· Jorge Pinto
+-- Fecha 20 Julio 2020
+-- tabla permission -- EconomicActivities
+INSERT INTO CardManagementSystem.permission (`permissionGroupId`,`action`,`entity`,`name`,`enabled`) VALUES 
+(5,'ListEconomicActivity.zul','economicActivity','List Economic Activities',1),
+(5,'adminEconomicActivity.zul?eventType=1','economicActivity','Add Economic Activity',1),
+(5,'adminEconomicActivity.zul?eventType=2','economicActivity','Edit Economic Activity',1),
+(5,'adminEconomicActivity.zul?eventType=4','economicActivity','View Economic Activity',1);
+
+-- Autor· Jorge Pinto
+-- Fecha 20 Julio 2020
+-- tabla permission_data -- EconomicActivities
+INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`alias`,`description`) VALUES 
+(196,1,'Economic Activities','Economic Activities'),
+(196,2,'Actividades Economicas','Actividades Económicas'),
+(197,1,'Add Economic Activity','Add Economic Activity'),
+(197,2,'Agregar Actividad Económica','Agregar Actividad Económica'),
+(198,1,'Edit Economic Activity','Edit Economic Activity'),
+(198,2,'Editar Actividad Económica','Editar Actividad Económica'),
+(199,1,'View Economic Activity','View Economic Activity'),
+(199,2,'Ver Actividad Económica','Ver Actividad Económica');
+

@@ -174,7 +174,8 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<EconomicActivity> getEconomicActivitys(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public EconomicActivity loadEconomicActivity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public EconomicActivity saveEconomicActivity(EconomicActivity economicActivity) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    public List<EconomicActivity> SearchDescription(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Address
     public List<Address> getAddresses(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Address> getAddressesById(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
