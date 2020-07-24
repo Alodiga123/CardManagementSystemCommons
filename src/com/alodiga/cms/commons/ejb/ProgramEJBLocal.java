@@ -47,6 +47,7 @@ public interface ProgramEJBLocal extends DistributionGenericEJB {
     public List<ProgramHasNetwork> getProgramHasNetworkBD(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramHasNetwork loadProgramHasNetwork(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramHasNetwork saveProgramHasNetwork(ProgramHasNetwork programHasNetwork)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<ProgramHasNetwork> searchProgramHasNetwork(String name, Program program) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
     //ProgramLoyalty
     public List<ProgramLoyalty> getProgramLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
