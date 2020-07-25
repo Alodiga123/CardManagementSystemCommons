@@ -364,4 +364,8 @@ public class Constants {
     public static Long ADD_CARD_STATUS_BY_REASON = 193L;
     public static Long EDIT_CARD_STATUS_BY_REASON = 194L;
     public static Long VIEW_CARD_STATUS_BY_REASON = 195L;
+    public static Long LIST_ECONOMIC_ACTIVITY = 196L;
+    public static Long ADD_ECONOMIC_ACTIVITY = 197L;
+    public static Long EDIT_ECONOMIC_ACTIVITY = 198L;
+    public static Long VIEW_ECONOMIC_ACTIVITY = 199L;
 }
