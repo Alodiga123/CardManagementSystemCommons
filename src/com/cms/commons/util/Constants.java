@@ -154,7 +154,8 @@ public class Constants {
     public static final int DOCUMENT_TYPE_PLASTIC_REQUEST = 2;
     public static final int DOCUMENT_TYPE_DELIVERY_REQUEST = 3;
     public static final int DOCUMENT_TYPE_RENEWAL_REQUEST = 4;
-    public static final int DOCUMENT_TYPE_CANCELED_REQUEST = 5;
+    public static final int DOCUMENT_TYPE_NEW_CARD_ISSUE_REQUEST = 5;
+    public static final int DOCUMENT_TYPE_CHANGE_PASSWORD_REQUEST = 6;
     public static final int APP_IDENTIFICATION_DOCUMENT = 9;
     public static final int PHOTO_WITH_IDENTITY_DOCUMENT = 10;
 
