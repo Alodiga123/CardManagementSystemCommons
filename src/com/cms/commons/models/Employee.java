@@ -21,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -58,10 +59,16 @@ public class Employee implements Serializable {
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorizedEmployeeId")
-    private Collection<User> userCollection;
-    @OneToMany(mappedBy = "employeeId")
-    private Collection<User> userCollection1;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "identificationNumber")
+    private int identificationNumber;
+    @JoinColumn(name = "documentsPersonTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private DocumentsPersonType documentsPersonTypeId;
+    @JoinColumn(name = "comercialAgencyId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ComercialAgency comercialAgencyId;
 
     public Employee() {
     }
@@ -110,26 +117,6 @@ public class Employee implements Serializable {
         this.personId = personId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<User> getUserCollection() {
-        return userCollection;
-    }
-
-    public void setUserCollection(Collection<User> userCollection) {
-        this.userCollection = userCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<User> getUserCollection1() {
-        return userCollection1;
-    }
-
-    public void setUserCollection1(Collection<User> userCollection1) {
-        this.userCollection1 = userCollection1;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -153,6 +140,30 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.Employee[ id=" + id + " ]";
+    }
+
+    public int getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public void setIdentificationNumber(int identificationNumber) {
+        this.identificationNumber = identificationNumber;
+    }
+
+    public DocumentsPersonType getDocumentsPersonTypeId() {
+        return documentsPersonTypeId;
+    }
+
+    public void setDocumentsPersonTypeId(DocumentsPersonType documentsPersonTypeId) {
+        this.documentsPersonTypeId = documentsPersonTypeId;
+    }
+
+    public ComercialAgency getComercialAgencyId() {
+        return comercialAgencyId;
+    }
+
+    public void setComercialAgencyId(ComercialAgency comercialAgencyId) {
+        this.comercialAgencyId = comercialAgencyId;
     }
     
 }

@@ -412,3 +412,37 @@ FOREIGN KEY (`documentsPersonTypeId`)
     REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
+
+-- Agregar FKs en tabla employee
+-- author: Jesús Gómez
+-- Fecha: 25/07/2020
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `CardManagementSystem`.`employee` 
+ADD COLUMN `comercialAgencyId` INT NOT NULL;
+ALTER TABLE `CardManagementSystem`.`employee` 
+ADD CONSTRAINT `fk_employee_comercialAgency1` 
+FOREIGN KEY (`comercialAgencyId`)
+    REFERENCES `CardManagementSystem`.`comercialAgency` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+ALTER TABLE `CardManagementSystem`.`employee` 
+ADD COLUMN `identificationNumber` INT NOT NULL AFTER `id`;
+
+ALTER TABLE `CardManagementSystem`.`employee` 
+ADD COLUMN `documentsPersonTypeId` INT NOT NULL AFTER `identificationNumber`;
+ALTER TABLE `CardManagementSystem`.`employee` 
+ADD CONSTRAINT `fk_employee_documentsPersonType1` 
+FOREIGN KEY (`documentsPersonTypeId`)
+    REFERENCES `CardManagementSystem`.`documentsPersonType` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar índice único en tabla user
+-- author: Jesús Gómez
+-- Fecha: 26/07/2020
+ALTER TABLE `CardManagementSystem`.`user` 
+ADD UNIQUE INDEX `login_UNIQUE` (`login` ASC);
