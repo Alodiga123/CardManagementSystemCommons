@@ -94,6 +94,8 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
 
     //RequestEJB
+    public static final String PARAM_EMPLOYEE_ID = "employeeId";
+    public static final String PARAM_EMPLOYEE = "employeeId";
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
     public static final String PERSON_KEY = "personId";
     public static final String ADDRESS_KEY = "id";
