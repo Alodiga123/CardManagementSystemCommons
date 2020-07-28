@@ -200,6 +200,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<User> validatePassword(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<User> searchUser(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<User> getUserByLogin(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<User> getValidateEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //Employee
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
