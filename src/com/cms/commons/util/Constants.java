@@ -370,4 +370,8 @@ public class Constants {
     public static Long ADD_ECONOMIC_ACTIVITY = 197L;
     public static Long EDIT_ECONOMIC_ACTIVITY = 198L;
     public static Long VIEW_ECONOMIC_ACTIVITY = 199L;
+    public static Long LIST_EMPLOYEE = 200L;
+    public static Long ADD_EMPLOYEE = 201L;
+    public static Long EDIT_EMPLOYEE = 202L;
+    public static Long VIEW_EMPLOYEE = 203L;
 }

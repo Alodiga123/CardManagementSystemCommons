@@ -96,3 +96,27 @@ INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`a
 (199,1,'View Economic Activity','View Economic Activity'),
 (199,2,'Ver Actividad Económica','Ver Actividad Económica');
 
+
+-- Autor· Jorge Pinto
+-- Fecha 28 Julio 2020
+-- tabla permission -- Employee
+INSERT INTO CardManagementSystem.permission (`permissionGroupId`,`action`,`entity`,`name`,`enabled`) VALUES 
+(1,'ListEmployee.zul','employee','List Employee',1),
+(1,'adminEmployee.zul?eventType=1','employee','Add Employee',1),
+(1,'adminEmployee.zul?eventType=2','employee','Edit Employee',1),
+(1,'adminEmployee.zul?eventType=4','employee','View Employee',1),
+(1,'adminEmployeePhone.zul?eventType=1','phonePerson','Add Employee Phone',1),
+(1,'adminEmployeePhone.zul?eventType=2','phonePerson','Edit Employee Phone',1);
+
+-- Autor· Jorge Pinto
+-- Fecha 28 Julio 2020
+-- tabla permission_data -- Employee
+INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`alias`,`description`) VALUES 
+(200,1,'Employees','Employees'),
+(200,2,'Empleados','EMpleados'),
+(201,1,'Add Employee','Add Employee'),
+(201,2,'Agregar Empleado','Agregar Empleado'),
+(202,1,'Edit Employee','Edit Employee'),
+(202,2,'Editar Empleado','Editar Empleado'),
+(203,1,'View Employee','View Employee'),
+(203,2,'Ver Empleado','Ver Empleado');
