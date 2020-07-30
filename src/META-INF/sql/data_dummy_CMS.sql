@@ -390,3 +390,7 @@ INSERT INTO `sequences` VALUES (1,1,5,1);
 
 INSERT INTO `statusNewCardIssueRequest` VALUES ('PEND','PENDIENTE'),('CONF','CONFIRMADA'),('CANC','CANCELADA');
 
+
+-- Jorge Pinto 
+-- Insertar dato NFC tabla storageMedio
+INSERT INTO `CardManagementSystem`.`storageMedio` (`description`) VALUES ('NFC');
