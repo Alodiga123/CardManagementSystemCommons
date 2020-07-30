@@ -17,6 +17,7 @@ import com.cms.commons.models.CivilStatus;
 import com.cms.commons.models.ComercialAgency;
 import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.Employee;
+import com.cms.commons.models.EmployedPosition;
 import com.cms.commons.models.Person;
 import com.cms.commons.models.PersonHasAddress;
 import com.cms.commons.models.PersonType;
@@ -218,4 +219,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public PasswordChangeRequest savePasswordChangeRequest(PasswordChangeRequest passwordChangeRequest)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     public Long havePhonesByPerson(Long personId) throws GeneralException;
+    
+    //EmployedPosition
+    public List<EmployedPosition> getEmployedPosition(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
