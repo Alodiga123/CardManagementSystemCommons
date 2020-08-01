@@ -105,8 +105,10 @@ INSERT INTO CardManagementSystem.permission (`permissionGroupId`,`action`,`entit
 (1,'adminEmployee.zul?eventType=1','employee','Add Employee',1),
 (1,'adminEmployee.zul?eventType=2','employee','Edit Employee',1),
 (1,'adminEmployee.zul?eventType=4','employee','View Employee',1),
+(1,'ListEmployeePhone.zul','phonePerson','List Employee Phone',1),
 (1,'adminEmployeePhone.zul?eventType=1','phonePerson','Add Employee Phone',1),
-(1,'adminEmployeePhone.zul?eventType=2','phonePerson','Edit Employee Phone',1);
+(1,'adminEmployeePhone.zul?eventType=2','phonePerson','Edit Employee Phone',1),
+(1,'adminEmployeePhone.zul?eventType=4','phonePerson','View Employee',1);
 
 -- Autor· Jorge Pinto
 -- Fecha 28 Julio 2020
