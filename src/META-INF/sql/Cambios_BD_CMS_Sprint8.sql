@@ -446,3 +446,11 @@ SET FOREIGN_KEY_CHECKS=1;
 -- Fecha: 26/07/2020
 ALTER TABLE `CardManagementSystem`.`user` 
 ADD UNIQUE INDEX `login_UNIQUE` (`login` ASC);
+
+-- Agregar campo en tabla phonePerson
+-- author: Jesús Gómez
+-- Fecha: 02/08/2020
+ALTER TABLE `CardManagementSystem`.`phonePerson` 
+ADD COLUMN `countryCode` VARCHAR(4) NULL AFTER `id`,
+ADD COLUMN `areaCode` VARCHAR(10) NULL AFTER `countryCode`,
+ADD COLUMN `indMainPhone` TINYINT(1) NULL AFTER `extensionPhoneNumber`;
