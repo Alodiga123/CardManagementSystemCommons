@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -53,6 +54,14 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "phoneTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private PhoneType phoneTypeId;
+    @Size(max = 4)
+    @Column(name = "countryCode")
+    private String countryCode;
+    @Size(max = 10)
+    @Column(name = "areaCode")
+    private String areaCode;
+    @Column(name = "indMainPhone")
+    private Boolean indMainPhone;
 
     public PhonePerson() {
     }
@@ -134,6 +143,30 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    public Boolean getIndMainPhone() {
+        return indMainPhone;
+    }
+
+    public void setIndMainPhone(Boolean indMainPhone) {
+        this.indMainPhone = indMainPhone;
     }
     
 }
