@@ -62,6 +62,9 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
     private String areaCode;
     @Column(name = "indMainPhone")
     private Boolean indMainPhone;
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Country countryId;
 
     public PhonePerson() {
     }
@@ -110,6 +113,14 @@ public class PhonePerson extends AbstractDistributionEntity implements Serializa
         this.phoneTypeId = phoneTypeId;
     }
 
+    public Country getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
