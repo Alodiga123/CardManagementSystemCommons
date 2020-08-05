@@ -41,6 +41,7 @@ public class Constants {
     public static final String PERSON_ENTERPRISE_NAME_KEY = "enterpriseName";
     public static final String PARAM_PERSON_NAME = "name";
     public static final String PARAM_USER = "login";
+    public static final String PARAM_CITY = "name";
     public static final Long REQUEST_ID_LEGAL_PERSON = 1L;
     public static final int STATUS_APPLICANT_ACTIVE = 1;
     public static final int STATUS_APPLICANT_INACTIVE = 2;
@@ -94,10 +95,12 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
 
     //RequestEJB
+    public static final int PARAM_MAIN_PHONE = 1;
     public static final String PARAM_EMPLOYEE_ID = "employeeId";
     public static final String PARAM_EMPLOYEE = "employeeId";
     public static final String DOCUMENT_PERSON_TYPE_KEY = "documentPersonTypeId";
     public static final String PERSON_KEY = "personId";
+    public static final String CITY_KEY = "cityId";
     public static final String ADDRESS_KEY = "id";
     public static final String DESCRiPTION_KEY = "description";
     public static final String CARDNUMBER_KEY = "cardNumber";
@@ -374,4 +377,8 @@ public class Constants {
     public static Long ADD_EMPLOYEE = 201L;
     public static Long EDIT_EMPLOYEE = 202L;
     public static Long VIEW_EMPLOYEE = 203L;
+    public static Long LIST_CITY = 204L;
+    public static Long ADD_CITY = 205L;
+    public static Long EDIT_CITY = 206L;
+    public static Long VIEW_CITY = 207L;
 }
