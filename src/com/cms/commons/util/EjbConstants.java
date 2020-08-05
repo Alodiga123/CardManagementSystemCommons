@@ -61,6 +61,7 @@ public class EjbConstants {
     public static final String PARAM_NETWORK_ID = "networkId";
     public static final String PARAM_PROGRAM_TYPE_ID = "programTypeId";
     public static final String PARAM_PERSON_ID = "personId";
+    public static final int PARAM_MAIN_PHONE = 1;
     public static final String PARAM_ADDRESS_ID = "id";
     public static final String PARAM_NATURAL_CUSTOMER_ID = "naturalCustomerId";
     public static final String PARAM_DOCUMENT_TYPE_ID = "documentTypeId";
