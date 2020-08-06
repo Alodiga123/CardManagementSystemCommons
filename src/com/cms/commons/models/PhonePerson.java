@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PhonePerson.findAll", query = "SELECT p FROM PhonePerson p"),
     @NamedQuery(name = "PhonePerson.findById", query = "SELECT p FROM PhonePerson p WHERE p.id = :id"),
     @NamedQuery(name = "PhonePerson.findByNumberPhone", query = "SELECT p FROM PhonePerson p WHERE p.numberPhone = :numberPhone"),
+    @NamedQuery(name = QueryConstants.PHONES_BY_MAIN, query = "SELECT p FROM PhonePerson p WHERE p.personId.id=:personId AND p.indMainPhone=true"),
     @NamedQuery(name = QueryConstants.PHONES_BY_PERSON, query = "SELECT p FROM PhonePerson p WHERE p.personId.id = :personId")})
 public class PhonePerson extends AbstractDistributionEntity implements Serializable {
 

@@ -122,3 +122,29 @@ INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`a
 (202,2,'Editar Empleado','Editar Empleado'),
 (203,1,'View Employee','View Employee'),
 (203,2,'Ver Empleado','Ver Empleado');
+
+-- Autor· Jorge Pinto
+-- Fecha 04 Agosto 2020
+-- tabla permission -- City
+INSERT INTO CardManagementSystem.permission (`permissionGroupId`,`action`,`entity`,`name`,`enabled`) VALUES 
+(2,'ListCity.zul','city','List City',1),
+(2,'adminCity.zul?eventType=1','city','Add City',1),
+(2,'adminCity.zul?eventType=2','city','Edit City',1),
+(2,'adminCity.zul?eventType=4','city','View City',1),
+(2,'ListCityZipZone.zul','zipZone','List Zip Zone',1),
+(2,'adminCityZipZone.zul?eventType=1','zipZone','Add Zip Zone',1),
+(2,'adminCityZipZone.zul?eventType=2','zipZone','Edit Zip Zone',1),
+(2,'adminCityZipZone.zul?eventType=4','zipZone','View Zip Zone',1);
+
+-- Autor· Jorge Pinto
+-- Fecha 04 Agosto 2020
+-- tabla permission_data -- City
+INSERT INTO CardManagementSystem.permission_data (`permissionId`,`languageId`,`alias`,`description`) VALUES 
+(204,1,'Cities','Cities'),
+(204,2,'Ciudades','Ciudades'),
+(205,1,'Add City','Add City'),
+(205,2,'Agregar Ciudad','Agregar Ciudad'),
+(206,1,'Edit City','Edit City'),
+(206,2,'Editar Ciudad','Editar Ciudad'),
+(207,1,'View City','View City'),
+(207,2,'Ver Ciudad','Ver Ciudad');

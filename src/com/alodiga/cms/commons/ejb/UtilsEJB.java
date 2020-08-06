@@ -195,6 +195,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public List<City> getCitiesByState(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public City loadCity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public City saveCity (City city)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<City> getSearchCity(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //StreetType
     public List<StreetType> getStreetTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
