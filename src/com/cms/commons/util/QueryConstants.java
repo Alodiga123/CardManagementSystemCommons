@@ -22,6 +22,7 @@ public class QueryConstants {
     
     //Nombres de Queries
     public static final String COUNTIES_BY_STATE = "countiesByState";
+    public static final String CURRENCY_BY_COUNTRY = "currencyByCountry";
     public static final String STATES_BY_COUNTRY = "statesByCountry";
     public static final String CITIES_BY_STATE = "citiesByState";
     public static final String ZIPZONE_BY_CITY = "zipZoneBycities";
