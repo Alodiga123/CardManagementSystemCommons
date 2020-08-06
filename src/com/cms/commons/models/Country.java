@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -39,11 +40,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Country.findByCode", query = "SELECT c FROM Country c WHERE c.code = :code"),
     @NamedQuery(name = "Country.findByCodeIso2", query = "SELECT c FROM Country c WHERE c.codeIso2 = :codeIso2"),
     @NamedQuery(name = "Country.findByCodeIso3", query = "SELECT c FROM Country c WHERE c.codeIso3 = :codeIso3"),
-    @NamedQuery(name = "Country.findByName", query = "SELECT c FROM Country c WHERE c.name = :name")})
+    @NamedQuery(name = "Country.findByName", query = "SELECT c FROM Country c WHERE c.name = :name"),
+    @NamedQuery(name = QueryConstants.CURRENCY_BY_COUNTRY, query = "SELECT c.currencyId FROM Country c WHERE c.id=:countryId"),})
 public class Country extends AbstractDistributionEntity implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "countryId")
-    private Collection<CollectionType> collectionTypeCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -151,16 +150,6 @@ public class Country extends AbstractDistributionEntity implements Serializable 
 
     public void setCurrencyId(Currency currencyId) {
         this.currencyId = currencyId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<CollectionType> getCollectionTypeCollection() {
-        return collectionTypeCollection;
-    }
-
-    public void setCollectionTypeCollection(Collection<CollectionType> collectionTypeCollection) {
-        this.collectionTypeCollection = collectionTypeCollection;
     }
 
 }

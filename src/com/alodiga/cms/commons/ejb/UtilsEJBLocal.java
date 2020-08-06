@@ -84,6 +84,7 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     public List<Currency> getCurrency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Currency searchCurrency(String name) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Currency> getSearchCurrency(String name) throws EmptyListException, GeneralException, NullParameterException;
+    public Currency loadCurrencyByCountry(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //Tabla de PersonClassification   
     public List<PersonClassification> getPersonClassification(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
