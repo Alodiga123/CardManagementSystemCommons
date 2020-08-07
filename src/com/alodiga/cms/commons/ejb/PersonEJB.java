@@ -208,6 +208,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<Employee> getEmployee(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Employee loadEmployee(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Employee saveEmployee(Employee employee)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Employee> getSearchEmployee(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //ComercialAgency
     public List<ComercialAgency> getComercialAgency(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -218,7 +219,9 @@ public interface PersonEJB extends DistributionGenericEJB {
     public List<PasswordChangeRequest> getPasswordChangeRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PasswordChangeRequest loadPasswordChangeRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PasswordChangeRequest savePasswordChangeRequest(PasswordChangeRequest passwordChangeRequest)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<PasswordChangeRequest> getSearchPasswordChange(String name) throws EmptyListException, GeneralException, NullParameterException;
     
+    //PhonePerson
     public Long havePhonesByPerson(Long personId) throws GeneralException;
     
     //EmployedPosition
