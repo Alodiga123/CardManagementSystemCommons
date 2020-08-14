@@ -47,11 +47,13 @@ public interface CardEJB extends DistributionGenericEJB {
     public List<AccountProperties> getAccountPropertiesByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountProperties loadAccountProperties(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountProperties saveAccountProperties(AccountProperties accountProperties) throws RegisterNotFoundException, NullParameterException, GeneralException;    
+    public List<AccountProperties> getSearchAccountProperties(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //AccountType
     public List<AccountType> getAccountType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public AccountType loadAccountType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountType saveAccountType(AccountType accountType) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public List<AccountType> getSearchAccountType(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //AccountTypeHasProductType
     public List<AccountTypeHasProductType> getAccountTypeHasProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -64,7 +66,8 @@ public interface CardEJB extends DistributionGenericEJB {
     public SubAccountType loadSubAccountType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public SubAccountType saveSubAccountType(SubAccountType subAccountType) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public List<SubAccountType> getSubAccountTypeByAccountType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
+    public List<SubAccountType> getSearchSubAccountType(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //AccountSegment
     public List<AccountSegment> getAccountSegment(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<AccountSegment> getAccountSegmentByAccountProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -111,7 +114,8 @@ public interface CardEJB extends DistributionGenericEJB {
     public List<DeliveryRequest> getDeliveryRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public DeliveryRequest loadDeliveryRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public DeliveryRequest saveDeliveryRequest(DeliveryRequest deliveryRequest) throws RegisterNotFoundException, NullParameterException, GeneralException; 
-
+    public List<DeliveryRequest> getSearchDeliveryRequest(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //DeliveryRequestHasCard
     public List<DeliveryRequetsHasCard> getDeliveryRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<DeliveryRequetsHasCard> getCardByDeliveryRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -149,7 +153,8 @@ public interface CardEJB extends DistributionGenericEJB {
     public CardRenewalRequest saveCardRenewalRequest(CardRenewalRequest cardRenewalRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<CardRenewalRequest> createCardRenewalRequestByIssuer(Integer cardStatus) throws RegisterNotFoundException, EmptyListException, GeneralException, NullParameterException;
     public List<CardRenewalRequest> getCardRenewalRequestByCurrentDate(Integer cardStatus) throws EmptyListException, GeneralException, NullParameterException;
-
+    public List<CardRenewalRequest> getSearchCardRenewalRequest(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //CardRenewalRequestHasCard
     public List<CardRenewalRequestHasCard> getCardRenewalRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<CardRenewalRequestHasCard> getCardRenewalRequestHasCardByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

@@ -130,7 +130,8 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<PlasticCustomizingRequest> getPlasticCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public PlasticCustomizingRequest loadPlasticCustomizingRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public PlasticCustomizingRequest savePlasticCustomizingRequest(PlasticCustomizingRequest plasticCustomizingRequest) throws NullParameterException, GeneralException;
-
+    public List<PlasticCustomizingRequest> getSearchPlasticCustomizingRequest(String name) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Tabla de PlastiCustomizingRequestHasCard
     public List<PlastiCustomizingRequestHasCard> getPlastiCustomizingRequestHasCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<PlastiCustomizingRequestHasCard> getCardByPlastiCustomizingRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

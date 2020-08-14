@@ -173,6 +173,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public EconomicActivity loadEconomicActivity(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public EconomicActivity saveEconomicActivity (EconomicActivity economicActivity)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<EconomicActivity> SearchDescription(String name) throws EmptyListException, GeneralException, NullParameterException;
+    public List<EconomicActivity> getSearchEconomicActivity(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //ResponsibleNetworkReporting
     public List<ResponsibleNetworkReporting> getResponsibleNetworkReportings(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -279,7 +280,7 @@ public interface UtilsEJB extends DistributionGenericEJB {
     public UserHasProfile loadUserHasProfile(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public UserHasProfile saveUserHasProfile(UserHasProfile userHasProfile) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<UserHasProfile> getUserHasProfileByUser(UserHasProfile userHasProfile) throws EmptyListException, GeneralException, NullParameterException;
-
+    
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
