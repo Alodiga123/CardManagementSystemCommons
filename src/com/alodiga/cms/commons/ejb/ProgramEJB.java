@@ -53,6 +53,7 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<ProgramLoyalty> getProgramLoyalty(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProgramLoyalty loadProgramLoyalty(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProgramLoyalty saveProgramLoyalty(ProgramLoyalty programLoyalty)  throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<ProgramLoyalty> getSearchProgramLoyalty(String name) throws EmptyListException, GeneralException, NullParameterException;
     
     //ProgramLoyaltyType
     public List<ProgramLoyaltyType> getProgramLoyaltyType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
