@@ -46,7 +46,7 @@ public class QueryConstants {
     public static final String CARD_BY_PLASTIC_CUSTOMIZING_REQUEST = "cardByPlasticCustomizingRequest";
     public static final String APPLICANT_BY_REQUEST = "applicantByRequest";
     public static final String IMAGENS_BY_APPLICANT = "ImagensByApplicant";
-    public static final String NATURAL_PERSON_BY_CUSTOMER = "naturalPersonByCustomer";
+    public static final String NATURAL_CUSTOMER_BY_PERSON = "naturalCustomerByPerson";
     public static final String NATURAL_PERSON_BY_PERSON = "naturalPersonByPerson";
     public static final String NATURAL_CUSTOMER_BY_CARD_COMPLEMENTARIES = "naturalCustomerByCardComplementaries";
     public static final String ADDITIONAL_INFORMATION_BY_CUSTOMER = "additionalInformationByCustomer";
