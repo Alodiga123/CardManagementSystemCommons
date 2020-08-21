@@ -283,4 +283,5 @@ public interface UtilsEJB extends DistributionGenericEJB {
     
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+
 }
