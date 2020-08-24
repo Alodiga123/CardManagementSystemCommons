@@ -113,13 +113,14 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<ReviewOFAC> getReviewOFACByApplicantByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ReviewOFAC loadReviewOFAC(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ReviewOFAC saveReviewOFAC(ReviewOFAC reviewOFAC) throws NullParameterException, GeneralException;
+    public Long haveReviewOFACByPerson(Long personId) throws GeneralException, NullParameterException;
     
     //Tabla de StatusRequest
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusRequest loadStatusRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
     
-          //ApplicantNaturalPerson Modificado
+    //ApplicantNaturalPerson Modificado
     public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  
             String cellPhone, int countryAddress, int state, int city, ZipZone postalZone, boolean recommendation, boolean promotion,boolean citizen,
             DocumentsPersonType documentsPersonType,String documentNumber,String gender,CivilStatus civilStatus,String street,String nameStreet,String number) 
