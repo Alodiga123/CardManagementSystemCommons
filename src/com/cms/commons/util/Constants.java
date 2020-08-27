@@ -108,7 +108,7 @@ public class Constants {
     public static final String REQUESTS_KEY = "requestId";
     public static final String REQUESTS_NUMBER_KEY = "cardRenewalRequestId";
     public static final String NATURAL_CUSTOMER_KEY = "naturalCustomerId";
-    public static final String COLLECTIONS_REQUEST_KEY = "naturalCustomerId";
+    public static final String COLLECTIONS_REQUEST_KEY = "collectionsRequestId";
     public static final String COUNTRY_KEY = "countryId";
     public static final String PERSON_TYPE_KEY = "personTypeId";
     public static final String COLLECTION_TYPE_KEY = "collectionTypeId";
