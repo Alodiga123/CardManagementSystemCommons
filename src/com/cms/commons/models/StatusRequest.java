@@ -2,6 +2,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -25,6 +26,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "StatusRequest.findAll", query = "SELECT s FROM StatusRequest s")
     , @NamedQuery(name = "StatusRequest.findById", query = "SELECT s FROM StatusRequest s WHERE s.id = :id")
+    , @NamedQuery(name = QueryConstants.STATUS_REQUEST_BY_CODE, query = "SELECT s FROM StatusRequest s WHERE s.code = :code")
     , @NamedQuery(name = "StatusRequest.findByDescription", query = "SELECT s FROM StatusRequest s WHERE s.description = :description")})
 
 public class StatusRequest extends AbstractDistributionEntity implements Serializable{
@@ -37,6 +39,8 @@ public class StatusRequest extends AbstractDistributionEntity implements Seriali
     private Integer id;
     @Column(name = "description")
     private String description;
+    @Column(name = "code")
+    private String code;
 
     public StatusRequest() {
     }
@@ -60,6 +64,15 @@ public class StatusRequest extends AbstractDistributionEntity implements Seriali
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
 
     @Override
     public int hashCode() {

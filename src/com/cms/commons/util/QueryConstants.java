@@ -64,6 +64,7 @@ public class QueryConstants {
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
     public static final String STATUS_REQUEST_LIKE = "statusRequestLike";
+    public static final String STATUS_REQUEST_BY_CODE ="statusRequestByCode";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
@@ -263,4 +264,6 @@ public class QueryConstants {
     public static final String PARAM_LANGUAGE_ID = "languageId";
     public static final String PARAM_ECONOMIC_ACTIVITY_ID ="economicActivityId";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
+    public static final String PARAM_CODE ="code";
+    
 }

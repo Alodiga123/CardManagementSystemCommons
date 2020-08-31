@@ -119,6 +119,7 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<StatusRequest> getStatusRequests(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusRequest loadStatusRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusRequest saveStatusRequest(StatusRequest statusRequest) throws NullParameterException, GeneralException;
+    public List<StatusRequest> getStatusRequestByCode(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //ApplicantNaturalPerson Modificado
     public ApplicantNaturalPerson saveRequestPersonData(int countryId, String email,  Date dueDateIdentification, String firstNames, String lastNames, Date dateBirth,  

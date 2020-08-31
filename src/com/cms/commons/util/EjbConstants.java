@@ -109,5 +109,6 @@ public class EjbConstants {
     public static final String PARAM_LANGUAGE_ID = "languageId";
     public static final String PARAM_STATUS_PLASTIC_CUSTOMIZING = "statusPlasticCustomizing";
     public static final String PARAM_CARD_RENEWEL_REQUEST = "cardRenewalRequestId";
+    public static final String PARAM_CODE ="code";
 
 }
