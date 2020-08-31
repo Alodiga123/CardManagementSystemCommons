@@ -454,3 +454,34 @@ ALTER TABLE `CardManagementSystem`.`phonePerson`
 ADD COLUMN `countryCode` VARCHAR(4) NULL AFTER `id`,
 ADD COLUMN `areaCode` VARCHAR(10) NULL AFTER `countryCode`,
 ADD COLUMN `indMainPhone` TINYINT(1) NULL AFTER `extensionPhoneNumber`;
+
+-- Agregar FK en tabla phonePerson
+-- author: Jesús Gómez
+-- Fecha: 28/08/2020
+ALTER TABLE `CardManagementSystem`.`phonePerson` 
+CHANGE COLUMN `countryId` `countryId` INT(11) NULL;
+
+ALTER TABLE `CardManagementSystem`.`phonePerson` 
+ADD CONSTRAINT `fk_phonePerson_country1` 
+FOREIGN KEY (`countryId`)
+    REFERENCES `CardManagementSystem`.`country` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+
+
+-- Agregar campo code y sus valores en tabla statusRequest
+-- author: Jesús Gómez
+-- Fecha: 28/08/2020
+ALTER TABLE `CardManagementSystem`.`statusRequest` 
+ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
+
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='ENPROC' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='SOLREC' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='RECAPR' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='PENAPR' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='LINEOK' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='SOLAPR' WHERE `id`='6';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='RECREC' WHERE `id`='7';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='TAASCL' WHERE `id`='8';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='PROCES' WHERE `id`='9';
+UPDATE `CardManagementSystem`.`statusRequest` SET `code`='LISNEG' WHERE `id`='10';
