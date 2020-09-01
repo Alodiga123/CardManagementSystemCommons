@@ -471,7 +471,7 @@ FOREIGN KEY (`countryId`)
 
 -- Agregar campo code y sus valores en tabla statusRequest
 -- author: Jesús Gómez
--- Fecha: 28/08/2020
+-- Fecha: 31/08/2020
 ALTER TABLE `CardManagementSystem`.`statusRequest` 
 ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
 
@@ -485,3 +485,31 @@ UPDATE `CardManagementSystem`.`statusRequest` SET `code`='RECREC' WHERE `id`='7'
 UPDATE `CardManagementSystem`.`statusRequest` SET `code`='TAASCL' WHERE `id`='8';
 UPDATE `CardManagementSystem`.`statusRequest` SET `code`='PROCES' WHERE `id`='9';
 UPDATE `CardManagementSystem`.`statusRequest` SET `code`='LISNEG' WHERE `id`='10';
+
+-- Agregar FK en tabla cardRequestNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 31/08/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
+ADD COLUMN `statusApplicantId` INT NOT NULL AFTER `legalCustomerId`;
+ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
+ADD CONSTRAINT `fk_cardRequestNaturalPerson_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar FK en tabla legalRepresentatives
+-- author: Jesús Gómez
+-- Fecha: 31/08/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD COLUMN `statusApplicantId` INT NOT NULL AFTER `civilStatusId`;
+ALTER TABLE `CardManagementSystem`.`legalRepresentatives` 
+ADD CONSTRAINT `fk_legalRepresentatives_statusApplicant1` 
+FOREIGN KEY (`statusApplicantId`)
+    REFERENCES `CardManagementSystem`.`statusApplicant` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;
