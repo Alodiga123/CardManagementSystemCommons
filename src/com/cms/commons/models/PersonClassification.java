@@ -34,7 +34,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @NamedQueries({
     @NamedQuery(name = "PersonClassification.findAll", query = "SELECT p FROM PersonClassification p")
     , @NamedQuery(name = "PersonClassification.findById", query = "SELECT p FROM PersonClassification p WHERE p.id = :id")
-    , @NamedQuery(name = "PersonClassification.findByDescription", query = "SELECT p FROM PersonClassification p WHERE p.description = :description")})
+    , @NamedQuery(name = "PersonClassification.findByDescription", query = "SELECT p FROM PersonClassification p WHERE p.description = :description")
+    , @NamedQuery(name = "PersonClassification.findByCode", query = "SELECT p FROM PersonClassification p WHERE p.code = :code")})
 public class PersonClassification extends AbstractDistributionEntity  implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +46,8 @@ public class PersonClassification extends AbstractDistributionEntity  implements
     private Integer id;
     @Column(name = "description")
     private String description;
+    @Column(name = "code")
+    private String code;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personClassificationId")
     private Collection<Person> personCollection;
 
@@ -69,6 +72,14 @@ public class PersonClassification extends AbstractDistributionEntity  implements
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @XmlTransient
