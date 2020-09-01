@@ -71,6 +71,9 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
     @JoinColumn(name = "legalCustomerId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private LegalCustomer legalCustomerId;
+    @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusApplicant statusApplicantId;
 
     public CardRequestNaturalPerson() {
     }
@@ -159,6 +162,14 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
         this.legalCustomerId = legalCustomerId;
     }
 
+    public StatusApplicant getStatusApplicantId() {
+        return statusApplicantId;
+    }
+
+    public void setStatusApplicantId(StatusApplicant statusApplicantId) {
+        this.statusApplicantId = statusApplicantId;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
