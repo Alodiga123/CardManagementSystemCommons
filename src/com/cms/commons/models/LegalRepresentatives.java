@@ -88,6 +88,9 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
     @JoinColumn(name = "civilStatusId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private CivilStatus civilStatusId;
+    @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private StatusApplicant statusApplicantId;
 
     public LegalRepresentatives() {
     }
@@ -198,6 +201,14 @@ public class LegalRepresentatives extends AbstractDistributionEntity implements 
 
     public void setCivilStatusId(CivilStatus civilStatusId) {
         this.civilStatusId = civilStatusId;
+    }
+
+    public StatusApplicant getStatusApplicantId() {
+        return statusApplicantId;
+    }
+
+    public void setStatusApplicantId(StatusApplicant statusApplicantId) {
+        this.statusApplicantId = statusApplicantId;
     }
 
     @Override
