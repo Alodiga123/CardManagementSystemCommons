@@ -7,8 +7,17 @@ package com.cms.commons.enumeraciones;
 
 public enum PersonClassificationE {
 
-	NABUAP(1, "Natural Business Applicant", "NABUAP"),
-	LEBUAP(2, "Legal Business Applicant", "LEBUAP");
+	ISSUER(1, "Issuer", "ISSUER"),
+	CAMAPR(2, "Card Manager Program", "CAMAPR"),
+        PRGOWN(3, "Program Owner", "PRGOWN"),
+        APLICA(4, "Applicant", "APLICA"),
+        LEGREP(5, "Legal Representatives", "LEGREP"),
+        COPEIS(6, "User", "COPEIS"),
+        CUSTOM(7, "Customer", "CUSTOM"),
+        CACONP(8, "Cards Complementary Natural Person", "CACONP"),
+        PLAMAN(9, "Plastic Manufacturer", "PLAMAN"),
+        EMPLOY(10, "Employee", "EMPLOY"),
+        SHICOM(11, "Shipping Company", "SHICOM");
 	
     private int id;
     private String personClassificationDescription;
