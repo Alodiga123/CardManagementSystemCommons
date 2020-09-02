@@ -83,7 +83,7 @@ public interface PersonEJB extends DistributionGenericEJB {
     public ApplicantNaturalPerson loadApplicantNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApplicantNaturalPerson saveApplicantNaturalPerson (ApplicantNaturalPerson applicantNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Long countCardComplementaryByApplicant(long applicantNaturalPersonId) throws GeneralException, NullParameterException;
-    public List<ApplicantNaturalPerson> getApplicantByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ApplicantNaturalPerson> getApplicantByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
     
     //KinShipApplicant
     public List<KinShipApplicant> getKinShipApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -122,7 +122,9 @@ public interface PersonEJB extends DistributionGenericEJB {
     public Person loadPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Person savePerson(Person person) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Person> searchPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-
+    public List<Person> searchPersonByApplicantNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Person> searchPersonByLegalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
     //NaturalPerson
     public List<NaturalPerson> getNaturalPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<NaturalPerson> getNaturalPersonByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
