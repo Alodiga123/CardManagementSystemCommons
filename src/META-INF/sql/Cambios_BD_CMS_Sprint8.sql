@@ -513,3 +513,23 @@ FOREIGN KEY (`statusApplicantId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar campo code y sus valores en tabla personClassification
+-- author: Jesús Gómez
+-- Fecha: 01/09/2020
+ALTER TABLE `CardManagementSystem`.`personClassification` 
+ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
+
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='ISSUER' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='CAMAPR' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='PRGOWN' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='APLICA' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='LEGREP' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='COPEIS' WHERE `id`='6';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='CUSTOM' WHERE `id`='7';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='CACONP' WHERE `id`='8';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='PLAMAN' WHERE `id`='9';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='EMPLOY' WHERE `id`='10';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='SHICOM' WHERE `id`='11';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='COMOFF' WHERE `id`='12';
+UPDATE `CardManagementSystem`.`personClassification` SET `code`='BUSAGE' WHERE `id`='13';

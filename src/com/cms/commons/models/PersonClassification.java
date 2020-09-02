@@ -45,8 +45,8 @@ public class PersonClassification extends AbstractDistributionEntity  implements
     private Integer id;
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personClassificationId")
-    private Collection<Person> personCollection;
+    @Column(name = "code")
+    private String code;
 
     public PersonClassification() {
     }
@@ -71,14 +71,12 @@ public class PersonClassification extends AbstractDistributionEntity  implements
         this.description = description;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Person> getPersonCollection() {
-        return personCollection;
+    public String getCode() {
+        return code;
     }
 
-    public void setPersonCollection(Collection<Person> personCollection) {
-        this.personCollection = personCollection;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
