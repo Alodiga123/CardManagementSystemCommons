@@ -36,6 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "PersonClassification.findById", query = "SELECT p FROM PersonClassification p WHERE p.id = :id")
     , @NamedQuery(name = "PersonClassification.findByDescription", query = "SELECT p FROM PersonClassification p WHERE p.description = :description")
     , @NamedQuery(name = "PersonClassification.findByCode", query = "SELECT p FROM PersonClassification p WHERE p.code = :code")})
+
 public class PersonClassification extends AbstractDistributionEntity  implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,12 +81,6 @@ public class PersonClassification extends AbstractDistributionEntity  implements
         this.code = code;
     }
 
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -111,7 +106,7 @@ public class PersonClassification extends AbstractDistributionEntity  implements
         return "com.cms.commons.models.PersonClassification[ id=" + id + " ]";
     }
     
-  @Override
+    @Override
     public Object getPk() {
         return this.getId();
     }
@@ -120,6 +115,7 @@ public class PersonClassification extends AbstractDistributionEntity  implements
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
     }
+    
 }
 
 
