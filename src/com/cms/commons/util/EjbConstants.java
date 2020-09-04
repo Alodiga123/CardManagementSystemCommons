@@ -87,6 +87,7 @@ public class EjbConstants {
     public static final String PARAM_CARD_ID = "cardId";
     public static final String PARAM_ACCOUNT_TYPE_ID = "accountTypeId";
     public static final String PARAM_REQUEST_ID = "requestId";
+    public static final String PARAM_STATUS_APPLICANT_ID ="statusApplicantId";
     
     public static final String PARAM_REVIEW_REQUEST_TYPE_ID = "reviewRequestTypeId";    
     public static final String PARAM_STATUS_REQUEST_ID = "statusRequestId";

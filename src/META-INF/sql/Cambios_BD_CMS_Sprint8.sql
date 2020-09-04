@@ -534,6 +534,18 @@ UPDATE `CardManagementSystem`.`personClassification` SET `code`='SHICOM' WHERE `
 UPDATE `CardManagementSystem`.`personClassification` SET `code`='COMOFF' WHERE `id`='12';
 UPDATE `CardManagementSystem`.`personClassification` SET `code`='BUSAGE' WHERE `id`='13';
 
+-- Agregar campo code y sus valores en tabla statusApplicant
+-- author: Jorge Pinto
+-- Fecha: 03/09/2020
+ALTER TABLE `CardManagementSystem`.`statusApplicant` 
+ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
+
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='ACTIV' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACT' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LINEOK' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LISNEG' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='4';
+
 ALTER TABLE `CardManagementSystem`.`card` 
 CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userResponsibleStatusUpdateId`,
 CHANGE COLUMN `updateDate` `updateDate` TIMESTAMP NULL DEFAULT NULL AFTER `createDate`;
