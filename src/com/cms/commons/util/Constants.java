@@ -119,6 +119,7 @@ public class Constants {
     public static final String REQUEST_TYPE_KEY = "requestTypeId";
     public static final String PRODUCT_TYPE_KEY = "productTypeId";
     public static final String STATUS_REQUEST_KEY = "statusRequestId";
+    public static final String STATUS_APPLICANT_KEY = "statusApplicantId";
     public static final String CIVIL_STATUS_KEY = "civilStatusId";
     public static final String PROFESSION_KEY = "professionId";
     public static final String DOCUMENT_TYPE_KEY = "documentTypeId";    

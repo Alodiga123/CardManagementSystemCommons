@@ -40,6 +40,8 @@ public class StatusApplicant implements Serializable {
     @Size(max = 45)
     @Column(name = "description")
     private String description;
+    @Column(name = "code")
+    private String code;
 
     public StatusApplicant() {
     }
@@ -62,6 +64,14 @@ public class StatusApplicant implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override

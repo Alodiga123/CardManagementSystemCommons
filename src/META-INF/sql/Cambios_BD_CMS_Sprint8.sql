@@ -513,3 +513,15 @@ FOREIGN KEY (`statusApplicantId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar campo code y sus valores en tabla statusApplicant
+-- author: Jorge Pinto
+-- Fecha: 03/09/2020
+ALTER TABLE `CardManagementSystem`.`statusApplicant` 
+ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
+
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='ACTIV' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACT' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LINEOK' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LISNEG' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='4';
