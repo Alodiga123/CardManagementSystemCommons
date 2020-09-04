@@ -83,7 +83,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<ApplicantNaturalPerson> getCardComplementaryByApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Long countCardComplementaryByApplicant(long applicantNaturalPersonId) throws GeneralException, NullParameterException;
     public List<ApplicantNaturalPerson> getApplicantByPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-   
+   public List<ApplicantNaturalPerson> getApplicantByRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException; 
     
     //KinShipApplicant
     public List<KinShipApplicant> getKinShipApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -125,6 +125,7 @@ public interface PersonEJBLocal extends DistributionGenericEJB {
     public List<CardRequestNaturalPerson> getCardRequestNaturalPersonsByLegalCustomer(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public CardRequestNaturalPerson loadCardRequestNaturalPerson(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public CardRequestNaturalPerson saveCardRequestNaturalPerson (CardRequestNaturalPerson cardRequestNaturalPerson)  throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public Long cardRequestNaturalPersonBlackList(Long legalpersonId) throws GeneralException, NullParameterException;
     
     //Person
     public List<Person> getPerson(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
