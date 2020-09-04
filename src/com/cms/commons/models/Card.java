@@ -131,6 +131,8 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private StatusUpdateReason statusUpdateReasonId;
     @Column(name = "indPendingNewCardIssue")
     private Boolean indPendingNewCardIssue;
+    @Column(name = "indReceivedCard")
+    private Boolean indReceivedCard;
 
     public Card() {
     }
@@ -289,6 +291,14 @@ public class Card extends AbstractDistributionEntity implements Serializable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Boolean getIndReceivedCard() {
+        return indReceivedCard;
+    }
+
+    public void setIndReceivedCard(Boolean indReceivedCard) {
+        this.indReceivedCard = indReceivedCard;
     }
 
     @Override

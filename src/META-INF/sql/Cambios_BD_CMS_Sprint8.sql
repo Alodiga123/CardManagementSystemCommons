@@ -533,3 +533,13 @@ UPDATE `CardManagementSystem`.`personClassification` SET `code`='EMPLOY' WHERE `
 UPDATE `CardManagementSystem`.`personClassification` SET `code`='SHICOM' WHERE `id`='11';
 UPDATE `CardManagementSystem`.`personClassification` SET `code`='COMOFF' WHERE `id`='12';
 UPDATE `CardManagementSystem`.`personClassification` SET `code`='BUSAGE' WHERE `id`='13';
+
+ALTER TABLE `CardManagementSystem`.`card` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userResponsibleStatusUpdateId`,
+CHANGE COLUMN `updateDate` `updateDate` TIMESTAMP NULL DEFAULT NULL AFTER `createDate`;
+
+-- Agregar campo en tabla card
+-- author: Jesús Gómez
+-- Fecha: 03/09/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `indReceivedCard` TINYINT(1) NULL AFTER `userResponsibleStatusUpdateId`;
