@@ -394,3 +394,22 @@ INSERT INTO `statusNewCardIssueRequest` VALUES ('PEND','PENDIENTE'),('CONF','CON
 -- Jorge Pinto 
 -- Insertar dato NFC tabla storageMedio
 INSERT INTO `CardManagementSystem`.`storageMedio` (`description`) VALUES ('NFC');
+
+-- Insertar datos de Shipping Company
+INSERT INTO `CardManagementSystem`.`person`
+(`countryId`,`email`,`personClassificationId`,`personTypeId`)
+VALUES 
+(1,"DHL@gmail.com",11,2);
+
+SET @PersonID = 0;
+SELECT MAX(p.id) INTO @PersonID FROM `CardManagementSystem`.`person` p;
+
+INSERT INTO `CardManagementSystem`.`phonePerson`
+(`numberPhone`,`personId`,`phoneTypeId`)
+VALUES 
+("0416-2589633",@PersonID,1);
+
+INSERT INTO `CardManagementSystem`.`legalPerson`
+(`personId`,`documentsPersonTypeId`,`identificationNumber`,`name`,`contractNumber`,`contactPerson`,`emailContactPerson`,`indStatus`)
+VALUES 
+(@PersonID,3,"J105826932","Credential Argentina","PO-1586328-A","Yoan Leon","yleon@gmail.com",1);
