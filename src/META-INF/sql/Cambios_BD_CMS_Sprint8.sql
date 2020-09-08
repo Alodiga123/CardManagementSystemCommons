@@ -545,3 +545,13 @@ UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACT' WHERE `id`='2
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LINEOK' WHERE `id`='3';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LISNEG' WHERE `id`='4';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='4';
+
+ALTER TABLE `CardManagementSystem`.`card` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userResponsibleStatusUpdateId`,
+CHANGE COLUMN `updateDate` `updateDate` TIMESTAMP NULL DEFAULT NULL AFTER `createDate`;
+
+-- Agregar campo en tabla card
+-- author: Jesús Gómez
+-- Fecha: 03/09/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `indReceivedCard` TINYINT(1) NULL AFTER `userResponsibleStatusUpdateId`;
