@@ -43,6 +43,8 @@ public class EdificationType implements Serializable {
     private Integer id;
     @Column(name = "description")
     private String description;
+    @Column(name = "code")
+    private String code;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "edificationTypeId")
     private Collection<Address> addressCollection;
 
@@ -67,6 +69,14 @@ public class EdificationType implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @XmlTransient
