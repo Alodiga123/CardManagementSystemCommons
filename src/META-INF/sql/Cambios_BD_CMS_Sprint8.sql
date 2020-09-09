@@ -544,7 +544,7 @@ UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='ACTIV' WHERE `id`='1
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACT' WHERE `id`='2';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LINEOK' WHERE `id`='3';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LISNEG' WHERE `id`='4';
-UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='5';
 
 ALTER TABLE `CardManagementSystem`.`card` 
 CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userResponsibleStatusUpdateId`,
@@ -555,3 +555,18 @@ CHANGE COLUMN `updateDate` `updateDate` TIMESTAMP NULL DEFAULT NULL AFTER `creat
 -- Fecha: 03/09/2020
 ALTER TABLE `CardManagementSystem`.`card` 
 ADD COLUMN `indReceivedCard` TINYINT(1) NULL AFTER `userResponsibleStatusUpdateId`;
+
+
+-- Agregar campo code y sus valores en tabla edificationType
+-- author: Jorge Pinto
+-- Fecha: 09/09/2020
+ALTER TABLE `CardManagementSystem`.`edificationType` 
+ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
+
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='CASA' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='QUNTA' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='EDFCIO' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='RESCIA' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='CECOM' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='CHALET' WHERE `id`='6';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='DUPLEX' WHERE `id`='7';
