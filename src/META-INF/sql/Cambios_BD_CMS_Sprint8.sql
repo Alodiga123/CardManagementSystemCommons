@@ -570,3 +570,17 @@ UPDATE `CardManagementSystem`.`edificationType` SET `code`='RESCIA' WHERE `id`='
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='CECOM' WHERE `id`='5';
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='CHALET' WHERE `id`='6';
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='DUPLEX' WHERE `id`='7';
+
+-- Agregar FK en tabla collection_type
+-- author: Jorge Pinto
+-- Fecha: 14/09/2020
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE `CardManagementSystem`.`collectionType`
+ADD COLUMN `personTypeId` INT(11) NOT NULL;
+ALTER TABLE `CardManagementSystem`.`collectionType`
+ADD CONSTRAINT `fk_collectionType_personType1`
+ FOREIGN KEY (`personTypeId`)
+ REFERENCES `CardManagementSystem`.`personType` (`id`)
+ ON DELETE NO ACTION
+ ON UPDATE NO ACTION;
+ SET FOREIGN_KEY_CHECKS=1;

@@ -83,6 +83,7 @@ public class QueryConstants {
     public static final String NETWORK_BY_COUNTRY = "networkByCountry";
     public static final String LAST_PERSON = "Person.lastPerson";
     public static final String PERSON_TYPE_BY_COUNTRY_BY_IND_NATURAL_PERSON = "personTypeByCountryByIndNaturalPerson";
+    public static final String PERSON_TYPE_BY_COUNTRY_BY_ORIGIN_APPLICATION = "personTypeByCountryByOriginApplication";
     public static final String PERSON_TYPE_BY_COUNTRY = "personTypeByCountry";
     public static final String SEQUENCES_BY_DOCUMENT_TYPE = "Sequences.findByDocumentType";
     public static final String COMMERCE_CATEGORY_BY_SEGMENT_COMMERCE = "commerceCategoryBySegmentCommerce";
