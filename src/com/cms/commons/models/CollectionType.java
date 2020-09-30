@@ -52,7 +52,10 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-
+    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private PersonType personTypeId;
+    
     public CollectionType() {
     }
 
@@ -87,6 +90,14 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
+    }
+    
+    public PersonType getPersonTypeId() {
+        return personTypeId;
+    }
+
+    public void setPersonTypeId(PersonType personTypeId) {
+        this.personTypeId = personTypeId;
     }
 
     @Override
