@@ -7,11 +7,11 @@ package com.cms.commons.enumeraciones;
 
 public enum StatusApplicantE {
 
-	ACTIV(1, "ACTIVO", "ACTIV"),
-	INACT(2, "INACTIVO", "INACT"),
+	ACTIVO(1, "ACTIVO", "ACTIVO"),
+	INACTI(2, "INACTIVO", "INACTI"),
         LINEOK(3, "LISTA NEGRA OK", "LINEOK"),
         LISNEG(4, "LISTA NEGRA", "LISNEG"),
-        CLIEN(5, "CLIENTE", "CLIEN");
+        CLIENT(5, "CLIENTE", "CLIENT");
 
     private int id;
     private String statusApplicantDescription;
