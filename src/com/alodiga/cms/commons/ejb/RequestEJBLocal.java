@@ -97,6 +97,8 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
     public List<StatusApplicant> getStatusApplicant(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusApplicant loadStatusApplicant(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusApplicant saveStatusApplicant(StatusApplicant statusApplicant) throws NullParameterException, GeneralException;
+    public StatusApplicant loadStatusApplicantByCode(String code) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+
     
     //ReviewRequestType
     public List<ReviewRequestType> getReviewRequestType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
