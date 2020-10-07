@@ -167,7 +167,7 @@ public class QueryConstants {
     public static final String BANNERS_BY_TYPE = "bannersByType";
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
     public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
-    
+    public static final String STATUS_APPLICANT_BY_CODE = "statusApplicantByCode";
     //Parámetros
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
@@ -266,5 +266,6 @@ public class QueryConstants {
     public static final String PARAM_ECONOMIC_ACTIVITY_ID ="economicActivityId";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
     public static final String PARAM_CODE ="code";
+    
     
 }
