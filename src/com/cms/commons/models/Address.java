@@ -81,7 +81,7 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @ManyToOne(optional = false)
     private ZipZone zipZoneId;
     @Column(name = "zipZoneCode")
-    private String zipZoneCode;    
+    private String zipZoneCode;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;

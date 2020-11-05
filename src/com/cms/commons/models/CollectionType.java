@@ -55,6 +55,8 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
     @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private PersonType personTypeId;
+    @Column(name = "orden")
+    private Integer orden;
     
     public CollectionType() {
     }
@@ -99,6 +101,16 @@ public class CollectionType extends AbstractDistributionEntity implements Serial
     public void setPersonTypeId(PersonType personTypeId) {
         this.personTypeId = personTypeId;
     }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
+    
+    
 
     @Override
     public int hashCode() {
