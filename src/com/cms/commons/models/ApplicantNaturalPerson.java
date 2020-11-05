@@ -63,6 +63,8 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     private Date dueDateDocumentIdentification;
     @Column(name = "identificationNumberOld")
     private String identificationNumberOld;
+    @Column(name = "taxInformationRegistry")
+    private String taxInformationRegistry;
     @Column(name = "firstNames")
     private String firstNames;
     @Column(name = "lastNames")
@@ -155,6 +157,14 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
         this.identificationNumberOld = identificationNumberOld;
     }
 
+    public String getTaxInformationRegistry() {
+        return taxInformationRegistry;
+    }
+
+    public void setTaxInformationRegistry(String taxInformationRegistry) {
+        this.taxInformationRegistry = taxInformationRegistry;
+    }
+    
     public String getFirstNames() {
         return firstNames;
     }

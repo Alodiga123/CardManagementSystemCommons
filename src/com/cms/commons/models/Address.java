@@ -80,6 +80,8 @@ public class Address extends AbstractDistributionEntity implements Serializable 
     @JoinColumn(name = "zipZoneId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private ZipZone zipZoneId;
+    @Column(name = "zipZoneCode")
+    private String zipZoneCode;
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
@@ -183,6 +185,14 @@ public class Address extends AbstractDistributionEntity implements Serializable 
 
     public void setZipZoneId(ZipZone zipZoneId) {
         this.zipZoneId = zipZoneId;
+    }
+
+    public String getZipZoneCode() {
+        return zipZoneCode;
+    }
+
+    public void setZipZoneCode(String zipZoneCode) {
+        this.zipZoneCode = zipZoneCode;
     }
 
     public Country getCountryId() {
