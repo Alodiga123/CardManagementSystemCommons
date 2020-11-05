@@ -4,10 +4,8 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -64,6 +59,12 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @Size(max = 40)
     @Column(name = "cardNumber")
     private String cardNumber;
+    @Size(max = 40)
+    @Column(name = "alias")
+    private String alias;
+    @Size(max = 40)
+    @Column(name = "assignedAccount")
+    private String assignedAccount;
     @Column(name = "sequentialNumber")
     private Integer sequentialNumber;
     @Size(max = 50)
@@ -157,6 +158,22 @@ public class Card extends AbstractDistributionEntity implements Serializable {
         this.cardNumber = cardNumber;
     }
 
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getAssignedAccount() {
+        return assignedAccount;
+    }
+
+    public void setAssignedAccount(String assignedAccount) {
+        this.assignedAccount = assignedAccount;
+    }
+    
     public Integer getSequentialNumber() {
         return sequentialNumber;
     }

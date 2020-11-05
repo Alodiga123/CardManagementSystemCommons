@@ -584,3 +584,34 @@ ADD CONSTRAINT `fk_collectionType_personType1`
  ON DELETE NO ACTION
  ON UPDATE NO ACTION;
  SET FOREIGN_KEY_CHECKS=1;
+
+ -- Agregar campo order en tabla collectionType
+-- author: Jesús Gómez
+-- Fecha: 30/10/2020
+ALTER TABLE `CardManagementSystem`.`collectionType` 
+ADD COLUMN `orden` INT NULL AFTER `personTypeId`;
+
+-- Agregar campos en tabla card
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `alias` VARCHAR(40) NULL AFTER `cardNumber`,
+ADD COLUMN `assignedAccount` VARCHAR(40) NULL AFTER `alias`;
+
+-- Agregar campos en tabla address
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `zipZoneCode` VARCHAR(40) NULL AFTER `zipZoneId`;
+
+-- Agregar campos en tabla state
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`state` 
+ADD COLUMN `code` VARCHAR(4) NULL AFTER `countryId`;
+
+-- Agregar campos en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 04/10/2020
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumberOld`;
