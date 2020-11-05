@@ -164,7 +164,7 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     public void setTaxInformationRegistry(String taxInformationRegistry) {
         this.taxInformationRegistry = taxInformationRegistry;
     }
-    
+
     public String getFirstNames() {
         return firstNames;
     }

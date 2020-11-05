@@ -34,6 +34,15 @@ public class Constants {
 
     //CONSTANT VIEW
     public static String HOME_ADMIN = "home-admin.zul";
+    
+    //Servicios de Altas de Tarjetas Credencial
+    public static final String OPERATION_TYPE_REGALW = "RegAlw";
+    public static final String OPERATION_TYPE_REGMOD = "RegMod";
+    public static final String ENTITY_CODE = "758";
+    public static final String PRODUCT_CODE = "Q758";
+    public static final String AFFINITY_CODE = "0002";
+    public static final String NOT_RECORDING_CARD = "N";
+    public static final int SIZE_NOT_VALID_NUMBER_PHONE = 12;    
 
     //Request
     public static final String REQUEST_KEY = "id";
