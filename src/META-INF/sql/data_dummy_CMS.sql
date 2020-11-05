@@ -413,3 +413,40 @@ INSERT INTO `CardManagementSystem`.`legalPerson`
 (`personId`,`documentsPersonTypeId`,`identificationNumber`,`name`,`contractNumber`,`contactPerson`,`emailContactPerson`,`indStatus`)
 VALUES 
 (@PersonID,3,"J105826932","Credential Argentina","PO-1586328-A","Yoan Leon","yleon@gmail.com",1);
+
+-- Actualizar code Mexico en tabla state
+-- author: Jesús Gómez
+-- Fecha: 04/10/2020
+UPDATE `CardManagementSystem`.`state` SET `code`='A' WHERE `id`='79';
+UPDATE `CardManagementSystem`.`state` SET `code`='B' WHERE `id`='81';
+UPDATE `CardManagementSystem`.`state` SET `code`='6' WHERE `id`='80';
+UPDATE `CardManagementSystem`.`state` SET `code`='C' WHERE `id`='82';
+UPDATE `CardManagementSystem`.`state` SET `code`='F' WHERE `id`='83';
+UPDATE `CardManagementSystem`.`state` SET `code`='G' WHERE `id`='84';
+UPDATE `CardManagementSystem`.`state` SET `code`='D' WHERE `id`='85';
+UPDATE `CardManagementSystem`.`state` SET `code`='E' WHERE `id`='86';
+UPDATE `CardManagementSystem`.`state` SET `code`='H' WHERE `id`='87';
+UPDATE `CardManagementSystem`.`state` SET `code`='I' WHERE `id`='88';
+UPDATE `CardManagementSystem`.`state` SET `code`='K' WHERE `id`='89';
+UPDATE `CardManagementSystem`.`state` SET `code`='L' WHERE `id`='90';
+UPDATE `CardManagementSystem`.`state` SET `code`='M' WHERE `id`='91';
+UPDATE `CardManagementSystem`.`state` SET `code`='N' WHERE `id`='92';
+UPDATE `CardManagementSystem`.`state` SET `code`='J' WHERE `id`='93';
+UPDATE `CardManagementSystem`.`state` SET `code`='O' WHERE `id`='94';
+UPDATE `CardManagementSystem`.`state` SET `code`='P' WHERE `id`='95';
+UPDATE `CardManagementSystem`.`state` SET `code`='Q' WHERE `id`='96';
+UPDATE `CardManagementSystem`.`state` SET `code`='R' WHERE `id`='97';
+UPDATE `CardManagementSystem`.`state` SET `code`='S' WHERE `id`='98';
+UPDATE `CardManagementSystem`.`state` SET `code`='T' WHERE `id`='99';
+UPDATE `CardManagementSystem`.`state` SET `code`='U' WHERE `id`='100';
+UPDATE `CardManagementSystem`.`state` SET `code`='V' WHERE `id`='101';
+UPDATE `CardManagementSystem`.`state` SET `code`='W' WHERE `id`='102';
+UPDATE `CardManagementSystem`.`state` SET `code`='X' WHERE `id`='103';
+UPDATE `CardManagementSystem`.`state` SET `code`='Y' WHERE `id`='104';
+UPDATE `CardManagementSystem`.`state` SET `code`='Z' WHERE `id`='105';
+UPDATE `CardManagementSystem`.`state` SET `code`='1' WHERE `id`='106';
+UPDATE `CardManagementSystem`.`state` SET `code`='2' WHERE `id`='107';
+UPDATE `CardManagementSystem`.`state` SET `code`='3' WHERE `id`='108';
+UPDATE `CardManagementSystem`.`state` SET `code`='4' WHERE `id`='109';
+UPDATE `CardManagementSystem`.`state` SET `code`='5' WHERE `id`='110';
+

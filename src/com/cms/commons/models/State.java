@@ -39,6 +39,7 @@ import com.cms.commons.util.QueryConstants;
     @NamedQuery(name = "State.findById", query = "SELECT s FROM State s WHERE s.id = :id"),
     @NamedQuery(name = "State.findByName", query = "SELECT s FROM State s WHERE s.name = :name"),
     @NamedQuery(name = QueryConstants.STATES_BY_COUNTRY, query = "SELECT s FROM State s WHERE s.countryId.id=:countryId")})
+
 public class State extends AbstractDistributionEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -52,8 +53,8 @@ public class State extends AbstractDistributionEntity implements Serializable{
     @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Country countryId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "stateId")
-    private Collection<City> cityCollection;
+    @Column(name = "code")
+    private String code;
 
     public State() {
     }
@@ -78,22 +79,20 @@ public class State extends AbstractDistributionEntity implements Serializable{
         this.name = name;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public Country getCountryId() {
         return countryId;
     }
 
     public void setCountryId(Country countryId) {
         this.countryId = countryId;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<City> getCityCollection() {
-        return cityCollection;
-    }
-
-    public void setCityCollection(Collection<City> cityCollection) {
-        this.cityCollection = cityCollection;
     }
 
     @Override
