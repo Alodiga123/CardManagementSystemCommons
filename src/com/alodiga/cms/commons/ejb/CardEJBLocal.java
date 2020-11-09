@@ -86,6 +86,9 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public Card loadCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Card saveCard(Card card) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public Card validateQuestionCard(Long cardId, Date expirationDate, Date createDate, String ICVVMagneticStrip) throws RegisterNotFoundException, NullParameterException, GeneralException, InvalidQuestionException;
+    public List<Card> getCardByEmail(String email) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByPhone(String phoneNumber) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByIdentificationNumber(String identificationNumber) throws EmptyListException, GeneralException, NullParameterException;
     
     //CardNumberCredential
     public List<CardNumberCredential> getCardNumberCredential(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
