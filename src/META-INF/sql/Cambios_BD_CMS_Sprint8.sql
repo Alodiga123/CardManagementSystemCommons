@@ -540,11 +540,11 @@ UPDATE `CardManagementSystem`.`personClassification` SET `code`='BUSAGE' WHERE `
 ALTER TABLE `CardManagementSystem`.`statusApplicant` 
 ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
 
-UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='ACTIV' WHERE `id`='1';
-UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACT' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='ACTIVO' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='INACTI' WHERE `id`='2';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LINEOK' WHERE `id`='3';
 UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='LISNEG' WHERE `id`='4';
-UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIEN' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`statusApplicant` SET `code`='CLIENT' WHERE `id`='5';
 
 ALTER TABLE `CardManagementSystem`.`card` 
 CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `userResponsibleStatusUpdateId`,
@@ -564,10 +564,10 @@ ALTER TABLE `CardManagementSystem`.`edificationType`
 ADD COLUMN `code` VARCHAR(6) NOT NULL AFTER `description`;
 
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='CASA' WHERE `id`='1';
-UPDATE `CardManagementSystem`.`edificationType` SET `code`='QUNTA' WHERE `id`='2';
-UPDATE `CardManagementSystem`.`edificationType` SET `code`='EDFCIO' WHERE `id`='3';
-UPDATE `CardManagementSystem`.`edificationType` SET `code`='RESCIA' WHERE `id`='4';
-UPDATE `CardManagementSystem`.`edificationType` SET `code`='CECOM' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='QUINTA' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='EDIFIC' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='RESCOM' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`edificationType` SET `code`='CENCOM' WHERE `id`='5';
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='CHALET' WHERE `id`='6';
 UPDATE `CardManagementSystem`.`edificationType` SET `code`='DUPLEX' WHERE `id`='7';
 
@@ -584,3 +584,34 @@ ADD CONSTRAINT `fk_collectionType_personType1`
  ON DELETE NO ACTION
  ON UPDATE NO ACTION;
  SET FOREIGN_KEY_CHECKS=1;
+
+ -- Agregar campo order en tabla collectionType
+-- author: Jesús Gómez
+-- Fecha: 30/10/2020
+ALTER TABLE `CardManagementSystem`.`collectionType` 
+ADD COLUMN `orden` INT NULL AFTER `personTypeId`;
+
+-- Agregar campos en tabla card
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `alias` VARCHAR(40) NULL AFTER `cardNumber`,
+ADD COLUMN `assignedAccount` VARCHAR(40) NULL AFTER `alias`;
+
+-- Agregar campos en tabla address
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`address` 
+ADD COLUMN `zipZoneCode` VARCHAR(40) NULL AFTER `zipZoneId`;
+
+-- Agregar campos en tabla state
+-- author: Jesús Gómez
+-- Fecha: 03/10/2020
+ALTER TABLE `CardManagementSystem`.`state` 
+ADD COLUMN `code` VARCHAR(4) NULL AFTER `countryId`;
+
+-- Agregar campos en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 04/10/2020
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumberOld`;
