@@ -456,27 +456,27 @@ UPDATE `CardManagementSystem`.`state` SET `code`='5' WHERE `id`='110';
 -- author: Yamelis Almea
 -- Fecha: 05/11/2020
 
-INSERT INTO `cardmanagementsystem`.`persontype` (`id`, `description`, `countryId`, `originApplicationId`, `indNaturalPerson`) VALUES ('9', 'Persona Natural', '82', '2', '1');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `personTypeId` = '3' WHERE (`id` = '9');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `personTypeId` = '3' WHERE (`id` = '10');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `description` = 'FOTO CON DOCUMENTO DE IDENTIDAD APP' WHERE (`id` = '10');
-INSERT INTO `cardmanagementsystem`.`collectiontype` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('18', 'DOCUMENTO DE IDENTIFICACION APP', '2', '4');
-INSERT INTO `cardmanagementsystem`.`collectiontype` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('19', 'DOCUMENTO DE IDENTIFICACION APP', '82', '9');
-INSERT INTO `cardmanagementsystem`.`collectiontype` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('20', 'FOTO CON DOCUMENTO DE IDENTIDAD APP', '2', '4');
-INSERT INTO `cardmanagementsystem`.`collectiontype` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('21', 'FOTO CON DOCUMENTO DE IDENTIDAD APP', '82', '9');
+INSERT INTO `CardManagementSystem`.`personType` (`id`, `description`, `countryId`, `originApplicationId`, `indNaturalPerson`) VALUES ('9', 'Persona Natural', '82', '2', '1');
+UPDATE `CardManagementSystem`.`collectionType` SET `personTypeId` = '3' WHERE (`id` = '9');
+UPDATE `CardManagementSystem`.`collectionType` SET `personTypeId` = '3' WHERE (`id` = '10');
+UPDATE `CardManagementSystem`.`collectionType` SET `description` = 'FOTO CON DOCUMENTO DE IDENTIDAD APP' WHERE (`id` = '10');
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('18', 'DOCUMENTO DE IDENTIFICACION APP', '2', '4');
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('19', 'DOCUMENTO DE IDENTIFICACION APP', '82', '9');
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('20', 'FOTO CON DOCUMENTO DE IDENTIDAD APP', '2', '4');
+INSERT INTO `CardManagementSystem`.`collectionType` (`id`, `description`, `countryId`, `personTypeId`) VALUES ('21', 'FOTO CON DOCUMENTO DE IDENTIDAD APP', '82', '9');
 
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '1' WHERE (`id` = '9');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '2' WHERE (`id` = '10');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '1' WHERE (`id` = '18');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '1' WHERE (`id` = '19');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '2' WHERE (`id` = '20');
-UPDATE `cardmanagementsystem`.`collectiontype` SET `orden` = '2' WHERE (`id` = '21');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '1' WHERE (`id` = '9');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '2' WHERE (`id` = '10');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '1' WHERE (`id` = '18');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '1' WHERE (`id` = '19');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '2' WHERE (`id` = '20');
+UPDATE `CardManagementSystem`.`collectionType` SET `orden` = '2' WHERE (`id` = '21');
 
 
-INSERT INTO `cardmanagementsystem`.`collectionsrequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('1', '1', '4', '3', '10');
-INSERT INTO `cardmanagementsystem`.`collectionsrequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('2', '1', '4', '4', '18');
-INSERT INTO `cardmanagementsystem`.`collectionsrequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('2', '1', '4', '4', '20');
-INSERT INTO `cardmanagementsystem`.`collectionsrequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '19');
-INSERT INTO `cardmanagementsystem`.`collectionsrequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '21');
+INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('1', '1', '4', '3', '10');
+INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('2', '1', '4', '4', '18');
+INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('2', '1', '4', '4', '20');
+INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '19');
+INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '21');
 
 
