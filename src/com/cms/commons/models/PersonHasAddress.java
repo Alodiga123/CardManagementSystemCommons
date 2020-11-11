@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "personHasAddress")
+@XmlType(name = "cms_personHasAddress")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PersonHasAddress.findAll", query = "SELECT p FROM PersonHasAddress p"),

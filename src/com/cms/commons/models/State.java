@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import com.cms.commons.util.QueryConstants;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -33,6 +34,7 @@ import com.cms.commons.util.QueryConstants;
  */
 @Entity
 @Table(name = "state")
+@XmlType(name = "cms_state") 
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "State.findAll", query = "SELECT s FROM State s"),

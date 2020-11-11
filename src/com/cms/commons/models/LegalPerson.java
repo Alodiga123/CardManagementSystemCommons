@@ -27,6 +27,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import com.cms.commons.util.QueryConstants;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -34,6 +35,7 @@ import com.cms.commons.util.QueryConstants;
  */
 @Entity
 @Table(name = "legalPerson")
+@XmlType(name = "cms_legalPerson")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "LegalPerson.findAll", query = "SELECT l FROM LegalPerson l")
