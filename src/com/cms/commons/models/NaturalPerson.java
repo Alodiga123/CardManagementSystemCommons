@@ -26,6 +26,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "naturalPerson")
+@XmlType(name = "cms_naturalPerson")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "NaturalPerson.findAll", query = "SELECT n FROM NaturalPerson n"),
