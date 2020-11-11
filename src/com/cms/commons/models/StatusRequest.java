@@ -18,10 +18,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name = "statusRequest")
+@XmlType(name = "cms_statusRequest")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "StatusRequest.findAll", query = "SELECT s FROM StatusRequest s")

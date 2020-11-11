@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "phonePerson")
+@XmlType(name = "cms_phonePerson")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PhonePerson.findAll", query = "SELECT p FROM PhonePerson p"),

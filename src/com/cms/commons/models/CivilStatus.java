@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
@@ -30,6 +31,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @Entity
 @Table(name = "civilStatus")
+@XmlType(name = "cms_civilStatus")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CivilStatus.findAll", query = "SELECT c FROM CivilStatus c")
