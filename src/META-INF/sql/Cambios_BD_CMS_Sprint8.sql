@@ -629,3 +629,9 @@ ADD CONSTRAINT `fk_naturalCustomer_profession1`
   REFERENCES `CardManagementSystem`.`profession` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+-- Modificar tipo de dato en la tabla reviewOFAC en el campo resultReview
+-- author: Jorge Pinto
+-- Fecha: 16/11/2020
+ALTER TABLE `CardManagementSystem`.`reviewOFAC` 
+CHANGE COLUMN `resultReview` `resultReview` FLOAT NULL DEFAULT NULL ;
