@@ -615,3 +615,9 @@ ADD COLUMN `code` VARCHAR(4) NULL AFTER `countryId`;
 -- Fecha: 04/10/2020
 ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
 ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumberOld`;
+
+-- Modificar tipo de dato en la tabla reviewOFAC en el campo resultReview
+-- author: Jorge Pinto
+-- Fecha: 16/11/2020
+ALTER TABLE `CardManagementSystem`.`reviewOFAC` 
+CHANGE COLUMN `resultReview` `resultReview` FLOAT NULL DEFAULT NULL ;
