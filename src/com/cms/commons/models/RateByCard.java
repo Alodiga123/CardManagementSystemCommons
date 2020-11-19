@@ -54,6 +54,8 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
     private Integer totalInitialTransactionsExempt;
     @Column(name = "totalTransactionsExemptPerMonth")
     private Integer totalTransactionsExemptPerMonth;
+    @Column(name = "indCardHolderModification")
+    private Boolean indCardHolderModification;
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
@@ -133,6 +135,14 @@ public class RateByCard extends AbstractDistributionEntity implements Serializab
         this.totalTransactionsExemptPerMonth = totalTransactionsExemptPerMonth;
     }
 
+    public Boolean getIndCardHolderModification() {
+        return indCardHolderModification;
+    }
+
+    public void setIndCardHolderModification(Boolean indCardHolderModification) {
+        this.indCardHolderModification = indCardHolderModification;
+    }
+    
     public Card getCardId() {
         return cardId;
     }
