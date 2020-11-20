@@ -618,7 +618,7 @@ ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumber
 
 
 -- Agregar campos en tabla ratebycard
--- author: Jesús Gómez
--- Fecha: 04/10/2020
+-- author: Yamelis Almea
+-- Fecha: 20/11/2020
 ALTER TABLE `CardManagementSystem`.`rateByCard` 
 ADD COLUMN `indCardHolderModification` TINYINT(1) NULL DEFAULT NULL AFTER `totalTransactionsExemptPerMonth`;
