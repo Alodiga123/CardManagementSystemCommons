@@ -46,7 +46,7 @@ public class ReviewOFAC extends AbstractDistributionEntity implements Serializab
     private Long id;
     @Size(max = 250)
     @Column(name = "resultReview")
-    private String resultReview;
+    private float resultReview;
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
@@ -69,11 +69,11 @@ public class ReviewOFAC extends AbstractDistributionEntity implements Serializab
         this.id = id;
     }
 
-    public String getResultReview() {
+    public float getResultReview() {
         return resultReview;
     }
 
-    public void setResultReview(String resultReview) {
+    public void setResultReview(float resultReview) {
         this.resultReview = resultReview;
     }
 
