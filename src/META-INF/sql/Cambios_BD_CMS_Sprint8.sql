@@ -616,6 +616,7 @@ ADD COLUMN `code` VARCHAR(4) NULL AFTER `countryId`;
 ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
 ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumberOld`;
 
+
 -- Modificar FK de profesionId para que acepte null en tabla naturalCustomer
 -- author: Jesús Gómez
 -- Fecha: 16/11/2020
@@ -629,3 +630,15 @@ ADD CONSTRAINT `fk_naturalCustomer_profession1`
   REFERENCES `CardManagementSystem`.`profession` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+-- Modificar tipo de dato en la tabla reviewOFAC en el campo resultReview
+-- author: Jorge Pinto
+-- Fecha: 16/11/2020
+ALTER TABLE `CardManagementSystem`.`reviewOFAC` 
+CHANGE COLUMN `resultReview` `resultReview` FLOAT NULL DEFAULT NULL ;
+
+-- Agregar campos en tabla ratebycard
+-- author: Yamelis Almea
+-- Fecha: 20/11/2020
+ALTER TABLE `CardManagementSystem`.`rateByCard` 
+ADD COLUMN `indCardHolderModification` TINYINT(1) NULL DEFAULT NULL AFTER `totalTransactionsExemptPerMonth`;

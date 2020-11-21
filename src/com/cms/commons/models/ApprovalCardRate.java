@@ -54,10 +54,8 @@ public class ApprovalCardRate implements Serializable {
     @Column(name = "approvalDate")
     @Temporal(TemporalType.DATE)
     private Date approvalDate;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "indApproved")
-    private boolean indApproved;
+    private Boolean indApproved;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -102,11 +100,11 @@ public class ApprovalCardRate implements Serializable {
         this.approvalDate = approvalDate;
     }
 
-    public boolean getIndApproved() {
+    public Boolean getIndApproved() {
         return indApproved;
     }
 
-    public void setIndApproved(boolean indApproved) {
+    public void setIndApproved(Boolean indApproved) {
         this.indApproved = indApproved;
     }
 

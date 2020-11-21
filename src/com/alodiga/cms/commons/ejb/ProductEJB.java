@@ -26,6 +26,7 @@ import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.ApprovalGeneralRate;
 import com.cms.commons.models.ApprovalProductRate;
 import com.cms.commons.models.ApprovalProgramRate;
+import com.cms.commons.models.ApprovalCardRate;
 import com.cms.commons.models.Country;
 import com.cms.commons.models.StatusProduct;
 import java.util.List;
@@ -149,5 +150,10 @@ public interface ProductEJB extends DistributionGenericEJB {
     public List<ApprovalProductRate> getApprovalProductRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApprovalProductRate loadApprovalProductRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApprovalProductRate saveApprovalProductRate(ApprovalProductRate approvalProductRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //ApprovalCardRate
+    public List<ApprovalCardRate> getApprovalCardRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public ApprovalCardRate loadApprovalCardRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public ApprovalCardRate saveApprovalCardRate(ApprovalCardRate approvalProductRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
 }

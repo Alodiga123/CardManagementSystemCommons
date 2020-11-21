@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RateByProduct.findByTotalInitialTransactionsExempt", query = "SELECT r FROM RateByProduct r WHERE r.totalInitialTransactionsExempt = :totalInitialTransactionsExempt")
     , @NamedQuery(name = "RateByProduct.findByTotalTransactionsExemptPerMonth", query = "SELECT r FROM RateByProduct r WHERE r.totalTransactionsExemptPerMonth = :totalTransactionsExemptPerMonth")
     , @NamedQuery(name = "RateByProduct.findByIndCardHolderModification", query = "SELECT r FROM RateByProduct r WHERE r.indCardHolderModification = :indCardHolderModification")
-    , @NamedQuery(name = QueryConstants.RATE_BY_PRODUCT_BY_PRODUCT, query = "SELECT r FROM RateByProduct r WHERE r.productId.id = :productId order by r.channelId.id, r.transactionId.id ASC")})
+    , @NamedQuery(name = QueryConstants.RATE_BY_PRODUCT_BY_PRODUCT, query = "SELECT r FROM RateByProduct r WHERE r.productId.id = :productId and r.approvalProductRateId is not null order by r.channelId.id, r.transactionId.id ASC")})
 
 public class RateByProduct extends AbstractDistributionEntity implements Serializable {
 
