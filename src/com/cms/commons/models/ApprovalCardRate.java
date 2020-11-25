@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -41,7 +43,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     , @NamedQuery(name = "ApprovalCardRate.findByIndApproved", query = "SELECT a FROM ApprovalCardRate a WHERE a.indApproved = :indApproved")
     , @NamedQuery(name = "ApprovalCardRate.findByCreateDate", query = "SELECT a FROM ApprovalCardRate a WHERE a.createDate = :createDate")
     , @NamedQuery(name = "ApprovalCardRate.findByUpdateDate", query = "SELECT a FROM ApprovalCardRate a WHERE a.updateDate = :updateDate")})
-public class ApprovalCardRate implements Serializable {
+public class ApprovalCardRate extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,6 +175,16 @@ public class ApprovalCardRate implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.ApprovalCardRate[ id=" + id + " ]";
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

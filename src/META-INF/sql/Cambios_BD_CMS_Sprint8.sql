@@ -585,7 +585,7 @@ ADD CONSTRAINT `fk_collectionType_personType1`
  ON UPDATE NO ACTION;
  SET FOREIGN_KEY_CHECKS=1;
 
- -- Agregar campo order en tabla collectionType
+-- Agregar campo order en tabla collectionType
 -- author: Jesús Gómez
 -- Fecha: 30/10/2020
 ALTER TABLE `CardManagementSystem`.`collectionType` 
@@ -616,6 +616,26 @@ ADD COLUMN `code` VARCHAR(4) NULL AFTER `countryId`;
 ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
 ADD COLUMN `taxInformationRegistry` VARCHAR(40) NULL AFTER `identificationNumberOld`;
 
+
+-- Modificar FK de profesionId para que acepte null en tabla naturalCustomer
+-- author: Jesús Gómez
+-- Fecha: 16/11/2020
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+DROP FOREIGN KEY `fk_naturalCustomer_profession1`;
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+CHANGE COLUMN `professionId` `professionId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`naturalCustomer` 
+ADD CONSTRAINT `fk_naturalCustomer_profession1`
+  FOREIGN KEY (`professionId`)
+  REFERENCES `CardManagementSystem`.`profession` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Modificar tipo de dato en la tabla reviewOFAC en el campo resultReview
+-- author: Jorge Pinto
+-- Fecha: 16/11/2020
+ALTER TABLE `CardManagementSystem`.`reviewOFAC` 
+CHANGE COLUMN `resultReview` `resultReview` FLOAT NULL DEFAULT NULL ;
 
 -- Agregar campos en tabla ratebycard
 -- author: Yamelis Almea
