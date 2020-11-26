@@ -67,6 +67,7 @@ public class QueryConstants {
     public static final String STATUS_REQUEST_BY_CODE ="statusRequestByCode";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
+    public static final String REQUEST_HAS_COLLECTION_REQUEST_CHECK = "RequestHasCollectionsRequestCheck";
     public static final String COLLECTION_TYPE_BY_COUNTRY = "CollectionTypeByCountry";
     public static final String NETWORK_BY_PROGRAM = "networkByProgram";
     public static final String ECONOMIC_ACTIVITY_BY_LEGAL_PERSON = "economicActivityByLegalPerson";
