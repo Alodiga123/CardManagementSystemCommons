@@ -642,3 +642,15 @@ CHANGE COLUMN `resultReview` `resultReview` FLOAT NULL DEFAULT NULL ;
 -- Fecha: 20/11/2020
 ALTER TABLE `CardManagementSystem`.`rateByCard` 
 ADD COLUMN `indCardHolderModification` TINYINT(1) NULL DEFAULT NULL AFTER `totalTransactionsExemptPerMonth`;
+
+-- Agregar campos en tabla applicantNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 01/12/2020
+ALTER TABLE `CardManagementSystem`.`applicantNaturalPerson` 
+ADD COLUMN `observations` VARCHAR(1500) NULL AFTER `statusApplicantId`;
+
+-- Agregar campos en tabla cardRequestNaturalPerson
+-- author: Jesús Gómez
+-- Fecha: 01/12/2020
+ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
+ADD COLUMN `observations` VARCHAR(1500) NULL AFTER `statusApplicantId`;
