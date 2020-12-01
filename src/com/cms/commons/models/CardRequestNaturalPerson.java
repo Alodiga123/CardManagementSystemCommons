@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -74,6 +75,9 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusApplicant statusApplicantId;
+    @Size(max = 1500)
+    @Column(name = "observations")
+    private String observations;
 
     public CardRequestNaturalPerson() {
     }
@@ -168,6 +172,14 @@ public class CardRequestNaturalPerson extends AbstractDistributionEntity impleme
 
     public void setStatusApplicantId(StatusApplicant statusApplicantId) {
         this.statusApplicantId = statusApplicantId;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
     
     @Override
