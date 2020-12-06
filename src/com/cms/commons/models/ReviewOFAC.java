@@ -44,7 +44,6 @@ public class ReviewOFAC extends AbstractDistributionEntity implements Serializab
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 250)
     @Column(name = "resultReview")
     private Float resultReview;
     @JoinColumn(name = "personId", referencedColumnName = "id")
