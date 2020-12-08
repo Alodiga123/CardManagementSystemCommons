@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
@@ -25,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -114,6 +110,9 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
     @JoinColumn(name = "statusApplicantId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private StatusApplicant statusApplicantId;
+    @Size(max = 1500)
+    @Column(name = "observations")
+    private String observations;
     @Column(name = "recommendation")
     private Boolean recommendation;
     @Column(name = "promotion")
@@ -280,6 +279,14 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
 
     public void setApplicantParentId(ApplicantNaturalPerson applicantParentId) {
         this.applicantParentId = applicantParentId;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 
     public KinShipApplicant getKinShipApplicantId() {
