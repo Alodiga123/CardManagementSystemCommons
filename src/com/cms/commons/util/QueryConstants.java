@@ -1,3 +1,6 @@
+/*
+* QueryConstans
+*/
 package com.cms.commons.util;
 
 public class QueryConstants {
