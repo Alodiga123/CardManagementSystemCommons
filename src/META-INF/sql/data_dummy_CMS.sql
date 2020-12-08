@@ -479,4 +479,13 @@ INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTy
 INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '19');
 INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTypeId`, `programId`, `personTypeId`, `collectionTypeId`) VALUES ('82', '1', '4', '9', '21');
 
+-- Estatus de en la tabla statusapplicant
+-- author: Yamelis Almea
+-- Fecha: 008/12/2020
 
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('6', 'TARJETA PENDIENTE', 'TARPEN');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('7', 'TARJETA ASIGNADA', 'TARASI');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('8', 'TARJETA PENDIENTE POR ASIGNAR', 'TPENAS');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('9', 'ASIGNADA AL CLIENTE', 'ASICLI');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('10', 'ERROR SOLICITUD PERSONALIZACION', 'ERDOPE');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('11', 'PENDIENTE PERSONALIZACION', 'PENPER');
