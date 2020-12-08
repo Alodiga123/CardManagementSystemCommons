@@ -267,7 +267,6 @@ public class QueryConstants {
     public static final String PARAM_ECONOMIC_ACTIVITY_ID ="economicActivityId";
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
     public static final String PARAM_CODE ="code";
-    public static final String PARAM_PERSON_ID = "personId";
     
     
 }
