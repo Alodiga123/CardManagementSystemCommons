@@ -1,7 +1,3 @@
-/*
-* RequestEJB
-*/
-
 package com.alodiga.cms.commons.ejb;
 
 import com.alodiga.cms.commons.exception.EmptyListException;
@@ -56,9 +52,10 @@ public interface RequestEJB extends DistributionGenericEJB {
                                          String tower, int floor, int streetType, String nameStreet, String Urbanization, String firstNamesFamilyOne, String lastNamesFamilyOne, String cellPhoneFamilyOne,
                                          String roomPhoneFamilyOne, String cityFamilyOne, String firstNamesFamilyTwo, String lastNamesFamilyTwo, String cellPhoneFamilyTwo, String roomPhoneFamilyTwo, String cityFamilyTwo) 
                                          throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<Request> searchCardRequestFromAppByPersonId(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
     //ApplicantNaturalPerson
-   public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
+    public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
                                                         String firstNames, String lastNames,  String gender, Date dateBirth, int civilStatusId,  
                                                         String areaCode,String cellPhone, int countryAddress, int state, int city, String zipZone,  
                                                         String nameStreet,String nameStreet2, Long applicantId, int kinShipApplicantId, String taxInformationRegistry)
