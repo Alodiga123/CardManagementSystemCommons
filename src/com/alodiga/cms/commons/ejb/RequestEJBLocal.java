@@ -51,7 +51,6 @@ public interface RequestEJBLocal extends DistributionGenericEJB {
             throws EmptyListException, RegisterNotFoundException, NullParameterException, GeneralException;
     public List<Request> searchCardRequestFromAppByPersonId(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     
-    
     //ApplicantNaturalPerson
     public ApplicantNaturalPerson saveCardComplementary(int countryId, String email, int documentPersonTypeId, String identificationNumber, Date dueDateIdentification,
                                                         String firstNames, String lastNames,  String gender, Date dateBirth, int civilStatusId,  

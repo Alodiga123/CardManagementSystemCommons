@@ -57,6 +57,12 @@ public class Constants {
     public static final int STATUS_APPLICANT_BLACK_LIST_OK = 3;
     public static final int STATUS_APPLICANT_BLACK_LIST = 4;
     public static final int STATUS_APPLICANT_CUSTOMER = 5;
+    public static final int STATUS_APPLICANT_TARJETA_PENDIENTE = 6;
+    public static final int STATUS_APPLICANT_ASIGNADA = 7;
+    public static final int STATUS_APPLICANT_TARJETA_PENDIENTE_POR_ASIGNAR = 8;
+    public static final int STATUS_APPLICANT_ASIGNADA_AL_CLIENTE = 9;
+    public static final int STATUS_APPLICANT_ERROR_SOLICITUD_PERSONALIZACION = 10;
+    public static final int STATUS_APPLICANT_PENDIENTE_PERSONALIZACION = 11;
     public static final int ADDRESS_TYPE_DELIVERY = 3;
     public static final int REVIEW_REQUEST_TYPE_COLLECTIONS = 1;
     public static final boolean USE_NUMBER_CARD = false;

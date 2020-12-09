@@ -281,6 +281,14 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
         this.applicantParentId = applicantParentId;
     }
 
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
+    }
+
     public KinShipApplicant getKinShipApplicantId() {
         return kinShipApplicantId;
     }
@@ -303,14 +311,6 @@ public class ApplicantNaturalPerson extends AbstractDistributionEntity implement
 
     public void setStatusApplicantId(StatusApplicant statusApplicantId) {
         this.statusApplicantId = statusApplicantId;
-    }
-
-    public String getObservations() {
-        return observations;
-    }
-
-    public void setObservations(String observations) {
-        this.observations = observations;
     }
 
     public boolean isRecommendation() {
