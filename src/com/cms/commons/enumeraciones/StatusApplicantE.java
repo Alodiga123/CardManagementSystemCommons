@@ -11,7 +11,15 @@ public enum StatusApplicantE {
 	INACTI(2, "INACTIVO", "INACTI"),
         LINEOK(3, "LISTA NEGRA OK", "LINEOK"),
         LISNEG(4, "LISTA NEGRA", "LISNEG"),
-        CLIENT(5, "CLIENTE", "CLIENT");
+        CLIENT(5, "CLIENTE", "CLIENT"),
+        TARPEN(6, "TARJETA PENDIENTE", "TARPEN"),
+	TARASI(7, "TARJETA ASIGNADA", "TARASI"),
+        TPENAS(8, "TARJETA PENDIENTE POR ASIGNAR", "TPENAS"),
+        ASICLI(9, "ASIGNADA AL CLIENTE", "ASICLI"),
+        ERDOPE(10, "ERROR SOLICITUD PERSONALIZACION", "ERDOPE"),
+        PENPER(11, "PENDIENTE PERSONALIZACION", "PENPER"),
+        APROBA(12, "APROBADO", "APROBA"),
+        RECHAZ(13, "RECHAZADO", "RECHAZ");
 
     private int id;
     private String statusApplicantDescription;

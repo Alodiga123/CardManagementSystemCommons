@@ -481,7 +481,7 @@ INSERT INTO `CardManagementSystem`.`collectionsRequest` (`countryId`, `productTy
 
 -- Estatus de en la tabla statusapplicant
 -- author: Yamelis Almea
--- Fecha: 008/12/2020
+-- Fecha: 08/12/2020
 
 INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('6', 'TARJETA PENDIENTE', 'TARPEN');
 INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('7', 'TARJETA ASIGNADA', 'TARASI');
@@ -489,3 +489,9 @@ INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code
 INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('9', 'ASIGNADA AL CLIENTE', 'ASICLI');
 INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('10', 'ERROR SOLICITUD PERSONALIZACION', 'ERDOPE');
 INSERT INTO `CardManagementSystem`.`statusApplicant` (`id`, `description`, `code`) VALUES ('11', 'PENDIENTE PERSONALIZACION', 'PENPER');
+
+-- Estatus de en la tabla statusApplicant
+-- author: Jesús Gómez
+-- Fecha: 09/12/2020
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`description`, `code`) VALUES ('APROBADO', 'APROBA');
+INSERT INTO `CardManagementSystem`.`statusApplicant` (`description`, `code`) VALUES ('RECHAZADO', 'RECHAZ');
