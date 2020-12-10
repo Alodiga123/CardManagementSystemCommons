@@ -42,7 +42,7 @@ public class Constants {
     public static final String PRODUCT_CODE = "Q758";
     public static final String AFFINITY_CODE = "0002";
     public static final String NOT_RECORDING_CARD = "N";
-    public static final String YES_RECORDING_CARD = "Y";
+    public static final String YES_RECORDING_CARD = "S";
     public static final int SIZE_NOT_VALID_NUMBER_PHONE = 12;    
 
     //Request
