@@ -104,6 +104,8 @@ public class Program extends AbstractDistributionEntity implements Serializable 
     @Size(max = 50)
     @Column(name = "otherResponsibleNetworkReporting")
     private String otherResponsibleNetworkReporting;
+    @Column(name = "indWallet")
+    private Boolean indWallet;
     @JoinColumn(name = "sourceFundsId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private SourceFunds sourceFundsId;
@@ -273,6 +275,14 @@ public class Program extends AbstractDistributionEntity implements Serializable 
 
     public void setSourceFundsId(SourceFunds sourceFundsId) {
         this.sourceFundsId = sourceFundsId;
+    }
+
+    public Boolean getIndWallet() {
+        return indWallet;
+    }
+
+    public void setIndWallet(Boolean indWallet) {
+        this.indWallet = indWallet;
     }
 
     public ResponsibleNetworkReporting getResponsibleNetworkReportingId() {

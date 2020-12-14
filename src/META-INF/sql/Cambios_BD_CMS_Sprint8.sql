@@ -654,3 +654,9 @@ ADD COLUMN `observations` VARCHAR(1500) NULL AFTER `statusApplicantId`;
 -- Fecha: 01/12/2020
 ALTER TABLE `CardManagementSystem`.`cardRequestNaturalPerson` 
 ADD COLUMN `observations` VARCHAR(1500) NULL AFTER `statusApplicantId`;
+
+-- Agregar indicador en tabla program
+-- author: Jesús Gómez
+-- Fecha: 14/12/2020
+ALTER TABLE `CardManagementSystem`.`program` 
+ADD COLUMN `indWallet` TINYINT(1) NULL AFTER `otherResponsibleNetworkReporting`;
