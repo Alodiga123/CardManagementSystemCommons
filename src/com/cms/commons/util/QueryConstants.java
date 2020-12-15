@@ -97,6 +97,7 @@ public class QueryConstants {
     public static final String LOYALTY_TRANSACTION_COMMERCE_UNIQUE = "loyaltyTransactionCommerceUnique";
     public static final String PROGRAM_BY_PROGRAM_TYPE = "programByProgramType";
     public static final String PROGRAM_BY_COUNTRY = "programByCountry";
+    public static final String PROGRAM_BY_ISSUER_COUNTRY = "programByIssuerCountry";
     public static final String ISSUER_BY_COUNTRY = "issuerByCountry";
     public static final String PROGRAM_BY_PRODUCT_TYPE = "programByProductType";
     public static final String PROGRAM_LOYALTY_TRANSACTION_BY_LOYALTY = "programLoyaltyTransactionByLoyalty";
