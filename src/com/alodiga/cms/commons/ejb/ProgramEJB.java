@@ -34,6 +34,7 @@ public interface ProgramEJB extends DistributionGenericEJB {
     public List<Program> getProgramByProgramType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Program> getProgramByProductType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public List<Program> getProgramByCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Program> getProgramByIssuerCountry(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //NaturalPerson
     public List<NaturalPerson> getProgramOwner(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
