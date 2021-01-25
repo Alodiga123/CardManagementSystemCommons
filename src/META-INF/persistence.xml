@@ -130,10 +130,10 @@
     <class>com.cms.commons.models.ApprovalCardRate</class>
     <class>com.cms.commons.models.StatusProduct</class>
     <class>com.cms.commons.models.CardDeliveryRegister</class>
-    <class>com.cms.commons.models.UserHasProfile</class> 
+    <class>com.cms.commons.models.UserHasProfile</class>
     <class>com.cms.commons.models.CardRenewalRequestHasCard</class>
     <class>com.cms.commons.models.CardRenewalRequest</class>
-    <class>com.cms.commons.models.StatusCardRenewalRequest</class>   
+    <class>com.cms.commons.models.StatusCardRenewalRequest</class>
     <class>com.cms.commons.models.SystemFuncionality</class>
     <class>com.cms.commons.models.SecurityQuestion</class>
     <class>com.cms.commons.models.SystemFuncionalityHasSecurityQuestion</class>
@@ -143,6 +143,12 @@
     <class>com.cms.commons.models.PasswordChangeRequest</class>
     <class>com.cms.commons.models.NewCardIssueRequest</class>
     <class>com.cms.commons.models.StatusNewCardIssueRequest</class>
+    <class>com.cms.commons.models.CommisionTransaction</class>
+    <class>com.cms.commons.models.CommisionsReceived</class>
+    <class>com.cms.commons.models.StatusTransactionManagement</class>
+    <class>com.cms.commons.models.BalanceHistoryCard</class>
+    <class>com.cms.commons.models.TransactionsManagement</class>
+    <class>com.cms.commons.models.TransactionsManagementHistory</class>
     <properties>
       <property name="eclipselink.cache.shared.default" value="false"/>
       <property name="eclipselink.logging.timestamp" value="true"/>
@@ -153,4 +159,3 @@
     </properties>
   </persistence-unit>
 </persistence>
-
