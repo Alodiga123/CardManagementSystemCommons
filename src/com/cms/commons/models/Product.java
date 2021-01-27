@@ -164,6 +164,8 @@ public class Product extends AbstractDistributionEntity implements Serializable 
     private StatusProduct statusProductId;
     @Column(name = "maximunDeactivationTimeBlocking")
     private Integer maximunDeactivationTimeBlocking;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private CommisionTransaction commisionTransaction;
 
     public Product() {
     }
@@ -533,6 +535,14 @@ public class Product extends AbstractDistributionEntity implements Serializable 
 
     public void setStatusProductId(StatusProduct statusProductId) {
         this.statusProductId = statusProductId;
+    }
+
+    public CommisionTransaction getCommisionTransaction() {
+        return commisionTransaction;
+    }
+
+    public void setCommisionTransaction(CommisionTransaction commisionTransaction) {
+        this.commisionTransaction = commisionTransaction;
     }
 
 }
