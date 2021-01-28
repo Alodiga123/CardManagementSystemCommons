@@ -198,3 +198,13 @@ ADD COLUMN `acquirerCountryId` INT NULL AFTER `acquirerTerminalCode`;
 -- Fecha: 28/01/2021
 ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
 ADD COLUMN `acquirerCountryId` INT NULL AFTER `acquirerTerminalCode`;
+
+
+-- Modificar campos en tablas transactionsManagement y transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 28/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
+
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
