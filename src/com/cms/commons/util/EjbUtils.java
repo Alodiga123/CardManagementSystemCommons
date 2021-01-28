@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import javax.transaction.UserTransaction;
 import org.apache.log4j.Logger;
 import com.alodiga.cms.commons.exception.GeneralException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,6 +100,18 @@ public class EjbUtils {
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
     }
+    
+    public static Date getBeginningDateAnnual(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_YEAR, 1);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime();
+    }
 
     public static Date addDays(Date date, int daysNumber) {
         Calendar calendar = Calendar.getInstance();
@@ -112,5 +127,41 @@ public class EjbUtils {
     public static String getFormatedDate (Date date, String format) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         return dateFormat.format(date);
+    }
+    
+    public static Timestamp convertStringToTimestampBeginningDate(String strDate) {
+        try {
+          DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+           // you can change format of date
+          Date date = formatter.parse(strDate);         
+          Timestamp timeStampDate = new Timestamp(getBeginningDate(date).getTime());
+          return timeStampDate;
+        } catch (ParseException e) {
+          System.out.println("Exception :" + e);
+          return null;
+        }
+      }
+    
+    public static Timestamp convertStringToTimestampEndingDate(String strDate) {
+        try {
+          DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+           // you can change format of date
+          Date date = formatter.parse(strDate);       
+          Timestamp timeStampDate = new Timestamp(getEndingDate(date).getTime());
+          return timeStampDate;
+        } catch (ParseException e) {
+          System.out.println("Exception :" + e);
+          return null;
+        }
+      }
+    
+    public static boolean isWeekEnd(Date date) {
+    	boolean valid = false;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK); 
+    	if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)
+    		valid = true;
+        return valid;
     }
 }

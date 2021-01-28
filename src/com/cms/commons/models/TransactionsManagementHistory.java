@@ -74,6 +74,8 @@ public class TransactionsManagementHistory implements Serializable {
     @Size(max = 50)
     @Column(name = "acquirerTerminalCode")
     private String acquirerTerminalCode;
+    @Column(name = "acquirerCountryId")
+    private Integer acquirerCountryId;
     @Size(max = 50)
     @Column(name = "transactionNumberAcquirer")
     private String transactionNumberAcquirer;
@@ -172,6 +174,14 @@ public class TransactionsManagementHistory implements Serializable {
 
     public void setAcquirerTerminalCode(String acquirerTerminalCode) {
         this.acquirerTerminalCode = acquirerTerminalCode;
+    }
+    
+    public Integer getAcquirerCountryId() {
+        return acquirerCountryId;
+    }
+
+    public void setAcquirerCountryId(Integer acquirerCountryId) {
+        this.acquirerCountryId = acquirerCountryId;
     }
 
     public String getTransactionNumberAcquirer() {
