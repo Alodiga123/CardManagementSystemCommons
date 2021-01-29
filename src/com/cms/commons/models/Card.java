@@ -67,6 +67,8 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private String assignedAccount;
     @Column(name = "sequentialNumber")
     private Integer sequentialNumber;
+    @Column(name = "maximumRechargeAmount")
+    private Float maximumRechargeAmount;
     @Size(max = 50)
     @Column(name = "cardHolder")
     private String cardHolder;
@@ -180,6 +182,14 @@ public class Card extends AbstractDistributionEntity implements Serializable {
 
     public void setSequentialNumber(Integer sequentialNumber) {
         this.sequentialNumber = sequentialNumber;
+    }
+
+    public Float getMaximumRechargeAmount() {
+        return maximumRechargeAmount;
+    }
+
+    public void setMaximumRechargeAmount(Float maximumRechargeAmount) {
+        this.maximumRechargeAmount = maximumRechargeAmount;
     }
 
     public String getCardHolder() {
