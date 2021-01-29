@@ -111,7 +111,8 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Transaction loadTransaction(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Transaction saveTransaction(Transaction transaction) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    public List<Transaction> getTransactionByCode(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
     //Channel
     public List<Channel> getChannel(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Channel loadChannel(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
