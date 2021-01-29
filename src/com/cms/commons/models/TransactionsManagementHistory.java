@@ -74,6 +74,8 @@ public class TransactionsManagementHistory implements Serializable {
     @Size(max = 50)
     @Column(name = "acquirerTerminalCode")
     private String acquirerTerminalCode;
+    @Column(name = "acquirerCountryId")
+    private Integer acquirerCountryId;
     @Size(max = 50)
     @Column(name = "transactionNumberAcquirer")
     private String transactionNumberAcquirer;
@@ -124,9 +126,9 @@ public class TransactionsManagementHistory implements Serializable {
     @Size(max = 1000)
     @Column(name = "CVV")
     private String cvv;
+    @Size(max = 10)
     @Column(name = "expirationCardDate")
-    @Temporal(TemporalType.DATE)
-    private Date expirationCardDate;
+    private String expirationCardDate;
     @Column(name = "pinLenght")
     private Integer pinLenght;
     @Column(name = "acquirerId")
@@ -172,6 +174,14 @@ public class TransactionsManagementHistory implements Serializable {
 
     public void setAcquirerTerminalCode(String acquirerTerminalCode) {
         this.acquirerTerminalCode = acquirerTerminalCode;
+    }
+    
+    public Integer getAcquirerCountryId() {
+        return acquirerCountryId;
+    }
+
+    public void setAcquirerCountryId(Integer acquirerCountryId) {
+        this.acquirerCountryId = acquirerCountryId;
     }
 
     public String getTransactionNumberAcquirer() {
@@ -334,11 +344,11 @@ public class TransactionsManagementHistory implements Serializable {
         this.cvv = cvv;
     }
 
-    public Date getExpirationCardDate() {
+    public String getExpirationCardDate() {
         return expirationCardDate;
     }
 
-    public void setExpirationCardDate(Date expirationCardDate) {
+    public void setExpirationCardDate(String expirationCardDate) {
         this.expirationCardDate = expirationCardDate;
     }
 

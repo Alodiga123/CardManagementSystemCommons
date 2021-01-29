@@ -172,3 +172,39 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`transactionsManagementHistory
   `updateDate` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+-- Agregar campos en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 25/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
+ADD COLUMN `transactionSequence` VARCHAR(40) NULL AFTER `transactionTypeId`,
+ADD COLUMN `transactionRateAmount` FLOAT NULL AFTER `transactionCityId`;
+
+-- Agregar campos en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 25/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement`
+ADD COLUMN `transactionSequence` VARCHAR(40) NULL AFTER `transactionTypeId`,
+ADD COLUMN `transactionRateAmount` FLOAT NULL AFTER `transactionCityId`;
+
+-- Agregar campos en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 28/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement`
+ADD COLUMN `acquirerCountryId` INT NULL AFTER `acquirerTerminalCode`;
+
+-- Agregar campos en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 28/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
+ADD COLUMN `acquirerCountryId` INT NULL AFTER `acquirerTerminalCode`;
+
+
+-- Modificar campos en tablas transactionsManagement y transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 28/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
+
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
