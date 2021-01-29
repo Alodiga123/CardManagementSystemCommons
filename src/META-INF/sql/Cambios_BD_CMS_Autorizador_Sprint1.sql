@@ -191,7 +191,7 @@ ADD COLUMN `transactionRateAmount` FLOAT NULL AFTER `transactionCityId`;
 -- author: Jesús Gómez
 -- Fecha: 28/01/2021
 ALTER TABLE `CardManagementSystem`.`transactionsManagement`
-ADD COLUMN `acquirerCountryId` INT NULL AFTER `acquirerTerminalCode`;
+ADD COLUMN `acquirerCountryId` INT NULL  `acquirerTerminalCode`;
 
 -- Agregar campos en tabla transactionsManagementHistory
 -- author: Jesús Gómez
@@ -208,3 +208,9 @@ CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
 
 ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
 CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
+
+-- Agregar campo en tabla card
+-- author: Jesús Gómez
+-- Fecha: 29/01/2021
+ALTER TABLE `CardManagementSystem`.`card` 
+ADD COLUMN `maximumRechargeAmount` FLOAT NOT NULL AFTER `sequentialNumber`;
