@@ -133,6 +133,7 @@ public class QueryConstants {
     public static final String SOLICITUDES_BY_ACCOUNT_RESPONDER = "solicitudesByAccountResponder";
     public static final String TRANSACTION_BY_ACCOUNT = "transactionByAccount";
     public static final String TRANSACTION_BY_CUSTOMER = "transactionByCostumer";
+    public static final String TRANSACTION_BY_CODE = "transactionByCode";
     public static final String REPORT_BY_PROFILE = "reportByProfile";
     public static final String DELETE_PERMISSION_HAS_PROFILE = "deletePermissionHasProfile";
     public static final String DELETE_TUP_UP_COMMISSION_CHANGE = "delteTopUpCommissionChange";

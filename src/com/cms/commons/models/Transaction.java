@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -41,7 +42,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Transaction.findByDescription", query = "SELECT t FROM Transaction t WHERE t.description = :description"),
     @NamedQuery(name = "Transaction.findByIndMonetaryType", query = "SELECT t FROM Transaction t WHERE t.indMonetaryType = :indMonetaryType"),
     @NamedQuery(name = "Transaction.findByIndTransactionPurchase", query = "SELECT t FROM Transaction t WHERE t.indTransactionPurchase = :indTransactionPurchase"),
-    @NamedQuery(name = "Transaction.findByIndVariationRateChannel", query = "SELECT t FROM Transaction t WHERE t.indVariationRateChannel = :indVariationRateChannel"),})
+    @NamedQuery(name = "Transaction.findByIndVariationRateChannel", query = "SELECT t FROM Transaction t WHERE t.indVariationRateChannel = :indVariationRateChannel"),
+    @NamedQuery(name = QueryConstants.TRANSACTION_BY_CODE, query = "SELECT t FROM Transaction t WHERE t.code = :code"),})
 public class Transaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
