@@ -53,6 +53,29 @@ VALUES
 INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
 VALUES ('484', 'TRA-01', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412589633874522', 'CARLOS ALVARADO P', '035', '1024', '00');
 
+-- Agregar transacción "TARIFA_TRANSACCION_CMS"
+-- author: Jesús Gómez
+-- Fecha: 29/01/2021
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`,`description`,`indMonetaryType`,`indTransactionPurchase`,`indVariationRateChannel`)
+VALUES (25,"050","TARIFA_TRANSACCION_CMS",1,0,1);
+
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym,`) 
+VALUES (7, 'TRANSACTION FEE CMS', 'TFCMS');
+
+
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) 
+VALUES ('1', '1', '7', '1');
+
+-- DATA INICIAL para tabla statusTransactionManagement
+-- author: Jesús Gómez
+-- Fecha: 29/01/2021
+INSERT INTO `CardManagementSystem`.`statusTransactionManagement` (`description`, `code`) VALUES ('IN PROCESS', 'INPROC');
+INSERT INTO `CardManagementSystem`.`statusTransactionManagement` (`description`, `code`) VALUES ('APPROVED', 'APPROV');
+INSERT INTO `CardManagementSystem`.`statusTransactionManagement` (`description`, `code`) VALUES ('REJECTED', 'REJECT');
+INSERT INTO `CardManagementSystem`.`statusTransactionManagement` (`description`, `code`) VALUES ('CANCELLED', 'CANCELLED'),
+INSERT INTO `CardManagementSystem`.`statusTransactionManagement` (`description`, `code`) VALUES ('CLOSED', 'CLOSED');
+
+
 -- Agregar data en la tablas producthaschannelhastransaction Y transactionManagementHistory
 -- author: Yamelis Almea
 -- Fecha: 29/01/2021
