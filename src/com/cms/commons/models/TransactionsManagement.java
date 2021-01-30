@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -21,7 +23,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -65,7 +66,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TransactionsManagement.findByResponseCode", query = "SELECT t FROM TransactionsManagement t WHERE t.responseCode = :responseCode")
     , @NamedQuery(name = "TransactionsManagement.findByCreateDate", query = "SELECT t FROM TransactionsManagement t WHERE t.createDate = :createDate")
     , @NamedQuery(name = "TransactionsManagement.findByUpdateDate", query = "SELECT t FROM TransactionsManagement t WHERE t.updateDate = :updateDate")})
-public class TransactionsManagement implements Serializable {
+
+public class TransactionsManagement extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -73,15 +75,12 @@ public class TransactionsManagement implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 50)
     @Column(name = "acquirerTerminalCode")
     private String acquirerTerminalCode;
     @Column(name = "acquirerCountryId")
     private Integer acquirerCountryId;
-    @Size(max = 50)
     @Column(name = "transactionNumberAcquirer")
     private String transactionNumberAcquirer;
-    @Size(max = 50)
     @Column(name = "transactionNumberIssuer")
     private String transactionNumberIssuer;
     @Column(name = "transactionTypeId")
@@ -91,6 +90,8 @@ public class TransactionsManagement implements Serializable {
     @Column(name = "dateTransaction")
     @Temporal(TemporalType.DATE)
     private Date dateTransaction;
+    @Column(name = "transactionReference")
+    private String transactionReference;
     @Column(name = "dateTimeTransmissionTerminal")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeTransmissionTerminal;
@@ -102,7 +103,6 @@ public class TransactionsManagement implements Serializable {
     private Date localDateTransaction;
     @Column(name = "localCurrencyTransactionId")
     private Integer localCurrencyTransactionId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "localCurrencyTransactionAmount")
     private Float localCurrencyTransactionAmount;
     @Column(name = "settlementCurrencyTransactionId")
@@ -119,16 +119,12 @@ public class TransactionsManagement implements Serializable {
     private Integer transactionCityId;
     @Column(name = "statusTransactionManagementId")
     private Integer statusTransactionManagementId;
-    @Size(max = 1000)
     @Column(name = "cardNumber")
     private String cardNumber;
-    @Size(max = 50)
     @Column(name = "cardHolder")
     private String cardHolder;
-    @Size(max = 1000)
     @Column(name = "CVV")
     private String cvv;
-    @Size(max = 10)
     @Column(name = "expirationCardDate")
     private String expirationCardDate;
     @Column(name = "pinLenght")
@@ -137,15 +133,12 @@ public class TransactionsManagement implements Serializable {
     private BigInteger acquirerId;
     @Column(name = "issuerId")
     private Integer issuerId;
-    @Size(max = 10)
     @Column(name = "mccCodeTrade")
     private String mccCodeTrade;
-    @Size(max = 50)
     @Column(name = "systemTraceAuditNumber")
     private String systemTraceAuditNumber;
     @Column(name = "numberMovementsCheckBalance")
     private Integer numberMovementsCheckBalance;
-    @Size(max = 50)
     @Column(name = "responseCode")
     private String responseCode;
     @Column(name = "createDate")
@@ -228,6 +221,14 @@ public class TransactionsManagement implements Serializable {
 
     public void setDateTransaction(Date dateTransaction) {
         this.dateTransaction = dateTransaction;
+    }
+    
+    public String getTransactionReference() {
+        return transactionReference;
+    }
+
+    public void setTransactionReference(String transactionReference) {
+        this.transactionReference = transactionReference;
     }
 
     public Date getDateTimeTransmissionTerminal() {
@@ -469,6 +470,16 @@ public class TransactionsManagement implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.TransactionsManagement[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
