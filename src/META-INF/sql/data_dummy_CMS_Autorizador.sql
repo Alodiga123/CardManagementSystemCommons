@@ -48,7 +48,27 @@ VALUES (@CardID, @TransactionsManagementID, '500', '400', '2021-01-27 00:00:00',
 INSERT INTO `CardManagementSystem`.`transactionsManagement` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
 VALUES 
 ('484', 'TRA-01', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412589633874522', 'CARLOS ALVARADO P', '035', '1024', '00'),
-('484', 'TRA-02', 'ACMS-034-2021-2', '6', '1', '2021-01-07', NULL,NULL, NULL, 105.3, 2, 0.12, 1, '5412581258963325', 'PEDRO GONZALEZ A', '721', '0822', '00'),;
+('484', 'TRA-02', 'ACMS-034-2021-2', '6', '1', '2021-01-07', NULL,NULL, NULL, 105.3, 2, 0.12, 1, '5412581258963325', 'PEDRO GONZALEZ A', '721', '0822', '00');
 
 INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
 VALUES ('484', 'TRA-01', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412589633874522', 'CARLOS ALVARADO P', '035', '1024', '00');
+
+-- Agregar data en la tablas producthaschannelhastransaction Y transactionManagementHistory
+-- author: Yamelis Almea
+-- Fecha: 29/01/2021
+
+INSERT INTO `cardmanagementsystem`.`producthaschannelhastransaction` (`id`, `maximumNumberTransactionsDaily`, `maximumNumberTransactionsMonthly`, `amountMinimumTransactionDomestic`, `amountMaximumTransactionDomestic`, `amountMinimumTransactionInternational`, `amountMaximumTransactionInternational`, `dailyAmountLimitDomestic`, `monthlyAmountLimitDomestic`, `dailyAmountLimitInternational`, `monthlyAmountLimitInternational`, `productUseId`, `transactionId`, `channelId`, `productId`) VALUES ('17', '10', '20', '1000', '2000', '2000', '20000', '10', '20', '5', '10', '3', '6', '1', '2');
+
+UPDATE `cardmanagementsystem`.`producthaschannelhastransaction` SET `amountMinimumTransactionDomestic` = '100', `amountMinimumTransactionInternational` = '200', `amountMaximumTransactionInternational` = '2000', `dailyAmountLimitDomestic` = '1000', `monthlyAmountLimitDomestic` = '2000', `dailyAmountLimitInternational` = '2000', `monthlyAmountLimitInternational` = '5000' WHERE (`id` = '17');
+
+INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
+VALUES ('484', 'TRA-02', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412156874009834', 'Bella Mijares', '123', '0823', '00');
+
+INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
+VALUES ('484', 'TRA-03', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412156874009834', 'Bella Mijares', '123', '0823', '00');
+
+INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
+VALUES ('484', 'TRA-04', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412156874009834', 'Bella Mijares', '123', '0823', '00');
+
+INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
+VALUES ('484', 'TRA-05', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412156874009834', 'Bella Mijares', '123', '0823', '00');
