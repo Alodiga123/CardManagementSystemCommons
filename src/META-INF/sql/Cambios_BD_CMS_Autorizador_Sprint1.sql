@@ -279,3 +279,11 @@ REFERENCES `CardManagementSystem`.`subTypeTransaction` (`id`)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar la opción de AUTOINCREMENT en el campo id de subTypeTransaction
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021
+SET FOREIGN_KEY_CHECKS = 0;
+ALTER TABLE `CardManagementSystem`.`subTypeTransaction` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+SET FOREIGN_KEY_CHECKS = 1;
