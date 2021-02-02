@@ -214,3 +214,68 @@ CHANGE COLUMN `expirationCardDate` `expirationCardDate` VARCHAR(10) NOT NULL;
 -- Fecha: 29/01/2021
 ALTER TABLE `CardManagementSystem`.`card` 
 ADD COLUMN `maximumRechargeAmount` FLOAT NOT NULL AFTER `sequentialNumber`;
+
+-- Agregar campos en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 29/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement`
+ADD COLUMN `transactionReference` VARCHAR(50) NULL AFTER `dateTransaction`;
+
+-- Agregar campos en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 29/01/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
+ADD COLUMN `transactionReference` VARCHAR(50) NULL AFTER `dateTransaction`;
+
+-- Crear tabla bonusCard
+-- author: Jesús Gómez
+-- Fecha: 01/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`bonusCard` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `cardId` BIGINT NOT NULL,
+  `programLoyaltyTransactionId` BIGINT NOT NULL,
+  `totalPointsAccumulatedDaily` INT NULL,
+  `totalPointsAccumulatedMonthly` INT NULL,
+  `totalAmountBonuses` FLOAT NULL,
+  `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_bonusCard_card1_idx` (`cardId` ASC),
+  INDEX `fk_bonusCard_programLoyaltyTransaction1_idx` (`programLoyaltyTransactionId` ASC),
+  CONSTRAINT `fk_bonusCard_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_bonusCard_programLoyaltyTransaction1`
+    FOREIGN KEY (`programLoyaltyTransactionId`)
+    REFERENCES `CardManagementSystem`.`programLoyaltyTransaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Crear tabla subTypeTransaction
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`subTypeTransaction` (
+  `id` INT NOT NULL,
+  `description` VARCHAR(50) NULL,
+  `code` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- Agregar FK subTypeTransactionId en tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021
+ALTER TABLE `CardManagementSystem`.`transaction` 
+ADD COLUMN `subTypeTransactionId` INT NOT NULL AFTER `indVariationRateChannel`,
+ADD COLUMN `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `subTypeTransactionId`,
+ADD COLUMN `updateDate` TIMESTAMP NULL AFTER createDate;
+SET FOREIGN_KEY_CHECKS = 0;
+ALTER TABLE `CardManagementSystem`.`transaction`
+ADD CONSTRAINT `fk_reviewOfac_subTypeTransaction1`
+FOREIGN KEY (`subTypeTransactionId`)
+REFERENCES `CardManagementSystem`.`subTypeTransaction` (`id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS = 1;

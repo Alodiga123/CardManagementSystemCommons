@@ -4,8 +4,10 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -67,8 +73,6 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private String assignedAccount;
     @Column(name = "sequentialNumber")
     private Integer sequentialNumber;
-    @Column(name = "maximumRechargeAmount")
-    private Float maximumRechargeAmount;
     @Size(max = 50)
     @Column(name = "cardHolder")
     private String cardHolder;
@@ -136,6 +140,8 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     private Boolean indPendingNewCardIssue;
     @Column(name = "indReceivedCard")
     private Boolean indReceivedCard;
+    @Column(name = "maximumRechargeAmount")
+    private float maximumRechargeAmount;
 
     public Card() {
     }
@@ -184,13 +190,6 @@ public class Card extends AbstractDistributionEntity implements Serializable {
         this.sequentialNumber = sequentialNumber;
     }
 
-    public Float getMaximumRechargeAmount() {
-        return maximumRechargeAmount;
-    }
-
-    public void setMaximumRechargeAmount(Float maximumRechargeAmount) {
-        this.maximumRechargeAmount = maximumRechargeAmount;
-    }
 
     public String getCardHolder() {
         return cardHolder;
@@ -417,6 +416,14 @@ public class Card extends AbstractDistributionEntity implements Serializable {
 
     public void setIndPendingNewCardIssue(Boolean indPendingNewCardIssue) {
         this.indPendingNewCardIssue = indPendingNewCardIssue;
+    }
+
+    public float getMaximumRechargeAmount() {
+        return maximumRechargeAmount;
+    }
+
+    public void setMaximumRechargeAmount(float maximumRechargeAmount) {
+        this.maximumRechargeAmount = maximumRechargeAmount;
     }
 
 }
