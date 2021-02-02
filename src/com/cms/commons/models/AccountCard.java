@@ -63,6 +63,8 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @JoinColumn(name = "accountPropertiesId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private AccountProperties accountPropertiesId;
+    @Column(name = "currentBalance")
+    private Float currentBalance;
     @JoinColumn(name = "transactionId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Transaction transactionId;
@@ -168,6 +170,38 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     public void setCardId(Card cardId) {
         this.cardId = cardId;
     }
+    
+    public String getReasonCancellation() {
+        return reasonCancellation;
+    }
+
+    public void setReasonCancellation(String reasonCancellation) {
+        this.reasonCancellation = reasonCancellation;
+    }
+
+    public Date getCancellationDate() {
+        return cancellationDate;
+    }
+
+    public void setCancellationDate(Date cancellationDate) {
+        this.cancellationDate = cancellationDate;
+    }
+
+    public User getUserCancellationAccountId() {
+        return userCancellationAccountId;
+    }
+
+    public void setUserCancellationAccountId(User userCancellationAccountId) {
+        this.userCancellationAccountId = userCancellationAccountId;
+    }
+
+    public Float getCurrentBalance() {
+        return currentBalance;
+    }
+
+    public void setCurrentBalance(Float currentBalance) {
+        this.currentBalance = currentBalance;
+    }
 
     @Override
     public int hashCode() {
@@ -204,27 +238,4 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
         return super.getTableName(this.getClass());
     }
 
-    public String getReasonCancellation() {
-        return reasonCancellation;
-    }
-
-    public void setReasonCancellation(String reasonCancellation) {
-        this.reasonCancellation = reasonCancellation;
-    }
-
-    public Date getCancellationDate() {
-        return cancellationDate;
-    }
-
-    public void setCancellationDate(Date cancellationDate) {
-        this.cancellationDate = cancellationDate;
-    }
-
-    public User getUserCancellationAccountId() {
-        return userCancellationAccountId;
-    }
-
-    public void setUserCancellationAccountId(User userCancellationAccountId) {
-        this.userCancellationAccountId = userCancellationAccountId;
-    }
 }

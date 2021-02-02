@@ -7,18 +7,25 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -41,7 +48,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Transaction.findByDescription", query = "SELECT t FROM Transaction t WHERE t.description = :description"),
     @NamedQuery(name = "Transaction.findByIndMonetaryType", query = "SELECT t FROM Transaction t WHERE t.indMonetaryType = :indMonetaryType"),
     @NamedQuery(name = "Transaction.findByIndTransactionPurchase", query = "SELECT t FROM Transaction t WHERE t.indTransactionPurchase = :indTransactionPurchase"),
-    @NamedQuery(name = "Transaction.findByIndVariationRateChannel", query = "SELECT t FROM Transaction t WHERE t.indVariationRateChannel = :indVariationRateChannel"),})
+    @NamedQuery(name = "Transaction.findByIndVariationRateChannel", query = "SELECT t FROM Transaction t WHERE t.indVariationRateChannel = :indVariationRateChannel"),
+    @NamedQuery(name = QueryConstants.TRANSACTION_BY_CODE, query = "SELECT t FROM Transaction t WHERE t.code = :code"),})
 public class Transaction extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,6 +72,15 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     private Boolean indTransactionPurchase;
     @Column(name = "indVariationRateChannel")
     private Boolean indVariationRateChannel;
+    @Column(name = "createDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Column(name = "updateDate")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
+    @JoinColumn(name = "subTypeTransactionId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private SubTypeTransaction subTypeTransactionId;
 
     public Transaction() {
     }
@@ -158,5 +175,29 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public SubTypeTransaction getSubTypeTransactionId() {
+        return subTypeTransactionId;
+    }
+
+    public void setSubTypeTransactionId(SubTypeTransaction subTypeTransactionId) {
+        this.subTypeTransactionId = subTypeTransactionId;
     }
 }

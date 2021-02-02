@@ -162,6 +162,7 @@ public class Constants {
     public static final String CARD_STATUS_KEY = "cardStatusId";
     public static final String CARD_IND_ALLOW_TABLE = "indAllowTable";
     public static final String CARD_KEY = "cardId";
+    public static final String PARAM_CODE = "code";
     public static final String STATUS_PLASTIC_CUSTOMIZING_KEY = "statusPlasticCustomizing";
     public static final Long PROGRAM_WALLET_APP_ID = 4L;
     public static final int REQUEST_TYPE_WALLET_APP_ID = 1;
