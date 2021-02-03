@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -63,7 +65,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TransactionsManagementHistory.findByResponseCode", query = "SELECT t FROM TransactionsManagementHistory t WHERE t.responseCode = :responseCode")
     , @NamedQuery(name = "TransactionsManagementHistory.findByCreateDate", query = "SELECT t FROM TransactionsManagementHistory t WHERE t.createDate = :createDate")
     , @NamedQuery(name = "TransactionsManagementHistory.findByUpdateDate", query = "SELECT t FROM TransactionsManagementHistory t WHERE t.updateDate = :updateDate")})
-public class TransactionsManagementHistory implements Serializable {
+
+public class TransactionsManagementHistory extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,15 +74,12 @@ public class TransactionsManagementHistory implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 50)
     @Column(name = "acquirerTerminalCode")
     private String acquirerTerminalCode;
     @Column(name = "acquirerCountryId")
     private Integer acquirerCountryId;
-    @Size(max = 50)
     @Column(name = "transactionNumberAcquirer")
     private String transactionNumberAcquirer;
-    @Size(max = 50)
     @Column(name = "transactionNumberIssuer")
     private String transactionNumberIssuer;
     @Column(name = "transactionTypeId")
@@ -89,6 +89,8 @@ public class TransactionsManagementHistory implements Serializable {
     @Column(name = "dateTransaction")
     @Temporal(TemporalType.DATE)
     private Date dateTransaction;
+    @Column(name = "transactionReference")
+    private String transactionReference;
     @Column(name = "dateTimeTransmissionTerminal")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTimeTransmissionTerminal;
@@ -100,7 +102,6 @@ public class TransactionsManagementHistory implements Serializable {
     private Date localDateTransaction;
     @Column(name = "localCurrencyTransactionId")
     private Integer localCurrencyTransactionId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "localCurrencyTransactionAmount")
     private Float localCurrencyTransactionAmount;
     @Column(name = "settlementCurrencyTransactionId")
@@ -117,16 +118,12 @@ public class TransactionsManagementHistory implements Serializable {
     private Integer transactionCityId;
     @Column(name = "statusTransactionManagementId")
     private Integer statusTransactionManagementId;
-    @Size(max = 1000)
     @Column(name = "cardNumber")
     private String cardNumber;
-    @Size(max = 50)
     @Column(name = "cardHolder")
     private String cardHolder;
-    @Size(max = 1000)
     @Column(name = "CVV")
     private String cvv;
-    @Size(max = 10)
     @Column(name = "expirationCardDate")
     private String expirationCardDate;
     @Column(name = "pinLenght")
@@ -135,15 +132,12 @@ public class TransactionsManagementHistory implements Serializable {
     private BigInteger acquirerId;
     @Column(name = "issuerId")
     private Integer issuerId;
-    @Size(max = 10)
     @Column(name = "mccCodeTrade")
     private String mccCodeTrade;
-    @Size(max = 50)
     @Column(name = "systemTraceAuditNumber")
     private String systemTraceAuditNumber;
     @Column(name = "numberMovementsCheckBalance")
     private Integer numberMovementsCheckBalance;
-    @Size(max = 50)
     @Column(name = "responseCode")
     private String responseCode;
     @Column(name = "createDate")
@@ -152,6 +146,13 @@ public class TransactionsManagementHistory implements Serializable {
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Column(name = "transactionDateIssuer")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date transactionDateIssuer;
+    @Column(name = "tradeName")
+    private String tradeName;
+    @Column(name = "messageMiddlewareId")
+    private Long messageMiddlewareId;
 
     public TransactionsManagementHistory() {
     }
@@ -219,11 +220,19 @@ public class TransactionsManagementHistory implements Serializable {
     public Date getDateTransaction() {
         return dateTransaction;
     }
-
+    
     public void setDateTransaction(Date dateTransaction) {
         this.dateTransaction = dateTransaction;
     }
 
+    public String getTransactionReference() {
+        return transactionReference;
+    }
+
+    public void setTransactionReference(String transactionReference) {
+        this.transactionReference = transactionReference;
+    }
+    
     public Date getDateTimeTransmissionTerminal() {
         return dateTimeTransmissionTerminal;
     }
@@ -447,6 +456,40 @@ public class TransactionsManagementHistory implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.TransactionsManagementHistory[ id=" + id + " ]";
+    }
+
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
+
+    public Date getTransactionDateIssuer() {
+        return transactionDateIssuer;
+    }
+
+    public void setTransactionDateIssuer(Date transactionDateIssuer) {
+        this.transactionDateIssuer = transactionDateIssuer;
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
+
+    public Long getMessageMiddlewareId() {
+        return messageMiddlewareId;
+    }
+
+    public void setMessageMiddlewareId(Long messageMiddlewareId) {
+        this.messageMiddlewareId = messageMiddlewareId;
     }
     
 }

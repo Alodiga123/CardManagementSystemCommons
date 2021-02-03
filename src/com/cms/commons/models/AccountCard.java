@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "AccountCard.findAll", query = "SELECT a FROM AccountCard a"),
     @NamedQuery(name = "AccountCard.findById", query = "SELECT a FROM AccountCard a WHERE a.id = :id"),
+    @NamedQuery(name = "AccountCard.findByCardId", query = "SELECT a FROM AccountCard a WHERE a.cardId.id = :cardId"),
     @NamedQuery(name = "AccountCard.findByCreateDate", query = "SELECT a FROM AccountCard a WHERE a.createDate = :createDate"),
     @NamedQuery(name = "AccountCard.findByUpdateDate", query = "SELECT a FROM AccountCard a WHERE a.updateDate = :updateDate"),
     @NamedQuery(name = QueryConstants.ACCOUNT_CARD_BY_PRODUCT, query = "SELECT a FROM AccountCard a WHERE a.cardId.productId.id = :productId")})

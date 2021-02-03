@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Sequences.findById", query = "SELECT s FROM Sequences s WHERE s.id = :id")
     , @NamedQuery(name = "Sequences.findByInitialValue", query = "SELECT s FROM Sequences s WHERE s.initialValue = :initialValue")
     , @NamedQuery(name = "Sequences.findByCurrentValue", query = "SELECT s FROM Sequences s WHERE s.currentValue = :currentValue")
+    , @NamedQuery(name = "Sequences.findBydocumentTypeByOriginApplication", query = "SELECT s FROM Sequences s WHERE s.documentTypeId.id = :documentTypeId AND s.originApplicationId.id = :originApplicationId")    
     , @NamedQuery(name = "Sequences.findByDocumentType", query = "SELECT s FROM Sequences s WHERE s.documentTypeId.id = :documentTypeId")})
 public class Sequences extends AbstractDistributionEntity implements Serializable {
 
