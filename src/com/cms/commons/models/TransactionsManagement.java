@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -147,6 +148,13 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Column(name = "transactionDateIssuer")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date transactionDateIssuer;
+    @Column(name = "tradeName")
+    private String tradeName;
+    @Column(name = "messageMiddlewareId")
+    private Long messageMiddlewareId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
     private CommisionsReceived commisionsReceived;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
@@ -480,6 +488,30 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getTransactionDateIssuer() {
+        return transactionDateIssuer;
+    }
+
+    public void setTransactionDateIssuer(Date transactionDateIssuer) {
+        this.transactionDateIssuer = transactionDateIssuer;
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
+
+    public Long getMessageMiddlewareId() {
+        return messageMiddlewareId;
+    }
+
+    public void setMessageMiddlewareId(Long messageMiddlewareId) {
+        this.messageMiddlewareId = messageMiddlewareId;
     }
     
 }

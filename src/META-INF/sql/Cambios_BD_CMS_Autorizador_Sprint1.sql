@@ -279,3 +279,27 @@ REFERENCES `CardManagementSystem`.`subTypeTransaction` (`id`)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar la opción de AUTOINCREMENT en el campo id de subTypeTransaction
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021
+SET FOREIGN_KEY_CHECKS = 0;
+ALTER TABLE `CardManagementSystem`.`subTypeTransaction` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar campos en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 03/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement`
+ADD COLUMN `messageMiddlewareId` BIGINT NULL AFTER `responseCode`,
+ADD COLUMN `tradeName` VARCHAR(250) NULL AFTER `mccCodeTrade`,
+ADD COLUMN `transactionDateIssuer` TIMESTAMP NULL AFTER `transactionNumberIssuer`;
+
+-- Agregar campos en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 03/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
+ADD COLUMN `messageMiddlewareId` BIGINT NULL AFTER `responseCode`,
+ADD COLUMN `tradeName` VARCHAR(250) NULL AFTER `mccCodeTrade`,
+ADD COLUMN `transactionDateIssuer` TIMESTAMP NULL AFTER `transactionNumberIssuer`;
