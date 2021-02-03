@@ -185,6 +185,7 @@ public class Constants {
     //Queries PersonType
     public static final int ORIGIN_APPLICATION_WALLET_ID = 2;
     public static final int ORIGIN_APPLICATION_CMS_ID = 1;
+    public static final int ORIGIN_APPLICATION_CMS_AUTHORIZE = 3;
     
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
