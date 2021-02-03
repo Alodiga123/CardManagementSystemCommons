@@ -271,4 +271,6 @@ public class QueryConstants {
     public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
     public static final String PARAM_CODE ="code";
     public static final String PARAM_PERSON_ID = "personId";    
+    public static final String PARAM_CARD_NUMBER = "cardNumber";
+    public static final String PARAM_RESPONSE_CODE = "responseCode";
 }
