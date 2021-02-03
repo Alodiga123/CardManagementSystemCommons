@@ -399,4 +399,7 @@ public class Constants {
     public static Long ADD_CITY = 205L;
     public static Long EDIT_CITY = 206L;
     public static Long VIEW_CITY = 207L;
+    public static Long LIST_CHECK_CARD_TRANSACTIONS = 216L;
+    public static Long EDIT_CHECK_CARD_TRANSACTIONS = 217L;
+    public static Long VIEW_CHECK_CARD_TRANSACTIONS = 218L;
 }
