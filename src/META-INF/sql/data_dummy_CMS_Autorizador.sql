@@ -124,3 +124,27 @@ UPDATE `CardManagementSystem`.`transaction` SET `description`='COMISION_TRANSACC
 -- author: Jorge Pinto
 -- Fecha: 05/02/2021 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('10', 'CHANGE CARD STATUS', 'CHCAST');
+
+
+-- Menu nuevo en autorizador WEB
+-- Fecha 05 Febrero 2021
+INSERT INTO `CardManagementSystem`.`permission_group` (`id`, `name`,`enabled`) VALUES ('11', 'Operation Management', '1');
+
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('216', '11', 'listCardManager.zul', 'transactionsManagement', 'List Operation Management', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('217', '11', 'adminCardManager.zul?eventType=1', 'transactionsManagement', 'Edit Operation Management', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('218', '11', 'adminCardManager.zul?eventType=1', 'transactionsManagement', 'View Operation Management', '1');
+
+
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('11', '1', 'Operation Management', 'Operation Management');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('11', '2', 'Gestión de Operaciones', 'Gestión de Operaciones');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('216', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('217', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('218', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('216', '1', 'Check Card Transactions', 'Check Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('216', '2', 'Consultar Transacciones por Tarjeta', 'Consultar Transacciones por Tarjeta');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('217', '1', 'Edit Card Transactions', 'Edit Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('217', '2', 'Editar Transacciones por Tarjeta', 'Editar Transacciones por Tarjeta');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '1', 'View Card Transactions', 'View Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '2', 'Ver Transacciones por Tarjeta', 'Ver Transacciones por Tarjeta');
