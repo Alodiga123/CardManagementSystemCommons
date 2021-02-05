@@ -118,3 +118,9 @@ UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='23';
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='24';
 UPDATE `CardManagementSystem`.`transaction` SET `description`='COMISION_TRANSACCION_CMS', `subTypeTransactionId`='3' WHERE `id`='25';
+
+
+-- Agregar data dummy a la tabla documentType
+-- author: Jorge Pinto
+-- Fecha: 05/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('10', 'CHANGE CARD STATUS', 'CHCAST');
