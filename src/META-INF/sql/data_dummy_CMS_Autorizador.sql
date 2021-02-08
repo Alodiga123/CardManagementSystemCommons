@@ -118,3 +118,11 @@ UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='23';
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='24';
 UPDATE `CardManagementSystem`.`transaction` SET `description`='COMISION_TRANSACCION_CMS', `subTypeTransactionId`='3' WHERE `id`='25';
+
+-- data para consulta de saldo
+-- author: Graterol Moises
+-- Fecha: 05/02/2021 
+
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (9,'CARD BALANCE INQUIRY', 'CBI');
+
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '9', '1');
