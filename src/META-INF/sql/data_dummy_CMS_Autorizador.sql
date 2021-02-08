@@ -148,3 +148,12 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageI
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('217', '2', 'Editar Transacciones por Tarjeta', 'Editar Transacciones por Tarjeta');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '1', 'View Card Transactions', 'View Card Transactions');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '2', 'Ver Transacciones por Tarjeta', 'Ver Transacciones por Tarjeta');
+
+
+-- data para consulta de saldo
+-- author: Graterol Moises
+-- Fecha: 05/02/2021 
+
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (9,'CARD BALANCE INQUIRY', 'CBI');
+
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '9', '1');
