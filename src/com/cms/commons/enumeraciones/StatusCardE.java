@@ -15,7 +15,8 @@ public enum StatusCardE {
         PENDENTR(6, "PENDIENTE ENTREGA"),
         ENTREG(7, "ENTREGADA"),
         ACTIVA(8, "ACTIVA"),
-        BLOQUE(9, "BLOQUEADA");
+        BLOQUE(9, "BLOQUEADA"),
+        ANULAD(10, "ANULADA");
 	
     private int id;
     private String statusCardDescription;
