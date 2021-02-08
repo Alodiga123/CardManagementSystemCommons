@@ -118,3 +118,9 @@ UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='23';
 UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='24';
 UPDATE `CardManagementSystem`.`transaction` SET `description`='COMISION_TRANSACCION_CMS', `subTypeTransactionId`='3' WHERE `id`='25';
+
+-- Generar los documentType para las transacciones Comision CMS y Activación de Tarjeta
+-- author: Jesús Gómez
+-- Fecha: 05/02/2021 
+UPDATE `CardManagementSystem`.`documentType` SET `name`='COMMISION CMS', `acronym`='COMCMS' WHERE `id`='7';
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (8,'ACTIVATION CARD', 'ACTCAR');
