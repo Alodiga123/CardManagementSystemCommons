@@ -314,21 +314,6 @@ ADD COLUMN `code` VARCHAR(5) NULL AFTER `name`;
 UPDATE `CardManagementSystem`.`programLoyaltyType` SET `code` = 'point' WHERE (`id` = '1');
 UPDATE `CardManagementSystem`.`programLoyaltyType` SET `code` = 'bonus' WHERE (`id` = '2');
 
--- Agregar Nuevo tipo de transaccion para registrar las bonificaciones
--- author: Yamelis Almea
--- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('26', '051', 'BONIFICACIONS_CMS', '1', '0', '1', '3', '2021-02-04 10:26:07');
-
--- Agregar Nuevo documentType para utilizar en el numero de secuencia
--- author: Yamelis Almea
--- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('11', 'BONUS TRANSACTION CMS', 'BTCMS');
-
--- Agregar Secuencia para transaciones de bonificacion
--- author: Yamelis Almea
--- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('9', '1', '1', '11', '1');
-
 -- Agregar Modificar tabla de bonusCard para guardar puntos 
 -- author: Yamelis Almea
 -- Fecha: 09/02/2021
