@@ -17,6 +17,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -153,8 +155,18 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private Date transactionDateIssuer;
     @Column(name = "tradeName")
     private String tradeName;
+    @Size(max = 40)
+    @Column(name = "transactionSequence")
+    private String transactionSequence;
+    @Column(name = "transactionRateAmount")
+    private Float transactionRateAmount;
     @Column(name = "messageMiddlewareId")
-    private Long messageMiddlewareId;
+    private BigInteger messageMiddlewareId;
+    @Column(name = "indClosed")
+    private Boolean indClosed;
+    @JoinColumn(name = "dailyClosingId", referencedColumnName = "id")
+    @ManyToOne
+    private DailyClosing dailyClosingId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
     private CommisionsReceived commisionsReceived;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
@@ -506,12 +518,44 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.tradeName = tradeName;
     }
 
-    public Long getMessageMiddlewareId() {
+    public String getTransactionSequence() {
+        return transactionSequence;
+    }
+
+    public void setTransactionSequence(String transactionSequence) {
+        this.transactionSequence = transactionSequence;
+    }
+
+    public Float getTransactionRateAmount() {
+        return transactionRateAmount;
+    }
+
+    public void setTransactionRateAmount(Float transactionRateAmount) {
+        this.transactionRateAmount = transactionRateAmount;
+    }
+
+    public BigInteger getMessageMiddlewareId() {
         return messageMiddlewareId;
     }
 
-    public void setMessageMiddlewareId(Long messageMiddlewareId) {
+    public void setMessageMiddlewareId(BigInteger messageMiddlewareId) {
         this.messageMiddlewareId = messageMiddlewareId;
+    }
+
+    public Boolean getIndClosed() {
+        return indClosed;
+    }
+
+    public void setIndClosed(Boolean indClosed) {
+        this.indClosed = indClosed;
+    }
+
+    public DailyClosing getDailyClosingId() {
+        return dailyClosingId;
+    }
+
+    public void setDailyClosingId(DailyClosing dailyClosingId) {
+        this.dailyClosingId = dailyClosingId;
     }
     
 }
