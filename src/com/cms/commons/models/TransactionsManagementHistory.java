@@ -9,19 +9,27 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -145,6 +153,25 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @Column(name = "transactionDateIssuer")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date transactionDateIssuer;
+    @Column(name = "tradeName")
+    private String tradeName;
+    @Size(max = 40)
+    @Column(name = "transactionSequence")
+    private String transactionSequence;
+    @Column(name = "transactionRateAmount")
+    private Float transactionRateAmount;
+    @Column(name = "messageMiddlewareId")
+    private BigInteger messageMiddlewareId;
+    @Column(name = "indClosed")
+    private Boolean indClosed;
+    @JoinColumn(name = "dailyClosingId", referencedColumnName = "id")
+    @ManyToOne
+    private DailyClosing dailyClosingId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transactionsManagementHistoryId")
+    private Collection<TransactionLog> transactionLogCollection;
 
     public TransactionsManagementHistory() {
     }
@@ -458,6 +485,72 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
+    }
+
+    public Date getTransactionDateIssuer() {
+        return transactionDateIssuer;
+    }
+
+    public void setTransactionDateIssuer(Date transactionDateIssuer) {
+        this.transactionDateIssuer = transactionDateIssuer;
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
+
+    public String getTransactionSequence() {
+        return transactionSequence;
+    }
+
+    public void setTransactionSequence(String transactionSequence) {
+        this.transactionSequence = transactionSequence;
+    }
+
+    public Float getTransactionRateAmount() {
+        return transactionRateAmount;
+    }
+
+    public void setTransactionRateAmount(Float transactionRateAmount) {
+        this.transactionRateAmount = transactionRateAmount;
+    }
+
+    public BigInteger getMessageMiddlewareId() {
+        return messageMiddlewareId;
+    }
+
+    public void setMessageMiddlewareId(BigInteger messageMiddlewareId) {
+        this.messageMiddlewareId = messageMiddlewareId;
+    }
+
+    public Boolean getIndClosed() {
+        return indClosed;
+    }
+
+    public void setIndClosed(Boolean indClosed) {
+        this.indClosed = indClosed;
+    }
+
+    public DailyClosing getDailyClosingId() {
+        return dailyClosingId;
+    }
+
+    public void setDailyClosingId(DailyClosing dailyClosingId) {
+        this.dailyClosingId = dailyClosingId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<TransactionLog> getTransactionLogCollection() {
+        return transactionLogCollection;
+    }
+
+    public void setTransactionLogCollection(Collection<TransactionLog> transactionLogCollection) {
+        this.transactionLogCollection = transactionLogCollection;
     }
     
 }

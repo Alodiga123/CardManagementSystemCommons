@@ -89,6 +89,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List<Card> getCardByEmail(String email) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByPhone(String phoneNumber) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByIdentificationNumber(String identificationNumber) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByProgramAndTransactionalStatus(Long programId) throws EmptyListException, GeneralException, NullParameterException;
     
     //CardNumberCredential
     public List<CardNumberCredential> getCardNumberCredential(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

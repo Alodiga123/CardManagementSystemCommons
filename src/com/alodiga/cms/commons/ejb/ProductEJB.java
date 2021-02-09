@@ -21,6 +21,7 @@ import com.cms.commons.models.RateByProduct;
 import com.cms.commons.models.SegmentCommerce;
 import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
+import com.cms.commons.models.TransactionsManagement;
 import com.cms.commons.models.Transaction;
 import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.ApprovalGeneralRate;
@@ -157,4 +158,9 @@ public interface ProductEJB extends DistributionGenericEJB {
     public ApprovalCardRate loadApprovalCardRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApprovalCardRate saveApprovalCardRate(ApprovalCardRate approvalProductRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
+    //TransactionsManagement
+    public List<TransactionsManagement> getTransactionsManagement(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public TransactionsManagement loadTransactionsManagement(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public TransactionsManagement saveTransactionsManagement(TransactionsManagement transactionsManagement) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<TransactionsManagement> searchTransactionsManagementByParams(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }

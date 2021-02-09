@@ -280,9 +280,34 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS = 1;
 
+
+-- Agregar la opción de AUTOINCREMENT en el campo id de subTypeTransaction
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021
+SET FOREIGN_KEY_CHECKS = 0;
+ALTER TABLE `CardManagementSystem`.`subTypeTransaction` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar campos en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 03/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement`
+ADD COLUMN `messageMiddlewareId` BIGINT NULL AFTER `responseCode`,
+ADD COLUMN `tradeName` VARCHAR(250) NULL AFTER `mccCodeTrade`,
+ADD COLUMN `transactionDateIssuer` TIMESTAMP NULL AFTER `transactionNumberIssuer`;
+
+-- Agregar campos en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 03/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory`
+ADD COLUMN `messageMiddlewareId` BIGINT NULL AFTER `responseCode`,
+ADD COLUMN `tradeName` VARCHAR(250) NULL AFTER `mccCodeTrade`,
+ADD COLUMN `transactionDateIssuer` TIMESTAMP NULL AFTER `transactionNumberIssuer`;
+
 -- Agregar code en tabla programLoyalTytype
 -- author: Yamelis Almea
--- Fecha: 04/02/2021
+-- Fecha: 09/02/2021
 ALTER TABLE `CardManagementSystem`.`programLoyaltyType` 
 ADD COLUMN `code` VARCHAR(5) NULL AFTER `name`;
 
@@ -291,22 +316,22 @@ UPDATE `CardManagementSystem`.`programLoyaltyType` SET `code` = 'bonus' WHERE (`
 
 -- Agregar Nuevo tipo de transaccion para registrar las bonificaciones
 -- author: Yamelis Almea
--- Fecha: 04/02/2021
+-- Fecha: 09/02/2021
 INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('26', '051', 'BONIFICACIONS_CMS', '1', '0', '1', '3', '2021-02-04 10:26:07');
 
 -- Agregar Nuevo documentType para utilizar en el numero de secuencia
 -- author: Yamelis Almea
--- Fecha: 04/02/2021
+-- Fecha: 09/02/2021
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('8', 'BONUS TRANSACTION CMS', 'BTCMS');
 
 -- Agregar Secuencia para transaciones de bonificacion
 -- author: Yamelis Almea
--- Fecha: 04/02/2021
+-- Fecha: 09/02/2021
 INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('9', '1', '1', '8', '1');
 
 -- Agregar Modificar tabla de bonusCard para guardar puntos 
 -- author: Yamelis Almea
--- Fecha: 08/02/2021
+-- Fecha: 09/02/2021
 ALTER TABLE `CardManagementSystem`.`bonusCard` 
 DROP FOREIGN KEY `fk_bonusCard_programLoyaltyTransaction1`;
 ALTER TABLE `cardmanagementsystem`.`bonuscard` 
@@ -318,7 +343,7 @@ DROP INDEX `fk_bonusCard_programLoyaltyTransaction1_idx` ;
 
 -- Crear tabla transactionPoint
 -- author: Yamelis Almea
--- Fecha: 08/02/2021
+-- Fecha: 09/02/2021
 CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`transactionPoint` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cardId` bigint(20) NOT NULL,

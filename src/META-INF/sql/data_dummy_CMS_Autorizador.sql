@@ -95,3 +95,71 @@ VALUES ('484', 'TRA-04', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, N
 
 INSERT INTO `CardManagementSystem`.`transactionsManagementHistory` (`acquirerCountryId`, `transactionNumberAcquirer`, `transactionNumberIssuer`, `transactionTypeId`, `channelId`, `dateTransaction`, `dateTimeTransmissionTerminal`, `localTimeTransaction`, `localDateTransaction`, `settlementTransactionAmount`, `acquirerCommisionAmount`, `acquirerSettlementCommissionAmount`, `statusTransactionManagementId`, `cardNumber`, `cardHolder`, `CVV`, `expirationCardDate`, `responseCode`) 
 VALUES ('484', 'TRA-05', 'ACMS-034-2021-1', '6', '1', '2021-01-04', NULL,NULL, NULL, 35.42, 2, 0.12, 1, '5412156874009834', 'Bella Mijares', '123', '0823', '00');
+
+-- data inicial de la tabla subTransactionType
+-- Atualizar los tipos de transacción agregando el sub tipo de transacción
+-- author: Jesús Gómez
+-- Fecha: 02/02/2021 
+
+INSERT INTO `CardManagementSystem`.`subTypeTransaction` (`description`, `code`) VALUES ('Administrative', 'ADMINI');
+INSERT INTO `CardManagementSystem`.`subTypeTransaction` (`description`, `code`) VALUES ('Debit', 'DEBIT');
+INSERT INTO `CardManagementSystem`.`subTypeTransaction` (`description`, `code`) VALUES ('Credit', 'CREDIT');
+
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='2' WHERE `id`='3';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='2' WHERE `id`='4';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='2' WHERE `id`='5';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='2' WHERE `id`='6';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='7';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='8';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='9';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='10';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='1' WHERE `id`='23';
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='3' WHERE `id`='24';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='COMISION_TRANSACCION_CMS', `subTypeTransactionId`='3' WHERE `id`='25';
+
+-- Generar los documentType para las transacciones Comision CMS y Activación de Tarjeta
+-- author: Jesús Gómez
+-- Fecha: 05/02/2021 
+UPDATE `CardManagementSystem`.`documentType` SET `name`='COMMISION CMS', `acronym`='COMCMS' WHERE `id`='7';
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (8,'ACTIVATION CARD', 'ACTCAR');
+
+
+-- Agregar data dummy a la tabla documentType
+-- author: Jorge Pinto
+-- Fecha: 05/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('10', 'CHANGE CARD STATUS', 'CHCAST');
+
+
+-- Menu nuevo en autorizador WEB
+-- Fecha 05 Febrero 2021
+INSERT INTO `CardManagementSystem`.`permission_group` (`id`, `name`,`enabled`) VALUES ('11', 'Operation Management', '1');
+
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('216', '11', 'listCardManager.zul', 'transactionsManagement', 'List Operation Management', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('217', '11', 'adminCardManager.zul?eventType=1', 'transactionsManagement', 'Edit Operation Management', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('218', '11', 'adminCardManager.zul?eventType=1', 'transactionsManagement', 'View Operation Management', '1');
+
+
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('11', '1', 'Operation Management', 'Operation Management');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('11', '2', 'Gestión de Operaciones', 'Gestión de Operaciones');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('216', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('217', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('218', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('216', '1', 'Check Card Transactions', 'Check Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('216', '2', 'Consultar Transacciones por Tarjeta', 'Consultar Transacciones por Tarjeta');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('217', '1', 'Edit Card Transactions', 'Edit Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('217', '2', 'Editar Transacciones por Tarjeta', 'Editar Transacciones por Tarjeta');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '1', 'View Card Transactions', 'View Card Transactions');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('218', '2', 'Ver Transacciones por Tarjeta', 'Ver Transacciones por Tarjeta');
+
+
+-- data para consulta de saldo
+-- author: Graterol Moises
+-- Fecha: 05/02/2021 
+
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (9,'CARD BALANCE INQUIRY', 'CBI');
+
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '9', '1');

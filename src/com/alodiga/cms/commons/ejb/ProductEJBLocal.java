@@ -28,6 +28,7 @@ import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StatusProduct;
 import com.cms.commons.models.StorageMedio;
 import com.cms.commons.models.Transaction;
+import com.cms.commons.models.TransactionsManagement;
 import java.util.List;
 
 /**
@@ -150,4 +151,10 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<ApprovalProductRate> getApprovalProductRate(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ApprovalProductRate loadApprovalProductRate(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ApprovalProductRate saveApprovalProductRate(ApprovalProductRate approvalProductRate) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //TransactionsManagement
+    public List<TransactionsManagement> getTransactionsManagement(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public TransactionsManagement loadTransactionsManagement(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public TransactionsManagement saveTransactionsManagement(TransactionsManagement transactionsManagement) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 }

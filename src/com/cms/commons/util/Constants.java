@@ -186,6 +186,7 @@ public class Constants {
     //Queries PersonType
     public static final int ORIGIN_APPLICATION_WALLET_ID = 2;
     public static final int ORIGIN_APPLICATION_CMS_ID = 1;
+    public static final int ORIGIN_APPLICATION_CMS_AUTHORIZE = 3;
     
     public static Integer PERSON_CARD_COMPLEMENTARIES_CUSTOMER = 8;
     public static Integer ACCOUNT_STATUS_REQUESTED = 1;
@@ -400,4 +401,7 @@ public class Constants {
     public static Long ADD_CITY = 205L;
     public static Long EDIT_CITY = 206L;
     public static Long VIEW_CITY = 207L;
+    public static Long LIST_CHECK_CARD_TRANSACTIONS = 216L;
+    public static Long EDIT_CHECK_CARD_TRANSACTIONS = 217L;
+    public static Long VIEW_CHECK_CARD_TRANSACTIONS = 218L;
 }
