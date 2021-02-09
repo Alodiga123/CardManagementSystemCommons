@@ -132,6 +132,8 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private String expirationCardDate;
     @Column(name = "pinLenght")
     private Integer pinLenght;
+    @Column(name = "transferDestinationCardNumber")
+    private String transferDestinationCardNumber;
     @Column(name = "acquirerId")
     private Long acquirerId;
     @Column(name = "issuerId")
@@ -385,6 +387,14 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
 
     public void setPinLenght(Integer pinLenght) {
         this.pinLenght = pinLenght;
+    }
+
+    public String getTransferDestinationCardNumber() {
+        return transferDestinationCardNumber;
+    }
+
+    public void setTransferDestinationCardNumber(String transferDestinationCardNumber) {
+        this.transferDestinationCardNumber = transferDestinationCardNumber;
     }
 
     public Long getAcquirerId() {
