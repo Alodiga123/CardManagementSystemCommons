@@ -322,12 +322,12 @@ INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `
 -- Agregar Nuevo documentType para utilizar en el numero de secuencia
 -- author: Yamelis Almea
 -- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('8', 'BONUS TRANSACTION CMS', 'BTCMS');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('11', 'BONUS TRANSACTION CMS', 'BTCMS');
 
 -- Agregar Secuencia para transaciones de bonificacion
 -- author: Yamelis Almea
 -- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('9', '1', '1', '8', '1');
+INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('9', '1', '1', '11', '1');
 
 -- Agregar Modificar tabla de bonusCard para guardar puntos 
 -- author: Yamelis Almea
