@@ -47,6 +47,9 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
     @Size(max = 40)
     @Column(name = "name")
     private String name;
+    @Size(max = 5)
+    @Column(name = "code")
+    private String code;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "programLoyaltyTypeId")
     private Collection<ProgramLoyalty> programLoyaltyCollection;
 
@@ -71,6 +74,14 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @XmlTransient

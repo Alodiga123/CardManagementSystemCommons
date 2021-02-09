@@ -279,3 +279,59 @@ REFERENCES `CardManagementSystem`.`subTypeTransaction` (`id`)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar code en tabla programLoyalTytype
+-- author: Yamelis Almea
+-- Fecha: 04/02/2021
+ALTER TABLE `CardManagementSystem`.`programLoyaltyType` 
+ADD COLUMN `code` VARCHAR(5) NULL AFTER `name`;
+
+UPDATE `CardManagementSystem`.`programLoyaltyType` SET `code` = 'point' WHERE (`id` = '1');
+UPDATE `CardManagementSystem`.`programLoyaltyType` SET `code` = 'bonus' WHERE (`id` = '2');
+
+-- Agregar Nuevo tipo de transaccion para registrar las bonificaciones
+-- author: Yamelis Almea
+-- Fecha: 04/02/2021
+INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('26', '051', 'BONIFICACIONS_CMS', '1', '0', '1', '3', '2021-02-04 10:26:07');
+
+-- Agregar Nuevo documentType para utilizar en el numero de secuencia
+-- author: Yamelis Almea
+-- Fecha: 04/02/2021
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('8', 'BONUS TRANSACTION CMS', 'BTCMS');
+
+-- Agregar Secuencia para transaciones de bonificacion
+-- author: Yamelis Almea
+-- Fecha: 04/02/2021
+INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('9', '1', '1', '8', '1');
+
+-- Agregar Modificar tabla de bonusCard para guardar puntos 
+-- author: Yamelis Almea
+-- Fecha: 08/02/2021
+ALTER TABLE `CardManagementSystem`.`bonusCard` 
+DROP FOREIGN KEY `fk_bonusCard_programLoyaltyTransaction1`;
+ALTER TABLE `cardmanagementsystem`.`bonuscard` 
+DROP COLUMN `totalAmountBonuses`,
+DROP COLUMN `totalPointsAccumulatedMonthly`,
+DROP COLUMN `programLoyaltyTransactionId`,
+CHANGE COLUMN `totalPointsAccumulatedDaily` `totalPointsAccumulated` INT(11) NULL DEFAULT NULL ,
+DROP INDEX `fk_bonusCard_programLoyaltyTransaction1_idx` ;
+
+-- Crear tabla transactionPoint
+-- author: Yamelis Almea
+-- Fecha: 08/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`transactionPoint` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cardId` bigint(20) NOT NULL,
+  `programLoyaltyTransactionId` bigint(20) NOT NULL,
+  `points` int(11) DEFAULT NULL,
+  `transactionReference` varchar(50) DEFAULT NULL,
+  `createDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `fk_transactionPoint_card1_idx` (`cardId`),
+  KEY `fk_transactionPoint_programLoyaltyTransaction1_idx` (`programLoyaltyTransactionId`),
+  CONSTRAINT `fk_transactionPoint_card1` FOREIGN KEY (`cardId`) REFERENCES `card` (`id`),
+  CONSTRAINT `fk_transactionPoint_programLoyaltyTransaction1` FOREIGN KEY (`programLoyaltyTransactionId`) REFERENCES `programloyaltytransaction` (`id`)
+) ENGINE=InnoDB;
+
