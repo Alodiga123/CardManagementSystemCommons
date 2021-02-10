@@ -30,12 +30,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "transactionPoint")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TransactionPoint.findAll", query = "SELECT b FROM BonusCard b")
-    , @NamedQuery(name = "TransactionPoint.findById", query = "SELECT b FROM BonusCard b WHERE b.id = :id")
-    , @NamedQuery(name = "BonusCard.findByCardId", query = "SELECT b FROM BonusCard b WHERE b.cardId = :cardId")
-    , @NamedQuery(name = "BonusCard.findByProgramLoyaltyTransactionId", query = "SELECT b FROM BonusCard b WHERE b.programLoyaltyTransactionId = :programLoyaltyTransactionId")
-    , @NamedQuery(name = "BonusCard.findByCreateDate", query = "SELECT b FROM BonusCard b WHERE b.createDate = :createDate")
-    , @NamedQuery(name = "BonusCard.findByUpdateDate", query = "SELECT b FROM BonusCard b WHERE b.updateDate = :updateDate")})
+    @NamedQuery(name = "TransactionPoint.findAll", query = "SELECT b FROM TransactionPoint b")
+    , @NamedQuery(name = "TransactionPoint.findById", query = "SELECT b FROM TransactionPoint b WHERE b.id = :id")
+    , @NamedQuery(name = "TransactionPoint.findByCardId", query = "SELECT b FROM TransactionPoint b WHERE b.cardId = :cardId")
+    , @NamedQuery(name = "TransactionPoint.findByProgramLoyaltyTransactionId", query = "SELECT b FROM TransactionPoint b WHERE b.programLoyaltyTransactionId = :programLoyaltyTransactionId")
+    , @NamedQuery(name = "TransactionPoint.findByCreateDate", query = "SELECT b FROM TransactionPoint b WHERE b.createDate = :createDate")
+    , @NamedQuery(name = "TransactionPoint.findByUpdateDate", query = "SELECT b FROM TransactionPoint b WHERE b.updateDate = :updateDate")})
 public class TransactionPoint implements Serializable {
 
     private static final long serialVersionUID = 1L;
