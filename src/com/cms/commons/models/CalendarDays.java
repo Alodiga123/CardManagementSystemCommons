@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -27,15 +28,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "bonusCard")
+@Table(name = "calendarDays")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BonusCard.findAll", query = "SELECT b FROM BonusCard b")
-    , @NamedQuery(name = "BonusCard.findById", query = "SELECT b FROM BonusCard b WHERE b.id = :id")
-    , @NamedQuery(name = "BonusCard.findByTotalPointsAccumulated", query = "SELECT b FROM BonusCard b WHERE b.totalPointsAccumulated = :totalPointsAccumulated")
-    , @NamedQuery(name = "BonusCard.findByCreateDate", query = "SELECT b FROM BonusCard b WHERE b.createDate = :createDate")
-    , @NamedQuery(name = "BonusCard.findByUpdateDate", query = "SELECT b FROM BonusCard b WHERE b.updateDate = :updateDate")})
-public class BonusCard implements Serializable {
+    @NamedQuery(name = "CalendarDays.findAll", query = "SELECT c FROM CalendarDays c")
+    , @NamedQuery(name = "CalendarDays.findById", query = "SELECT c FROM CalendarDays c WHERE c.id = :id")
+    , @NamedQuery(name = "CalendarDays.findByHolidayDate", query = "SELECT c FROM CalendarDays c WHERE c.holidayDate = :holidayDate")
+    , @NamedQuery(name = "CalendarDays.findByDescription", query = "SELECT c FROM CalendarDays c WHERE c.description = :description")
+    , @NamedQuery(name = "CalendarDays.findByCreateDate", query = "SELECT c FROM CalendarDays c WHERE c.createDate = :createDate")
+    , @NamedQuery(name = "CalendarDays.findByUpdateDate", query = "SELECT c FROM CalendarDays c WHERE c.updateDate = :updateDate")})
+public class CalendarDays implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,22 +45,26 @@ public class BonusCard implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "totalPointsAccumulated")
-    private Integer totalPointsAccumulated;
+    @Column(name = "holidayDate")
+    @Temporal(TemporalType.DATE)
+    private Date holidayDate;
+    @Size(max = 50)
+    @Column(name = "description")
+    private String description;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Column(name = "updateDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-    @JoinColumn(name = "cardId", referencedColumnName = "id")
+    @JoinColumn(name = "countryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Card cardId;
+    private Country countryId;
 
-    public BonusCard() {
+    public CalendarDays() {
     }
 
-    public BonusCard(Long id) {
+    public CalendarDays(Long id) {
         this.id = id;
     }
 
@@ -70,14 +76,22 @@ public class BonusCard implements Serializable {
         this.id = id;
     }
 
-    public Integer getTotalPointsAccumulated() {
-        return totalPointsAccumulated;
+    public Date getHolidayDate() {
+        return holidayDate;
     }
 
-    public void setTotalPointsAccumulated(Integer totalPointsAccumulated) {
-        this.totalPointsAccumulated = totalPointsAccumulated;
+    public void setHolidayDate(Date holidayDate) {
+        this.holidayDate = holidayDate;
     }
-    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -94,14 +108,13 @@ public class BonusCard implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public Card getCardId() {
-        return cardId;
+    public Country getCountryId() {
+        return countryId;
     }
 
-    public void setCardId(Card cardId) {
-        this.cardId = cardId;
+    public void setCountryId(Country countryId) {
+        this.countryId = countryId;
     }
-
 
     @Override
     public int hashCode() {
@@ -113,10 +126,10 @@ public class BonusCard implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BonusCard)) {
+        if (!(object instanceof CalendarDays)) {
             return false;
         }
-        BonusCard other = (BonusCard) object;
+        CalendarDays other = (CalendarDays) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -125,7 +138,7 @@ public class BonusCard implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.BonusCard[ id=" + id + " ]";
+        return "com.cms.commons.models.CalendarDays[ id=" + id + " ]";
     }
     
 }

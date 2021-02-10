@@ -57,6 +57,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class Product extends AbstractDistributionEntity implements Serializable {
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "productId")
+    private KeyProperties keyProperties;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -543,6 +546,14 @@ public class Product extends AbstractDistributionEntity implements Serializable 
 
     public void setCommisionTransaction(CommisionTransaction commisionTransaction) {
         this.commisionTransaction = commisionTransaction;
+    }
+
+    public KeyProperties getKeyProperties() {
+        return keyProperties;
+    }
+
+    public void setKeyProperties(KeyProperties keyProperties) {
+        this.keyProperties = keyProperties;
     }
 
 }

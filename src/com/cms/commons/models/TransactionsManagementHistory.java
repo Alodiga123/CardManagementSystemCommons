@@ -9,20 +9,27 @@ import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -128,8 +135,10 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     private String expirationCardDate;
     @Column(name = "pinLenght")
     private Integer pinLenght;
+    @Column(name = "transferDestinationCardNumber")
+    private String transferDestinationCardNumber;
     @Column(name = "acquirerId")
-    private BigInteger acquirerId;
+    private Long acquirerId;
     @Column(name = "issuerId")
     private Integer issuerId;
     @Column(name = "mccCodeTrade")
@@ -151,8 +160,20 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     private Date transactionDateIssuer;
     @Column(name = "tradeName")
     private String tradeName;
+    @Size(max = 40)
+    @Column(name = "transactionSequence")
+    private String transactionSequence;
+    @Column(name = "transactionRateAmount")
+    private Float transactionRateAmount;
     @Column(name = "messageMiddlewareId")
     private Long messageMiddlewareId;
+    @Column(name = "indClosed")
+    private Boolean indClosed;
+    @JoinColumn(name = "dailyClosingId", referencedColumnName = "id")
+    @ManyToOne
+    private DailyClosing dailyClosingId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transactionsManagementHistoryId")
+    private Collection<TransactionLog> transactionLogCollection;
 
     public TransactionsManagementHistory() {
     }
@@ -369,11 +390,19 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
         this.pinLenght = pinLenght;
     }
 
-    public BigInteger getAcquirerId() {
+    public String getTransferDestinationCardNumber() {
+        return transferDestinationCardNumber;
+    }
+
+    public void setTransferDestinationCardNumber(String transferDestinationCardNumber) {
+        this.transferDestinationCardNumber = transferDestinationCardNumber;
+    }
+
+    public Long getAcquirerId() {
         return acquirerId;
     }
 
-    public void setAcquirerId(BigInteger acquirerId) {
+    public void setAcquirerId(Long acquirerId) {
         this.acquirerId = acquirerId;
     }
 
@@ -484,12 +513,54 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
         this.tradeName = tradeName;
     }
 
+    public String getTransactionSequence() {
+        return transactionSequence;
+    }
+
+    public void setTransactionSequence(String transactionSequence) {
+        this.transactionSequence = transactionSequence;
+    }
+
+    public Float getTransactionRateAmount() {
+        return transactionRateAmount;
+    }
+
+    public void setTransactionRateAmount(Float transactionRateAmount) {
+        this.transactionRateAmount = transactionRateAmount;
+    }
+
     public Long getMessageMiddlewareId() {
         return messageMiddlewareId;
     }
 
     public void setMessageMiddlewareId(Long messageMiddlewareId) {
         this.messageMiddlewareId = messageMiddlewareId;
+    }
+
+    public Boolean getIndClosed() {
+        return indClosed;
+    }
+
+    public void setIndClosed(Boolean indClosed) {
+        this.indClosed = indClosed;
+    }
+
+    public DailyClosing getDailyClosingId() {
+        return dailyClosingId;
+    }
+
+    public void setDailyClosingId(DailyClosing dailyClosingId) {
+        this.dailyClosingId = dailyClosingId;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<TransactionLog> getTransactionLogCollection() {
+        return transactionLogCollection;
+    }
+
+    public void setTransactionLogCollection(Collection<TransactionLog> transactionLogCollection) {
+        this.transactionLogCollection = transactionLogCollection;
     }
     
 }

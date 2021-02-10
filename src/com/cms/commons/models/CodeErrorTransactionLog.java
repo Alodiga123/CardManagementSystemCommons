@@ -5,8 +5,6 @@
  */
 package com.cms.commons.models;
 
-import com.alodiga.cms.commons.exception.TableNotFoundException;
-import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -30,13 +28,14 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author jose
  */
 @Entity
-@Table(name = "programLoyaltyType")
+@Table(name = "codeErrorTransactionLog")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ProgramLoyaltyType.findAll", query = "SELECT p FROM ProgramLoyaltyType p"),
-    @NamedQuery(name = "ProgramLoyaltyType.findById", query = "SELECT p FROM ProgramLoyaltyType p WHERE p.id = :id"),
-    @NamedQuery(name = "ProgramLoyaltyType.findByName", query = "SELECT p FROM ProgramLoyaltyType p WHERE p.name = :name")})
-public class ProgramLoyaltyType extends AbstractDistributionEntity implements Serializable {
+    @NamedQuery(name = "CodeErrorTransactionLog.findAll", query = "SELECT c FROM CodeErrorTransactionLog c")
+    , @NamedQuery(name = "CodeErrorTransactionLog.findById", query = "SELECT c FROM CodeErrorTransactionLog c WHERE c.id = :id")
+    , @NamedQuery(name = "CodeErrorTransactionLog.findByDescription", query = "SELECT c FROM CodeErrorTransactionLog c WHERE c.description = :description")
+    , @NamedQuery(name = "CodeErrorTransactionLog.findByCode", query = "SELECT c FROM CodeErrorTransactionLog c WHERE c.code = :code")})
+public class CodeErrorTransactionLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,19 +43,19 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 40)
-    @Column(name = "name")
-    private String name;
-    @Size(max = 5)
+    @Size(max = 50)
+    @Column(name = "description")
+    private String description;
+    @Size(max = 50)
     @Column(name = "code")
     private String code;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programLoyaltyTypeId")
-    private Collection<ProgramLoyalty> programLoyaltyCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeErrorTransactionLogId")
+    private Collection<TransactionLog> transactionLogCollection;
 
-    public ProgramLoyaltyType() {
+    public CodeErrorTransactionLog() {
     }
 
-    public ProgramLoyaltyType(Integer id) {
+    public CodeErrorTransactionLog(Integer id) {
         this.id = id;
     }
 
@@ -68,12 +67,12 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCode() {
@@ -86,12 +85,12 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
 
     @XmlTransient
     @JsonIgnore
-    public Collection<ProgramLoyalty> getProgramLoyaltyCollection() {
-        return programLoyaltyCollection;
+    public Collection<TransactionLog> getTransactionLogCollection() {
+        return transactionLogCollection;
     }
 
-    public void setProgramLoyaltyCollection(Collection<ProgramLoyalty> programLoyaltyCollection) {
-        this.programLoyaltyCollection = programLoyaltyCollection;
+    public void setTransactionLogCollection(Collection<TransactionLog> transactionLogCollection) {
+        this.transactionLogCollection = transactionLogCollection;
     }
 
     @Override
@@ -104,10 +103,10 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProgramLoyaltyType)) {
+        if (!(object instanceof CodeErrorTransactionLog)) {
             return false;
         }
-        ProgramLoyaltyType other = (ProgramLoyaltyType) object;
+        CodeErrorTransactionLog other = (CodeErrorTransactionLog) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -116,16 +115,7 @@ public class ProgramLoyaltyType extends AbstractDistributionEntity implements Se
 
     @Override
     public String toString() {
-        return "com.cms.commons.models.ProgramLoyaltyType[ id=" + id + " ]";
+        return "com.cms.commons.models.CodeErrorTransactionLog[ id=" + id + " ]";
     }
-
-    @Override
-    public Object getPk() {
-        return getId();
-    }
-
-    @Override
-    public String getTableName() throws TableNotFoundException {
-        return super.getTableName(this.getClass());
-    }
+    
 }

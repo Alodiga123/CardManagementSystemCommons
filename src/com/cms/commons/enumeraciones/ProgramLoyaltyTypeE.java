@@ -9,28 +9,16 @@ package com.cms.commons.enumeraciones;
  *
  * @author jose
  */
-public enum TransactionE {
+public enum ProgramLoyaltyTypeE {
 
-    RECARGA(1, "021", "RECARGA"),
-    RECARGA_INICIAL(2, "011", "RECARGA INICIAL"),
-    RETIRO_DOMESTICO(3, "022", "RETIRO DOMESTICO"),
-    RETIRO_INTERNACIONAL(4, "023", "RETIRO INTERNACIONAL"),
-    COMPRA_DOMESTICA_PIN(5, "031", "COMPRA DOMESTICA PIN"),
-    COMPRA_INTERNACIONAL_PIN(6, "034", "COMPRA INTERNACIONAL PIN"),
-    DEPOSITO(7, "041", "DEPOSITO"),
-    CONSULTA(8, "051", "CONSULTA"),
-    TRANSFERENCIAS_PROPIAS(9, "250", "TRANSFERENCIAS PROPIAS"),
-    ACTIVACION_TARJETA(10, "096", "ACTIVACION TARJETA"),
-    CREACION_CUENTA(23, "101", "CREACION DE CUENTA"),
-    RECARGA_MANUAL(24, "045", "RECARGA MANUAL"),
-    COMISION_CMS(25,"050","COMISION CMS"),
-    BONIFICACIONES(26,"051","BONIFICACIONES");
+    PUNTOS(1,"point", "PUNTOS"),
+    BONIFICACION(2, "bonus","BONIFICACION");
 
     private int id;
     private String code;
     private String description;
 
-    private TransactionE(int id, String code, String description) {
+    private ProgramLoyaltyTypeE(int id, String code, String description) {
         this.id = id;
         this.code = code;
         this.description = description;
