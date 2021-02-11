@@ -175,7 +175,8 @@ INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALU
 -- Agregar Secuencia para transaciones de bonificacion
 -- author: Yamelis Almea
 -- Fecha: 09/02/2021
-INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('10', '1', '1', '11', '1');
+INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) 
+VALUES ('10', '1', '1', '11', '1');
 
 -- Modificar nombre de tipo de transacción para Activar la Tarjeta
 -- author: Jesús Gómez
