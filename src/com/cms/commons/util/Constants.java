@@ -85,6 +85,7 @@ public class Constants {
     public static final int CARD_STATUS_ERROR = 5;
     public static final int CARD_STATUS_PENDING_DELIVERY = 6;
     public static final boolean CARD_IND_RENEWAL = true;
+    public static final int STATUS_LOYALTY_PROGRAM_ACTIVE = 2;
 
     public static final int ECONOMIC_ACTIVITY = 4;
     public static final int STATUS_REQUEST_COLLECTIONS_WITHOUT_APPROVAL = 7;

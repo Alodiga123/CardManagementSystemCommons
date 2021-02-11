@@ -132,8 +132,10 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private String expirationCardDate;
     @Column(name = "pinLenght")
     private Integer pinLenght;
+    @Column(name = "transferDestinationCardNumber")
+    private String transferDestinationCardNumber;
     @Column(name = "acquirerId")
-    private BigInteger acquirerId;
+    private Long acquirerId;
     @Column(name = "issuerId")
     private Integer issuerId;
     @Column(name = "mccCodeTrade")
@@ -161,7 +163,7 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     @Column(name = "transactionRateAmount")
     private Float transactionRateAmount;
     @Column(name = "messageMiddlewareId")
-    private BigInteger messageMiddlewareId;
+    private Long messageMiddlewareId;
     @Column(name = "indClosed")
     private Boolean indClosed;
     @JoinColumn(name = "dailyClosingId", referencedColumnName = "id")
@@ -387,11 +389,19 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.pinLenght = pinLenght;
     }
 
-    public BigInteger getAcquirerId() {
+    public String getTransferDestinationCardNumber() {
+        return transferDestinationCardNumber;
+    }
+
+    public void setTransferDestinationCardNumber(String transferDestinationCardNumber) {
+        this.transferDestinationCardNumber = transferDestinationCardNumber;
+    }
+
+    public Long getAcquirerId() {
         return acquirerId;
     }
 
-    public void setAcquirerId(BigInteger acquirerId) {
+    public void setAcquirerId(Long acquirerId) {
         this.acquirerId = acquirerId;
     }
 
@@ -534,11 +544,11 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.transactionRateAmount = transactionRateAmount;
     }
 
-    public BigInteger getMessageMiddlewareId() {
+    public Long getMessageMiddlewareId() {
         return messageMiddlewareId;
     }
 
-    public void setMessageMiddlewareId(BigInteger messageMiddlewareId) {
+    public void setMessageMiddlewareId(Long messageMiddlewareId) {
         this.messageMiddlewareId = messageMiddlewareId;
     }
 

@@ -27,15 +27,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jose
  */
 @Entity
-@Table(name = "bonusCard")
+@Table(name = "transactionPoint")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BonusCard.findAll", query = "SELECT b FROM BonusCard b")
-    , @NamedQuery(name = "BonusCard.findById", query = "SELECT b FROM BonusCard b WHERE b.id = :id")
-    , @NamedQuery(name = "BonusCard.findByTotalPointsAccumulated", query = "SELECT b FROM BonusCard b WHERE b.totalPointsAccumulated = :totalPointsAccumulated")
-    , @NamedQuery(name = "BonusCard.findByCreateDate", query = "SELECT b FROM BonusCard b WHERE b.createDate = :createDate")
-    , @NamedQuery(name = "BonusCard.findByUpdateDate", query = "SELECT b FROM BonusCard b WHERE b.updateDate = :updateDate")})
-public class BonusCard implements Serializable {
+    @NamedQuery(name = "TransactionPoint.findAll", query = "SELECT b FROM TransactionPoint b")
+    , @NamedQuery(name = "TransactionPoint.findById", query = "SELECT b FROM TransactionPoint b WHERE b.id = :id")
+    , @NamedQuery(name = "TransactionPoint.findByCardId", query = "SELECT b FROM TransactionPoint b WHERE b.cardId = :cardId")
+    , @NamedQuery(name = "TransactionPoint.findByProgramLoyaltyTransactionId", query = "SELECT b FROM TransactionPoint b WHERE b.programLoyaltyTransactionId = :programLoyaltyTransactionId")
+    , @NamedQuery(name = "TransactionPoint.findByCreateDate", query = "SELECT b FROM TransactionPoint b WHERE b.createDate = :createDate")
+    , @NamedQuery(name = "TransactionPoint.findByUpdateDate", query = "SELECT b FROM TransactionPoint b WHERE b.updateDate = :updateDate")})
+public class TransactionPoint implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,8 +44,8 @@ public class BonusCard implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Column(name = "totalPointsAccumulated")
-    private Integer totalPointsAccumulated;
+    @Column(name = "points")
+    private Integer points;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -54,11 +55,16 @@ public class BonusCard implements Serializable {
     @JoinColumn(name = "cardId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardId;
+    @JoinColumn(name = "programLoyaltyTransactionId", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private ProgramLoyaltyTransaction programLoyaltyTransactionId;
+    @Column(name = "transactionReference")
+    private String transactionReference;
 
-    public BonusCard() {
+    public TransactionPoint() {
     }
 
-    public BonusCard(Long id) {
+    public TransactionPoint(Long id) {
         this.id = id;
     }
 
@@ -70,14 +76,14 @@ public class BonusCard implements Serializable {
         this.id = id;
     }
 
-    public Integer getTotalPointsAccumulated() {
-        return totalPointsAccumulated;
+    public Integer getPoints() {
+        return points;
     }
 
-    public void setTotalPointsAccumulated(Integer totalPointsAccumulated) {
-        this.totalPointsAccumulated = totalPointsAccumulated;
+    public void setPoints(Integer points) {
+        this.points = points;
     }
-    
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -102,6 +108,21 @@ public class BonusCard implements Serializable {
         this.cardId = cardId;
     }
 
+    public ProgramLoyaltyTransaction getProgramLoyaltyTransactionId() {
+        return programLoyaltyTransactionId;
+    }
+
+    public void setProgramLoyaltyTransactionId(ProgramLoyaltyTransaction programLoyaltyTransactionId) {
+        this.programLoyaltyTransactionId = programLoyaltyTransactionId;
+    }
+
+    public String getTransactionReference() {
+        return transactionReference;
+    }
+
+    public void setTransactionReference(String transactionReference) {
+        this.transactionReference = transactionReference;
+    }
 
     @Override
     public int hashCode() {
@@ -113,10 +134,10 @@ public class BonusCard implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BonusCard)) {
+        if (!(object instanceof TransactionPoint)) {
             return false;
         }
-        BonusCard other = (BonusCard) object;
+        TransactionPoint other = (TransactionPoint) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
