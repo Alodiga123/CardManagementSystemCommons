@@ -188,3 +188,13 @@ UPDATE `CardManagementSystem`.`transaction` SET `description`='ACTIVATE CARD' WH
 -- Fecha: 11/02/2021 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('13', 'CHECK CARD MOVEMENTS', 'CHCAMO');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '12', '1');
+
+-- Menu nuevo en autorizador WEB
+-- author: Yamelis Almea
+-- Fecha 12 Febrero 2021
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('219', '11', 'AutomaticServices', 'dailyClosing', 'AutomaticServices', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`id`, `permissionId`, `languageId`, `alias`, `description`) VALUES ('443', '219', '1', 'Automatic Services', 'Automatic Services');
+INSERT INTO `CardManagementSystem`.`permission_data` (`id`, `permissionId`, `languageId`, `alias`, `description`) VALUES ('444', '219', '2', 'Servicios Automaticos', 'Servicios Automaticos');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`id`, `permissionId`, `profileId`) VALUES ('11', '219', '1');

@@ -12,6 +12,8 @@ public class EjbConstants {
     public static final String PRODUCT_EJB = "ejb/cms/ProductEJB";
     public static final String CARD_EJB = "ejb/cms/CardEJB";
     public static final String USER_EJB = "ejb/cms/UserEJB";
+    public static final String CLOSING_EJB = "ejb/cms/ClosingEJB";
+    public static final String CLOSING_TIMER_EJB = "ejb/cms/ClosingTimerEJB";
     
 //CAMBIAR
     public static final String PROPERTIES_PACKAGE = "com.distribution.commons.util.";
