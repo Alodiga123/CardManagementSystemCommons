@@ -172,9 +172,8 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     private Long messageMiddlewareId;
     @Column(name = "indClosed")
     private Boolean indClosed;
-    @JoinColumn(name = "dailyClosingId", referencedColumnName = "id")
-    @ManyToOne
-    private DailyClosing dailyClosingId;
+    @Column(name = "dailyClosingId")
+    private Long dailyClosingId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "transactionsManagementHistoryId")
     private Collection<TransactionLog> transactionLogCollection;
 
@@ -521,11 +520,11 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
         this.indClosed = indClosed;
     }
 
-    public DailyClosing getDailyClosingId() {
+    public Long getDailyClosingId() {
         return dailyClosingId;
     }
 
-    public void setDailyClosingId(DailyClosing dailyClosingId) {
+    public void setDailyClosingId(Long dailyClosingId) {
         this.dailyClosingId = dailyClosingId;
     }
 

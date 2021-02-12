@@ -152,3 +152,52 @@ ADD COLUMN `transactionConcept` VARCHAR(80) NULL AFTER `transactionSequence`;
 
 ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
 ADD COLUMN `transactionConcept` VARCHAR(80) NULL AFTER `transactionSequence`;
+
+-- Agregar tabla totalTransactionsAmountByDailyClosing
+-- author: Jesús Gómez
+-- Fecha: 12/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`totalTransactionsAmountByDailyClosing` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `dailyClosingId` BIGINT UNIQUE NOT NULL,
+  `transactionId` INT NOT NULL,
+  `totalTransactions` INT NULL,
+  `transactionsAmount` FLOAT NULL,
+  `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_totalTransactionsAmountByDailyClosing_transaction1_idx` (`transactionId` ASC),
+  INDEX `fk_totalTransactionsAmountByDailyClosing_dailyClosing1_idx` (`dailyClosingId` ASC),
+  CONSTRAINT `fk_totalTransactionsAmountByDailyClosing_transaction1`
+    FOREIGN KEY (`transactionId`)
+    REFERENCES `CardManagementSystem`.`transaction` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_totalTransactionsAmountByDailyClosing_dailyClosing1`
+    FOREIGN KEY (`dailyClosingId`)
+    REFERENCES `CardManagementSystem`.`dailyClosing` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- Eliminar FK dailyClosingId en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 12/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+DROP FOREIGN KEY `fk_transactionsManagement_dailyClosing1`;
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+DROP INDEX `fk_transactionsManagement_dailyClosing1`;
+
+-- Eliminar FK dailyClosingId en tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 12/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+DROP FOREIGN KEY `fk_transactionsManagementHistory_dailyClosing1`;
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+DROP INDEX `fk_transactionsManagementHistory_dailyClosing1`;
+
+-- Se eliminaron los campos: dailyClosingId y indClosed en tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 12/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+DROP COLUMN `dailyClosingId`,
+DROP COLUMN `indClosed`;
