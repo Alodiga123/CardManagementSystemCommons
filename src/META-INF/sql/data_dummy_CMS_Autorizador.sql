@@ -182,3 +182,9 @@ VALUES ('10', '1', '1', '11', '1');
 -- author: Jesús Gómez
 -- Fecha: 09/02/2021 
 UPDATE `CardManagementSystem`.`transaction` SET `description`='ACTIVATE CARD' WHERE `id`='8';
+
+-- Agregar data dummy a la tabla documentType y Sequence
+-- author: Jorge Pinto
+-- Fecha: 11/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('13', 'CHECK CARD MOVEMENTS', 'CHCAMO');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '12', '1');

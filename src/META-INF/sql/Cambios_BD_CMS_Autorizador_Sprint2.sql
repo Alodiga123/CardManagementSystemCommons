@@ -134,3 +134,21 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`transactionLog` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- Agregar campo transferDestinationCardNumber en las tablas transactionManagement y transactionManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 09/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `transferDestinationCardNumber` VARCHAR(1000) NULL AFTER `pinLenght`;
+
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `transferDestinationCardNumber` VARCHAR(1000) NULL AFTER `pinLenght`;
+
+-- Agregar campo transactionConcept en las tablas transactionManagement y transactionManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 11/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `transactionConcept` VARCHAR(80) NULL AFTER `transactionSequence`;
+
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `transactionConcept` VARCHAR(80) NULL AFTER `transactionSequence`;
