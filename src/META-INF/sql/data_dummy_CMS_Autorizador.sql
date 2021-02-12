@@ -188,3 +188,14 @@ UPDATE `CardManagementSystem`.`transaction` SET `description`='ACTIVATE CARD' WH
 -- Fecha: 11/02/2021 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('13', 'CHECK CARD MOVEMENTS', 'CHCAMO');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '12', '1');
+
+
+-- Agregar data dummy a la tabla documentType, Sequence y Transaction
+-- author: Graterol Moises
+-- Fecha: 12/02/2021 
+INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('052', 'TRANSFERENCIAS_ENTRE_CUENTAS', '1', '0', '1', '1', '2021-02-02 09:26:07');
+
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('12', 'TRANSFER BETWEEN ACCOUNT', 'TRBEAC');
+
+
+INSERT INTO `CardManagementSystem`.`sequences` (`id`, `initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('12', '1', '1', '12', '1');
