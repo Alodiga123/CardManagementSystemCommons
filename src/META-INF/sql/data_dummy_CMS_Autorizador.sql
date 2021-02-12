@@ -189,6 +189,11 @@ UPDATE `CardManagementSystem`.`transaction` SET `description`='ACTIVATE CARD' WH
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('13', 'CHECK CARD MOVEMENTS', 'CHCAMO');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '12', '1');
 
+-- Agregar la aplicación Card Manager System Authorize en originApplication
+-- author: Yamelis Almea
+-- Fecha: 12/02/2021 
+INSERT INTO `CardManagementSystem`.`originApplication` (`id`, `name`) VALUES ('3', 'Card Manager System Authorize');
+
 
 -- Agregar data dummy a la tabla documentType, Sequence y Transaction
 -- author: Graterol Moises
