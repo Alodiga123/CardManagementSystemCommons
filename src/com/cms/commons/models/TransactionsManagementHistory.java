@@ -163,6 +163,9 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     @Size(max = 40)
     @Column(name = "transactionSequence")
     private String transactionSequence;
+    @Size(max = 80)
+    @Column(name = "transactionConcept")
+    private String transactionConcept;
     @Column(name = "transactionRateAmount")
     private Float transactionRateAmount;
     @Column(name = "messageMiddlewareId")
@@ -461,6 +464,70 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+    
+    public Date getTransactionDateIssuer() {
+        return transactionDateIssuer;
+    }
+
+    public void setTransactionDateIssuer(Date transactionDateIssuer) {
+        this.transactionDateIssuer = transactionDateIssuer;
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
+
+    public String getTransactionSequence() {
+        return transactionSequence;
+    }
+
+    public void setTransactionSequence(String transactionSequence) {
+        this.transactionSequence = transactionSequence;
+    }
+
+    public String getTransactionConcept() {
+        return transactionConcept;
+    }
+
+    public void setTransactionConcept(String transactionConcept) {
+        this.transactionConcept = transactionConcept;
+    }
+
+    public Float getTransactionRateAmount() {
+        return transactionRateAmount;
+    }
+
+    public void setTransactionRateAmount(Float transactionRateAmount) {
+        this.transactionRateAmount = transactionRateAmount;
+    }
+
+    public Long getMessageMiddlewareId() {
+        return messageMiddlewareId;
+    }
+
+    public void setMessageMiddlewareId(Long messageMiddlewareId) {
+        this.messageMiddlewareId = messageMiddlewareId;
+    }
+
+    public Boolean getIndClosed() {
+        return indClosed;
+    }
+
+    public void setIndClosed(Boolean indClosed) {
+        this.indClosed = indClosed;
+    }
+
+    public DailyClosing getDailyClosingId() {
+        return dailyClosingId;
+    }
+
+    public void setDailyClosingId(DailyClosing dailyClosingId) {
+        this.dailyClosingId = dailyClosingId;
+    }
 
     @Override
     public int hashCode() {
@@ -495,62 +562,6 @@ public class TransactionsManagementHistory extends AbstractDistributionEntity im
     @Override
     public String getTableName() throws TableNotFoundException {
         return super.getTableName(this.getClass());
-    }
-
-    public Date getTransactionDateIssuer() {
-        return transactionDateIssuer;
-    }
-
-    public void setTransactionDateIssuer(Date transactionDateIssuer) {
-        this.transactionDateIssuer = transactionDateIssuer;
-    }
-
-    public String getTradeName() {
-        return tradeName;
-    }
-
-    public void setTradeName(String tradeName) {
-        this.tradeName = tradeName;
-    }
-
-    public String getTransactionSequence() {
-        return transactionSequence;
-    }
-
-    public void setTransactionSequence(String transactionSequence) {
-        this.transactionSequence = transactionSequence;
-    }
-
-    public Float getTransactionRateAmount() {
-        return transactionRateAmount;
-    }
-
-    public void setTransactionRateAmount(Float transactionRateAmount) {
-        this.transactionRateAmount = transactionRateAmount;
-    }
-
-    public Long getMessageMiddlewareId() {
-        return messageMiddlewareId;
-    }
-
-    public void setMessageMiddlewareId(Long messageMiddlewareId) {
-        this.messageMiddlewareId = messageMiddlewareId;
-    }
-
-    public Boolean getIndClosed() {
-        return indClosed;
-    }
-
-    public void setIndClosed(Boolean indClosed) {
-        this.indClosed = indClosed;
-    }
-
-    public DailyClosing getDailyClosingId() {
-        return dailyClosingId;
-    }
-
-    public void setDailyClosingId(DailyClosing dailyClosingId) {
-        this.dailyClosingId = dailyClosingId;
     }
 
     @XmlTransient
