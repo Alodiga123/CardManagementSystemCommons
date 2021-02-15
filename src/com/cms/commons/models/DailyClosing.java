@@ -79,8 +79,8 @@ public class DailyClosing implements Serializable {
     @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private OriginApplication originApplicationId;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dailyClosingId")
-    private TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dailyClosingId")
+//    private TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing;
 
     public DailyClosing() {
     }
@@ -191,12 +191,12 @@ public class DailyClosing implements Serializable {
         return "com.cms.commons.models.DailyClosing[ id=" + id + " ]";
     }
 
-    public TotalTransactionsAmountByDailyClosing getTotalTransactionsAmountByDailyClosing() {
-        return totalTransactionsAmountByDailyClosing;
-    }
-
-    public void setTotalTransactionsAmountByDailyClosing(TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing) {
-        this.totalTransactionsAmountByDailyClosing = totalTransactionsAmountByDailyClosing;
-    }
+//    public TotalTransactionsAmountByDailyClosing getTotalTransactionsAmountByDailyClosing() {
+//        return totalTransactionsAmountByDailyClosing;
+//    }
+//
+//    public void setTotalTransactionsAmountByDailyClosing(TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing) {
+//        this.totalTransactionsAmountByDailyClosing = totalTransactionsAmountByDailyClosing;
+//    }
     
 }

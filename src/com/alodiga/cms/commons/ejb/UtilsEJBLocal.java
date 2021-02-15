@@ -43,6 +43,7 @@ import com.cms.commons.models.StreetType;
 import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
+import com.cms.commons.models.Transaction;
 import com.cms.commons.models.UserHasProfile;
 import javax.ejb.Local;
 import java.util.List;
@@ -284,4 +285,6 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
+    //Transaction
+    public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }

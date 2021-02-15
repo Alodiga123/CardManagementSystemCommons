@@ -44,6 +44,7 @@ import com.cms.commons.models.PermissionGroup;
 import com.cms.commons.models.PermissionGroupData;
 import com.cms.commons.models.Profile;
 import com.cms.commons.models.ProfileData;
+import com.cms.commons.models.Transaction;
 import com.cms.commons.models.User;
 import com.cms.commons.models.UserHasProfile;
 import java.util.List;
@@ -285,4 +286,6 @@ public interface UtilsEJB extends DistributionGenericEJB {
     //PersonType
     public List<PersonType> getPersonType(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 
+    //Transaction
+    public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
 }
