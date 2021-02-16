@@ -201,3 +201,47 @@ DROP INDEX `fk_transactionsManagementHistory_dailyClosing1`;
 ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
 DROP COLUMN `dailyClosingId`,
 DROP COLUMN `indClosed`;
+
+-- Modificar tamaño de campo pinOffset en tabla card
+-- author: Jesús Gómez
+-- Fecha: 16/02/2021
+ALTER TABLE `CardManagementSystem`.`card` 
+CHANGE COLUMN `pinOffset` `pinOffset` VARCHAR(1000);
+
+-- Agregar tabla historyCardStatusChanges
+-- author: Jesús Gómez
+-- Fecha: 16/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`historyCardStatusChanges` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `cardId` BIGINT NOT NULL,
+  `cardStatusId` INT NOT NULL,
+  `userResponsabileId` INT NULL,
+  `statusUpdateReasonId` INT NULL,
+  `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cardStatusChangedHistory_card1_idx` (`cardId` ASC),
+  INDEX `fk_historyCardStatusChanges_cardStatus1_idx` (`cardStatusId` ASC),
+  INDEX `fk_historyCardStatusChanges_user1_idx` (`userResponsabileId` ASC),
+  INDEX `fk_historyCardStatusChanges_statusUpdateReason1_idx` (`statusUpdateReasonId` ASC),
+  CONSTRAINT `fk_cardStatusChangedHistory_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_historyCardStatusChanges_cardStatus1`
+    FOREIGN KEY (`cardStatusId`)
+    REFERENCES `CardManagementSystem`.`cardStatus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_historyCardStatusChanges_user1`
+    FOREIGN KEY (`userResponsabileId`)
+    REFERENCES `CardManagementSystem`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_historyCardStatusChanges_statusUpdateReason1`
+    FOREIGN KEY (`statusUpdateReasonId`)
+    REFERENCES `CardManagementSystem`.`statusUpdateReason` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
