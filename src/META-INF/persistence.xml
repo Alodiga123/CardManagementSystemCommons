@@ -158,6 +158,7 @@
     <class>com.cms.commons.models.TransactionLog</class>
     <class>com.cms.commons.models.StatusTransactionLog</class>
     <class>com.cms.commons.models.TotalTransactionsAmountByDailyClosing</class>
+    <class>com.cms.commons.models.HistoryCardStatusChanges</class>
     <properties>
       <property name="eclipselink.cache.shared.default" value="false"/>
       <property name="eclipselink.logging.timestamp" value="true"/>
