@@ -91,7 +91,7 @@ public class Card extends AbstractDistributionEntity implements Serializable {
     @Size(max = 1500)
     @Column(name = "ICVVMagneticStrip")
     private String ICVVMagneticStrip;
-    @Size(max = 40)
+    @Size(max = 1000)
     @Column(name = "pinOffset")
     private String pinOffset;
     @Size(max = 40)

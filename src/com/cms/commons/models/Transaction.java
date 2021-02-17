@@ -200,4 +200,5 @@ public class Transaction extends AbstractDistributionEntity implements Serializa
     public void setSubTypeTransactionId(SubTypeTransaction subTypeTransactionId) {
         this.subTypeTransactionId = subTypeTransactionId;
     }
+
 }
