@@ -107,5 +107,5 @@ public class OriginApplication implements Serializable {
     public String toString() {
         return "com.cms.commons.models.OriginApplication[ id=" + id + " ]";
     }
-    
+
 }

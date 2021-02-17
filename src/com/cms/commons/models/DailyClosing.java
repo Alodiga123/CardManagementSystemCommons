@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -77,10 +79,8 @@ public class DailyClosing implements Serializable {
     @JoinColumn(name = "originApplicationId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private OriginApplication originApplicationId;
-    @OneToMany(mappedBy = "dailyClosingId")
-    private Collection<TransactionsManagement> transactionsManagementCollection;
-    @OneToMany(mappedBy = "dailyClosingId")
-    private Collection<TransactionsManagementHistory> transactionsManagementHistoryCollection;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dailyClosingId")
+//    private TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing;
 
     public DailyClosing() {
     }
@@ -166,26 +166,6 @@ public class DailyClosing implements Serializable {
         this.originApplicationId = originApplicationId;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<TransactionsManagement> getTransactionsManagementCollection() {
-        return transactionsManagementCollection;
-    }
-
-    public void setTransactionsManagementCollection(Collection<TransactionsManagement> transactionsManagementCollection) {
-        this.transactionsManagementCollection = transactionsManagementCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<TransactionsManagementHistory> getTransactionsManagementHistoryCollection() {
-        return transactionsManagementHistoryCollection;
-    }
-
-    public void setTransactionsManagementHistoryCollection(Collection<TransactionsManagementHistory> transactionsManagementHistoryCollection) {
-        this.transactionsManagementHistoryCollection = transactionsManagementHistoryCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -210,5 +190,13 @@ public class DailyClosing implements Serializable {
     public String toString() {
         return "com.cms.commons.models.DailyClosing[ id=" + id + " ]";
     }
+
+//    public TotalTransactionsAmountByDailyClosing getTotalTransactionsAmountByDailyClosing() {
+//        return totalTransactionsAmountByDailyClosing;
+//    }
+//
+//    public void setTotalTransactionsAmountByDailyClosing(TotalTransactionsAmountByDailyClosing totalTransactionsAmountByDailyClosing) {
+//        this.totalTransactionsAmountByDailyClosing = totalTransactionsAmountByDailyClosing;
+//    }
     
 }
