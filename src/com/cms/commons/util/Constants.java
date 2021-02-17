@@ -405,6 +405,9 @@ public class Constants {
     public static Long EDIT_CHECK_CARD_TRANSACTIONS = 217L;
     public static Long VIEW_CHECK_CARD_TRANSACTIONS = 218L;
     public static Long AUTOMATIC_SERVICES = 219L;
+    public static Long LIST_MANAGER_CARD_KEYS = 220L;
+    public static Long EDIT_MANAGER_CARD_KEYS = 221L;
+    public static Long VIEW_MANAGER_CARD_KEYS = 222L;
     
     public static Float PREVIOUS_BALANCE_DESTINATION = 0.00F;
     
