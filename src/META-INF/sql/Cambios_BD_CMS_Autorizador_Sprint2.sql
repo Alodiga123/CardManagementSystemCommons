@@ -245,3 +245,21 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`historyCardStatusChanges` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Agregar tabla cardKeyHistory
+-- author: Jesús Gómez
+-- Fecha: 17/02/2021
+CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardKeyHistory` (
+  `id` BIGINT UNIQUE NOT NULL AUTO_INCREMENT,
+  `cardId` BIGINT NOT NULL,
+  `previousPinOffset` VARCHAR(1000) NULL,
+  `createDate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateDate` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cardKeyHistory_card1_idx` (`cardId` ASC),
+  CONSTRAINT `fk_cardKeyHistory_card1`
+    FOREIGN KEY (`cardId`)
+    REFERENCES `CardManagementSystem`.`card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
