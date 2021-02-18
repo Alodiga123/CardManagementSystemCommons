@@ -53,7 +53,6 @@ public class AccountCard extends AbstractDistributionEntity implements Serializa
     @Column(name = "accountNumber")
     private String accountNumber;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
