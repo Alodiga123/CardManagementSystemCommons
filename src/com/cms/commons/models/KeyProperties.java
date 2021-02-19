@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -42,7 +44,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "KeyProperties.findByIndContinuousCharacters", query = "SELECT k FROM KeyProperties k WHERE k.indContinuousCharacters = :indContinuousCharacters")
     , @NamedQuery(name = "KeyProperties.findByCreateDate", query = "SELECT k FROM KeyProperties k WHERE k.createDate = :createDate")
     , @NamedQuery(name = "KeyProperties.findByUpdateDate", query = "SELECT k FROM KeyProperties k WHERE k.updateDate = :updateDate")})
-public class KeyProperties implements Serializable {
+public class KeyProperties extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -200,6 +202,16 @@ public class KeyProperties implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.KeyProperties[ id=" + id + " ]";
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }
