@@ -21,6 +21,7 @@ import com.cms.commons.models.DocumentsPersonType;
 import com.cms.commons.models.EconomicActivity;
 import com.cms.commons.models.EdificationType;
 import com.cms.commons.models.Issuer;
+import com.cms.commons.models.KeyProperties;
 import com.cms.commons.models.KindCard;
 import com.cms.commons.models.Language;
 import com.cms.commons.models.LegalPerson;
@@ -287,4 +288,12 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Transaction
     public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //KeyProperties
+    public List<KeyProperties> getKeyProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public KeyProperties loadKeyProperties(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public KeyProperties saveKeyProperties(KeyProperties keyProperties) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<KeyProperties> getKeyPropertiesByChannelAndProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<KeyProperties> getSearchKeyPropertiesByChannel(String name) throws EmptyListException, GeneralException, NullParameterException;
+    public List<KeyProperties> getSearchKeyPropertiesByProduct(String name) throws EmptyListException, GeneralException, NullParameterException;
 }
