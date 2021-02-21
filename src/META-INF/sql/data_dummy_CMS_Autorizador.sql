@@ -215,3 +215,30 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`id`, `permissionId`, `lan
 
 INSERT INTO `CardManagementSystem`.`permission_has_profile` (`id`, `permissionId`, `profileId`) VALUES ('11', '219', '1');
 
+-- Actualizar los nombres de las transacciones
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+UPDATE `CardManagementSystem`.`transaction` SET `description`='INITIAL RECHARGE' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='CARD RECHARGE' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='TRANSFER BETWEEN ACCOUNT', `subTypeTransactionId`='2'  WHERE `id`='27';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='BONIFICATION CMS' WHERE `id`='26';
+
+
+-- Agregar la secuencia para la transacción Recarga de Tarjeta
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (14,'CARD RECHARGE', 'CARREC');
+INSERT INTO `CardManagementSystem`.`sequences` (`id`,`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES (14,1, 1, 13, 1);
+
+-- Agregar transacción CHECK CARD MOVEMENTS en tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) 
+VALUES (28,'060', 'CHECK CARD MOVEMENTS', '0', '0', '1', '1', '2021-02-20 09:26:07');
+
+-- Actualizar nombre y descripción de canal
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+UPDATE `CardManagementSystem`.`channel` SET `name`='WALLET', `description`='Billetera Móvil APP' WHERE `id`='5';
+
+

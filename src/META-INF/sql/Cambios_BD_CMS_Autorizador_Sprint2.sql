@@ -263,3 +263,15 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardKeyHistory` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Eliminar indice en tabla balanceHistoryCard
+-- author: Jesús Gómez
+-- Fecha: 19/02/2021
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP INDEX `transactionsManagementId`;
+
+-- Colocar Not Null el campo createDate en tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 19/02/2021
+ALTER TABLE `CardManagementSystem`.`transaction` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
