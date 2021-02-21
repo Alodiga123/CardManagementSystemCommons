@@ -215,6 +215,10 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`id`, `permissionId`, `lan
 
 INSERT INTO `CardManagementSystem`.`permission_has_profile` (`id`, `permissionId`, `profileId`) VALUES ('11', '219', '1');
 
+-- Menu nuevo en autorizador WEB
+-- author: Jorge Pinto
+-- Fecha 17 Febrero 2021
+INSERT INTO `CardManagementSystem`.`permission_group` (`id`, `name`,`enabled`) VALUES ('12', 'Manage Card Keys', '1');
 -- Actualizar los nombres de las transacciones
 -- author: Jesús Gómez
 -- Fecha: 20/02/2021 
@@ -222,6 +226,25 @@ UPDATE `CardManagementSystem`.`transaction` SET `description`='INITIAL RECHARGE'
 UPDATE `CardManagementSystem`.`transaction` SET `description`='CARD RECHARGE' WHERE `id`='1';
 UPDATE `CardManagementSystem`.`transaction` SET `description`='TRANSFER BETWEEN ACCOUNT', `subTypeTransactionId`='2'  WHERE `id`='27';
 UPDATE `CardManagementSystem`.`transaction` SET `description`='BONIFICATION CMS' WHERE `id`='26';
+
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('220', '12', 'listManagerCardKeys.zul', 'keyProperties', 'List Manager Card Keys', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('221', '12', 'adminManagerCardKeys.zul?eventType=1', 'keyProperties', 'Edit Manager Card Keys', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('222', '12', 'adminManagerCardKeys.zul?eventType=1', 'keyProperties', 'View Manager Card Keys', '1');
+
+
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('12', '1', 'Manage Card Keys', 'Manage Card Keys');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('12', '2', 'Gestionar Claves de Tarjetas', 'Gestionar Claves de Tarjetas');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('220', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('221', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('222', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('220', '1', 'Key Properties', 'Key Properties');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('220', '2', 'Propiedades de Claves', 'Propiedades de Claves');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('221', '1', 'Edit Key Properties', 'Edit Key Properties');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('221', '2', 'Editar Propiedades de Claves', 'Editar Propiedades de Claves');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '1', 'View Key Properties', 'View Key Properties');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '2', 'Ver Propiedades de Claves', 'Ver Propiedades de Claves');
 
 
 -- Agregar la secuencia para la transacción Recarga de Tarjeta
