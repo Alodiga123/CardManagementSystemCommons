@@ -238,3 +238,8 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageI
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('221', '2', 'Editar Propiedades de Claves', 'Editar Propiedades de Claves');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '1', 'View Key Properties', 'View Key Properties');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '2', 'Ver Propiedades de Claves', 'Ver Propiedades de Claves');
+
+-- Agregar data dummy a la tabla documentType
+-- author: Jorge Pinto
+-- Fecha: 22/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('14', 'CARD WITHDRAWL', 'CARWIT');
