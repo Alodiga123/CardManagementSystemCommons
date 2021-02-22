@@ -268,3 +268,8 @@ ALTER TABLE `CardManagementSystem`.`keyProperties`
 DROP INDEX `productId` ;
 
 
+
+-- Agregar data dummy a la tabla documentType
+-- author: Jorge Pinto
+-- Fecha: 22/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('14', 'CARD WITHDRAWL', 'CARWIT');
