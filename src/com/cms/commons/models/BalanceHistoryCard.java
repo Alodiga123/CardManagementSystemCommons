@@ -63,9 +63,8 @@ public class BalanceHistoryCard implements Serializable {
     @JoinColumn(name = "cardUserId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Card cardUserId;
-    @JoinColumn(name = "transactionsManagementId", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private TransactionsManagement transactionsManagementId;
+    @Column(name = "transactionsManagementId")
+    private Long transactionsManagementId;
 
     public BalanceHistoryCard() {
     }
@@ -128,11 +127,11 @@ public class BalanceHistoryCard implements Serializable {
         this.cardUserId = cardUserId;
     }
 
-    public TransactionsManagement getTransactionsManagementId() {
+    public Long getTransactionsManagementId() {
         return transactionsManagementId;
     }
 
-    public void setTransactionsManagementId(TransactionsManagement transactionsManagementId) {
+    public void setTransactionsManagementId(Long transactionsManagementId) {
         this.transactionsManagementId = transactionsManagementId;
     }
 
