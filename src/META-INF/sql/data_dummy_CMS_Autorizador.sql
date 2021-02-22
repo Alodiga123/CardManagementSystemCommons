@@ -239,6 +239,36 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageI
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '1', 'View Key Properties', 'View Key Properties');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '2', 'Ver Propiedades de Claves', 'Ver Propiedades de Claves');
 
+-- Actualizar los nombres de las transacciones
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+UPDATE `CardManagementSystem`.`transaction` SET `description`='INITIAL RECHARGE' WHERE `id`='2';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='CARD RECHARGE' WHERE `id`='1';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='TRANSFER BETWEEN ACCOUNT', `subTypeTransactionId`='2'  WHERE `id`='27';
+UPDATE `CardManagementSystem`.`transaction` SET `description`='BONIFICATION CMS' WHERE `id`='26';
+
+-- Agregar la secuencia para la transacción Recarga de Tarjeta
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+INSERT INTO `CardManagementSystem`.`documentType` (`id`,`name`, `acronym`) VALUES (14,'CARD RECHARGE', 'CARREC');
+INSERT INTO `CardManagementSystem`.`sequences` (`id`,`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES (14,1, 1, 13, 1);
+
+-- Agregar transacción CHECK CARD MOVEMENTS en tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) 
+VALUES (28,'060', 'CHECK CARD MOVEMENTS', '0', '0', '1', '1', '2021-02-20 09:26:07');
+
+-- Actualizar nombre y descripción de canal
+-- author: Jesús Gómez
+-- Fecha: 20/02/2021 
+UPDATE `CardManagementSystem`.`channel` SET `name`='WALLET', `description`='Billetera Móvil APP' WHERE `id`='5';
+
+ALTER TABLE `CardManagementSystem`.`keyProperties` 
+DROP INDEX `productId` ;
+
+
+
 -- Agregar data dummy a la tabla documentType
 -- author: Jorge Pinto
 -- Fecha: 22/02/2021 
