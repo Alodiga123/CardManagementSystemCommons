@@ -275,3 +275,11 @@ DROP INDEX `transactionsManagementId`;
 -- Fecha: 19/02/2021
 ALTER TABLE `CardManagementSystem`.`transaction` 
 CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- Eliminar FK en tabla balanceHistoryCard
+-- author: Jesús Gómez
+-- Fecha: 22/02/2021
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP FOREIGN KEY `fk_balanceHistoryCard_transactionsManagement1`;
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP INDEX `fk_balanceHistoryCard_transactionsManagement1_idx` ;
