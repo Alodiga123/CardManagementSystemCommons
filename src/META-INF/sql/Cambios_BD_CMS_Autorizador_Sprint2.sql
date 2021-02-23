@@ -282,4 +282,11 @@ CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMES
 ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
 DROP FOREIGN KEY `fk_balanceHistoryCard_transactionsManagement1`;
 ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
-DROP INDEX `fk_balanceHistoryCard_transactionsManagement1_idx` ;
+DROP INDEX `fk_balanceHistoryCard_transactionsManagement1_idx`;
+
+-- Agregar campos relacionados al proceso de cierre en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 23/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `indClosed` TINYINT(1) NULL AFTER `messageMiddlewareId`,
+ADD COLUMN `dailyClosingId` BIGINT NULL AFTER `indClosed`;

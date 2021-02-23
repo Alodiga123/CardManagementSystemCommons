@@ -167,6 +167,10 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private Float transactionRateAmount;
     @Column(name = "messageMiddlewareId")
     private Long messageMiddlewareId;   
+    @Column(name = "indClosed")
+    private Boolean indClosed;
+    @Column(name = "dailyClosingId")
+    private Long dailyClosingId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
     private CommisionsReceived commisionsReceived;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
@@ -521,6 +525,22 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
 
     public void setMessageMiddlewareId(Long messageMiddlewareId) {
         this.messageMiddlewareId = messageMiddlewareId;
+    }
+
+    public Boolean getIndClosed() {
+        return indClosed;
+    }
+
+    public void setIndClosed(Boolean indClosed) {
+        this.indClosed = indClosed;
+    }
+
+    public Long getDailyClosingId() {
+        return dailyClosingId;
+    }
+
+    public void setDailyClosingId(Long dailyClosingId) {
+        this.dailyClosingId = dailyClosingId;
     }
 
     @Override
