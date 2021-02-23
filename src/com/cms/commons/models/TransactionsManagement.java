@@ -173,8 +173,6 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private Long dailyClosingId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
     private CommisionsReceived commisionsReceived;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "transactionsManagementId")
-    private BalanceHistoryCard balanceHistoryCard;
 
     public TransactionsManagement() {
     }
@@ -469,14 +467,6 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
 
     public void setCommisionsReceived(CommisionsReceived commisionsReceived) {
         this.commisionsReceived = commisionsReceived;
-    }
-
-    public BalanceHistoryCard getBalanceHistoryCard() {
-        return balanceHistoryCard;
-    }
-
-    public void setBalanceHistoryCard(BalanceHistoryCard balanceHistoryCard) {
-        this.balanceHistoryCard = balanceHistoryCard;
     }
     
     public Date getTransactionDateIssuer() {
