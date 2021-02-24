@@ -292,7 +292,7 @@ ADD COLUMN `indClosed` TINYINT(1) NULL AFTER `messageMiddlewareId`,
 ADD COLUMN `dailyClosingId` BIGINT NULL AFTER `indClosed`;
 
 -- Procedimiento Almacenado para pasar de transactionsManagement a transactionManagementHistory en el cierre diario
--- author: Jesús Gómez
+-- author: Yamelis Almea
 -- Fecha: 23/02/2021
 USE `CardManagementSystem`;
 DROP procedure IF EXISTS `pasarTransactionesAHistoricos`;
