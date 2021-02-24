@@ -291,6 +291,24 @@ ALTER TABLE `CardManagementSystem`.`transactionsManagement`
 ADD COLUMN `indClosed` TINYINT(1) NULL AFTER `messageMiddlewareId`,
 ADD COLUMN `dailyClosingId` BIGINT NULL AFTER `indClosed`;
 
+-- Procedimiento Almacenado para pasar de transactionsManagement a transactionManagementHistory en el cierre diario
+-- author: Yamelis Almea
+-- Fecha: 23/02/2021
+USE `CardManagementSystem`;
+DROP procedure IF EXISTS `pasarTransactionesAHistoricos`;
+
+DELIMITER $$
+USE `CardManagementSystem`$$
+CREATE PROCEDURE `pasarTransactionesAHistoricos`(IN begginingDate TIMESTAMP, IN endingDate TIMESTAMP)
+BEGIN
+INSERT INTO transactionsManagementHistory
+         SELECT *
+         FROM transactionsManagement t 
+         WHERE t.createDate between begginingDate AND endingDate AND t.dailyClosingId IS NULL AND (t.indClosed IS NULL OR t.indClosed = 0);
+END$$
+
+DELIMITER ;
+
 -- Modificar campos en la tabla transactionsManagement
 -- author: Jesús Gómez
 -- Fecha: 25/02/2021
