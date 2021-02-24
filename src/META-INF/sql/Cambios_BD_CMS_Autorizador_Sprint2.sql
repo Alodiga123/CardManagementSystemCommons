@@ -290,3 +290,17 @@ DROP INDEX `fk_balanceHistoryCard_transactionsManagement1_idx`;
 ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
 ADD COLUMN `indClosed` TINYINT(1) NULL AFTER `messageMiddlewareId`,
 ADD COLUMN `dailyClosingId` BIGINT NULL AFTER `indClosed`;
+
+-- Modificar campos en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
+
+-- Modificar campos en la tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
