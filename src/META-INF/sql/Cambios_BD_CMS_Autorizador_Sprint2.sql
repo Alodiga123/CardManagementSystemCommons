@@ -308,3 +308,17 @@ INSERT INTO transactionsManagementHistory
 END$$
 
 DELIMITER ;
+
+-- Modificar campos en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
+
+-- Modificar campos en la tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;

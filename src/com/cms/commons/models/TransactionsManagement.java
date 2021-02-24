@@ -146,6 +146,8 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private Integer numberMovementsCheckBalance;
     @Column(name = "responseCode")
     private String responseCode;
+    @Column(name = "authorizationCode")
+    private String authorizationCode;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
@@ -163,8 +165,8 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     @Size(max = 80)
     @Column(name = "transactionConcept")
     private String transactionConcept;
-    @Column(name = "transactionRateAmount")
-    private Float transactionRateAmount;
+    @Column(name = "transactionCommissionAmount")
+    private Float transactionCommissionAmount;
     @Column(name = "messageMiddlewareId")
     private Long messageMiddlewareId;   
     @Column(name = "indClosed")
@@ -445,6 +447,14 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.responseCode = responseCode;
     }
 
+    public String getAuthorizationCode() {
+        return authorizationCode;
+    }
+
+    public void setAuthorizationCode(String authorizationCode) {
+        this.authorizationCode = authorizationCode;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -501,12 +511,12 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.transactionConcept = transactionConcept;
     }
 
-    public Float getTransactionRateAmount() {
-        return transactionRateAmount;
+    public Float getTransactionCommissionAmount() {
+        return transactionCommissionAmount;
     }
 
-    public void setTransactionRateAmount(Float transactionRateAmount) {
-        this.transactionRateAmount = transactionRateAmount;
+    public void setTransactionCommissionAmount(Float transactionCommissionAmount) {
+        this.transactionCommissionAmount = transactionCommissionAmount;
     }
 
     public Long getMessageMiddlewareId() {
