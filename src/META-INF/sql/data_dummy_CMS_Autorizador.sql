@@ -238,3 +238,10 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageI
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('221', '2', 'Editar Propiedades de Claves', 'Editar Propiedades de Claves');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '1', 'View Key Properties', 'View Key Properties');
 INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('222', '2', 'Ver Propiedades de Claves', 'Ver Propiedades de Claves');
+
+-- DATA CAMBIO DE CLAVE
+-- author: MOISES GRATEROL
+-- Fecha 25 Febrero 2021
+INSERT INTO `CardManagementSystem`.`documentType` (`name`, `acronym`) VALUES ('KEY CHANGE', 'KEYCHA');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '16', '1');
+INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
