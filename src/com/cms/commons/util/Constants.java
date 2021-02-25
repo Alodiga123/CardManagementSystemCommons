@@ -411,4 +411,10 @@ public class Constants {
     
     public static Float PREVIOUS_BALANCE_DESTINATION = 0.00F;
     
+    //Generación de PinBlock
+    public static final String KEY = "AB1C11111111111AAAAAAADDDDD11111";
+    public static final int PIN_LENGTH = 4;
+    
+    //constantes para envio de email
+    public static final int NOTIFICATION_DAILY_CLOSING = 1;
 }

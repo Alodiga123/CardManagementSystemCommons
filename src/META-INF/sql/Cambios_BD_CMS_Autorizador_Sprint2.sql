@@ -263,3 +263,89 @@ CREATE TABLE IF NOT EXISTS `CardManagementSystem`.`cardKeyHistory` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Eliminar indice en tabla balanceHistoryCard
+-- author: Jesús Gómez
+-- Fecha: 19/02/2021
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP INDEX `transactionsManagementId`;
+
+-- Colocar Not Null el campo createDate en tabla transaction
+-- author: Jesús Gómez
+-- Fecha: 19/02/2021
+ALTER TABLE `CardManagementSystem`.`transaction` 
+CHANGE COLUMN `createDate` `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- Eliminar FK en tabla balanceHistoryCard
+-- author: Jesús Gómez
+-- Fecha: 22/02/2021
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP FOREIGN KEY `fk_balanceHistoryCard_transactionsManagement1`;
+ALTER TABLE `CardManagementSystem`.`balanceHistoryCard` 
+DROP INDEX `fk_balanceHistoryCard_transactionsManagement1_idx`;
+
+-- Agregar campos relacionados al proceso de cierre en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 23/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `indClosed` TINYINT(1) NULL AFTER `messageMiddlewareId`,
+ADD COLUMN `dailyClosingId` BIGINT NULL AFTER `indClosed`;
+
+-- Procedimiento Almacenado para pasar de transactionsManagement a transactionManagementHistory en el cierre diario
+-- author: Yamelis Almea
+-- Fecha: 23/02/2021
+USE `CardManagementSystem`;
+DROP procedure IF EXISTS `pasarTransactionesAHistoricos`;
+
+DELIMITER $$
+USE `CardManagementSystem`$$
+CREATE PROCEDURE `pasarTransactionesAHistoricos`(IN begginingDate TIMESTAMP, IN endingDate TIMESTAMP)
+BEGIN
+INSERT INTO transactionsManagementHistory
+         SELECT *
+         FROM transactionsManagement t 
+         WHERE t.createDate between begginingDate AND endingDate AND t.dailyClosingId IS NULL AND (t.indClosed IS NULL OR t.indClosed = 0);
+END$$
+
+DELIMITER ;
+
+-- Modificar campos en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
+
+-- Modificar campos en la tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
+CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
+
+
+-- Agregar el campo personAssociatedUserId en tabla user
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`user`
+ADD COLUMN `personAssociatedUserId` BIGINT NULL AFTER `personId`;
+ALTER TABLE `CardManagementSystem`.`user`
+ADD CONSTRAINT `fk_user_personAssociatedUser1`
+FOREIGN KEY (`personAssociatedUserId`)
+REFERENCES `CardManagementSystem`.`person` (`id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+-- Modificar FK fk_user_Employee1 para que acepte NULL en tabla user
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`user` 
+DROP FOREIGN KEY `fk_user_Employee1`;
+ALTER TABLE `CardManagementSystem`.`user` 
+CHANGE COLUMN `AuthorizedEmployeeId` `AuthorizedEmployeeId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`user` 
+ADD CONSTRAINT `fk_user_Employee1`
+  FOREIGN KEY (`AuthorizedEmployeeId`)
+  REFERENCES `CardManagementSystem`.`employee` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION; 
