@@ -87,8 +87,10 @@ public class User extends AbstractDistributionEntity implements Serializable {
     @JoinColumn(name = "personId", referencedColumnName = "id")
     @OneToOne(optional = false)
     private Person personId;
+    @JoinColumn(name = "personAssociatedUserId", referencedColumnName = "id")
+    @OneToOne(optional = false)
+    private Person personAssociatedUserId;
     @JoinColumn(name = "AuthorizedEmployeeId", referencedColumnName = "id")
-    @ManyToOne(optional = false)
     private Employee authorizedEmployeeId;
     @JoinColumn(name = "EmployeeId", referencedColumnName = "id")
     @ManyToOne
@@ -178,6 +180,14 @@ public class User extends AbstractDistributionEntity implements Serializable {
 
     public void setPersonId(Person personId) {
         this.personId = personId;
+    }
+
+    public Person getPersonAssociatedUserId() {
+        return personAssociatedUserId;
+    }
+
+    public void setPersonAssociatedUserId(Person personAssociatedUserId) {
+        this.personAssociatedUserId = personAssociatedUserId;
     }
 
     public Employee getAuthorizedEmployeeId() {
