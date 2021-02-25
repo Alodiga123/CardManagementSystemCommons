@@ -271,3 +271,10 @@ DROP INDEX `productId` ;
 -- author: Jorge Pinto
 -- Fecha: 22/02/2021 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('15', 'CARD WITHDRAWL', 'CARWIT');
+
+-- DATA CAMBIO DE CLAVE
+-- author: MOISES GRATEROL
+-- Fecha 25 Febrero 2021
+INSERT INTO `CardManagementSystem`.`documentType` (`name`, `acronym`) VALUES ('KEY CHANGE', 'KEYCHA');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '16', '1');
+INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
