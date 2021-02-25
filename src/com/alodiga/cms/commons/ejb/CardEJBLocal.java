@@ -14,6 +14,7 @@ import com.cms.commons.models.AccountProperties;
 import com.cms.commons.models.AccountSegment;
 import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
+import com.cms.commons.models.BonusCard;
 import com.cms.commons.models.Card;
 import com.cms.commons.models.CardNumberCredential;
 import com.cms.commons.models.CardStatusHasUpdateReason;
@@ -90,6 +91,7 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List<Card> getCardByPhone(String phoneNumber) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByIdentificationNumber(String identificationNumber) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByProgramAndTransactionalStatus(Long programId) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByPerson(Long personId) throws EmptyListException, GeneralException, NullParameterException;
     
     //CardNumberCredential
     public List<CardNumberCredential> getCardNumberCredential(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -192,5 +194,9 @@ public interface CardEJBLocal extends DistributionGenericEJB {
     public List<StatusNewCardIssueRequest> getStatusNewCardIssueRequest(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusNewCardIssueRequest loadStatusNewCardIssueRequest(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public StatusNewCardIssueRequest saveStatusNewCardIssueRequest(StatusNewCardIssueRequest statusNewCardIssueRequest) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
+    //BonusCard
+    public BonusCard getBonusCard(Long cardId) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 }
     
