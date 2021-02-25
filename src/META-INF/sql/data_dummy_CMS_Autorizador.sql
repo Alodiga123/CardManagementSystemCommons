@@ -273,6 +273,12 @@ DROP INDEX `productId` ;
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('15', 'CARD WITHDRAWL', 'CARWIT');
 INSERT INTO `CardManagementSystem`.`sequences` (`id`,`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES (15,1, 1, 15, 1);
 
+-- DATA CAMBIO DE CLAVE
+-- author: MOISES GRATEROL
+-- Fecha 25 Febrero 2021
+INSERT INTO `CardManagementSystem`.`documentType` (`name`, `acronym`) VALUES ('KEY CHANGE', 'KEYCHA');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '16', '1');
+INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
 -- Menu nuevo en autorizador WEB
 -- author: Jorge Pinto
 -- Fecha 25 Febrero 2021

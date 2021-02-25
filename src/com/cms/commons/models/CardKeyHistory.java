@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "CardKeyHistory.findById", query = "SELECT c FROM CardKeyHistory c WHERE c.id = :id")
     , @NamedQuery(name = "CardKeyHistory.findByPreviousPinOffset", query = "SELECT c FROM CardKeyHistory c WHERE c.previousPinOffset = :previousPinOffset")
     , @NamedQuery(name = "CardKeyHistory.findByCreateDate", query = "SELECT c FROM CardKeyHistory c WHERE c.createDate = :createDate")
+    , @NamedQuery(name = "CardKeyHistory.findByCardId", query = "SELECT c FROM CardKeyHistory c WHERE c.cardId.id = :cardId ORDER BY c.id DESC")
     , @NamedQuery(name = "CardKeyHistory.findByUpdateDate", query = "SELECT c FROM CardKeyHistory c WHERE c.updateDate = :updateDate")})
 public class CardKeyHistory implements Serializable {
 
@@ -57,6 +59,7 @@ public class CardKeyHistory implements Serializable {
     @ManyToOne(optional = false)
     private Card cardId;
 
+    
     public CardKeyHistory() {
     }
 

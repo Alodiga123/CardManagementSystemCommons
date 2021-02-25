@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -37,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TotalTransactionsAmountByDailyClosing.findByTransactionsAmount", query = "SELECT t FROM TotalTransactionsAmountByDailyClosing t WHERE t.transactionsAmount = :transactionsAmount")
     , @NamedQuery(name = "TotalTransactionsAmountByDailyClosing.findByCreateDate", query = "SELECT t FROM TotalTransactionsAmountByDailyClosing t WHERE t.createDate = :createDate")
     , @NamedQuery(name = "TotalTransactionsAmountByDailyClosing.findByUpdateDate", query = "SELECT t FROM TotalTransactionsAmountByDailyClosing t WHERE t.updateDate = :updateDate")})
-public class TotalTransactionsAmountByDailyClosing implements Serializable {
+public class TotalTransactionsAmountByDailyClosing extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -150,4 +152,13 @@ public class TotalTransactionsAmountByDailyClosing implements Serializable {
         return "com.cms.commons.models.TotalTransactionsAmountByDailyClosing[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }   
 }
