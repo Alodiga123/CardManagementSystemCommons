@@ -322,3 +322,30 @@ CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
 ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
 ADD COLUMN `authorizationCode` VARCHAR(20) NULL AFTER `responseCode`,
 CHANGE COLUMN `transactionRateAmount` `transactionCommissionAmount` FLOAT;
+
+
+-- Agregar el campo personAssociatedUserId en tabla user
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`user`
+ADD COLUMN `personAssociatedUserId` BIGINT NULL AFTER `personId`;
+ALTER TABLE `CardManagementSystem`.`user`
+ADD CONSTRAINT `fk_user_personAssociatedUser1`
+FOREIGN KEY (`personAssociatedUserId`)
+REFERENCES `CardManagementSystem`.`person` (`id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+-- Modificar FK fk_user_Employee1 para que acepte NULL en tabla user
+-- author: Jesús Gómez
+-- Fecha: 25/02/2021
+ALTER TABLE `CardManagementSystem`.`user` 
+DROP FOREIGN KEY `fk_user_Employee1`;
+ALTER TABLE `CardManagementSystem`.`user` 
+CHANGE COLUMN `AuthorizedEmployeeId` `AuthorizedEmployeeId` INT(11) NULL ;
+ALTER TABLE `CardManagementSystem`.`user` 
+ADD CONSTRAINT `fk_user_Employee1`
+  FOREIGN KEY (`AuthorizedEmployeeId`)
+  REFERENCES `CardManagementSystem`.`employee` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION; 
