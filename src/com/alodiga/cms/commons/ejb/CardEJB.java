@@ -15,6 +15,7 @@ import com.cms.commons.models.AccountSegment;
 import com.cms.commons.models.AccountType;
 import com.cms.commons.models.AccountTypeHasProductType;
 import com.cms.commons.models.BonusCard;
+import com.cms.commons.models.BalanceHistoryCard;
 import com.cms.commons.models.Card;
 import com.cms.commons.models.CardNumberCredential;
 import com.cms.commons.models.CardStatusHasUpdateReason;
@@ -110,7 +111,8 @@ public interface CardEJB extends DistributionGenericEJB {
     public AccountCard loadAccountCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public AccountCard saveAccountCard(AccountCard accountCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
     public List<AccountCard> getAccountCardByProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
-    
+    public AccountCard getAccountCardByCard(Long cardId) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
     //StatusAccount
     public List<StatusAccount> getStatusAccount(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public StatusAccount loadStatusAccount(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
@@ -195,6 +197,16 @@ public interface CardEJB extends DistributionGenericEJB {
     public StatusNewCardIssueRequest saveStatusNewCardIssueRequest(StatusNewCardIssueRequest statusNewCardIssueRequest) throws RegisterNotFoundException, NullParameterException, GeneralException,  EmptyListException;
 
     //BonusCard
-    public BonusCard getBonusCard(Long cardId) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<BonusCard> getBonusCard(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public BonusCard loadBonusCard(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public BonusCard saveBonusCard(BonusCard bonusCard) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public BonusCard getBonusCardByCardId(Long cardId) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    
+    //BalanceHistory
+    public List<BalanceHistoryCard> getBalanceHistory(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public BalanceHistoryCard loadBalanceHistory(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public BalanceHistoryCard saveBalanceHistoryCard(BalanceHistoryCard balanceHistoryCard) throws RegisterNotFoundException, NullParameterException, GeneralException; 
+    public BalanceHistoryCard getBalanceHistoryCardByCard(Long cardId) throws RegisterNotFoundException, NullParameterException, GeneralException;
+
 
 }

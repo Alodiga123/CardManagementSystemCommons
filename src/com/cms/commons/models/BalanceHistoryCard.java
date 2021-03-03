@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -38,7 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "BalanceHistoryCard.findByCurrentBalance", query = "SELECT b FROM BalanceHistoryCard b WHERE b.currentBalance = :currentBalance")
     , @NamedQuery(name = "BalanceHistoryCard.findByCreateDate", query = "SELECT b FROM BalanceHistoryCard b WHERE b.createDate = :createDate")
     , @NamedQuery(name = "BalanceHistoryCard.findByUpdateDate", query = "SELECT b FROM BalanceHistoryCard b WHERE b.updateDate = :updateDate")})
-public class BalanceHistoryCard implements Serializable {
+public class BalanceHistoryCard extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -158,6 +160,16 @@ public class BalanceHistoryCard implements Serializable {
     @Override
     public String toString() {
         return "com.cms.commons.models.BalanceHistoryCard[ id=" + id + " ]";
+    }
+    
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
     }
     
 }

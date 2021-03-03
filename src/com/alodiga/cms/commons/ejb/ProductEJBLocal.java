@@ -28,6 +28,7 @@ import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StatusProduct;
 import com.cms.commons.models.StorageMedio;
 import com.cms.commons.models.Transaction;
+import com.cms.commons.models.TransactionPoint;
 import com.cms.commons.models.TransactionsManagement;
 import java.util.List;
 
@@ -156,5 +157,11 @@ public interface ProductEJBLocal extends DistributionGenericEJB {
     public List<TransactionsManagement> getTransactionsManagement(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public TransactionsManagement loadTransactionsManagement(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public TransactionsManagement saveTransactionsManagement(TransactionsManagement transactionsManagement) throws RegisterNotFoundException, NullParameterException, GeneralException;
-
+    
+    //TransactionPoint
+    public List<TransactionPoint> getTransactionPoint(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public TransactionPoint loadTransactionPoint(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public TransactionPoint saveTransactionPoint(TransactionPoint transactionPoint) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<TransactionPoint> getTransactionPointByCard(Long cardId) throws EmptyListException, GeneralException, NullParameterException;
+    
 }
