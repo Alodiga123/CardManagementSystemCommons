@@ -23,6 +23,7 @@ import com.cms.commons.models.SegmentMarketing;
 import com.cms.commons.models.StorageMedio;
 import com.cms.commons.models.TransactionsManagement;
 import com.cms.commons.models.Transaction;
+import com.cms.commons.models.TransactionPoint;
 import com.cms.commons.models.RateByProgram;
 import com.cms.commons.models.ApprovalGeneralRate;
 import com.cms.commons.models.ApprovalProductRate;
@@ -40,7 +41,7 @@ import java.util.List;
 public interface ProductEJB extends DistributionGenericEJB {
 
     //Product
-    public List< Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Product> getProduct(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public Product loadProduct(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public Product saveProduct(Product product) throws RegisterNotFoundException, NullParameterException, GeneralException;    
     public List<Product> getProductByProgram(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
@@ -48,7 +49,7 @@ public interface ProductEJB extends DistributionGenericEJB {
 
         
     //ProductType
-    public List< ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public List<ProductType> getProductTypes(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     public ProductType loadProductType(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public ProductType saveProductType(ProductType productType) throws RegisterNotFoundException, NullParameterException, GeneralException;
 
@@ -163,4 +164,11 @@ public interface ProductEJB extends DistributionGenericEJB {
     public TransactionsManagement loadTransactionsManagement(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public TransactionsManagement saveTransactionsManagement(TransactionsManagement transactionsManagement) throws RegisterNotFoundException, NullParameterException, GeneralException;
     public List<TransactionsManagement> searchTransactionsManagementByParams(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //TransactionPoint
+    public List<TransactionPoint> getTransactionPoint(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    public TransactionPoint loadTransactionPoint(EJBRequest request) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public TransactionPoint saveTransactionPoint(TransactionPoint transactionPoint) throws RegisterNotFoundException, NullParameterException, GeneralException;
+    public List<TransactionPoint> getTransactionPointByCard(Long cardId) throws EmptyListException, GeneralException, NullParameterException;
+    
 }

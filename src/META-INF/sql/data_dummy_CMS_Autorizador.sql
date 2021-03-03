@@ -309,3 +309,40 @@ INSERT INTO `CardManagementSystem`.`phonePerson` (`countryId`, `countryCode`, `a
 SET @CardID = 0;
 SELECT MAX(c.id) INTO @CardID FROM `CardManagementSystem`.`card` c where cardNumber = 821455143256841;
 INSERT INTO `CardManagementSystem`.`bonusCard` (`cardId`, `totalPointsAccumulated`, `createDate`) VALUES (@CardID, '400', '2021-02-26 02:31:44');
+
+
+-- Nuevo menu Conversión de Puntos
+-- author: Jorge Pinto
+-- Fecha 01 Marzo 2021
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('224', '7', 'listPointsConversion.zul', 'transactionPoint', 'List Points Conversion', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('225', '7', 'adminPointsConversion.zul?eventType=1', 'transactionPoint', 'Edit Points Conversion', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('226', '7', 'adminPointsConversion.zul?eventType=1', 'transactionPoint', 'View Points Conversion', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '1', 'Points Conversion', 'Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '2', 'Conversión de Puntos', 'Conversión de Puntos');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('224', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('225', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('226', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('224', '1', 'Points Conversion', 'Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('224', '2', 'Conversión de Puntos', 'Conversión de Puntos');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('225', '1', 'Edit Points Conversion', 'Edit Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('225', '2', 'Editar Conversión de Puntos', 'Editar Conversión de Puntos');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('226', '1', 'View Points Conversion', 'View Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('226', '2', 'Ver Conversión de Puntos', 'Ver Conversión de Puntos');
+
+-- Data Dummy para convertir Puntos de fidelización 
+-- author: Jorge Pinto
+-- Fecha 03 Marzo 2021
+SET FOREIGN_KEY_CHECKS=0;
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('17', 'BONIFICATION CMS', 'BONCMS');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '17', '3');
+
+SET @CardID = 0;
+SELECT MAX(c.id) INTO @CardID FROM `CardManagementSystem`.`card` c where cardNumber = 821455143256841;
+INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyaltyTransactionId`, `points`, `createDate`)VALUES(@CardID,'7','150', '2021-02-26 02:31:44');
+INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyaltyTransactionId`, `points`, `createDate`)VALUES(@CardID,'2','38', '2021-02-26 02:31:44');
+INSERT INTO `CardManagementSystem`.`accountCard` (`accountPropertiesId`, `accountNumber`, `statusAccountId`, `cardId`, `transactionId`, `currentBalance`, `channelId`, `createDate`) VALUES ('1', '533946992', '1', @CardID, '23', '2000', '7', '2021-03-01 13:44:52');
+INSERT INTO `CardManagementSystem`.`balanceHistoryCard` (`cardUserId`, `transactionsManagementId`, `previousBalance`, `currentBalance`, `createDate`) VALUES (@CardID, '43', '1500', '2000', '2021-03-02 20:53:16');
+SET FOREIGN_KEY_CHECKS=1;
