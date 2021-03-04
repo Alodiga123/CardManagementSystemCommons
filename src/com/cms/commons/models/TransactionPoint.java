@@ -5,6 +5,8 @@
  */
 package com.cms.commons.models;
 
+import com.alodiga.cms.commons.exception.TableNotFoundException;
+import com.cms.commons.genericEJB.AbstractDistributionEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -36,7 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TransactionPoint.findByProgramLoyaltyTransactionId", query = "SELECT b FROM TransactionPoint b WHERE b.programLoyaltyTransactionId = :programLoyaltyTransactionId")
     , @NamedQuery(name = "TransactionPoint.findByCreateDate", query = "SELECT b FROM TransactionPoint b WHERE b.createDate = :createDate")
     , @NamedQuery(name = "TransactionPoint.findByUpdateDate", query = "SELECT b FROM TransactionPoint b WHERE b.updateDate = :updateDate")})
-public class TransactionPoint implements Serializable {
+public class TransactionPoint extends AbstractDistributionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -149,4 +151,13 @@ public class TransactionPoint implements Serializable {
         return "com.cms.commons.models.BonusCard[ id=" + id + " ]";
     }
     
+    @Override
+    public Object getPk() {
+        return getId();
+    }
+
+    @Override
+    public String getTableName() throws TableNotFoundException {
+        return super.getTableName(this.getClass());
+    }
 }

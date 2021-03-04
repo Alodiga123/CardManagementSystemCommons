@@ -110,7 +110,10 @@ public class Constants {
     public static Integer CLASSIFICATION_PERSON_PLASTIC_MANUFACTURER = 9;   
     public static Integer CLASSIFICATION_PERSON_EMPLOYEE = 9; 
     public static Integer CLASSIFICATION_PERSON_SHIPPING_COMPANY = 11;
-
+    
+    //Channel
+    public static Integer CHANNEL_INT_CMS = 7;
+    
     //RequestEJB
     public static final int PARAM_MAIN_PHONE = 1;
     public static final String PARAM_EMPLOYEE_ID = "employeeId";
@@ -408,9 +411,12 @@ public class Constants {
     public static Long LIST_MANAGER_CARD_KEYS = 220L;
     public static Long EDIT_MANAGER_CARD_KEYS = 221L;
     public static Long VIEW_MANAGER_CARD_KEYS = 222L;
-    
+    public static Long CHECK_BONUS_POINTS = 223L;
+    public static Long LIST_POINTS_CONVERSION = 224L;
+    public static Long EDIT_POINTS_CONVERSION = 225L;
+    public static Long VIEW_POINTS_CONVERSION = 226L;
     public static Float PREVIOUS_BALANCE_DESTINATION = 0.00F;
-    
+
     //Generación de PinBlock
     public static final String KEY = "AB1C11111111111AAAAAAADDDDD11111";
     public static final int PIN_LENGTH = 4;

@@ -271,6 +271,7 @@ DROP INDEX `productId` ;
 -- author: Jorge Pinto
 -- Fecha: 22/02/2021 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('15', 'CARD WITHDRAWL', 'CARWIT');
+INSERT INTO `CardManagementSystem`.`sequences` (`id`,`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES (15,1, 1, 15, 1);
 
 -- DATA CAMBIO DE CLAVE
 -- author: MOISES GRATEROL
@@ -278,3 +279,70 @@ INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALU
 INSERT INTO `CardManagementSystem`.`documentType` (`name`, `acronym`) VALUES ('KEY CHANGE', 'KEYCHA');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '16', '1');
 INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
+
+
+-- Menu nuevo en autorizador WEB
+-- author: Jorge Pinto
+-- Fecha 25 Febrero 2021
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('223', '7', 'adminCheckBonusPoints.zul?eventType=3', 'card', 'Check Bonus Points', '1');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '1', 'Check Bonus Points', 'Check Bonus Points');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '2', 'Consultar Puntos Bonificaciones', 'Consultar Puntos Bonificaciones');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('223', '1');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('223', '1', 'Check Bonus Points', 'Check Bonus Points');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('223', '2', 'Consultar Puntos Bonificaciones', 'Consultar Puntos Bonificaciones');
+
+-- Data Dummy para pruebas Puntos de fidelización obtenidos de las tarjetas
+-- author: Jorge Pinto
+-- Fecha 26 Febrero 2021
+INSERT INTO `CardManagementSystem`.`person` (`countryId`, `email`, `createDate`, `personClassificationId`, `personTypeId`) VALUES ('1', 'jalvarez@gmail.com', '2021-02-26 11:29:06', '7', '1');
+SET @PersonID = 0;
+SELECT MAX(p.id) INTO @PersonID FROM `CardManagementSystem`.`person` p;
+INSERT INTO `CardManagementSystem`.`naturalCustomer` (`personId`, `documentsPersonTypeId`, `identificationNumber`, `dueDateDocumentIdentification`, `statusCustomerId`, `firstNames`, `lastNames`, `gender`, `dateBirth`, `civilStatusId`, `createDate`) VALUES (@PersonID, '1', '12578645', '2020-12-29', '1', 'Jose', 'Alvarez', 'M', '1984-04-28', '1', '2020-12-29 13:35:38');
+SET @NaturalCustomerID = 0;
+SELECT MAX(n.id) INTO @NaturalCustomerID FROM `CardManagementSystem`.`naturalCustomer` n;
+INSERT INTO `CardManagementSystem`.`user` (`login`, `password`, `code`, `firstNames`, `lastNames`, `personId`, `personAssociatedUserId`, `enabled`, `identificationNumber`, `documentsPersonTypeId`) VALUES ('usertest', '1', '1587432', 'Jose', 'Alvarez', @PersonID, @NaturalCustomerID, '1', '12578645', '1');
+SET @PersonID = 0;
+SELECT MAX(p.id) INTO @PersonID FROM `CardManagementSystem`.`person` p;
+INSERT INTO `CardManagementSystem`.`card` (`cardNumber`, `alias`, `assignedAccount`, `sequentialNumber`, `maximumRechargeAmount`, `programId`, `productId`, `cardHolder`, `issueDate`, `expirationDate`, `cardStatusId`, `personCustomerId`, `automaticRenewalDate`, `indRenewal`, `createDate`) VALUES ('821455143256841', '821455143256841', '533659299', '40', '500', '4', '2', 'Jose Alvarez', '2020-08-16', '2025-09-13', '8', @PersonID, '2025-08-10', '1', '2021-02-26 13:44:52');
+INSERT INTO `CardManagementSystem`.`card` (`cardNumber`, `alias`, `assignedAccount`, `sequentialNumber`, `maximumRechargeAmount`, `programId`, `productId`, `cardHolder`, `issueDate`, `expirationDate`, `cardStatusId`, `personCustomerId`, `automaticRenewalDate`, `indRenewal`, `createDate`) VALUES ('841455821256143', '841455821256143', '299659533', '35', '650', '6', '22', 'Jose Alvarez', '2021-07-20', '2026-04-10', '8', @PersonID, '2026-04-10', '1', '2021-02-26 13:44:52');
+INSERT INTO `CardManagementSystem`.`phonePerson` (`countryId`, `countryCode`, `areaCode`, `numberPhone`, `personId`, `phoneTypeId`, `indMainPhone`) VALUES ('1', '58', '0414', '6582154', @PersonID , '1', '1');
+SET @CardID = 0;
+SELECT MAX(c.id) INTO @CardID FROM `CardManagementSystem`.`card` c where cardNumber = 821455143256841;
+INSERT INTO `CardManagementSystem`.`bonusCard` (`cardId`, `totalPointsAccumulated`, `createDate`) VALUES (@CardID, '400', '2021-02-26 02:31:44');
+
+
+-- Nuevo menu Conversión de Puntos
+-- author: Jorge Pinto
+-- Fecha 01 Marzo 2021
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('224', '7', 'listPointsConversion.zul', 'transactionPoint', 'List Points Conversion', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('225', '7', 'adminPointsConversion.zul?eventType=1', 'transactionPoint', 'Edit Points Conversion', '1');
+INSERT INTO `CardManagementSystem`.`permission` (`id`, `permissionGroupId`, `action`, `entity`, `name`, `enabled`) VALUES ('226', '7', 'adminPointsConversion.zul?eventType=1', 'transactionPoint', 'View Points Conversion', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '1', 'Points Conversion', 'Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_group_data` (`permissionGroupId`, `languageId`, `alias`, `description`) VALUES ('7', '2', 'Conversión de Puntos', 'Conversión de Puntos');
+
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('224', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('225', '1');
+INSERT INTO `CardManagementSystem`.`permission_has_profile` (`permissionId`, `profileId`) VALUES ('226', '1');
+
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('224', '1', 'Points Conversion', 'Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('224', '2', 'Conversión de Puntos', 'Conversión de Puntos');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('225', '1', 'Edit Points Conversion', 'Edit Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('225', '2', 'Editar Conversión de Puntos', 'Editar Conversión de Puntos');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('226', '1', 'View Points Conversion', 'View Points Conversion');
+INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageId`, `alias`, `description`) VALUES ('226', '2', 'Ver Conversión de Puntos', 'Ver Conversión de Puntos');
+
+-- Data Dummy para convertir Puntos de fidelización 
+-- author: Jorge Pinto
+-- Fecha 03 Marzo 2021
+SET FOREIGN_KEY_CHECKS=0;
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('17', 'BONIFICATION CMS', 'BONCMS');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '17', '3');
+
+SET @CardID = 0;
+SELECT MAX(c.id) INTO @CardID FROM `CardManagementSystem`.`card` c where cardNumber = 821455143256841;
+INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyaltyTransactionId`, `points`, `createDate`)VALUES(@CardID,'7','150', '2021-02-26 02:31:44');
+INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyaltyTransactionId`, `points`, `createDate`)VALUES(@CardID,'2','38', '2021-02-26 02:31:44');
+INSERT INTO `CardManagementSystem`.`accountCard` (`accountPropertiesId`, `accountNumber`, `statusAccountId`, `cardId`, `transactionId`, `currentBalance`, `channelId`, `createDate`) VALUES ('1', '533946992', '1', @CardID, '23', '2000', '7', '2021-03-01 13:44:52');
+INSERT INTO `CardManagementSystem`.`balanceHistoryCard` (`cardUserId`, `transactionsManagementId`, `previousBalance`, `currentBalance`, `createDate`) VALUES (@CardID, '43', '1500', '2000', '2021-03-02 20:53:16');
+SET FOREIGN_KEY_CHECKS=1;
