@@ -346,3 +346,9 @@ INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyalty
 INSERT INTO `CardManagementSystem`.`accountCard` (`accountPropertiesId`, `accountNumber`, `statusAccountId`, `cardId`, `transactionId`, `currentBalance`, `channelId`, `createDate`) VALUES ('1', '533946992', '1', @CardID, '23', '2000', '7', '2021-03-01 13:44:52');
 INSERT INTO `CardManagementSystem`.`balanceHistoryCard` (`cardUserId`, `transactionsManagementId`, `previousBalance`, `currentBalance`, `createDate`) VALUES (@CardID, '43', '1500', '2000', '2021-03-02 20:53:16');
 SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar data dummy a la tabla documentType
+-- author: Yamelis Almea
+-- Fecha: 05/03/2021 
+INSERT INTO `cardmanagementsystem`.`documenttype` (`id`, `name`, `acronym`) VALUES ('18', 'CARD PURCHAGE', 'CARPUR');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
