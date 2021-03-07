@@ -349,3 +349,27 @@ ADD CONSTRAINT `fk_user_Employee1`
   REFERENCES `CardManagementSystem`.`employee` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION; 
+
+-- Agregar campo customerIdentificationNumber en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 26/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `customerIdentificationNumber` VARCHAR(40) NULL AFTER `expirationCardDate`;
+
+-- Agregar campo customerIdentificationNumber en la tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 26/02/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `customerIdentificationNumber` VARCHAR(40) NULL AFTER `expirationCardDate`;
+
+-- Agregar campo approvalDateTime en la tabla transactionsManagement
+-- author: Jesús Gómez
+-- Fecha: 05/03/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagement` 
+ADD COLUMN `approvalDateTime` TIMESTAMP NULL AFTER `responseCode`;
+
+-- Agregar campo approvalDateTime en la tabla transactionsManagementHistory
+-- author: Jesús Gómez
+-- Fecha: 05/03/2021
+ALTER TABLE `CardManagementSystem`.`transactionsManagementHistory` 
+ADD COLUMN `approvalDateTime` TIMESTAMP NULL AFTER `responseCode`;
