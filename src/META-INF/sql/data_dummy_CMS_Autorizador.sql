@@ -352,3 +352,8 @@ SET FOREIGN_KEY_CHECKS=1;
 -- Fecha: 05/03/2021 
 INSERT INTO `cardmanagementsystem`.`documenttype` (`id`, `name`, `acronym`) VALUES ('18', 'CARD PURCHAGE', 'CARPUR');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
+
+--Data Dummy Reverso Retiro Billetera
+INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('29', '054', 'REVERSE WITHDRAWAL', '1', '0', '0', '1', '2021-02-05 10:26:07');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('18', 'REVERSE WITHDRAWAL', 'REVWIT');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
