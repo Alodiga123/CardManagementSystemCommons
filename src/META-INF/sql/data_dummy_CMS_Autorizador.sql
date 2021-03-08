@@ -346,3 +346,8 @@ INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyalty
 INSERT INTO `CardManagementSystem`.`accountCard` (`accountPropertiesId`, `accountNumber`, `statusAccountId`, `cardId`, `transactionId`, `currentBalance`, `channelId`, `createDate`) VALUES ('1', '533946992', '1', @CardID, '23', '2000', '7', '2021-03-01 13:44:52');
 INSERT INTO `CardManagementSystem`.`balanceHistoryCard` (`cardUserId`, `transactionsManagementId`, `previousBalance`, `currentBalance`, `createDate`) VALUES (@CardID, '43', '1500', '2000', '2021-03-02 20:53:16');
 SET FOREIGN_KEY_CHECKS=1;
+
+--Data Dummy Reverso Retiro Billetera
+INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('29', '054', 'REVERSE WITHDRAWAL', '1', '0', '0', '1', '2021-02-05 10:26:07');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('18', 'REVERSE WITHDRAWAL', 'REVWIT');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
