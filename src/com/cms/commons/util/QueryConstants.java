@@ -19,7 +19,7 @@ public class QueryConstants {
     public static final String LIKE = " LIKE ";
     public static final String NOT_LIKE = " NOT LIKE ";
     public static final String IS = " IS ";
-    
+
     //Nombres de Queries
     public static final String COUNTIES_BY_STATE = "countiesByState";
     public static final String CURRENCY_BY_COUNTRY = "currencyByCountry";
@@ -53,7 +53,7 @@ public class QueryConstants {
     public static final String LEGAL_PERSON_BY_PERSON = "legalPersonByPerson";
     public static final String LEGAL_REPRESENTATIVES_BY_PERSON = "legalRepresentativesByPerson";
     public static final String LEGAL_PERSON_BY_CUSTOMER = "legalPersonByCustomer";
-    public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER ="legalRepresentativesByLegalCustomer";
+    public static final String LEGAL_REPRESENTATIVES_BY_LEGAL_CUSTOMER = "legalRepresentativesByLegalCustomer";
     public static final String PERSON_BY_CLASIFICATION = "PersonByClasification";
     public static final String COLLECTIONS_BY_REQUEST = "CollectionsByRequests";
     public static final String COLLECTIONS_REQUEST_UNIQUE = "CollectionsRequestsUnique";
@@ -64,7 +64,7 @@ public class QueryConstants {
     public static final String REVIEW_BY_REQUEST = "ReviewByRequest";
     public static final String STATUS_REQUEST = "statusRequest";
     public static final String STATUS_REQUEST_LIKE = "statusRequestLike";
-    public static final String STATUS_REQUEST_BY_CODE ="statusRequestByCode";
+    public static final String STATUS_REQUEST_BY_CODE = "statusRequestByCode";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST_BY_COLLECTION_REQUEST = "RequestHasCollectionsRequestByRequestsByCollectionRequest";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_BY_REQUEST = "RequestHasCollectionsRequestByRequests";
     public static final String REQUEST_HAS_COLLECTION_REQUEST_CHECK = "RequestHasCollectionsRequestCheck";
@@ -76,7 +76,7 @@ public class QueryConstants {
     public static final String USER_LIKE = "userLike";
     public static final String LOGIN_EXIST_IN_BD = "loginExistInBD";
     public static final String EMPLOYEE_EXIST_IN_BD = "EmployeeExistInBD";
-    public static final String MAIN_PHONE_EMPLOYE_EXIST_IN_BD ="MainPhoneExistInBD";
+    public static final String MAIN_PHONE_EMPLOYE_EXIST_IN_BD = "MainPhoneExistInBD";
     public static final String PROGRAM_HAS_NETWORK_BD = "programHasNetworkBD";
     public static final String PERSON_HAS_ADDRESS_BY_PERSON = "personHasAddressByPerson";
     public static final String CITIES_BY_COUNTY = "citiesByCounty";
@@ -123,7 +123,7 @@ public class QueryConstants {
     public static final String ADDITIONAL_CARD_BY_LEGAL_CUSTOMER = "additionalCardByLegalCustomer";
     public static final String VALIDATE_ACCOUNT = "validateAccount";
     public static final String VALIDATE_USER = "validateUser";
-    public static final String VALIDATE_CUSTOMER = "validateCustomer";  
+    public static final String VALIDATE_CUSTOMER = "validateCustomer";
     public static final String TICKETS_BY_USER = "ticketsByUser";
     public static final String TICKETS_BY_ACCOUNT = "ticketsByAccount";
     public static final String TICKETS_BY_USER_RESPONDER = "ticketsByUserResponder";
@@ -172,6 +172,7 @@ public class QueryConstants {
     public static final String REVIEW_REQUEST_BY_REQUEST = "reviewRequestByRequest";
     public static final String ACCOUNT_PROPERTIES_BY_REQUEST = "accountPropertiesByRequest";
     public static final String STATUS_APPLICANT_BY_CODE = "statusApplicantByCode";
+    public static final String TRANSACTION_MANAGEMENT_BY_TRANSACTION = "transactionsManagementByTransaction";
     //Parámetros
     public static final String PARAM_LOGIN = "login";
     public static final String PARAM_PASSWORD = "password";
@@ -252,9 +253,9 @@ public class QueryConstants {
     public static final String PARAM_ORDER_ID = "orderId";
     public static final String PARAM_TRANSACTION_TYPE_ID = "transactionTypeId";
     public static final String PARAM_TRANSACTION_ITEM_ID = "transactionItemId";
-    public static final String PARAM_TRANSACTION_STATUS = "transactionStatus";    
+    public static final String PARAM_TRANSACTION_STATUS = "transactionStatus";
     public static final String PARAM_ACCOUNT = "account";
-    public static final String PARAM_BALANCES_TRANSFERENCES = "balanceTransferences";    
+    public static final String PARAM_BALANCES_TRANSFERENCES = "balanceTransferences";
     public static final String PARAM_DELETED = "deleted";
     public static final String PARAM_OBJECT = "object";
     public static final String PARAM_SQL = "sql";
@@ -267,10 +268,11 @@ public class QueryConstants {
     public static final String PARAM_PIN_FREE = "pinFree";
     public static final String PARAM_PROMOTION_TYPE = "promotionType";
     public static final String PARAM_LANGUAGE_ID = "languageId";
-    public static final String PARAM_ECONOMIC_ACTIVITY_ID ="economicActivityId";
-    public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT ="countCardComplementaryByApplicant";
-    public static final String PARAM_CODE ="code";
-    public static final String PARAM_PERSON_ID = "personId";    
+    public static final String PARAM_ECONOMIC_ACTIVITY_ID = "economicActivityId";
+    public static final String COUNT_CARD_COMPLEMENTARY_BY_APPLICANT = "countCardComplementaryByApplicant";
+    public static final String PARAM_CODE = "code";
+    public static final String PARAM_PERSON_ID = "personId";
     public static final String PARAM_CARD_NUMBER = "cardNumber";
     public static final String PARAM_RESPONSE_CODE = "responseCode";
+    public static final String PARAM_CUSTOMER_IDENTIFICATION_NUMBER = "customerIdentificationNumber";
 }

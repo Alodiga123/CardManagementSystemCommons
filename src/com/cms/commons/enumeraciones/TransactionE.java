@@ -29,6 +29,9 @@ public enum TransactionE {
     CHECK_CARD_MOVEMENTS(28,"060", "CHECK CARD MOVEMENTS"),
     KEY_CHANGE(29,"053","KEY CHANGE"),
     REVERSE_WITHDRAWAL(30,"054","REVERSE WITHDRAWAL");
+    KEY_CHANGE(28,"053","KEY CHANGE"),
+    KEY_REGISTER(30,"054","KEY REGISTER");
+    
 
     private int id;
     private String code;

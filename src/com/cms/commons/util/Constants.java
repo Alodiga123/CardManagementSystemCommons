@@ -416,6 +416,9 @@ public class Constants {
     public static Long EDIT_POINTS_CONVERSION = 225L;
     public static Long VIEW_POINTS_CONVERSION = 226L;
     public static Float PREVIOUS_BALANCE_DESTINATION = 0.00F;
+    public static Long LIST_KEY_RECORD = 227L;
+    public static Long LIST_KEY_REGISTER = 228L;
+    
 
     //Generación de PinBlock
     public static final String KEY = "AB1C11111111111AAAAAAADDDDD11111";
