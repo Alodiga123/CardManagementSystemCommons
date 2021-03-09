@@ -198,7 +198,7 @@ INSERT INTO `CardManagementSystem`.`originApplication` (`id`, `name`) VALUES ('3
 -- Agregar data dummy a la tabla documentType, Sequence y Transaction
 -- author: Graterol Moises
 -- Fecha: 12/02/2021 
-INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('052', 'TRANSFERENCIAS_ENTRE_CUENTAS', '1', '0', '1', '1', '2021-02-02 09:26:07');
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('27','052', 'TRANSFER BETWEEN ACCOUNT', '1', '0', '1', '1', '2021-02-02 09:26:07');
 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('12', 'TRANSFER BETWEEN ACCOUNT', 'TRBEAC');
 
@@ -278,7 +278,7 @@ INSERT INTO `CardManagementSystem`.`sequences` (`id`,`initialValue`, `currentVal
 -- Fecha 25 Febrero 2021
 INSERT INTO `CardManagementSystem`.`documentType` (`name`, `acronym`) VALUES ('KEY CHANGE', 'KEYCHA');
 INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '16', '1');
-INSERT INTO `CardManagementSystem`.`transaction` (`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('29','053', 'kEY CHANGE', '1', '0', '1', '1', '2021-02-04 10:26:07');
 
 
 -- Menu nuevo en autorizador WEB
@@ -346,3 +346,16 @@ INSERT INTO `CardManagementSystem`.`transactionPoint` (`cardId`, `programLoyalty
 INSERT INTO `CardManagementSystem`.`accountCard` (`accountPropertiesId`, `accountNumber`, `statusAccountId`, `cardId`, `transactionId`, `currentBalance`, `channelId`, `createDate`) VALUES ('1', '533946992', '1', @CardID, '23', '2000', '7', '2021-03-01 13:44:52');
 INSERT INTO `CardManagementSystem`.`balanceHistoryCard` (`cardUserId`, `transactionsManagementId`, `previousBalance`, `currentBalance`, `createDate`) VALUES (@CardID, '43', '1500', '2000', '2021-03-02 20:53:16');
 SET FOREIGN_KEY_CHECKS=1;
+
+-- Agregar data dummy a la tabla documentType
+-- author: Yamelis Almea
+-- Fecha: 05/03/2021 
+INSERT INTO `cardmanagementsystem`.`documenttype` (`id`, `name`, `acronym`) VALUES ('18', 'CARD PURCHAGE', 'CARPUR');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
+
+--Data Dummy Reverso Retiro Billetera
+-- author: Jorge Pinto
+-- Fecha: 07/03/2021 
+INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('30', '054', 'REVERSE WITHDRAWAL', '1', '0', '0', '1', '2021-02-05 10:26:07');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('19', 'REVERSE WITHDRAWAL', 'REVWIT');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '19', '1');
