@@ -26,7 +26,9 @@ public enum TransactionE {
     COMISION_CMS(25,"050","COMISION CMS"),
     BONIFICATION_CMS(26,"051","BONIFICATION CMS"),
     TRANSFER_BETWEEN_ACCOUNT(27,"052","TRANSFER BETWEEN ACCOUNT"),
-    KEY_CHANGE(28,"053","KEY CHANGE");
+    KEY_CHANGE(28,"053","KEY CHANGE"),
+    KEY_REGISTER(30,"054","KEY REGISTER");
+    
 
     private int id;
     private String code;

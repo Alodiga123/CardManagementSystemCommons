@@ -7,6 +7,7 @@ package com.cms.commons.models;
 
 import com.alodiga.cms.commons.exception.TableNotFoundException;
 import com.cms.commons.genericEJB.AbstractDistributionEntity;
+import com.cms.commons.util.QueryConstants;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -68,6 +69,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TransactionsManagement.findByNumberMovementsCheckBalance", query = "SELECT t FROM TransactionsManagement t WHERE t.numberMovementsCheckBalance = :numberMovementsCheckBalance")
     , @NamedQuery(name = "TransactionsManagement.findByResponseCode", query = "SELECT t FROM TransactionsManagement t WHERE t.responseCode = :responseCode")
     , @NamedQuery(name = "TransactionsManagement.findByCreateDate", query = "SELECT t FROM TransactionsManagement t WHERE t.createDate = :createDate")
+    , @NamedQuery(name = QueryConstants.TRANSACTION_MANAGEMENT_BY_TRANSACTION, query = "SELECT t FROM TransactionsManagement t WHERE t.transactionTypeId = :transactionTypeId AND t.customerIdentificationNumber = :customerIdentificationNumber")
     , @NamedQuery(name = "TransactionsManagement.findByUpdateDate", query = "SELECT t FROM TransactionsManagement t WHERE t.updateDate = :updateDate")})
 
 public class TransactionsManagement extends AbstractDistributionEntity implements Serializable {
@@ -130,6 +132,8 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private String cvv;
     @Column(name = "expirationCardDate")
     private String expirationCardDate;
+    @Column(name = "customerIdentificationNumber")
+    private String customerIdentificationNumber;    
     @Column(name = "pinLenght")
     private Integer pinLenght;
     @Column(name = "transferDestinationCardNumber")
@@ -146,6 +150,9 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     private Integer numberMovementsCheckBalance;
     @Column(name = "responseCode")
     private String responseCode;
+    @Column(name = "approvalDateTime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date approvalDateTime;    
     @Column(name = "authorizationCode")
     private String authorizationCode;
     @Column(name = "createDate")
@@ -383,6 +390,14 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
         this.expirationCardDate = expirationCardDate;
     }
 
+    public String getCustomerIdentificationNumber() {
+        return customerIdentificationNumber;
+    }
+
+    public void setCustomerIdentificationNumber(String customerIdentificationNumber) {
+        this.customerIdentificationNumber = customerIdentificationNumber;
+    }   
+
     public Integer getPinLenght() {
         return pinLenght;
     }
@@ -446,6 +461,14 @@ public class TransactionsManagement extends AbstractDistributionEntity implement
     public void setResponseCode(String responseCode) {
         this.responseCode = responseCode;
     }
+
+    public Date getApprovalDateTime() {
+        return approvalDateTime;
+    }
+
+    public void setApprovalDateTime(Date approvalDateTime) {
+        this.approvalDateTime = approvalDateTime;
+    }    
 
     public String getAuthorizationCode() {
         return authorizationCode;

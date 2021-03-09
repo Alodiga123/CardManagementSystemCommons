@@ -45,6 +45,7 @@ import com.cms.commons.models.ZipZone;
 import com.cms.commons.models.ResponsibleNetworkReporting;
 import com.cms.commons.models.Sequences;
 import com.cms.commons.models.Transaction;
+import com.cms.commons.models.TransactionsManagement;
 import com.cms.commons.models.UserHasProfile;
 import javax.ejb.Local;
 import java.util.List;
@@ -288,6 +289,9 @@ public interface UtilsEJBLocal extends DistributionGenericEJB {
 
     //Transaction
     public List<Transaction> getTransaction(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
+    
+    //TransactionsManagement
+    public List<TransactionsManagement> getTransactionsManagement(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
     
     //KeyProperties
     public List<KeyProperties> getKeyProperties(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;

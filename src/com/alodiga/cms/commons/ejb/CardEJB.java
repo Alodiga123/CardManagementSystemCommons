@@ -93,6 +93,7 @@ public interface CardEJB extends DistributionGenericEJB {
     public List<Card> getCardByIdentificationNumber(String identificationNumber) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByProgramAndTransactionalStatus(Long programId) throws EmptyListException, GeneralException, NullParameterException;
     public List<Card> getCardByPerson(Long personId) throws EmptyListException, GeneralException, NullParameterException;
+    public List<Card> getCardByPersonByStatusActive(Long personId) throws EmptyListException, GeneralException, NullParameterException;
     
     //CardNumberCredential
     public List<CardNumberCredential> getCardNumberCredential(EJBRequest request) throws EmptyListException, GeneralException, NullParameterException;
