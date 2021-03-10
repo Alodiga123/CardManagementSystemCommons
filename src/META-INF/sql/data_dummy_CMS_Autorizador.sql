@@ -198,7 +198,7 @@ INSERT INTO `CardManagementSystem`.`originApplication` (`id`, `name`) VALUES ('3
 -- Agregar data dummy a la tabla documentType, Sequence y Transaction
 -- author: Graterol Moises
 -- Fecha: 12/02/2021 
-INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('27','052', 'TRANSFER BETWEEN ACCOUNT', '1', '0', '1', '1', '2021-02-02 09:26:07');
+INSERT INTO `CardManagementSystem`.`transaction` (`id`,`code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('27','052', 'TRANSFER BETWEEN ACCOUNT', '1', '0', '1', '2', '2021-02-02 09:26:07');
 
 INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('12', 'TRANSFER BETWEEN ACCOUNT', 'TRBEAC');
 
@@ -336,8 +336,7 @@ INSERT INTO `CardManagementSystem`.`permission_data` (`permissionId`, `languageI
 -- author: Jorge Pinto
 -- Fecha 03 Marzo 2021
 SET FOREIGN_KEY_CHECKS=0;
-INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('17', 'BONIFICATION CMS', 'BONCMS');
-INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '17', '3');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '11', '3');
 
 SET @CardID = 0;
 SELECT MAX(c.id) INTO @CardID FROM `CardManagementSystem`.`card` c where cardNumber = 821455143256841;
@@ -350,12 +349,24 @@ SET FOREIGN_KEY_CHECKS=1;
 -- Agregar data dummy a la tabla documentType
 -- author: Yamelis Almea
 -- Fecha: 05/03/2021 
-INSERT INTO `cardmanagementsystem`.`documenttype` (`id`, `name`, `acronym`) VALUES ('18', 'CARD PURCHAGE', 'CARPUR');
-INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '1');
+INSERT INTO `cardmanagementsystem`.`documenttype` (`id`, `name`, `acronym`) VALUES ('17', 'CARD PURCHAGE', 'CARPUR');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '17', '1');
 
 --Data Dummy Reverso Retiro Billetera
 -- author: Jorge Pinto
 -- Fecha: 07/03/2021 
 INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('30', '054', 'REVERSE WITHDRAWAL', '1', '0', '0', '1', '2021-02-05 10:26:07');
-INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('19', 'REVERSE WITHDRAWAL', 'REVWIT');
-INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '19', '1');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('18', 'REVERSE WITHDRAWAL', 'REVWIT');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '18', '3');
+
+-- Agregar data dummy para transacción "REVERSE CARD RECHARGE"
+-- author: Jesús Gómez
+-- Fecha: 08/03/2021
+INSERT INTO `CardManagementSystem`.`transaction` (`id`, `code`, `description`, `indMonetaryType`, `indTransactionPurchase`, `indVariationRateChannel`, `subTypeTransactionId`, `createDate`) VALUES ('31', '024', 'REVERSE CARD RECHARGE', '1', '0', '1', '2', '2021-02-08 18:26:07');
+INSERT INTO `CardManagementSystem`.`documentType` (`id`, `name`, `acronym`) VALUES ('19', 'REVERSE CARD RECHARGE', 'RECARE');
+INSERT INTO `CardManagementSystem`.`sequences` (`initialValue`, `currentValue`, `documentType_id`, `originApplicationId`) VALUES ('1', '1', '19', '3');
+
+-- Actualizar subTipo de Transacción para transacción "COMISSION CMS"
+-- author: Jesús Gómez
+-- Fecha: 08/03/2021
+UPDATE `CardManagementSystem`.`transaction` SET `subTypeTransactionId`='2' WHERE `id`='25';
