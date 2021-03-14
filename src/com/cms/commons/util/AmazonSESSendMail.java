@@ -34,12 +34,12 @@ public class AmazonSESSendMail {
     // Replace smtp_username with your Amazon SES SMTP user name.
 //    static final String SMTP_USERNAME = "AKIA5UWEHA5LNONBQM6S";
     
-    static final String SMTP_USERNAME = "AKIA5UWEHA5LH7CV7OVD";
+    static final String SMTP_USERNAME = "AKIA5UWEHA5LMKWY3H2R";
     
     // Replace smtp_password with your Amazon SES SMTP password.
 //    static final String SMTP_PASSWORD = "BOiJjBixFhQQioEwHEkNx5pH5lssD+tBjcx25PKtk3W1";
     
-    static final String SMTP_PASSWORD = "BD0jmrWpTzKtMLVIzgnbkUW0HBjYoCo5U7uDSTUtQX7/";
+    static final String SMTP_PASSWORD = "BMjf0TUTdkotkuC5++mkn/DtUxolqmgzYF0g1cZXzFnf";
     
     
     // Amazon SES SMTP host name. This example uses the EE.UU. Oeste (Oregón) region.
