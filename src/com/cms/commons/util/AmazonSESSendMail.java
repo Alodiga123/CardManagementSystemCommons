@@ -5,13 +5,7 @@
  */
 package com.cms.commons.util;
 
-import java.io.IOException;
-
-
-
-
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -34,12 +28,10 @@ public class AmazonSESSendMail {
     // Replace smtp_username with your Amazon SES SMTP user name.
 //    static final String SMTP_USERNAME = "AKIA5UWEHA5LNONBQM6S";
     
-    static final String SMTP_USERNAME = "AKIA5UWEHA5LMKWY3H2R";
+      static final String SMTP_USERNAME = "AKIA5UWEHA5LMKWY3H2R";
     
     // Replace smtp_password with your Amazon SES SMTP password.
-//    static final String SMTP_PASSWORD = "BOiJjBixFhQQioEwHEkNx5pH5lssD+tBjcx25PKtk3W1";
-    
-    static final String SMTP_PASSWORD = "BMjf0TUTdkotkuC5++mkn/DtUxolqmgzYF0g1cZXzFnf";
+    static final String SMTP_PASSWORD = "BMjf0TUTdKotkuC5++mkn/DtUxolqmgzYF0g1cZXzFnf";
     
     
     // Amazon SES SMTP host name. This example uses the EE.UU. Oeste (Oregón) region.
@@ -109,7 +101,19 @@ public class AmazonSESSendMail {
             transport.close();
         }
     }
+    
+    
+    public static void main(String[] args) {
+        try {
+            String destinatario =  "yamealm@gmail.com"; //A quien le quieres escribir.
+            String asunto = "Correo de prueba enviado desde Java";
+            String cuerpo = "Esta es una prueba de correo...";
+            SendMail(asunto, cuerpo,destinatario);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
 }
             
     
-
