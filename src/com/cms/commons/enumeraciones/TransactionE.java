@@ -32,6 +32,7 @@ public enum TransactionE {
     REVERSE_CARD_RECHARGE(31,"024","REVERSE CARD RECHARGE"),
     KEY_REGISTER(32,"054","KEY REGISTER");
     
+    
 
     private int id;
     private String code;
